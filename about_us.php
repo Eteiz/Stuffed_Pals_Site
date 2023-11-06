@@ -25,6 +25,7 @@
 <body>
 	<?php include 'site_parts\navbar.php'; ?>
     <main>
+        
 
 	</main>
 	<?php include 'site_parts\footer.php'; ?>

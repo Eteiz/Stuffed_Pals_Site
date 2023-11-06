@@ -13,22 +13,40 @@ body {
     font-weight: 500;
 }
 
-/* WEIGHT HIERARCHY:
-- 900, h1 - Main header or phrase of the page, BUTTON font
-- 800, h2 - Subheader, header or phrase of the section
-- 700, h3 - HYPERLINK font
-- 600, h4 - Short explanation below main header or subsubheader or phrase, PRODUCT NAME and PRICE font, 
-- 500, span - Default text (eg. product description)
-*/
-h1, h2, h3, h4, span {
-    color: var(--main-color);  
+img {
+    display: block;
 }
 
-h1 { font-weight: 900; }
-h2 { font-weight: 800; }
-h3 { font-weight: 700; }
-h4 { font-weight: 600; }
-span { font-weight: 500; }
+/* WEIGHT HIERARCHY:
+- 900, h1 - Main header or phrase of the page
+- 800, h2 - Subheader, header or phrase of the section
+- 700, h3 - HYPERLINK and BUTTON font, text after header/subheader, subsubheader
+- 600, h4 - More important than span, PRODUCT NAME and PRICE font, 
+- 500, span - Default text (eg. product description)
+*/
+
+h1, h2, h3, h4, span {
+    color: var(--main-color); 
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}
+
+h1 { 
+    font-size: 55px;
+    font-weight: 900; }
+h2 { 
+    font-size: 35px;
+    font-weight: 800; }
+h3 { 
+    font-size: 18px;
+    font-weight: 700; }
+h4 { 
+    font-size: 15px;
+    font-weight: 600; }
+span {
+    font-size: 15px; 
+    font-weight: 500; 
+}
 
 /* HYPERLINKS */
 .hyperlink_text, .hyperlink_text:visited,
@@ -144,22 +162,19 @@ nav {
     text-align: center;
     flex-direction: column;  
 }
-.first_section_card h2, 
-.first_section_card h4, 
+.first_section_card h1, 
+.first_section_card h3, 
 .first_section_card span { 
     margin-left: 10px;
     margin-righT: 10px;
 }
-.first_section_card h4 {
+.first_section_card h3 {
     margin-top: 15px;
     margin-bottom: 15px; 
 }
-.first_section_card h2,
 .first_section_card span {
     font-weight: 800;
     font-size: 55px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 .text_slider {
@@ -204,7 +219,6 @@ nav {
 }
 .second_section span {
     display: inline-block;
-    font-size: 15px;
     margin-bottom: 15px;
     margin-top: 15px; 
 }
@@ -212,11 +226,6 @@ nav {
 .second_section_description {
     width: 375px;
     height: 325px;
-}
-.second_section_description h2 {
-    font-size: 35px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 .second_section_list,
@@ -253,34 +262,22 @@ nav {
 }
 
 /* THIRD SECTION */
-.third_section {
-    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+.third_section, 
+.third_section_categories {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.third_section {
+    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     flex-direction: column;
 
     padding-top: 40px;
     padding-bottom: 40px;
 }
-.third_section h2, .third_section h4 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.third_section h2 {
-    font-size: 55px;
-}
-.third_section h4 {
-    font-size: 18px;
-}
 
 .third_section_categories {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 65px;
-
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -295,9 +292,8 @@ nav {
 
 .third_section_categories_element img {
     width: 100%;
-    height: auto;
     margin-top: 30px;
-    transition: transform 0.3s ease, margin-top 0.3s ease;
+    transition: transform 0.3s ease-out, margin-top 0.3s ease-out;
 }
 
 .third_section_categories_element:hover img {
@@ -311,7 +307,6 @@ nav {
     left: 50%;
     transform: translateX(-50%);
 }
-
 
 
 
@@ -344,7 +339,6 @@ footer h3 {
     width: 295px;
     height: 140px;
     margin: 10px 0 0 5px;
-    font-size: 15px;
 }
 
 /* Footer Shop and Customer Service */
@@ -379,14 +373,6 @@ footer h3 {
 .footer_author {
     height: 50px;
     text-align: center;
-    font-size: 15px;
     margin-top: 10px;
     padding-bottom: 10px;
 }
-
-.footer_author h3,
-.footer_author h4 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
