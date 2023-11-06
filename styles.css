@@ -13,22 +13,40 @@ body {
     font-weight: 500;
 }
 
-/* WEIGHT HIERARCHY:
-- 900, h1 - Main header or phrase of the page, BUTTON font
-- 800, h2 - Subheader, header or phrase of the section
-- 700, h3 - HYPERLINK font
-- 600, h4 - Short explanation below main header or subsubheader or phrase, PRODUCT NAME and PRICE font, 
-- 500, span - Default text (eg. product description)
-*/
-h1, h2, h3, h4, span {
-    color: var(--main-color);  
+img {
+    display: block;
 }
 
-h1 { font-weight: 900; }
-h2 { font-weight: 800; }
-h3 { font-weight: 700; }
-h4 { font-weight: 600; }
-span { font-weight: 500; }
+/* WEIGHT HIERARCHY:
+- 900, h1 - Main header or phrase of the page
+- 800, h2 - Subheader, header or phrase of the section
+- 700, h3 - HYPERLINK and BUTTON font, text after header/subheader, subsubheader
+- 600, h4 - More important than span, PRODUCT NAME and PRICE font, 
+- 500, span - Default text (eg. product description)
+*/
+
+h1, h2, h3, h4, span {
+    color: var(--main-color); 
+    margin-top: 5px;
+    margin-bottom: 5px; 
+}
+
+h1 { 
+    font-size: 55px;
+    font-weight: 900; }
+h2 { 
+    font-size: 35px;
+    font-weight: 800; }
+h3 { 
+    font-size: 18px;
+    font-weight: 700; }
+h4 { 
+    font-size: 15px;
+    font-weight: 600; }
+span {
+    font-size: 15px; 
+    font-weight: 500; 
+}
 
 /* HYPERLINKS */
 .hyperlink_text, .hyperlink_text:visited,
@@ -67,26 +85,35 @@ span { font-weight: 500; }
 
 
 .hyperlink_button_purple, 
-.hyperlink_button_purple:visited {
+.hyperlink_button_purple:visited,
+.hyperlink_button_black, 
+.hyperlink_button_black:visited {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     width: 200px;  
-    height: 50px;  
-    background-color: #CB8AFF; 
+    height: 50px; 
 
     display: flex;
     justify-content: center;  
     align-items: center;  
-  
+
     text-decoration: none;  
     color: white;  
     font-size: 20px;
     border: none;  
     border-radius: 3px;
-     
+
     transition: background-color 0.3s ease; 
+    cursor: pointer;
 }
-.hyperlink_button_purple:hover {
-    background-color: #8B5FE9;  
-}
+
+.hyperlink_button_purple, 
+.hyperlink_button_purple:visited { background-color: #CB8AFF;  }
+.hyperlink_button_purple:hover { background-color: #8B5FE9;  }
+
+.hyperlink_button_black, 
+.hyperlink_button_black:visited { background-color: #09080F; }
+.hyperlink_button_black:hover { background-color: #414044;  }
 
 /* ==================== NAVBAR ==================== */
 nav {
@@ -111,7 +138,7 @@ nav {
 .nav_icons img, .nav_icons a { width: 32px; height: 32px;}
 .nav_icons { gap: 15px; }
 
-/* ==================== MAIN ==================== */
+/* ==================== INDEX.PHP ==================== */
 /*  FIRST SECTION  */
 .first_section {
     width: 100%;
@@ -136,22 +163,19 @@ nav {
     text-align: center;
     flex-direction: column;  
 }
-.first_section_card h2, 
-.first_section_card h4, 
+.first_section_card h1, 
+.first_section_card h3, 
 .first_section_card span { 
     margin-left: 10px;
     margin-righT: 10px;
 }
-.first_section_card h4 {
+.first_section_card h3 {
     margin-top: 15px;
     margin-bottom: 15px; 
 }
-.first_section_card h2,
 .first_section_card span {
     font-weight: 800;
     font-size: 55px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 .text_slider {
@@ -196,7 +220,6 @@ nav {
 }
 .second_section span {
     display: inline-block;
-    font-size: 15px;
     margin-bottom: 15px;
     margin-top: 15px; 
 }
@@ -204,11 +227,6 @@ nav {
 .second_section_description {
     width: 375px;
     height: 325px;
-}
-.second_section_description h2 {
-    font-size: 35px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 .second_section_list,
@@ -245,8 +263,97 @@ nav {
 }
 
 /* THIRD SECTION */
+.third_section, 
+.third_section_categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .third_section {
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+    flex-direction: column;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.third_section_categories {
+    gap: 65px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.third_section_categories_element {
+    width: 300px;
+    heighT: 300px;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+.third_section_categories_element img {
+    width: 100%;
+    margin-top: 30px;
+    transition: transform 0.3s ease-out, margin-top 0.3s ease-out;
+}
+
+.third_section_categories_element:hover img {
+    transform: scale(1.1);
+    margin-top: 10px;
+}
+
+.third_section_categories_element a {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ==================== ABOUT_US.PHP ==================== */
+
+/* ==================== NEWSLETTER ==================== */
+.newsletter, 
+.newsletter_container, 
+.newsletter_container_form,
+.newsletter_container_form label[for="consent"]  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.newsletter {
+    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.newsletter_container {
+    width: 800px;
+    height: 300px;
+    background-color: white;
+    gap: 20px;
+}
+.newsletter_container_description {
+    width: 300px;
+}
+.newsletter_container_form {
+    width: 380px;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.newsletter_container_form input[type="email"] {
+    width: 325px;
+    heighT: 40px;
+}
+
+.newsletter_container_form input[type="checkbox"] {
+    margin: 0px 0px 0px 0px;
+    width: 15px;
+    heighT: 15px;
+}
+
+.newsletter_container_form label[for="consent"] {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    gap: 10px;
 }
 
 /* ==================== FOOTER ==================== */
@@ -278,7 +385,6 @@ footer h3 {
     width: 295px;
     height: 140px;
     margin: 10px 0 0 5px;
-    font-size: 15px;
 }
 
 /* Footer Shop and Customer Service */
@@ -313,14 +419,6 @@ footer h3 {
 .footer_author {
     height: 50px;
     text-align: center;
-    font-size: 15px;
     margin-top: 10px;
     padding-bottom: 10px;
 }
-
-.footer_author h3,
-.footer_author h4 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-

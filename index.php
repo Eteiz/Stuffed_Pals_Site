@@ -23,11 +23,11 @@
 
 </head>
 <body>
-	<?php include 'navbar.php'; ?>
+	<?php include 'site_parts\navbar.php'; ?>
     <main>
 		<section class="first_section">
 			<div class="first_section_card">
-				<h2> The way you </h2>
+				<h1> The way you </h1>
 				<div class="text_slider">
 					<div class="text_slider_element">
 						<span>WANT IT</span>
@@ -35,7 +35,7 @@
 						<span>LOVE IT</span>
 					</div>
     			</div>
-				<h4> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h4>
+				<h3> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h3>
 				<a class="hyperlink_button_purple" href="#Browse"> Start now </a>
 			</div>
 
@@ -75,16 +75,28 @@
 			<img class="second_section_image" src="img\plush_1.png" alt="Plush_1 image"></img>
 		</section>
 		<section class="third_section">
-			<h2> Our products </h2>
-			<h4> From essentials to what makes your pal unique! </h4>
+			<h1> Our products </h1>
+			<h3> From essentials to what makes your pal unique! </h3>
 			<div class="third_section_categories">
-				<div class="third_section_categories_element">
-					
+				<div class="third_section_categories_element" style="background-color: #FF638B;">
+					<img src="img\plush_2.png" alt="Plush_2 image">
+					<a class="hyperlink_button_black" href="#Browse"> PAL BASES </a>
+				</div>
+				<div class="third_section_categories_element" style="background-color: #FFE2DD;">
+					<img src="img\plush_1.png" alt="Plush_1 image">
+					<a class="hyperlink_button_black" href="#Browse"> PAL CLOTHES </a>
+				</div>
+				<div class="third_section_categories_element" style="background-color: #D1FF88;">
+					<img src="img\plush_3.png" alt="Plush_3 image">
+					<a class="hyperlink_button_black" href="#Browse"> PAL ACCESORIES </a>
 				</div>
 			</div>
+			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
 		</section>
-
+		<section class="fourth_section">
+		</section>
+		<?php include 'site_parts\newsletter_form.php'; ?>
 	</main>
-	<?php include 'footer.php'; ?>
+	<?php include 'site_parts\footer.php'; ?>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <nav>
 		<div class="nav_hyperlink">
 			<a class="hyperlink_text" href="#Shop">Shop</a>
-			<a class="hyperlink_text" href="#About_us">About</a>
+			<a class="hyperlink_text" href="about_us.php">About</a>
 			<a class="hyperlink_text" href="#FAQ">FAQ</a>
 		</div>
 		<div class="nav_logo">
