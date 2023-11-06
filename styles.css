@@ -67,26 +67,34 @@ span { font-weight: 500; }
 
 
 .hyperlink_button_purple, 
-.hyperlink_button_purple:visited {
+.hyperlink_button_purple:visited,
+.hyperlink_button_black, 
+.hyperlink_button_black:visited {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     width: 200px;  
-    height: 50px;  
-    background-color: #CB8AFF; 
+    height: 50px; 
 
     display: flex;
     justify-content: center;  
     align-items: center;  
-  
+
     text-decoration: none;  
     color: white;  
     font-size: 20px;
     border: none;  
     border-radius: 3px;
-     
+
     transition: background-color 0.3s ease; 
 }
-.hyperlink_button_purple:hover {
-    background-color: #8B5FE9;  
-}
+
+.hyperlink_button_purple, 
+.hyperlink_button_purple:visited { background-color: #CB8AFF;  }
+.hyperlink_button_purple:hover { background-color: #8B5FE9;  }
+
+.hyperlink_button_black, 
+.hyperlink_button_black:visited { background-color: #09080F; }
+.hyperlink_button_black:hover { background-color: #414044;  }
 
 /* ==================== NAVBAR ==================== */
 nav {
@@ -247,7 +255,65 @@ nav {
 /* THIRD SECTION */
 .third_section {
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
+.third_section h2, .third_section h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.third_section h2 {
+    font-size: 55px;
+}
+.third_section h4 {
+    font-size: 18px;
+}
+
+.third_section_categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 65px;
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.third_section_categories_element {
+    width: 300px;
+    heighT: 300px;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+.third_section_categories_element img {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    transition: transform 0.3s ease, margin-top 0.3s ease;
+}
+
+.third_section_categories_element:hover img {
+    transform: scale(1.1);
+    margin-top: 10px;
+}
+
+.third_section_categories_element a {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
 
 /* ==================== FOOTER ==================== */
 footer h3 {

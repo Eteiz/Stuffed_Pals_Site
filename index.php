@@ -78,10 +78,20 @@
 			<h2> Our products </h2>
 			<h4> From essentials to what makes your pal unique! </h4>
 			<div class="third_section_categories">
-				<div class="third_section_categories_element">
-					
+				<div class="third_section_categories_element" style="background-color: #FF638B;">
+					<img src="img\plush_2.png" alt="Plush_2 image">
+					<a class="hyperlink_button_black" href="#Browse"> PAL BASES </a>
+				</div>
+				<div class="third_section_categories_element" style="background-color: #FFE2DD;">
+					<img src="img\plush_1.png" alt="Plush_1 image">
+					<a class="hyperlink_button_black" href="#Browse"> PAL CLOTHES </a>
+				</div>
+				<div class="third_section_categories_element" style="background-color: #D1FF88;">
+					<img src="img\plush_3.png" alt="Plush_3 image">
+					<a class="hyperlink_button_black" href="#Browse"> PAL ACCESORIES </a>
 				</div>
 			</div>
+			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
 		</section>
 
 	</main>
