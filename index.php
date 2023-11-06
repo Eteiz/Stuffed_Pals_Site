@@ -93,7 +93,9 @@
 			</div>
 			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
 		</section>
-
+		<section class="fourth_section">
+		</section>
+		<?php include 'site_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
 </body>
