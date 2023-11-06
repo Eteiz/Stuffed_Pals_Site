@@ -23,7 +23,7 @@
 
 </head>
 <body>
-	<?php include 'navbar.php'; ?>
+	<?php include 'site_parts\navbar.php'; ?>
     <main>
 		<section class="first_section">
 			<div class="first_section_card">
@@ -85,6 +85,6 @@
 		</section>
 
 	</main>
-	<?php include 'footer.php'; ?>
+	<?php include 'site_parts\footer.php'; ?>
 </body>
 </html>
