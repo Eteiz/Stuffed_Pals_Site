@@ -416,30 +416,17 @@ footer h3 {
 }
 
 /* Footer Shop and Customer Service */
-.footer_shop,
-.footer_customer_service {
+.footer_category {
     height: 140px;
-}
-
-.footer_shop {
-    width: 150px;
-}
-
-.footer_customer_service {
     width: 200px;
 }
-
-.footer_shop h3,
-.footer_customer_service h3,
-.footer_shop h4,
-.footer_customer_service h4 {
+.footer_category h3,
+.footer_category h4 {
     height: 20px;
     margin-bottom: 10px;
     margin-top: 5px;
 }
-
-.footer_shop h4,
-.footer_customer_service h4 {
+.footer_category h4 {
     margin-top: 10px;
 }
 

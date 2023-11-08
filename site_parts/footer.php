@@ -10,18 +10,24 @@
 					merging comfort with eco-friendly and ethical practices.
 				</h4>
 			</div>
-			<div class="footer_shop">
+			<div class="footer_category">
 				<h3>SHOP</h3>
 				<h4><a class="hyperlink_text" href="#PAL_BASES">PAL BASES</a></h4>
 				<h4><a class="hyperlink_text" href="#PAL_CLOTHES">PAL CLOTHES</a></h4>
 				<h4><a class="hyperlink_text" href="#PAL_ACCESSORIES">PAL ACCESSORIES</a></h4>
 			</div>
-			<div class="footer_customer_service">
+			<div class="footer_category">
+				<h3>ABOUT US</h3>
+				<h4><a class="hyperlink_text" href="about_us.php">WHO WE ARE</a></h4>
+				<h4><a class="hyperlink_text" href="#CONTACT_PAGE">OUR MISSION</a></h4>
+				<h4><a class="hyperlink_text" href="#FAQ_PAGE">OUR TEAM</a></h4>
+			</div>
+			<div class="footer_category">
 				<h3>CUSTOMER SERVICE</h3>
-				<h4><a class="hyperlink_text" href="about_us.php">ABOUT</a></h4>
-				<h4><a class="hyperlink_text" href="#CONTACT_PAGE">CONTACT</a></h4>
+				<h4><a class="hyperlink_text" href="about_us.php">CONTACT</a></h4>
 				<h4><a class="hyperlink_text" href="#FAQ_PAGE">FAQ</a></h4>
 			</div>
+			
 		</div>
 		<div class="footer_author">
 			<h3>©2023, Marta Ambroziak</h3>
