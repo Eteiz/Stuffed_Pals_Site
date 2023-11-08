@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 08, 2023 at 07:34 AM
+-- Generation Time: Lis 08, 2023 at 07:58 AM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -20,11 +20,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `stuffedpals_database`
 --
+CREATE DATABASE IF NOT EXISTS `stuffedpals_database` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `stuffedpals_database`;
 
 DELIMITER $$
 --
 -- Procedury
 --
+DROP PROCEDURE IF EXISTS `AddNewProduct`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddNewProduct` (IN `p_product_name` VARCHAR(100), IN `p_product_price` DECIMAL(5,2))   BEGIN
     INSERT INTO product (product_name, product_price) 
     VALUES (p_product_name, p_product_price);
@@ -43,11 +46,15 @@ DELIMITER ;
 -- Struktura tabeli dla tabeli `cart_item`
 --
 
-CREATE TABLE `cart_item` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `cart_item`;
+CREATE TABLE IF NOT EXISTS `cart_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `session_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Session',
   `product_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Product',
-  `quantity` int(11) NOT NULL DEFAULT 0
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `session_id` (`session_id`),
+  UNIQUE KEY `product_id` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -56,10 +63,12 @@ CREATE TABLE `cart_item` (
 -- Struktura tabeli dla tabeli `category`
 --
 
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `category_name` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Category information';
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Category information';
 
 --
 -- Dumping data for table `category`
@@ -76,9 +85,11 @@ INSERT INTO `category` (`id`, `category_name`) VALUES
 -- Struktura tabeli dla tabeli `inventory`
 --
 
-CREATE TABLE `inventory` (
+DROP TABLE IF EXISTS `inventory`;
+CREATE TABLE IF NOT EXISTS `inventory` (
   `product_id` int(11) NOT NULL COMMENT 'Foreign key from Product',
-  `product_quantity` int(11) NOT NULL DEFAULT 0
+  `product_quantity` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -94,10 +105,12 @@ INSERT INTO `inventory` (`product_id`, `product_quantity`) VALUES
 -- Struktura tabeli dla tabeli `newsletter`
 --
 
-CREATE TABLE `newsletter` (
-  `id` int(11) NOT NULL,
-  `email_address` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for emails that agreed to newsletter';
+DROP TABLE IF EXISTS `newsletter`;
+CREATE TABLE IF NOT EXISTS `newsletter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email_address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for emails that agreed to newsletter';
 
 -- --------------------------------------------------------
 
@@ -105,10 +118,13 @@ CREATE TABLE `newsletter` (
 -- Struktura tabeli dla tabeli `order_details`
 --
 
-CREATE TABLE `order_details` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE IF NOT EXISTS `order_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
-  `total_price` decimal(5,2) NOT NULL DEFAULT 0.00
+  `total_price` decimal(5,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -117,11 +133,15 @@ CREATE TABLE `order_details` (
 -- Struktura tabeli dla tabeli `order_item`
 --
 
-CREATE TABLE `order_item` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `order_item`;
+CREATE TABLE IF NOT EXISTS `order_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_details_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Order_details',
   `product_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Product',
-  `quantity` int(11) NOT NULL DEFAULT 0
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `product_id` (`product_id`),
+  KEY `order_details_id` (`order_details_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -130,9 +150,11 @@ CREATE TABLE `order_item` (
 -- Struktura tabeli dla tabeli `order_status`
 --
 
-CREATE TABLE `order_status` (
+DROP TABLE IF EXISTS `order_status`;
+CREATE TABLE IF NOT EXISTS `order_status` (
   `order_details_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Order_Details',
-  `order_status_description` text DEFAULT NULL
+  `order_status_description` text DEFAULT NULL,
+  UNIQUE KEY `order_details_id` (`order_details_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Order status information';
 
 -- --------------------------------------------------------
@@ -141,9 +163,11 @@ CREATE TABLE `order_status` (
 -- Struktura tabeli dla tabeli `payment_method`
 --
 
-CREATE TABLE `payment_method` (
+DROP TABLE IF EXISTS `payment_method`;
+CREATE TABLE IF NOT EXISTS `payment_method` (
   `order_details_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Order_Details',
-  `payment_method_description` text DEFAULT NULL
+  `payment_method_description` text DEFAULT NULL,
+  UNIQUE KEY `order_details_id` (`order_details_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Order payment information';
 
 -- --------------------------------------------------------
@@ -152,14 +176,18 @@ CREATE TABLE `payment_method` (
 -- Struktura tabeli dla tabeli `product`
 --
 
-CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE IF NOT EXISTS `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Category',
   `supplier_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Supplier',
   `product_name` varchar(100) NOT NULL,
   `product_description` text DEFAULT NULL,
-  `product_price` decimal(5,2) NOT NULL DEFAULT 0.00
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `product_price` decimal(5,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id`),
+  KEY `category_id` (`category_id`),
+  KEY `supplier_id` (`supplier_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
@@ -174,10 +202,13 @@ INSERT INTO `product` (`id`, `category_id`, `supplier_id`, `product_name`, `prod
 -- Struktura tabeli dla tabeli `session`
 --
 
-CREATE TABLE `session` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `session`;
+CREATE TABLE IF NOT EXISTS `session` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
-  `total` decimal(5,2) NOT NULL DEFAULT 0.00
+  `total` decimal(5,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -186,12 +217,14 @@ CREATE TABLE `session` (
 -- Struktura tabeli dla tabeli `supplier`
 --
 
-CREATE TABLE `supplier` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE IF NOT EXISTS `supplier` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `supplier_name` varchar(100) DEFAULT NULL,
   `supplier_address` varchar(100) DEFAULT NULL,
   `supplier_email` varchar(100) DEFAULT NULL,
-  `supplier_phone_number` varchar(12) DEFAULT NULL
+  `supplier_phone_number` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -200,13 +233,16 @@ CREATE TABLE `supplier` (
 -- Struktura tabeli dla tabeli `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_login` varchar(40) NOT NULL,
   `user_password` varchar(40) NOT NULL COMMENT 'Hashed by md5',
   `user_firstname` varchar(100) DEFAULT NULL,
   `user_lastname` varchar(100) DEFAULT NULL,
-  `user_phone_number` varchar(12) DEFAULT NULL
+  `user_phone_number` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UC_user_login_unique` (`user_login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -215,170 +251,17 @@ CREATE TABLE `user` (
 -- Struktura tabeli dla tabeli `user_address`
 --
 
-CREATE TABLE `user_address` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user_address`;
+CREATE TABLE IF NOT EXISTS `user_address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
   `user_homeaddress` varchar(100) DEFAULT NULL,
   `user_city` varchar(100) DEFAULT NULL,
   `user_postalcode` varchar(6) DEFAULT NULL,
-  `user_country` varchar(100) DEFAULT NULL
+  `user_country` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Indeksy dla zrzutów tabel
---
-
---
--- Indeksy dla tabeli `cart_item`
---
-ALTER TABLE `cart_item`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `session_id` (`session_id`),
-  ADD UNIQUE KEY `product_id` (`product_id`);
-
---
--- Indeksy dla tabeli `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `inventory`
---
-ALTER TABLE `inventory`
-  ADD PRIMARY KEY (`product_id`);
-
---
--- Indeksy dla tabeli `newsletter`
---
-ALTER TABLE `newsletter`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `order_details`
---
-ALTER TABLE `order_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indeksy dla tabeli `order_item`
---
-ALTER TABLE `order_item`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `product_id` (`product_id`),
-  ADD KEY `order_details_id` (`order_details_id`);
-
---
--- Indeksy dla tabeli `order_status`
---
-ALTER TABLE `order_status`
-  ADD UNIQUE KEY `order_details_id` (`order_details_id`);
-
---
--- Indeksy dla tabeli `payment_method`
---
-ALTER TABLE `payment_method`
-  ADD UNIQUE KEY `order_details_id` (`order_details_id`);
-
---
--- Indeksy dla tabeli `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `supplier_id` (`supplier_id`);
-
---
--- Indeksy dla tabeli `session`
---
-ALTER TABLE `session`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_id` (`user_id`);
-
---
--- Indeksy dla tabeli `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UC_user_login_unique` (`user_login`);
-
---
--- Indeksy dla tabeli `user_address`
---
-ALTER TABLE `user_address`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cart_item`
---
-ALTER TABLE `cart_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `newsletter`
---
-ALTER TABLE `newsletter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `order_details`
---
-ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order_item`
---
-ALTER TABLE `order_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `session`
---
-ALTER TABLE `session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `supplier`
---
-ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user_address`
---
-ALTER TABLE `user_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
