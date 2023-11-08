@@ -311,6 +311,34 @@ nav {
 
 /* ==================== ABOUT_US.PHP ==================== */
 
+/* ==================== NEWSLETTER_THANKYOU.PHP / NEWSLETTER_ALREADYSUBSCRIBED.PHP ==================== */
+.newsletter_first_section {
+    width: 100%;
+    height: 500px;
+
+    padding-top: 80px;
+    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter_first_section_card {
+    width: 600px;
+    height: 250px;
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;  
+}
+
+
+
+
 /* ==================== NEWSLETTER ==================== */
 .newsletter, 
 .newsletter_container, 

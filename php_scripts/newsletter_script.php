@@ -17,14 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
 
         if ($result->num_rows > 0) {
-            echo "This email address is already subscribed.";
+            header('Location: /newsletter_alreadysubscribed.php');
+            exit();
         } else {
             $sql = "INSERT INTO newsletter (email_address) VALUES (?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $email);
 
             if ($stmt->execute()) {
-                header('Location: /index.php');
+                header('Location: /newsletter_thankyou.php');
                 exit();
             } else {
                 echo "Error: " . $stmt->error;

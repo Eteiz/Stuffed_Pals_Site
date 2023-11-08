@@ -38,9 +38,8 @@
 				<h3> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h3>
 				<a class="hyperlink_button_purple" href="#Browse"> Start now </a>
 			</div>
-
-
 		</section>
+
 		<section class="second_section">
 			<div class="second_section_description">
 				<h2>Having a fluffy and cuddly friend is fun</h2>
@@ -74,6 +73,7 @@
 			</div>
 			<img class="second_section_image" src="img\plush_1.png" alt="Plush_1 image"></img>
 		</section>
+
 		<section class="third_section">
 			<h1> Our products </h1>
 			<h3> From essentials to what makes your pal unique! </h3>
@@ -93,8 +93,10 @@
 			</div>
 			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
 		</section>
+
 		<section class="fourth_section">
 		</section>
+		
 		<?php include 'site_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
