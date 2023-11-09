@@ -139,8 +139,8 @@ nav {
 .nav_icons { gap: 15px; }
 
 /* ==================== INDEX.PHP ==================== */
-/*  FIRST SECTION  */
-.first_section {
+/*  TITULAR SECTION  */
+.titular_section {
     width: 100%;
     height: 860px;
 
@@ -152,28 +152,32 @@ nav {
     align-items: center;
 }
 
-.first_section_card {
+.titular_section,
+.titular_section_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titular_section_card {
     width: 600px;
     height: 350px;
     background-color: white;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     flex-direction: column;  
 }
-.first_section_card h1, 
-.first_section_card h3, 
-.first_section_card span { 
+.titular_section_card h1, 
+.titular_section_card h3, 
+.titular_section_card span { 
     margin-left: 10px;
     margin-righT: 10px;
 }
-.first_section_card h3 {
+.titular_section_card h3 {
     margin-top: 15px;
     margin-bottom: 15px; 
 }
-.first_section_card span {
+.titular_section_card span {
     font-weight: 800;
     font-size: 55px;
 }
@@ -207,8 +211,8 @@ nav {
     87.5% { top: -60px;}
 }
 
-/* SECOND SECTION */
-.second_section {
+/* PRESENTATION SECTION */
+.presentation_section {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -218,58 +222,58 @@ nav {
     padding-top: 40px;
     padding-bottom: 40px;
 }
-.second_section span {
+.presentation_section span {
     display: inline-block;
     margin-bottom: 15px;
     margin-top: 15px; 
 }
 
-.second_section_description {
+.presentation_section_description {
     width: 375px;
     height: 325px;
 }
 
-.second_section_list,
-.second_section_list_element {
+.presentation_section_list,
+.presentation_section_list_element {
     width: 400px;
 }
-.second_section_list,
-.second_section_list_element {
+.presentation_section_list,
+.presentation_section_list_element {
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
-.second_section_list {
+.presentation_section_list {
     flex-direction: column;
     gap: 30px;
     margin-top:5px;
 }
-.second_section_list_element {
+.presentation_section_list_element {
     gap: 16px;
 }
-.second_section_list_element img {
+.presentation_section_list_element img {
     width: 64px;
 }
-.second_section_list_element_text {
+.presentation_section_list_element_text {
     width: 336px;
 }
-.second_section_list_element_text h3,
-.second_section_list_element_text span  {
+.presentation_section_list_element_text h3,
+.presentation_section_list_element_text span  {
     margin:0px;
 }
-.second_section_image {
+.presentation_section_image {
     height: 300px;
 }
 
-/* THIRD SECTION */
-.third_section, 
-.third_section_categories {
+/* CATEGORY SECTION */
+.category, 
+.category_section_categories {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.third_section {
+.category_section {
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     flex-direction: column;
 
@@ -277,13 +281,13 @@ nav {
     padding-bottom: 40px;
 }
 
-.third_section_categories {
+.category_section_categories {
     gap: 65px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.third_section_categories_element {
+.category_section_categories_element {
     width: 300px;
     heighT: 300px;
     background-color: white;
@@ -291,18 +295,18 @@ nav {
     position: relative;
 }
 
-.third_section_categories_element img {
+.category_section_categories_element img {
     width: 100%;
     margin-top: 30px;
     transition: transform 0.3s ease-out, margin-top 0.3s ease-out;
 }
 
-.third_section_categories_element:hover img {
+.category_section_categories_element:hover img {
     transform: scale(1.1);
     margin-top: 10px;
 }
 
-.third_section_categories_element a {
+.category_section_categories_element a {
     position: absolute;
     bottom: 20px;
     left: 50%;
