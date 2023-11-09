@@ -6,11 +6,19 @@
 /* ==================== PAGE COMPONENTS ==================== */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: rgb(255, 255, 255);
+    background-color: #e1f0fd;
     margin: 0px;
     padding: 0px;
     color: var(--main-color);
     font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+main {
+    width: 90%;
 }
 
 img {
@@ -150,6 +158,9 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    
+
 }
 
 .titular_section,
@@ -212,17 +223,32 @@ nav {
 }
 
 /* PRESENTATION SECTION */
-.presentation_section {
+.presentation_section,
+.presentation_section_container,
+.presentation_section_list,
+.presentation_section_list_element {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 60px;
-    text-align:left;
+    align-items: center;
+}
+
+.presentation_section {
+    height: 500px;
+    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
 
     padding-top: 40px;
     padding-bottom: 40px;
 }
-.presentation_section span {
+
+.presentation_section_container {
+    width: 1500px;
+    height: 450px;
+    background-color: #ffffff;
+
+    gap: 60px;
+    text-align:left;
+}
+.presentation_section_container span {
     display: inline-block;
     margin-bottom: 15px;
     margin-top: 15px; 
@@ -239,8 +265,6 @@ nav {
 }
 .presentation_section_list,
 .presentation_section_list_element {
-    display: flex;
-    justify-content: center;
     align-items: flex-end;
 }
 
@@ -266,8 +290,40 @@ nav {
     height: 300px;
 }
 
+/* TUTORIAL SECTION */
+.tutorial_section,
+.tutorial_section_steps,
+.tutorial_section_steps_element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.tutorial_section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #ffffff;
+}
+.tutorial_section_steps {
+    margin-top: 40px;
+    gap: 120px;
+}
+
+.tutorial_section,
+.tutorial_section_steps_element {
+    flex-direction: column;
+}
+.tutorial_section_steps_element {
+    width: 250px;
+    height: 300px;
+}
+.tutorial_section_steps_element img {
+    margin-bottom: 10px;
+}
+
 /* CATEGORY SECTION */
-.category, 
+.category,
+.category_section,
 .category_section_categories {
     display: flex;
     justify-content: center;
@@ -340,9 +396,6 @@ nav {
     flex-direction: column;  
 }
 
-
-
-
 /* ==================== NEWSLETTER ==================== */
 .newsletter, 
 .newsletter_container, 
@@ -389,6 +442,10 @@ nav {
 }
 
 /* ==================== FOOTER ==================== */
+footer {
+    width: 100%;
+    background-color: #ffffff;
+}
 footer h3 {
     color: #8B5FE9;
 }

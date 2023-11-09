@@ -41,37 +41,61 @@
 		</section>
 
 		<section class="presentation_section">
-			<div class="presentation_section_description">
-				<h2>Having a fluffy and cuddly friend is fun</h2>
-				<span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. 
-					   Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-				</span>
-				<a class="hyperlink_button_purple" href="#Browse"> Browse collection </a>
+			<div class="presentation_section_container">
+				<div class="presentation_section_description">
+					<h2>Having a fluffy and cuddly friend is fun</h2>
+					<span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. 
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+					</span>
+					<a class="hyperlink_button_purple" href="#Browse"> Browse collection </a>
+				</div>
+				<div class="presentation_section_list">
+					<div class="presentation_section_list_element"> 
+						<img src="img\eco_icon.png" alt="Eco icon"></img>
+						<div class="presentation_section_list_element_text">
+							<h3> ECO-FRIENDLY AND ETHICAL </h3>
+							<span> The materials used for crafting our Pals are safe for the environment </span>
+						</div>
+					</div>
+					<div class="presentation_section_list_element"> 
+						<img src="img\heart_icon.png" alt="Heart icon"></img>
+						<div class="presentation_section_list_element_text">
+							<h3> PERSONALIZED COMFORT </h3>
+							<span> Our Pals are fully customizable, tailored to meet individual preferences </span>
+						</div>
+					</div>
+					<div class="presentation_section_list_element"> 
+						<img src="img\quality_icon.png" alt="Quality icon"></img>
+						<div class="presentation_section_list_element_text">
+							<h3> HIGH-QUALITY </h3>
+							<span> Stuffed Pals are designed with meticulous attention to detail and to ensure durability </span>
+						</div>
+					</div>
+				</div>
+				<img class="presentation_section_image" src="img\plush_1.png" alt="Plush_1 image"></img>
 			</div>
-			<div class="presentation_section_list">
-				<div class="presentation_section_list_element"> 
-					<img src="img\eco_icon.png" alt="Eco icon"></img>
-					<div class="presentation_section_list_element_text">
-						<h3> ECO-FRIENDLY AND ETHICAL </h3>
-						<span> The materials used for crafting our Pals are safe for the environment </span>
-					</div>
+		</section>
+
+		<section class="tutorial_section">
+			<h2> How can you create your perfect Stuffed Pal? </h2>
+			<h3> We made sure that the process of making your perfect plushie is easy and intuitive. </h3>
+			<div class="tutorial_section_steps">
+				<div class="tutorial_section_steps_element">
+					<img src = "img\teddy-bear_icon.png" alt = "Teddy-bear icon">
+					<h2> Choose a plushie base </h2>
+					<h3> Select one of many availables plush bases. </h3>
 				</div>
-				<div class="presentation_section_list_element"> 
-					<img src="img\heart_icon.png" alt="Heart icon"></img>
-					<div class="presentation_section_list_element_text">
-						<h3> PERSONALIZED COMFORT </h3>
-						<span> Our Pals are fully customizable, tailored to meet individual preferences </span>
-					</div>
+				<div class="tutorial_section_steps_element">
+					<img src = "img\clothes_icon.png" alt = "Clothes icon">
+					<h2> Give them some clothes </h2>
+					<h3> Select one of many availables plush bases. </h3>
 				</div>
-				<div class="presentation_section_list_element"> 
-					<img src="img\quality_icon.png" alt="Quality icon"></img>
-					<div class="presentation_section_list_element_text">
-						<h3> HIGH-QUALITY </h3>
-						<span> Stuffed Pals are designed with meticulous attention to detail and to ensure durability </span>
-					</div>
+				<div class="tutorial_section_steps_element">
+					<img src = "img\hair-clip_icon.png" alt = "Hair-clip icon">
+					<h2> Maybe an accessory? </h2>
+					<h3> Select one of many availables plush bases. </h3>
 				</div>
 			</div>
-			<img class="presentation_section_image" src="img\plush_1.png" alt="Plush_1 image"></img>
 		</section>
 		
 		<section class="category_section">
@@ -93,6 +117,7 @@
 			</div>
 			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
 		</section>
+
 		<?php include 'site_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
