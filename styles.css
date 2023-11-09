@@ -18,11 +18,12 @@ body {
     flex-direction: column;
 }
 main {
+    padding-top: 80px;
     width: 90%;
 }
 
 img {
-    display: block;
+    display: block; 
 }
 
 /* WEIGHT HIERARCHY:
@@ -148,29 +149,24 @@ nav {
 
 /* ==================== INDEX.PHP ==================== */
 /*  TITULAR SECTION  */
-.titular_section {
+.index_page .titular_section {
     width: 100%;
     height: 860px;
 
-    padding-top: 80px;
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    
-
-}
-
-.titular_section,
-.titular_section_card {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.titular_section_card {
+.index_page .titular_section,
+.index_page .titular_section_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.index_page .titular_section_card {
     width: 600px;
     height: 350px;
     background-color: white;
@@ -178,32 +174,32 @@ nav {
     text-align: center;
     flex-direction: column;  
 }
-.titular_section_card h1, 
-.titular_section_card h3, 
-.titular_section_card span { 
+.index_page .titular_section_card h1, 
+.index_page .titular_section_card h3, 
+.index_page .titular_section_card span { 
     margin-left: 10px;
     margin-righT: 10px;
 }
-.titular_section_card h3 {
+.index_page .titular_section_card h3 {
     margin-top: 15px;
     margin-bottom: 15px; 
 }
-.titular_section_card span {
+.index_page .titular_section_card span {
     font-weight: 800;
     font-size: 55px;
 }
 
-.text_slider {
+.index_page .text_slider {
     height: 60px;  
     overflow: hidden;
     margin-bottom: 5px;
 }
 
-.text_slider_element {
+.index_page .text_slider_element {
     position: relative; 
     animation: text-animation 10s ease infinite;
 }
-.text_slider_element span {
+.index_page .text_slider_element span {
     display: block;
     height: 45px;
     line-height: 45px;
@@ -223,16 +219,16 @@ nav {
 }
 
 /* PRESENTATION SECTION */
-.presentation_section,
-.presentation_section_container,
-.presentation_section_list,
-.presentation_section_list_element {
+.index_page .presentation_section,
+.index_page .presentation_section_container,
+.index_page .presentation_section_list,
+.index_page .presentation_section_list_element {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.presentation_section {
+.index_page .presentation_section {
     height: 500px;
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
 
@@ -240,7 +236,7 @@ nav {
     padding-bottom: 40px;
 }
 
-.presentation_section_container {
+.index_page .presentation_section_container {
     width: 1500px;
     height: 450px;
     background-color: #ffffff;
@@ -248,88 +244,88 @@ nav {
     gap: 60px;
     text-align:left;
 }
-.presentation_section_container span {
+.index_page .presentation_section_container span {
     display: inline-block;
     margin-bottom: 15px;
     margin-top: 15px; 
 }
 
-.presentation_section_description {
+.index_page .presentation_section_description {
     width: 375px;
     height: 325px;
 }
 
-.presentation_section_list,
+.index_page .presentation_section_list,
 .presentation_section_list_element {
     width: 400px;
 }
-.presentation_section_list,
-.presentation_section_list_element {
+.index_page .presentation_section_list,
+.index_page .presentation_section_list_element {
     align-items: flex-end;
 }
 
-.presentation_section_list {
+.index_page .presentation_section_list {
     flex-direction: column;
     gap: 30px;
     margin-top:5px;
 }
-.presentation_section_list_element {
+.index_page .presentation_section_list_element {
     gap: 16px;
 }
-.presentation_section_list_element img {
+.index_page .presentation_section_list_element img {
     width: 64px;
 }
-.presentation_section_list_element_text {
+.index_page .presentation_section_list_element_text {
     width: 336px;
 }
-.presentation_section_list_element_text h3,
-.presentation_section_list_element_text span  {
+.index_page .presentation_section_list_element_text h3,
+.index_page .presentation_section_list_element_text span  {
     margin:0px;
 }
-.presentation_section_image {
+.index_page .presentation_section_image {
     height: 300px;
 }
 
 /* TUTORIAL SECTION */
-.tutorial_section,
-.tutorial_section_steps,
-.tutorial_section_steps_element {
+.index_page .tutorial_section,
+.index_page .tutorial_section_steps,
+.index_page .tutorial_section_steps_element {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-.tutorial_section {
+.index_page .tutorial_section {
     padding-top: 80px;
     padding-bottom: 80px;
     background-color: #ffffff;
 }
-.tutorial_section_steps {
+.index_page .tutorial_section_steps {
     margin-top: 40px;
     gap: 120px;
 }
 
-.tutorial_section,
-.tutorial_section_steps_element {
+.index_page .tutorial_section,
+.index_page .tutorial_section_steps_element {
     flex-direction: column;
 }
-.tutorial_section_steps_element {
+.index_page .tutorial_section_steps_element {
     width: 250px;
     height: 300px;
 }
-.tutorial_section_steps_element img {
+.index_page .tutorial_section_steps_element img {
     margin-bottom: 10px;
 }
 
 /* CATEGORY SECTION */
-.category,
-.category_section,
-.category_section_categories {
+.index_page .category,
+.index_page .category_section,
+.index_page .category_section_categories {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.category_section {
+.index_page .category_section {
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     flex-direction: column;
 
@@ -337,13 +333,13 @@ nav {
     padding-bottom: 40px;
 }
 
-.category_section_categories {
+.index_page .category_section_categories {
     gap: 65px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.category_section_categories_element {
+.index_page .category_section_categories_element {
     width: 300px;
     heighT: 300px;
     background-color: white;
@@ -351,18 +347,18 @@ nav {
     position: relative;
 }
 
-.category_section_categories_element img {
+.index_page .category_section_categories_element img {
     width: 100%;
     margin-top: 30px;
     transition: transform 0.3s ease-out, margin-top 0.3s ease-out;
 }
 
-.category_section_categories_element:hover img {
+.index_page .category_section_categories_element:hover img {
     transform: scale(1.1);
     margin-top: 10px;
 }
 
-.category_section_categories_element a {
+.index_page .category_section_categories_element a {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -370,18 +366,41 @@ nav {
 }
 
 /* ==================== ABOUT_US.PHP ==================== */
+/*  TITULAR SECTION  */
+.titular_section {
+    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.titular_section_description {
+    width: 600px;
+    height: 200px;
+}
+.titular_section img {
+    width: 300px;
+}
+
 
 /* ==================== NEWSLETTER_THANKYOU.PHP / NEWSLETTER_ALREADYSUBSCRIBED.PHP ==================== */
+.newsletter_first_section,
+.newsletter_first_section_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .newsletter_first_section {
     width: 100%;
     height: 500px;
 
     padding-top: 80px;
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .newsletter_first_section_card {
@@ -389,9 +408,6 @@ nav {
     height: 250px;
     background-color: white;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     flex-direction: column;  
 }

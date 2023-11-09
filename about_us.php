@@ -24,7 +24,20 @@
 </head>
 <body>
 	<?php include 'site_parts\navbar.php'; ?>
-    <main>
+    <main class="aboutus_page">
+        <section class="titular_section">
+            <div class="titular_section_description">
+                <h1> We are Stuffed Pals </h1>
+                <span> In a world where screens often overshadow human touch and interactions, Stuffed Pals was conceived as a beacon of warmth and connection. 
+                    We observed a rising tide of loneliness and sought a solution that was both tangible and heartwarming. 
+                    Thus, the idea of customizable plush companions was born.
+                </span>
+            </div>
+            <img class="presentation_section_image" src="img\plush_2.png" alt="Plush_2 image"></img> 
+        </section>
+        <section class="ourmission_section">
+            
+        </section>
 
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
