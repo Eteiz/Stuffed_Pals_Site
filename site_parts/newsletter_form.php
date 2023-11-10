@@ -12,7 +12,7 @@
             		<input type="checkbox" id="consent" name="consent" required>
             		<h4>I AGREE TO STUFFED PALS STORING MY DATA AND CONTACTING ME</h4>
     			</label>
-   				<button class="hyperlink_button_black" type="submit" name="subscribe">SUBSCRIBE</button>
+   				<button class="hyperlink_button_purple" type="submit" name="subscribe">SUBSCRIBE</button>
 			</form>
 		</div>
 </section>

@@ -45,16 +45,18 @@ h1 {
     font-size: 55px;
     font-weight: 900; }
 h2 { 
+    color: #8B5FE9;
     font-size: 35px;
     font-weight: 800; }
 h3 { 
-    font-size: 18px;
+    color: #CB8AFF;
+    font-size: 21px;
     font-weight: 700; }
 h4 { 
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600; }
 span {
-    font-size: 15px; 
+    font-size: 18px; 
     font-weight: 500; 
 }
 
@@ -237,12 +239,12 @@ nav {
     height: 500px;
     background: linear-gradient(to bottom, #CB8AFF, #B2DAFF);
 
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .index_page .presentation_section_container {
-    width: 1500px;
+    width: 100%;
     height: 450px;
     background-color: #ffffff;
 
@@ -301,8 +303,8 @@ nav {
     text-align: center;
 }
 .index_page .tutorial_section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     background-color: #ffffff;
 }
 .index_page .tutorial_section_steps {
@@ -334,8 +336,8 @@ nav {
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     flex-direction: column;
 
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .index_page .category_section_categories {
@@ -384,8 +386,8 @@ nav {
     align-items: center;
     gap: 80px;
     
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .titular_section_description {
     width: 600px;
@@ -397,9 +399,9 @@ nav {
 
 /* WHO WE ARE SECTION */
 .whowerare_section {
-    background: linear-gradient(to bottom, #CB8AFF, #B2DAFF);
-    padding-top: 40px;
-    padding-bottom: 40px;
+    background-color: #ffffff;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .whowerare_section h2 {
     color: #8B5FE9
@@ -414,7 +416,6 @@ nav {
 }
 
 .whoweare_section_container {
-    padding: 50px 0px 50px 0px;
     width: 1500px;
     flex-direction: column;
     background-color: #ffffff;
@@ -432,9 +433,35 @@ nav {
 }
 
 .whoweare_section_panel img {
-    width: 500px;
+    width: 550px;
     height: 300px;
 }
+/* OUR MISSION SECTION */
+/* TBA: ADD SLIGHT FLOATING ANIMATION WHEN HOVER */
+.ourmission_section,
+.ourmission_section_container {
+    display: flex;
+    justify-content:center;
+}
+.ourmission_section {
+    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.ourmission_section_container {
+    align-items:baseline;
+    gap: 50px;
+}
+.ourmission_section_element {
+    background-color: #ffffff;
+    text-align: center;
+    width: 380px;
+    height: 300px;
+    padding: 15px 10px 5px 10px;
+}
+
 
 
 
@@ -546,7 +573,7 @@ footer h3 {
 /* Footer Shop and Customer Service */
 .footer_category {
     height: 140px;
-    width: 200px;
+    width: 230px;
 }
 .footer_category h3,
 .footer_category h4 {

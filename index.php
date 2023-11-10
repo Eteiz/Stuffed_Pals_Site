@@ -36,7 +36,7 @@
 					</div>
     			</div>
 				<h3> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h3>
-				<a class="hyperlink_button_purple" href="#Browse"> Start now </a>
+				<a class="hyperlink_button_black" href="#Browse"> Start now </a>
 			</div>
 		</section>
 
@@ -82,18 +82,18 @@
 			<div class="tutorial_section_steps">
 				<div class="tutorial_section_steps_element">
 					<img src = "img\teddy-bear_icon.png" alt = "Teddy-bear icon">
-					<h2> Choose a plushie base </h2>
-					<h3> Select one of many availables plush bases. </h3>
+					<h3> Choose a plushie base </h3>
+					<h4> Select one of many availables plush bases. </h4>
 				</div>
 				<div class="tutorial_section_steps_element">
 					<img src = "img\clothes_icon.png" alt = "Clothes icon">
-					<h2> Give them some clothes </h2>
-					<h3> Select one of many availables plush bases. </h3>
+					<h3> Give them some clothes </h3>
+					<h4> Select one of many availables plush bases. </h4>
 				</div>
 				<div class="tutorial_section_steps_element">
 					<img src = "img\hair-clip_icon.png" alt = "Hair-clip icon">
-					<h2> Maybe an accessory? </h2>
-					<h3> Select one of many availables plush bases. </h3>
+					<h3> Maybe an accessory? </h3>
+					<h4> Select one of many availables plush bases. </h4>
 				</div>
 			</div>
 		</section>

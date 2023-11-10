@@ -64,6 +64,33 @@
                 </div>
             </div>
         </section>
+        <section class="ourmission_section">
+            <div class="ourmission_section_container">
+                <div class="ourmission_section_element">
+                    <h2> Our Philosophy </h2>
+                    <span> At Stuffed Pals, we believe that comfort is personal. 
+                        Everyone deserves a companion tailored to their preferences, one that provides solace in moments of solitude. 
+                        We're not just creating toys; we're crafting memories, connections, and a source of genuine comfort.
+                    </span>
+                </div>
+                <div class="ourmission_section_element">
+                    <h2> Eco-friendly & Ethical </h2>
+                    <span> Our planet and its inhabitants matter to us deeply. 
+                        This is why every plushie we craft is made from environmentally-friendly materials. 
+                        We stand firmly against exploitative labor practices and collaborate exclusively with producers who value fair and living wages. 
+                        With each Stuffed Pal, you're not only gaining a companion but also supporting a cause that emphasizes global responsibility.
+                    </span>
+                </div>
+                <div class="ourmission_section_element">
+                    <h2> Our Journey </h2>
+                    <span> 
+                        In a world where screens often overshadow human touch and interactions, Stuffed Pals was conceived as a beacon of warmth and connection. 
+                        We observed a rising tide of loneliness and sought a solution that was both tangible and heartwarming. 
+                        Thus, the idea of customizable plush companions was born.
+                    </span>
+                </div>
+            </div>
+        </section>
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
 </body>
