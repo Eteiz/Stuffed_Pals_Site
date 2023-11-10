@@ -151,10 +151,14 @@ nav {
 /* ==================== INDEX.PHP ==================== */
 /*  TITULAR SECTION  */
 .index_page .titular_section {
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     width: 100%;
     height: 860px;
 
-    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -231,7 +235,7 @@ nav {
 
 .index_page .presentation_section {
     height: 500px;
-    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
+    background: linear-gradient(to bottom, #CB8AFF, #B2DAFF);
 
     padding-top: 40px;
     padding-bottom: 40px;
@@ -369,8 +373,12 @@ nav {
 /* ==================== ABOUT_US.PHP ==================== */
 /*  TITULAR SECTION  */
 .titular_section {
-    background: linear-gradient(to bottom, #CB8AFF, #B2DAFF);
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -384,14 +392,19 @@ nav {
     height: 200px;
 }
 .titular_section img {
-    width: 300px;
+    width: 350px;
 }
+
 /* WHO WE ARE SECTION */
 .whowerare_section {
     background: linear-gradient(to bottom, #CB8AFF, #B2DAFF);
     padding-top: 40px;
     padding-bottom: 40px;
 }
+.whowerare_section h2 {
+    color: #8B5FE9
+}
+
 .whowerare_section,
 .whoweare_section_container,
 .whoweare_section_panel {
@@ -401,8 +414,8 @@ nav {
 }
 
 .whoweare_section_container {
-    padding: 30px 0px 30px 0px;
-    width: 1400px;
+    padding: 50px 0px 50px 0px;
+    width: 1500px;
     flex-direction: column;
     background-color: #ffffff;
     gap: 50px;
@@ -413,14 +426,14 @@ nav {
 }
 
 .whoweare_section_panel_description {
-    width: 450px;
+    width: 550px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 .whoweare_section_panel img {
     width: 500px;
-    height: 350px;
+    height: 300px;
 }
 
 
