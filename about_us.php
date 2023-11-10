@@ -22,10 +22,48 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
 	<?php include 'site_parts\navbar.php'; ?>
-    <main>
-
+    <main class="aboutus_page">
+        <section class="titular_section">
+            <div class="titular_section_description">
+                <h1> About Stuffed Pals </h1>
+                <h3> In a world where screens often overshadow human touch and interactions, Stuffed Pals was conceived as a beacon of warmth and connection. 
+                    We observed a rising tide of loneliness and sought a solution that was both tangible and heartwarming. 
+                    Thus, the idea of customizable plush companions was born.
+                </h3>
+            </div>
+            <img src="img\plush_2.png" alt="Plush_2 image"></img> 
+        </section>
+        <section class="whowerare_section">
+            <div class="whoweare_section_container">
+                <div class="whoweare_section_panel" style="text-align:left;">
+                    <img src="img\Aboutus_1.png" alt="Plushie closeup image"></img>
+                    <div class="whoweare_section_panel_description">
+                        <h2> Who we are? </h2>
+                        <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum.
+                        </span>
+                    </div>
+                </div>
+                <div class="whoweare_section_panel" style="text-align:right;">
+                    <div class="whoweare_section_panel_description">
+                        <h2> Who do we do this? </h2>
+                        <span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum.
+                        </span>
+                    </div>
+                    <img src="img\Aboutus_2.png" alt="Plushie closeup image"></img>
+                </div>
+            </div>
+        </section>
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
 </body>

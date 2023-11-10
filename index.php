@@ -22,11 +22,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body class="index_page">
 	<?php include 'site_parts\navbar.php'; ?>
     <main>
-		<section class="first_section">
-			<div class="first_section_card">
+		<section class="titular_section">
+			<div class="titular_section_card">
 				<h1> The way you </h1>
 				<div class="text_slider">
 					<div class="text_slider_element">
@@ -38,63 +38,86 @@
 				<h3> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h3>
 				<a class="hyperlink_button_purple" href="#Browse"> Start now </a>
 			</div>
-
-
 		</section>
-		<section class="second_section">
-			<div class="second_section_description">
-				<h2>Having a fluffy and cuddly friend is fun</h2>
-				<span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. 
-					   Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-				</span>
-				<a class="hyperlink_button_purple" href="#Browse"> Browse collection </a>
+
+		<section class="presentation_section">
+			<div class="presentation_section_container">
+				<div class="presentation_section_description">
+					<h2>Having a fluffy and cuddly friend is fun</h2>
+					<span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. 
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+					</span>
+					<a class="hyperlink_button_purple" href="#Browse"> Browse collection </a>
+				</div>
+				<div class="presentation_section_list">
+					<div class="presentation_section_list_element"> 
+						<img src="img\eco_icon.png" alt="Eco icon"></img>
+						<div class="presentation_section_list_element_text">
+							<h3> ECO-FRIENDLY AND ETHICAL </h3>
+							<span> The materials used for crafting our Pals are safe for the environment </span>
+						</div>
+					</div>
+					<div class="presentation_section_list_element"> 
+						<img src="img\heart_icon.png" alt="Heart icon"></img>
+						<div class="presentation_section_list_element_text">
+							<h3> PERSONALIZED COMFORT </h3>
+							<span> Our Pals are fully customizable, tailored to meet individual preferences </span>
+						</div>
+					</div>
+					<div class="presentation_section_list_element"> 
+						<img src="img\quality_icon.png" alt="Quality icon"></img>
+						<div class="presentation_section_list_element_text">
+							<h3> HIGH-QUALITY </h3>
+							<span> Stuffed Pals are designed with meticulous attention to detail and to ensure durability </span>
+						</div>
+					</div>
+				</div>
+				<img class="presentation_section_image" src="img\plush_1.png" alt="Plush_1 image"></img>
 			</div>
-			<div class="second_section_list">
-				<div class="second_section_list_element"> 
-					<img src="img\eco_icon.png" alt="Eco icon"></img>
-					<div class="second_section_list_element_text">
-						<h3> ECO-FRIENDLY AND ETHICAL </h3>
-						<span> The materials used for crafting our Pals are safe for the environment </span>
-					</div>
-				</div>
-				<div class="second_section_list_element"> 
-					<img src="img\heart_icon.png" alt="Heart icon"></img>
-					<div class="second_section_list_element_text">
-						<h3> PERSONALIZED COMFORT </h3>
-						<span> Our Pals are fully customizable, tailored to meet individual preferences </span>
-					</div>
-				</div>
-				<div class="second_section_list_element"> 
-					<img src="img\quality_icon.png" alt="Quality icon"></img>
-					<div class="second_section_list_element_text">
-						<h3> HIGH-QUALITY </h3>
-						<span> Stuffed Pals are designed with meticulous attention to detail and to ensure durability </span>
-					</div>
-				</div>
-			</div>
-			<img class="second_section_image" src="img\plush_1.png" alt="Plush_1 image"></img>
 		</section>
-		<section class="third_section">
+
+		<section class="tutorial_section">
+			<h2> How can you create your perfect Stuffed Pal? </h2>
+			<h3> We made sure that the process of making your perfect plushie is easy and intuitive. </h3>
+			<div class="tutorial_section_steps">
+				<div class="tutorial_section_steps_element">
+					<img src = "img\teddy-bear_icon.png" alt = "Teddy-bear icon">
+					<h2> Choose a plushie base </h2>
+					<h3> Select one of many availables plush bases. </h3>
+				</div>
+				<div class="tutorial_section_steps_element">
+					<img src = "img\clothes_icon.png" alt = "Clothes icon">
+					<h2> Give them some clothes </h2>
+					<h3> Select one of many availables plush bases. </h3>
+				</div>
+				<div class="tutorial_section_steps_element">
+					<img src = "img\hair-clip_icon.png" alt = "Hair-clip icon">
+					<h2> Maybe an accessory? </h2>
+					<h3> Select one of many availables plush bases. </h3>
+				</div>
+			</div>
+		</section>
+		
+		<section class="category_section">
 			<h1> Our products </h1>
 			<h3> From essentials to what makes your pal unique! </h3>
-			<div class="third_section_categories">
-				<div class="third_section_categories_element" style="background-color: #FF638B;">
+			<div class="category_section_categories">
+				<div class="category_section_categories_element" style="background-color: #FF638B;">
 					<img src="img\plush_2.png" alt="Plush_2 image">
 					<a class="hyperlink_button_black" href="#Browse"> PAL BASES </a>
 				</div>
-				<div class="third_section_categories_element" style="background-color: #FFE2DD;">
+				<div class="category_section_categories_element" style="background-color: #FFE2DD;">
 					<img src="img\plush_1.png" alt="Plush_1 image">
 					<a class="hyperlink_button_black" href="#Browse"> PAL CLOTHES </a>
 				</div>
-				<div class="third_section_categories_element" style="background-color: #D1FF88;">
+				<div class="category_section_categories_element" style="background-color: #D1FF88;">
 					<img src="img\plush_3.png" alt="Plush_3 image">
 					<a class="hyperlink_button_black" href="#Browse"> PAL ACCESORIES </a>
 				</div>
 			</div>
 			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
 		</section>
-		<section class="fourth_section">
-		</section>
+
 		<?php include 'site_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
