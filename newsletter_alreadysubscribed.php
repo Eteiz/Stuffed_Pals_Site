@@ -23,16 +23,16 @@
 
 </head>
 <body>
-    <?php include 'site_parts\navbar.php'; ?>
+    <?php include 'site_static_parts\navbar.php'; ?>
     <main>
-        <section class="newsletter_first_section">
-            <div class="newsletter_first_section_card">
+        <section class="newsletter_first_section blue_pink_background">
+            <div class="newsletter_first_section_card white_background">
                 <!-- TBA: Adding php variable that contains this text so there's no need to have two pages. SESSION NEEDED -->
                 <h1> We're sorry! </h1>
                 <h3> It seems that this email is already subscribed to our newsletter... </h3>
             </div>
         </section>
     </main>
-    <?php include 'site_parts\footer.php'; ?>
+    <?php include 'site_static_parts\footer.php'; ?>
 </body>
 </html>

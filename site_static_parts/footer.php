@@ -1,4 +1,4 @@
-<footer>
+<footer class="white_background">
 		<div class="footer_information">
 			<div class="footer_description">
 				<a class="hyperlink_logo" href="index.php">

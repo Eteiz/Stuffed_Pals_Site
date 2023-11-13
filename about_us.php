@@ -24,15 +24,15 @@
 </head>
 
 <body class="aboutus_page">
-	<?php include 'site_parts\navbar.php'; ?>
+	<?php include 'site_static_parts\navbar.php'; ?>
     <main class="aboutus_page">
         <section class="titular_section">
-            <div class="titular_section_container">
+            <div class="titular_section_container white_background">
                 <h1> About Stuffed Pals </h1>
                 <h3> Discover the thought process behind creating our company! </h3>
             </div>
         </section>
-        <section class="whowerare_section">
+        <section class="whowerare_section white_background">
             <div class="whoweare_section_description">
                 <h3> Welcome to the cozy corner of Stuffed Pals - your go-to haven for plushies that are more than just toys; they're treasured friends. 
                     Born from a tapestry of dreams and a vibrant imagination, our family-run business celebrates the simple joys of life through every stitch and fabric chosen in our creations.
@@ -74,10 +74,10 @@
             </div>
             
         </section>
-        <section class="ourmission_section">
+        <section class="ourmission_section blue_pink_background">
             <h1> Our Ethos </h1>
             <div class="ourmission_section_container">
-                <div class="ourmission_section_element">
+                <div class="ourmission_section_element white_background">
                     <h2> Our Philosophy </h2>
                     <span> At Stuffed Pals, we believe that comfort is personal. 
                         Everyone deserves a companion tailored to their preferences, one that provides solace in moments of solitude. 
@@ -85,7 +85,7 @@
                     </span>
                     <img src="img\book_icon.png" alt="Book Icon"></img>
                 </div>
-                <div class="ourmission_section_element">
+                <div class="ourmission_section_element white_background">
                     <h2> Eco-friendly & Ethical </h2>
                     <span> Our planet and its inhabitants matter to us deeply. 
                         This is why every plushie we craft is made from environmentally-friendly materials. 
@@ -94,7 +94,7 @@
                     </span>
                     <img src="img\eco_icon.png" alt="Ecology Icon"></img>
                 </div>
-                <div class="ourmission_section_element">
+                <div class="ourmission_section_element white_background">
                     <h2> Our Journey </h2>
                     <span> 
                         In a world where screens often overshadow human touch and interactions, Stuffed Pals was conceived as a beacon of warmth and connection. 
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </section>
-        <section class="ourteam_section">
+        <section class="ourteam_section white_background">
             <div class="ourteam_section_description">
                 <h1> Our team </h1>
                 <h3> 
@@ -155,9 +155,9 @@
                     <div class="ourteam_section_indicator_button"></div>
             </div>
         </section>
-        <?php include 'site_parts\newsletter_form.php'; ?>
+        <?php include 'site_static_parts\newsletter_form.php'; ?>
 	</main>
-	<?php include 'site_parts\footer.php'; ?>
-    <script src="ourteam_slider.js"></script>
+	<?php include 'site_static_parts\footer.php'; ?>
+    <script src="js_scripts\ourteam_slider.js"></script>
 </body>
 </html>

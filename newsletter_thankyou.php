@@ -23,7 +23,7 @@
 
 </head>
 <body>
-    <?php include 'site_parts\navbar.php'; ?>
+    <?php include 'site_static_parts\navbar.php'; ?>
     <main>
         <section class="newsletter_first_section">
             <div class="newsletter_first_section_card">
@@ -33,6 +33,6 @@
             </div>
         </section>
     </main>
-    <?php include 'site_parts\footer.php'; ?>
+    <?php include 'site_static_parts\footer.php'; ?>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<section class="newsletter">
-		<div class="newsletter_container">
+<section class="newsletter blue_pink_background">
+		<div class="newsletter_container white_background">
 			<div class="newsletter_container_description">
 				<h1> SIGN UP! </h1>
 				<h4> STAY UP-TO-DATE WITH STUFFED PALS NEWSLETTER AND OFFERS BY ENTERING YOUR EMAIL. </h4>

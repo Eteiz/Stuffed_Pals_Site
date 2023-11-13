@@ -1,25 +1,45 @@
 /* ==================== VARIABLES ==================== */
 :root {
-    --main-color: #09080F;
+    --white-background-color: #ffffff;
+    --light-blue-background-color: #e1f0fd;
+
+    --default-color: #09080F;
+    --default-hover-color: #414044;
+
+    --primary-color: #8B5FE9;
+    --secondary-color: #CB8AFF;
+    --tertiary-color: #B2DAFF;
 }
+
+/* ATTRIBUTES HIERARCHY
+Top->Right->Bottom->Left
+- Positioning (position, z-index, top, right)
+- Display & Box Model (display, overflow, width, height, padding, border, margin)
+- Color (background, text-color)
+- Text (font-family, font-weight, font-size, line-height, text-align)
+- Other (cursor, transition, animation)
+*/
 
 /* ==================== PAGE COMPONENTS ==================== */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #e1f0fd;
-    margin: 0px;
-    padding: 0px;
-    color: var(--main-color);
-    font-weight: 500;
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    padding: 0px;
+    margin: 0px;
+
+    background-color: var(--light-blue-background-color);
+    color: var(--default-color);
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }
 main {
-    padding-top: 80px;
     width: 90%;
+    padding-top: 80px;
 }
 
 img {
@@ -27,6 +47,11 @@ img {
     object-fit: cover;
     border-radius: 5px;
 }
+
+/* COLOR CLASSES */
+.white_background { background-color: var(--white-background-color); }
+.pink_blue_background { background: linear-gradient(to bottom, var(--secondary-color), var(--tertiary-color)); }
+.blue_pink_background { background: linear-gradient(to bottom, var(--tertiary-color), var(--secondary-color)); }
 
 /* WEIGHT HIERARCHY:
 - 900, h1 - Main header or phrase of the page
@@ -37,56 +62,62 @@ img {
 */
 
 h1, h2, h3, h4, span, p {
-    color: var(--main-color); 
     margin-top: 5px;
     margin-bottom: 5px; 
-}
 
+    color: var(--main-color); 
+}
 h1 { 
-    font-size: 55px;
-    font-weight: 900; }
+    font-weight: 900;
+    font-size: 55px; }
 h2 { 
-    color: #8B5FE9;
-    font-size: 35px;
-    font-weight: 800; }
+    color: var(--primary-color);
+    font-weight: 800;
+    font-size: 35px; }
 h3 { 
-    font-size: 21px;
-    font-weight: 700; }
+    font-weight: 700;
+    font-size: 21px; }
 h4 { 
-    font-size: 18px;
-    font-weight: 600; }
+    font-weight: 600;
+    font-size: 18px; }
 span,
 p {
-    font-size: 18px; 
     font-weight: 500; 
-}
+    font-size: 18px; }
 
 /* HYPERLINKS */
 .hyperlink_text, .hyperlink_text:visited,
 .hyperlink_logo, .hyperlink_logo:visited,
 .hyperlink_icon, .hyperlink_icon:visited {
     position: relative;
+
+    color: var(--default-color);
     text-decoration: none;
-    color: var(--main-color);
+
     transition: opacity 0.3s ease;
 }
 
 .hyperlink_text, .hyperlink_text:visited {
-    font-weight: 700;
-    overflow: hidden;
-    text-align: center;
     display: inline-block;
+
+    overflow: hidden;
     margin: 0 auto;
+
+    font-weight: 700;
+    text-align: center;
 }
 
 .hyperlink_text::before,
 .hyperlink_text:hover::before {
-    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
+
     height: 2px;
-    background-color: var(--main-color);
+
+    background-color: var(--default-color);
+    content: "";
+
     transition: width 0.3s ease;
 }
 
@@ -96,51 +127,51 @@ p {
 .hyperlink_logo:hover { opacity: 0.9; }
 .hyperlink_icon:hover { opacity: 0.5; }
 
-
 .hyperlink_button_purple, 
 .hyperlink_button_purple:visited,
 .hyperlink_button_black, 
 .hyperlink_button_black:visited {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    width: 200px;  
-    height: 50px; 
-
     display: flex;
     justify-content: center;  
-    align-items: center;  
+    align-items: center; 
 
-    text-decoration: none;  
-    color: white;  
-    font-size: 20px;
+    width: 200px;  
+    height: 50px; 
     border: none;  
     border-radius: 3px;
+
+    color: var(--white-background-color);
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;    
 
     transition: background-color 0.3s ease; 
     cursor: pointer;
 }
 
 .hyperlink_button_purple, 
-.hyperlink_button_purple:visited { background-color: #CB8AFF;  }
-.hyperlink_button_purple:hover { background-color: #8B5FE9;  }
+.hyperlink_button_purple:visited { background-color: var(--secondary-color);  }
+.hyperlink_button_purple:hover { background-color: var(--primary-color);  }
 
 .hyperlink_button_black, 
-.hyperlink_button_black:visited { background-color: #09080F; }
-.hyperlink_button_black:hover { background-color: #414044;  }
+.hyperlink_button_black:visited { background-color: var(--default-color); }
+.hyperlink_button_black:hover { background-color: var(--default-hover-color); }
 
 /* ==================== NAVBAR ==================== */
 nav {
-    background-color: #ffffff;
-    height: 80px;
-    width: 100%;
     position: fixed;
     z-index: 9999;
     top: 0;
     left: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 215px;
+    height: 80px;
+    width: 100%;
 }
 
 .nav_hyperlink, .nav_logo, .nav_icons { width: 302px; height: 48px; }
@@ -154,17 +185,12 @@ nav {
 /* ==================== INDEX.PHP ==================== */
 /*  TITULAR SECTION  */
 .index_page .titular_section {
+    height: 860px;
+
     background-image: url('img/stuffedpals_background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    width: 100%;
-    height: 860px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .index_page .titular_section,
@@ -175,19 +201,19 @@ nav {
 }
 
 .index_page .titular_section_card {
+    flex-direction: column; 
+
     width: 600px;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: white;
 
-    text-align: center;
-    flex-direction: column;  
+    text-align: center; 
 }
 .index_page .titular_section_card h1, 
 .index_page .titular_section_card h3, 
 .index_page .titular_section_card span { 
+    margin-right: 10px;
     margin-left: 10px;
-    margin-righT: 10px;
 }
 .index_page .titular_section_card h3 {
     margin-top: 15px;
@@ -199,21 +225,25 @@ nav {
 }
 
 .index_page .text_slider {
-    height: 60px;  
     overflow: hidden;
+    height: 60px; 
+
     margin-bottom: 5px;
 }
 
 .index_page .text_slider_element {
     position: relative; 
+
     animation: text-animation 10s ease infinite;
 }
 .index_page .text_slider_element span {
     display: block;
     height: 45px;
+    padding-bottom: 5px;
+    border-bottom: 5px solid var(--default-color); 
+
     line-height: 45px;
-    border-bottom: 5px solid var(--main-color);
-    padding-bottom: 5px; 
+
 }
 
 @keyframes text-animation {
@@ -229,7 +259,6 @@ nav {
 
 /* PRESENTATION SECTION */
 .index_page .presentation_section,
-.index_page .presentation_section_container,
 .index_page .presentation_section_list,
 .index_page .presentation_section_list_element {
     display: flex;
@@ -238,28 +267,27 @@ nav {
 }
 
 .index_page .presentation_section {
-    background: linear-gradient(to bottom, #CB8AFF, #B2DAFF);
-
-}
-
-.index_page .presentation_section_container {
-    width: 100%;
-    height: 450px;
-    background-color: #ffffff;
-
     gap: 60px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+
     text-align:left;
 }
+
 .index_page .presentation_section_container span {
     display: inline-block;
-    margin-bottom: 15px;
     margin-top: 15px; 
+    margin-bottom: 15px;
 }
 
 .index_page .presentation_section_description {
     width: 375px;
     height: 325px;
 }
+.index_page .presentation_section_description .hyperlink_button_purple {
+    margin-top: 15px;
+}
+
 
 .index_page .presentation_section_list,
 .presentation_section_list_element {
@@ -299,16 +327,16 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+
     text-align: center;
 }
 .index_page .tutorial_section {
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: #ffffff;
 }
 .index_page .tutorial_section_steps {
-    margin-top: 40px;
     gap: 120px;
+    margin-top: 40px;
 }
 
 .index_page .tutorial_section,
@@ -332,7 +360,6 @@ nav {
     align-items: center;
 }
 .index_page .category_section {
-    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     flex-direction: column;
 
     padding-top: 60px;
@@ -346,65 +373,69 @@ nav {
 }
 
 .index_page .category_section_categories_element {
-    width: 300px;
-    heighT: 300px;
-    background-color: white;
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
 }
 
 .index_page .category_section_categories_element img {
     width: 100%;
     margin-top: 30px;
+
     transition: transform 0.5s ease-out, margin-top 0.5s ease-out;
 }
 
 .index_page .category_section_categories_element:hover img {
-    transform: scale(1.1);
     margin-top: 10px;
+
+    transform: scale(1.1);
 }
 
 .index_page .category_section_categories_element a {
     position: absolute;
     bottom: 20px;
     left: 50%;
+
     transform: translateX(-50%);
 }
 
 /* ==================== ABOUT_US.PHP ==================== */
 /*  TITULAR SECTION  */
 .aboutus_page .titular_section {
-    background-image: url('img/stuffedpals_background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 80px;
-    
+    height: 600px;
     padding-top: 30px;
     padding-bottom: 30px;
+
+    background-image: url('img/stuffedpals_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .aboutus_page .titular_section_container {
     width: 600px;
-    background-color: #ffffff;
-    text-align: center;
     padding-top: 40px;
     padding-bottom: 40px;
+
+    text-align: center;
 }
 .aboutus_page .titular_section_container h3 {
-    margin-left: 10px;
     margin-right: 10px;
+    margin-left: 10px;
 }
 /* WHO WE ARE SECTION */
-.aboutus_page .whowerare_section {
+.aboutus_page .whowerare_section,
+.whoweare_section_container_element {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
+    align-items: center; 
+}
+
+.aboutus_page .whowerare_section {
     flex-direction: column;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -421,12 +452,10 @@ nav {
 }
 
 .whoweare_section_container_element {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    width: 1200px;
     gap: 30px;
+    width: 1200px;
+
+    text-align: left;
 }
 .whoweare_section_container_element img {
     width: 400px;
@@ -435,37 +464,36 @@ nav {
 
 /* OUR MISSION SECTION */
 .aboutus_page .ourmission_section,
-.aboutus_page .ourmission_section_container {
+.aboutus_page .ourmission_section_container,
+.aboutus_page .ourmission_section_element {
     display: flex;
     justify-content:center;
+    align-items: center;
 }
 .aboutus_page .ourmission_section {
-    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
-    align-items: center;
-    padding-top: 30px;
-    padding-bottom: 60px;
     flex-direction: column;
     gap: 15px;
+    padding-top: 30px;
+    padding-bottom: 60px;
 }
 
 .aboutus_page .ourmission_section_container {
     align-items:baseline;
+    gap: 50px;
     padding-top: 20px;
     padding-bottom: 20px;
-    gap: 50px;
 }
 .aboutus_page .ourmission_section_element {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     flex-direction: column;
     width: 380px;
     height: 400px;
     padding: 15px 10px 5px 10px;
-    transition: transform 0.5s ease-out; 
+
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+
+    text-align: center;
+
+    transition: transform 0.5s ease-out; 
 }
 .aboutus_page .ourmission_section_element span {
     height: 210px;
@@ -473,13 +501,14 @@ nav {
     padding-bottom: 10px;
 }
 .aboutus_page .ourmission_section_element img {
-    margin: 15px;
     width: 64px;
+    margin: 15px;
 }
 
 .aboutus_page .ourmission_section_element:hover {
-    transform: translateY(-10px); 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+    transform: translateY(-10px); 
 }
 
 /* OUR TEAM SECTION */
@@ -488,42 +517,41 @@ nav {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
     padding-top: 30px;
     padding-bottom: 40px;
     gap: 15px;
-    background-color: #ffffff;
 }
 .ourteam_section_description {
-    text-align: center;
     width: 1000px;
 
+    text-align: center;
 }
 
 .ourteam_section_container {
+    overflow: hidden;
+
     width: 1000px;
     height: 350px;
-    overflow: hidden;
     padding-top: 30px;
     padding-bottom: 30px;
 }
 
 #ourteam_section_slider {
+    position: relative;
+
     display:flex;
     width: 3000px;
 
-    position: relative;
     transition: 0.5s ease-in;
 }
 
 .ourteam_section_slider_element {
-    width: 1000px;
-    height: 350px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 25px;
+    width: 1000px;
+    height: 350px;
 }
 
 .ourteam_section_slider_element img {
@@ -532,17 +560,19 @@ nav {
     border-radius: 50%;
 }
 .ourteam_section_indicator_button {
-    height: 20px;
-    width: 20px;
     display: inline-block;
-    margin: 5px;
+    width: 20px;
+    height: 20px;
     border-radius: 20px;
-    background-color: #CB8AFF;
+    margin: 5px;
+
+    background-color: var(--secondary-color);
+
     cursor: pointer;
     transition: 0.25s ease-in;
 }
 .ourteam_section_indicator_button:hover {
-    background-color: #8B5FE9;
+    background-color: var(--primary-color);
 }
 .active {
     width: 45px;
@@ -560,18 +590,15 @@ nav {
 .newsletter_first_section {
     width: 100%;
     height: 500px;
-
     padding-top: 80px;
-    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
 }
 
 .newsletter_first_section_card {
+    flex-direction: column;  
     width: 600px;
     height: 250px;
-    background-color: white;
 
     text-align: center;
-    flex-direction: column;  
 }
 
 /* ==================== NEWSLETTER ==================== */
@@ -584,57 +611,54 @@ nav {
     align-items: center;
 }
 .newsletter {
-    background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     padding-top: 100px;
     padding-bottom: 100px;
 }
 .newsletter_container {
+    gap: 20px;
     width: 800px;
     height: 300px;
-    background-color: white;
-    gap: 20px;
 }
 .newsletter_container_description {
     width: 300px;
 }
 .newsletter_container_form {
-    width: 380px;
     align-items: flex-start;
     flex-direction: column;
+    width: 380px;
 }
 .newsletter_container_form input[type="email"] {
     width: 325px;
-    heighT: 40px;
+    height: 40px;
 }
 
 .newsletter_container_form input[type="checkbox"] {
-    margin: 0px 0px 0px 0px;
     width: 15px;
-    heighT: 15px;
+    height: 15px;
+    margin: 0px;
 }
 
 .newsletter_container_form label[for="consent"] {
+    gap: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
-    gap: 10px;
 }
 
 /* ==================== FOOTER ==================== */
 footer {
     width: 100%;
-    background-color: #ffffff;
 }
 footer h3 {
-    color: #8B5FE9;
+    color: var(--primary-color);
 }
 
 .footer_information {
-    height: 200px;
-    padding-top: 30px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     gap: 100px;
+    height: 200px;
+    padding-top: 30px;
 }
 
 /* Footer Description */
@@ -656,14 +680,14 @@ footer h3 {
 
 /* Footer Shop and Customer Service */
 .footer_category {
-    height: 140px;
     width: 230px;
+    height: 140px;
 }
 .footer_category h3,
 .footer_category h4 {
     height: 20px;
-    margin-bottom: 10px;
     margin-top: 5px;
+    margin-bottom: 10px;
 }
 .footer_category h4 {
     margin-top: 10px;
@@ -672,7 +696,8 @@ footer h3 {
 /* Footer Author */
 .footer_author {
     height: 50px;
-    text-align: center;
-    margin-top: 10px;
     padding-bottom: 10px;
+    margin-top: 10px;
+
+    text-align: center;
 }

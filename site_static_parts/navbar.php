@@ -1,4 +1,4 @@
-<nav>
+<nav class="white_background">
 		<div class="nav_hyperlink">
 			<a class="hyperlink_text" href="#Shop">Shop</a>
 			<a class="hyperlink_text" href="about_us.php">About</a>
