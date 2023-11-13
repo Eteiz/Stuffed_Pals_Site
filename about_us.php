@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body class="aboutus_page">
 	<?php include 'site_parts\navbar.php'; ?>
     <main class="aboutus_page">
         <section class="titular_section">
@@ -91,7 +91,32 @@
                 </div>
             </div>
         </section>
+        <section class="ourteam_section">
+            <div class="ourteam_section_container">
+                <div class="ourteam_section_slider" id="slider">
+                    <div class="ourteam_section_slider_element">
+                        1
+                        <img src="img\plush_2.png" alt="Plush_2 image"></img> 
+                    </div>
+                    <div class="ourteam_section_slider_element">
+                        2
+                        <img src="img\plush_2.png" alt="Plush_2 image"></img> 
+                    </div>
+                    <div class="ourteam_section_slider_element">
+                        3
+                        <img src="img\plush_2.png" alt="Plush_2 image"></img> 
+                    </div>
+                </div>
+            </div>
+            <div class="ourteam_section_indicator">
+                    <div class="ourteam_section_indicator_button"></div>
+                    <div class="ourteam_section_indicator_button"></div>
+                    <div class="ourteam_section_indicator_button"></div>
+            </div>
+        </section>
+        <?php include 'site_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_parts\footer.php'; ?>
+    <script src="script.js"></script>
 </body>
 </html>
