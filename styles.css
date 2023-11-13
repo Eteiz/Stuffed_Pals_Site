@@ -25,6 +25,7 @@ main {
 img {
     display: block; 
     object-fit: cover;
+    border-radius: 5px;
 }
 
 /* WEIGHT HIERARCHY:
@@ -35,7 +36,7 @@ img {
 - 500, span - Default text (eg. product description)
 */
 
-h1, h2, h3, h4, span {
+h1, h2, h3, h4, span, p {
     color: var(--main-color); 
     margin-top: 5px;
     margin-bottom: 5px; 
@@ -54,7 +55,8 @@ h3 {
 h4 { 
     font-size: 18px;
     font-weight: 600; }
-span {
+span,
+p {
     font-size: 18px; 
     font-weight: 500; 
 }
@@ -174,7 +176,8 @@ nav {
 
 .index_page .titular_section_card {
     width: 600px;
-    height: 350px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     background-color: white;
 
     text-align: center;
@@ -376,7 +379,7 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 500px;
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -385,53 +388,51 @@ nav {
     padding-top: 30px;
     padding-bottom: 30px;
 }
-.aboutus_page .titular_section_description {
+.aboutus_page .titular_section_container {
     width: 600px;
-    height: 200px;
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
-.aboutus_page .titular_section img {
-    width: 350px;
+.aboutus_page .titular_section_container h3 {
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
 /* WHO WE ARE SECTION */
 .aboutus_page .whowerare_section {
-    background-color: #ffffff;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-.aboutus_page .whowerare_section h2 {
-    color: #8B5FE9
-}
-
-.aboutus_page .whowerare_section,
-.aboutus_page .whoweare_section_container,
-.aboutus_page .whoweare_section_panel {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.aboutus_page .whoweare_section_container {
-    width: 1500px;
-    flex-direction: column;
     background-color: #ffffff;
-    gap: 50px;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.aboutus_page .whowerare_section {
+    text-align: center;
+}
+.aboutus_page .whoweare_section_description {
+    width: 1200px;
+}
+.aboutus_page .whoweare_section_container {
+    padding-top: 40px;
+    padding-bottom: 30px;
 }
 
-.aboutus_page .whoweare_section_panel {
-    gap: 100px;
+.whoweare_section_container_element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    width: 1200px;
+    gap: 30px;
+}
+.whoweare_section_container_element img {
+    width: 400px;
+    height: 400px;
 }
 
-.aboutus_page .whoweare_section_panel_description {
-    width: 550px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.aboutus_page .whoweare_section_panel img {
-    width: 550px;
-    height: 300px;
-}
 /* OUR MISSION SECTION */
 .aboutus_page .ourmission_section,
 .aboutus_page .ourmission_section_container {
@@ -441,22 +442,39 @@ nav {
 .aboutus_page .ourmission_section {
     background: linear-gradient(to bottom, #B2DAFF, #CB8AFF);
     align-items: center;
-    padding-top: 60px;
+    padding-top: 30px;
     padding-bottom: 60px;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .aboutus_page .ourmission_section_container {
     align-items:baseline;
+    padding-top: 20px;
+    padding-bottom: 20px;
     gap: 50px;
 }
 .aboutus_page .ourmission_section_element {
     background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    flex-direction: column;
     width: 380px;
-    height: 300px;
+    height: 400px;
     padding: 15px 10px 5px 10px;
     transition: transform 0.5s ease-out; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+.aboutus_page .ourmission_section_element span {
+    height: 210px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.aboutus_page .ourmission_section_element img {
+    margin: 15px;
+    width: 64px;
 }
 
 .aboutus_page .ourmission_section_element:hover {
@@ -472,42 +490,52 @@ nav {
     flex-direction: column;
 
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
+    gap: 15px;
     background-color: #ffffff;
+}
+.ourteam_section_description {
+    text-align: center;
+    width: 1000px;
+
 }
 
 .ourteam_section_container {
-    width: 300px;
-    height: 300px;
+    width: 1000px;
+    height: 350px;
     overflow: hidden;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-.ourteam_section_slider {
+#ourteam_section_slider {
     display:flex;
-    width: 900px;
+    width: 3000px;
 
     position: relative;
     transition: 0.5s ease-in;
 }
 
 .ourteam_section_slider_element {
-    width: 300px;
-    height: 300px;
+    width: 1000px;
+    height: 350px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua; 
+    gap: 25px;
 }
 
 .ourteam_section_slider_element img {
-    width: 100px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
 }
 .ourteam_section_indicator_button {
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     display: inline-block;
-    margin: 4px;
+    margin: 5px;
     border-radius: 20px;
     background-color: #CB8AFF;
     cursor: pointer;
@@ -519,6 +547,7 @@ nav {
 .active {
     width: 45px;
 }
+
 
 /* ==================== NEWSLETTER_THANKYOU.PHP / NEWSLETTER_ALREADYSUBSCRIBED.PHP ==================== */
 .newsletter_first_section,
