@@ -116,7 +116,7 @@
 			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
 		</section>
 
-		<?php include 'site_parts\newsletter_form.php'; ?>
+		<?php include 'site_static_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_static_parts\footer.php'; ?>
 </body>

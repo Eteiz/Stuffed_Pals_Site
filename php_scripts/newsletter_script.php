@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
 
         if ($result->num_rows > 0) {
-            header('Location: /newsletter_alreadysubscribed.php');
+            header('Location: /newsletter_result.php');
             exit();
         } else {
             $sql = "INSERT INTO newsletter (email_address) VALUES (?)";
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("s", $email);
 
             if ($stmt->execute()) {
-                header('Location: /newsletter_thankyou.php');
+                header('Location: /newsletter_result.php');
                 exit();
             } else {
                 echo "Error: " . $stmt->error;

@@ -25,13 +25,13 @@
 <body>
     <?php include 'site_static_parts\navbar.php'; ?>
     <main>
-        <section class="newsletter_first_section blue_pink_background">
-            <div class="newsletter_first_section_card white_background">
+        <header id="newsletter-result">
+            <div class="header-content white_background">
                 <!-- TBA: Adding php variable that contains this text so there's no need to have two pages. SESSION NEEDED -->
-                <h1> We're sorry! </h1>
-                <h3> It seems that this email is already subscribed to our newsletter... </h3>
+                <h1> Work in progress... </h1>
+                <h3> We are working to make this page have different content depending on newsletter result </h3>
             </div>
-        </section>
+        </header>
     </main>
     <?php include 'site_static_parts\footer.php'; ?>
 </body>

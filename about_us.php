@@ -23,25 +23,26 @@
 
 </head>
 
-<body class="aboutus_page">
+<body id="about-us-page">
 	<?php include 'site_static_parts\navbar.php'; ?>
-    <main class="aboutus_page">
-        <section class="titular_section">
-            <div class="titular_section_container white_background">
-                <h1> About Stuffed Pals </h1>
-                <h3> Discover the thought process behind creating our company! </h3>
-            </div>
-        </section>
-        <section class="whowerare_section white_background">
-            <div class="whoweare_section_description">
+    <header>
+        <div class="header-content white_background">
+            <h1> About Stuffed Pals </h1>
+            <h3> Discover the thought process behind creating our company! </h3>
+        </div>
+    </header>
+    <main>
+        <section id="who-we-are-section" class="white_background">
+            <div class="section-header">
+                <h1><img src="img/StuffedPals_Logo.png" alt="Stuffed Pals Logo"></img></h1>
                 <h3> Welcome to the cozy corner of Stuffed Pals - your go-to haven for plushies that are more than just toys; they're treasured friends. 
                     Born from a tapestry of dreams and a vibrant imagination, our family-run business celebrates the simple joys of life through every stitch and fabric chosen in our creations.
                 </h3>
             </div>
-            <div class="whoweare_section_container">
-                <div class="whoweare_section_container_element">
-                    <img src="img\aboutus_1.png" alt="About Us Image"></img>
-                    <div class="whoweare_section_container_element_description">
+            <div class="section-content">
+                <div class="section-content-container">
+                    <img src="img\aboutus_1.png" alt="Hedgehog plushie in woods"></img>
+                    <div class="section-content-container-description">
                         <h2> Who are we? </h2>
                         <p>
                             At Stuffed Pals, we are a collective of artisans, dreamers, and enthusiasts who share a common vision: to bring joy and companionship to people everywhere through our lovingly handcrafted plush companions. 
@@ -55,8 +56,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="whoweare_section_container_element">
-                    <div class="whoweare_section_container_element_description">
+                <div class="section-content-container">
+                    <div class="section-content-container-description">
                         <h2> Why are we doing this?</h2>
                         <p>
                             We do what we do at Stuffed Pals for the sparkle of joy in a child's eyes, for the comfort we can provide to a heart in need of solace, and for the shared moments of happiness that our plushies can bring. 
@@ -69,15 +70,17 @@
                             For us, it's about creating a legacy - of love, laughter, and the kind of joy that is passed down through generations.
                         </p>
                     </div>
-                    <img src="img\aboutus_2.png" alt="About Us Image"></img>
+                    <img src="img\aboutus_2.png" alt="Worm plushie in roses"></img>
                 </div>
             </div>
             
         </section>
-        <section class="ourmission_section blue_pink_background">
-            <h1> Our Ethos </h1>
-            <div class="ourmission_section_container">
-                <div class="ourmission_section_element white_background">
+        <section id="our-mission-section" class="blue_pink_background">
+             <div class="section-header">
+                <h1> Our Mission & Ethos </h1>
+            </div>
+            <div class="section-content">
+                <div class="section-content-row white_background">
                     <h2> Our Philosophy </h2>
                     <span> At Stuffed Pals, we believe that comfort is personal. 
                         Everyone deserves a companion tailored to their preferences, one that provides solace in moments of solitude. 
@@ -85,28 +88,29 @@
                     </span>
                     <img src="img\book_icon.png" alt="Book Icon"></img>
                 </div>
-                <div class="ourmission_section_element white_background">
+                <div class="section-content-row white_background">
                     <h2> Eco-friendly & Ethical </h2>
                     <span> Our planet and its inhabitants matter to us deeply. 
                         This is why every plushie we craft is made from environmentally-friendly materials. 
                         We stand firmly against exploitative labor practices and collaborate exclusively with producers who value fair and living wages. 
                         With each Stuffed Pal, you're not only gaining a companion but also supporting a cause that emphasizes global responsibility.
                     </span>
-                    <img src="img\eco_icon.png" alt="Ecology Icon"></img>
+                    <img src="img\eco_icon.png" alt="Eco Icon"></img>
                 </div>
-                <div class="ourmission_section_element white_background">
+                <div class="section-content-row white_background">
                     <h2> Our Journey </h2>
                     <span> 
                         In a world where screens often overshadow human touch and interactions, Stuffed Pals was conceived as a beacon of warmth and connection. 
                         We observed a rising tide of loneliness and sought a solution that was both tangible and heartwarming. 
                         Thus, the idea of customizable plush companions was born.
                     </span>
-                    <img src="img\journey_icon.png" alt="Journey Icon"></img>
+                    <img src="img\journey_icon.png" alt="Navigation Icon"></img>
                 </div>
             </div>
         </section>
-        <section class="ourteam_section white_background">
-            <div class="ourteam_section_description">
+
+        <section id="our-team-section" class="white_background">
+            <div class="section-header">
                 <h1> Our team </h1>
                 <h3> 
                     At Stuffed Pals, we're more than just a company - we're a family. 
@@ -114,10 +118,10 @@
                     Here's a glimpse into the hearts and minds behind our plush companions:
                 </h3>
             </div>
-            <div class="ourteam_section_container">
-                <div id="ourteam_section_slider">
-                    <div class="ourteam_section_slider_element">
-                        <img src="img\ourteam_1.jpg" alt="Photo of Marta Ambroziak"></img> 
+            <div class="section-containter">
+                <div id="our-team-section-slider">
+                    <div class="section-slider-element">
+                        <img src="img\ourteam_1.jpg" alt="Half-lenght of Marta Ambroziak"></img> 
                         <div class ="ourteam_section_slider_element_description">
                             <h3> CEO & Founder </h3>
                             <h2> Marta Ambroziak </h2>
@@ -127,8 +131,8 @@
                             </span>
                         </div>
                     </div>
-                    <div class="ourteam_section_slider_element">
-                        <img src="img\ourteam_2.jpg" alt="Photo of Marta Ambroziak"></img> 
+                    <div class="section-slider-element">
+                        <img src="img\ourteam_2.jpg" alt="Half-lenght of Marta Ambroziak"></img> 
                          <div class ="ourteam_section_slider_element_description">
                             <h3> CTO & Lead Programmer </h3>
                             <h2> Marta Ambroziak </h2>
@@ -137,8 +141,8 @@
                             </span>
                         </div>
                     </div>
-                    <div class="ourteam_section_slider_element">
-                        <img src="img\ourteam_3.jpg" alt="Photo of Marta Ambroziak"></img> 
+                    <div class="section-slider-element">
+                        <img src="img\ourteam_3.jpg" alt="Half-lenght of Marta Ambroziak"></img> 
                          <div class ="ourteam_section_slider_element_description">
                             <h3> Lead Designer </h3>
                             <h2> Marta Ambroziak </h2>
@@ -149,10 +153,10 @@
                     </div>
                 </div>
             </div>
-            <div class="ourteam_section_indicator">
-                    <div class="ourteam_section_indicator_button active"></div>
-                    <div class="ourteam_section_indicator_button"></div>
-                    <div class="ourteam_section_indicator_button"></div>
+            <div class="section-slider-buttons">
+                    <div class="slider-button slider-button-active"></div>
+                    <div class="slider-button"></div>
+                    <div class="slider-button"></div>
             </div>
         </section>
         <?php include 'site_static_parts\newsletter_form.php'; ?>

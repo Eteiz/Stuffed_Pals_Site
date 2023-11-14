@@ -1,12 +1,12 @@
-<section class="newsletter blue_pink_background">
-		<div class="newsletter_container white_background">
-			<div class="newsletter_container_description">
+<section id="newsletter" class="blue_pink_background">
+		<div class="section-container white_background">
+			<div class="section-header">
 				<h1> SIGN UP! </h1>
 				<h4> STAY UP-TO-DATE WITH STUFFED PALS NEWSLETTER AND OFFERS BY ENTERING YOUR EMAIL. </h4>
 			</div>
 			<!-- Script used: newsletter_script.php -->
-			<form class="newsletter_container_form" action="php_scripts\newsletter_script.php" method="post">
-    			<label for="email"><h4>EMAIL ADDRESS</h4></label>
+			<form id="newsletter-form" action="php_scripts\newsletter_script.php" method="post">
+    			<h4>EMAIL ADDRESS</h4>
     			<input type="email" id="email" name="email" required placeholder="Email Address">
     			<label for="consent">
             		<input type="checkbox" id="consent" name="consent" required>

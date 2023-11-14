@@ -39,7 +39,9 @@ body {
 }
 main {
     width: 90%;
-    padding-top: 80px;
+}
+nav, footer {
+    width: 100%;
 }
 
 img {
@@ -48,10 +50,26 @@ img {
     border-radius: 5px;
 }
 
-/* COLOR CLASSES */
+.section-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 1200px;
+
+    text-align: center;
+}
+
+/* BACKGROUND COLOR */
 .white_background { background-color: var(--white-background-color); }
 .pink_blue_background { background: linear-gradient(to bottom, var(--secondary-color), var(--tertiary-color)); }
 .blue_pink_background { background: linear-gradient(to bottom, var(--tertiary-color), var(--secondary-color)); }
+
+/* PADDING OPTIONS */
+.pb_t20_b20 {padding-top: 20px; padding-bottom: 20px;}
+.pb_t30_b30 {padding-top: 30px; padding-bottom: 30px;}
+.pb_t40_b40 {padding-top: 40px; padding-bottom: 40px;}
 
 /* WEIGHT HIERARCHY:
 - 900, h1 - Main header or phrase of the page
@@ -160,27 +178,48 @@ p {
 .hyperlink_button_black:hover { background-color: var(--default-hover-color); }
 
 /* ==================== NAVBAR ==================== */
+nav, 
+#hyperlink-section,
+#logo-section,
+#user-section {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
 nav {
     position: fixed;
     z-index: 9999;
     top: 0;
     left: 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 215px;
     height: 80px;
-    width: 100%;
 }
 
-.nav_hyperlink, .nav_logo, .nav_icons { width: 302px; height: 48px; }
-.nav_hyperlink, .nav_icons { display: flex; justify-content: center; align-items: center; }
-.nav_hyperlink { gap: 0px; }
-.nav_hyperlink a { padding-top: 7px; font-size: 25px; }
-.nav_logo img, .nav_logo a { width: 302px; height: 48px; }
-.nav_icons img, .nav_icons a { width: 32px; height: 32px;}
-.nav_icons { gap: 15px; }
+#hyperlink_section,
+#logo-section,
+#user-section {
+    width: 302px;
+    height: 40px;
+}
+
+#hyperlink-section a { font-size: 25px; }
+
+#logo-section img,
+#logo-section a {
+    width: 302px; 
+    height: 48px;
+}
+#user-section,
+#hyperlink-section { 
+    gap: 15px; 
+}
+#user-section img,
+#user-section a {
+    width: 32px; 
+    height: 32px;
+}
 
 /* ==================== INDEX.PHP ==================== */
 /*  TITULAR SECTION  */
@@ -401,89 +440,90 @@ nav {
 }
 
 /* ==================== ABOUT_US.PHP ==================== */
-/*  TITULAR SECTION  */
-.aboutus_page .titular_section {
+/*  HEADER */
+header {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 80px;
+    width: 90%;
     height: 600px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 80px;
 
     background-image: url('img/stuffedpals_background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-.aboutus_page .titular_section_container {
+.header-content {
     width: 600px;
     padding-top: 40px;
     padding-bottom: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
 
     text-align: center;
 }
-.aboutus_page .titular_section_container h3 {
-    margin-right: 10px;
-    margin-left: 10px;
-}
-/* WHO WE ARE SECTION */
-.aboutus_page .whowerare_section,
-.whoweare_section_container_element {
+
+/* WHO-WE-ARE-SECTION */
+#about-us-page #who-we-are-section,
+#who-we-are-section .section-content-container {
     display: flex;
     justify-content: center;
     align-items: center; 
 }
 
-.aboutus_page .whowerare_section {
+#about-us-page #who-we-are-section {
     flex-direction: column;
+    gap: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    text-align: center;
+}
+
+#who-we-are-section .section-header img {
+    height: 100px;
+}
+
+#who-we-are-section .section-content {
     padding-top: 30px;
     padding-bottom: 30px;
 }
-.aboutus_page .whowerare_section {
-    text-align: center;
-}
-.aboutus_page .whoweare_section_description {
-    width: 1200px;
-}
-.aboutus_page .whoweare_section_container {
-    padding-top: 40px;
-    padding-bottom: 30px;
-}
 
-.whoweare_section_container_element {
+#who-we-are-section .section-content-container {
     gap: 30px;
     width: 1200px;
 
     text-align: left;
 }
-.whoweare_section_container_element img {
+#who-we-are-section .section-content-container img {
     width: 400px;
     height: 400px;
 }
 
 /* OUR MISSION SECTION */
-.aboutus_page .ourmission_section,
-.aboutus_page .ourmission_section_container,
-.aboutus_page .ourmission_section_element {
+#about-us-page #our-mission-section,
+#our-mission-section .section-content,
+#our-mission-section .section-content-row {
     display: flex;
     justify-content:center;
     align-items: center;
 }
-.aboutus_page .ourmission_section {
+#about-us-page #our-mission-section {
     flex-direction: column;
     gap: 15px;
     padding-top: 30px;
     padding-bottom: 60px;
 }
 
-.aboutus_page .ourmission_section_container {
+#our-mission-section .section-content {
     align-items:baseline;
     gap: 50px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.aboutus_page .ourmission_section_element {
+#our-mission-section .section-content-row {
     flex-direction: column;
     width: 380px;
     height: 400px;
@@ -495,24 +535,24 @@ nav {
 
     transition: transform 0.5s ease-out; 
 }
-.aboutus_page .ourmission_section_element span {
+#our-mission-section .section-content-row span {
     height: 210px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.aboutus_page .ourmission_section_element img {
+#our-mission-section .section-content-row img {
     width: 64px;
     margin: 15px;
 }
 
-.aboutus_page .ourmission_section_element:hover {
+#our-mission-section .section-content-row:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 
     transform: translateY(-10px); 
 }
 
 /* OUR TEAM SECTION */
-.ourteam_section {
+#about-us-page #our-team-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -521,13 +561,8 @@ nav {
     padding-bottom: 40px;
     gap: 15px;
 }
-.ourteam_section_description {
-    width: 1000px;
 
-    text-align: center;
-}
-
-.ourteam_section_container {
+#our-team-section .section-containter {
     overflow: hidden;
 
     width: 1000px;
@@ -536,7 +571,7 @@ nav {
     padding-bottom: 30px;
 }
 
-#ourteam_section_slider {
+#our-team-section #our-team-section-slider {
     position: relative;
 
     display:flex;
@@ -545,7 +580,7 @@ nav {
     transition: 0.5s ease-in;
 }
 
-.ourteam_section_slider_element {
+#our-team-section-slider .section-slider-element {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -554,12 +589,13 @@ nav {
     height: 350px;
 }
 
-.ourteam_section_slider_element img {
+#our-team-section-slider .section-slider-element img {
     width: 350px;
     height: 350px;
     border-radius: 50%;
 }
-.ourteam_section_indicator_button {
+
+#our-team-section .slider-button {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -571,88 +607,70 @@ nav {
     cursor: pointer;
     transition: 0.25s ease-in;
 }
-.ourteam_section_indicator_button:hover {
+#our-team-section .slider-button:hover {
     background-color: var(--primary-color);
 }
-.active {
+#our-team-section .slider-button-active {
     width: 45px;
 }
 
+/* ==================== CUSTOMER_SERVICE.PHP ==================== */
 
-/* ==================== NEWSLETTER_THANKYOU.PHP / NEWSLETTER_ALREADYSUBSCRIBED.PHP ==================== */
-.newsletter_first_section,
-.newsletter_first_section_card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.newsletter_first_section {
+/* ==================== NEWSLETTER_RESULT ==================== */
+#newsletter-result {
     width: 100%;
-    height: 500px;
-    padding-top: 80px;
-}
-
-.newsletter_first_section_card {
-    flex-direction: column;  
-    width: 600px;
-    height: 250px;
-
-    text-align: center;
 }
 
 /* ==================== NEWSLETTER ==================== */
-.newsletter, 
-.newsletter_container, 
-.newsletter_container_form,
-.newsletter_container_form label[for="consent"]  {
+#newsletter, 
+#newsletter .section-container, 
+#newsletter-form,
+#newsletter-form label[for="consent"]  {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.newsletter {
+#newsletter {
     padding-top: 100px;
     padding-bottom: 100px;
 }
-.newsletter_container {
+#newsletter .section-container {
     gap: 20px;
     width: 800px;
     height: 300px;
 }
-.newsletter_container_description {
+#newsletter .section-header {
+    align-items: flex-start;
+    text-align: left;
     width: 300px;
 }
-.newsletter_container_form {
+
+/* Form elements */
+#newsletter-form {
     align-items: flex-start;
     flex-direction: column;
     width: 380px;
 }
-.newsletter_container_form input[type="email"] {
+#newsletter-form input[type="email"] {
     width: 325px;
     height: 40px;
 }
-
-.newsletter_container_form input[type="checkbox"] {
+#newsletter-form input[type="checkbox"] {
     width: 15px;
     height: 15px;
     margin: 0px;
 }
-
-.newsletter_container_form label[for="consent"] {
+#newsletter-form label[for="consent"] {
     gap: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
 /* ==================== FOOTER ==================== */
-footer {
-    width: 100%;
-}
 footer h3 {
     color: var(--primary-color);
 }
-
-.footer_information {
+footer .section-content {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -661,40 +679,36 @@ footer h3 {
     padding-top: 30px;
 }
 
-/* Footer Description */
-.footer_description,
-.footer_description img,
-.footer_description a {
+footer .section-content-header,
+footer .section-content-header img,
+footer .section-content-header a {
     width: 300px;
 }
-
-.footer_description {
+footer .section-content-header {
     height: 200px;
 }
 
-.footer_description h4 {
+.section-content-header h4 {
     width: 295px;
     height: 140px;
     margin: 10px 0 0 5px;
 }
 
-/* Footer Shop and Customer Service */
-.footer_category {
+footer .section-content-col {
     width: 230px;
     height: 140px;
 }
-.footer_category h3,
-.footer_category h4 {
+footer .section-content-col h3,
+footer .section-content-col h4 {
     height: 20px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
-.footer_category h4 {
+footer .section-content-col h4 {
     margin-top: 10px;
 }
 
-/* Footer Author */
-.footer_author {
+footer .section-footer {
     height: 50px;
     padding-bottom: 10px;
     margin-top: 10px;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Newsletter | Stuffed Pals</title>
+    <title>Customer service | Stuffed Pals</title>
     <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords" content="plushies, stuffed animals, stuffed">
     <meta name="author" content="Marta Ambroziak">
@@ -22,17 +22,28 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 </head>
-<body>
-    <?php include 'site_static_parts\navbar.php'; ?>
+<body class="customerservice_page">
+	<?php include 'site_static_parts\navbar.php'; ?>
     <main>
-        <section class="newsletter_first_section">
-            <div class="newsletter_first_section_card">
-                <!-- TBA: Adding php variable that contains this text so there's no need to have two pages. SESSION NEEDED -->
-                <h1> Success! </h1>
-                <h3> Thank you for subscribing to our newsletter. We hope that our content will be to your liking! </h3>
+        <section class="titular_section">
+            <div class="titular_section_container white_background">
+                <h1> Cutomser Service </h1>
+                <h3> Your satisfaction is our priority—reach out to us with any questions or for support, 
+                    and we'll ensure you find all the answers and assistance you need. 
+                </h3>
             </div>
         </section>
-    </main>
-    <?php include 'site_static_parts\footer.php'; ?>
+        <section class="contactus_section blue_pink_background">
+            <div class="contactus_section_container">
+                <img src="img/plush_3.png" alt="Plushie_3 Image"></img>
+                <div class="contactus_section_container_descriptions">
+                    
+                </div>
+            </div>
+        </section>
+        
+		<?php include 'site_static_parts\newsletter_form.php'; ?>
+	</main>
+	<?php include 'site_static_parts\footer.php'; ?>
 </body>
 </html>
