@@ -615,12 +615,65 @@ header {
 }
 
 /* ==================== CUSTOMER_SERVICE.PHP ==================== */
+#FAQ-section,
+#FAQ-section .section-content-row-header  {
+    display: flex;
+    align-items: center;
+}
+#FAQ-section {
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#FAQ-section hr {
+    height: 1px;
+    border: none;
+
+    background-color: var(--tertiary-color);
+}
+#FAQ-section .section-content {
+    width: 900px;
+
+    text-align: left;
+}
+#FAQ-section .section-content-row {
+    margin-right: 20px;
+    margin-left: 10px;
+}
+#FAQ-section .section-content-row-header {
+    justify-content: space-between;
+    height: 40px;
+
+    cursor: pointer;
+}
+#FAQ-section .section-content-row-header:after {
+    content: '\02795';
+    font-size: 13px;
+}
+#FAQ-section .active-faq:after {
+    content: "\2796";
+}
+
+#FAQ-section .section-content-row-description {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in, opacity 0.5s ease-in, padding-top 0.5s ease-in, padding-bottom 0.5s ease-in;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#FAQ-section .section-content-row-description.open {
+    max-height: 1000px;
+    opacity: 1;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
 
 /* ==================== NEWSLETTER_RESULT ==================== */
 #newsletter-result {
     width: 100%;
 }
-
 /* ==================== NEWSLETTER ==================== */
 #newsletter, 
 #newsletter .section-container, 
