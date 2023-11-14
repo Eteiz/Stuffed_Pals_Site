@@ -23,16 +23,16 @@
 
 </head>
 <body>
-    <?php include 'site_parts\navbar.php'; ?>
+    <?php include 'site_static_parts\navbar.php'; ?>
     <main>
-        <section class="newsletter_first_section">
-            <div class="newsletter_first_section_card">
+        <header id="newsletter-result">
+            <div class="header-content white_background">
                 <!-- TBA: Adding php variable that contains this text so there's no need to have two pages. SESSION NEEDED -->
-                <h1> Success! </h1>
-                <h3> Thank you for subscribing to our newsletter. We hope that our content will be to your liking! </h3>
+                <h1> Work in progress... </h1>
+                <h3> We are working to make this page have different content depending on newsletter result </h3>
             </div>
-        </section>
+        </header>
     </main>
-    <?php include 'site_parts\footer.php'; ?>
+    <?php include 'site_static_parts\footer.php'; ?>
 </body>
 </html>
