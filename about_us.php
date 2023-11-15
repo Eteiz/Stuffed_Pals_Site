@@ -27,7 +27,7 @@
 	<?php include 'site_static_parts\navbar.php'; ?>
     <header>
         <div class="header-content white_background">
-            <h1> About Stuffed Pals </h1>
+            <h1> About Us </h1>
             <h3> Discover the thought process behind creating our company! </h3>
         </div>
     </header>

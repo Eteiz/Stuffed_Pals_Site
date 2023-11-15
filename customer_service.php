@@ -20,20 +20,62 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 </head>
-<body class="customerservice_page">
+<body>
 	<?php include 'site_static_parts\navbar.php'; ?>
     <header>
         <div class="header-content white_background">
-            <h1> Cutomser Service </h1>
+            <h1> Customer Service </h1>
             <h3> Your satisfaction is our priority—reach out to us with any questions or for support, 
                 and we'll ensure you find all the answers and assistance you need. 
             </h3>
         </div>
     </header>
     <main>
-        <section id="FAQ-section" class="white_background">
+        <section id="contact-section" class="pink_blue_background">
+            <div class="section-container">
+                <img src="img/plush_3.png" src="Scuttle Plush"></img>
+                <div class="section-element white_background">
+                    <div class="section-element-header">
+                        <h1><u>Contact us</u></h1>
+                        <span> We value your feedback, questions, and comments. 
+                            Reach out to us through any of the following methods, and our dedicated team will respond as soon as possible.
+                        </span>
+                    </div>
+                    <div class="section-element-content">
+                        <div class="section-element-content-row">
+                            <div class="section-element-content-row-header">
+                                <img src="img/user_icon.png" alt="User icon"></img>
+                                <h3> Visit us </h3>
+                            </div>
+                            <div class="section-element-content-row-content">
+                                <h4> Lorem 12/34 00-000 Ipsum </h4>
+                            </div>
+                        </div>
+                        <div class="section-element-content-row">
+                            <div class="section-element-content-row-header">
+                                <img src="img/phone_icon.png" alt="Phone icon"></img>
+                                <h3> Call us </h3>
+                            </div>
+                            <div class="section-element-content-row-content">
+                                <h4> +48 123 456 789 </h4>
+                            </div>
+                        </div>
+                        <div class="section-element-content-row">
+                            <div class="section-element-content-row-header">
+                                <img src="img/mail_icon.png" alt="Mail icon"></img>
+                                <h3> Mail us </h3>
+                            </div>
+                            <div class="section-element-content-row-content">
+                                <h4> StuffedPals@gmail.com </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq-section" class="white_background">
             <div class="section-header">
                 <h1> Frequently Asked Questions </img></h1>
             </div>
@@ -101,9 +143,47 @@
                 <hr>
             </div>
         </section>
+
+        <section id="contact-form-section" class="white_background">
+            <div class="section-header">
+                <h1> Or do it here... </h1>
+                <span> 
+                    Got a question? Need assistance? 
+                    Or perhaps you have some feedback for us? Fill out the form below, and our team will get back to you as swiftly as a plushie's hug! 
+                    We're here to ensure that your experience with us is as cozy and delightful as our stuffed pals. 
+                </span>
+            </div>
+            <form method="post" action="/php_scripts/contact_form_script.php" id="contact-form">
+                <h2> Contact form </h2>
+                <label for="first-name" class="form-field"> 
+                    <h3> First name </h3>
+                    <input type="text" name="first-name" required placeholder="First name">
+                </label>
+                <label for="last-name" class="form-field">
+                    <h3> Last name </h3>
+                    <input type="text" name="last-name" required placeholder="Last name">
+                </label>
+                <label for="email-address" class="form-field">
+                    <h3> Email address </h3>
+                    <input type="email" name="email" required placeholder="Email address">
+                </label>
+                <label for="message" class="form-field">
+                    <h3> Message content </h3>
+                    <textarea name="message" required placeholder="Your message"></textarea>
+                </label>
+                <button class="hyperlink_button_purple" type="submit" name="send-message-button">SEND MESSAGE</button>
+                <div class="contact-form-result">
+                    <h4 id="contact-form-status"></h4>
+                </div>
+            </form>
+        </section>
 		<?php include 'site_static_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_static_parts\footer.php'; ?>
+
     <script src="js_scripts\faq_accordion.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js_scripts/contactform_updater.js"></script>
+    </script>
 </body>
 </html>

@@ -25,7 +25,7 @@
 			<div class="section-content-col">
 				<h3>CUSTOMER SERVICE</h3>
 				<h4><a class="hyperlink_text" href="customer_service.php">CONTACT</a></h4>
-				<h4><a class="hyperlink_text" href="#customer_service.php">FAQ</a></h4>
+				<h4><a class="hyperlink_text" href="customer_service.php#FAQ-section">FAQ</a></h4>
 			</div>
 			
 		</div>
