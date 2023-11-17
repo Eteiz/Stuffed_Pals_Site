@@ -16,9 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user = $result->fetch_assoc()) {
         if (password_verify($password, $user['user_password'])) {
-            $_SESSION['loggedin'] = true;
+            $_SESSION['user_logged'] = true;
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $username;
 
             $response['status'] = 1;
             $response['msg'] = "Login successful.";

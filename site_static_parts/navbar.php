@@ -10,9 +10,9 @@
 			</a>
 		</div>
 		<div id="user-section">
-			<a class="hyperlink_icon" href="user_login.php">
-				<img src="img\user_icon.png" alt = "User icon"></img>
-			</a> 
+			<a class="hyperlink_icon" href="<?php echo isset($_SESSION['user_logged']) && $_SESSION['user_logged'] ? 'user_profile.php' : 'user_login.php'; ?>">
+    			<img src="img/user_icon.png" alt="User icon">
+			</a>
 			<a class="hyperlink_icon" href="#Cart">
 				<img src="img\cart_icon.png" alt = "Cart icon"></img>
 			</a> 

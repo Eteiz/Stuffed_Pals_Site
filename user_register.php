@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
+    $_SESSION['user_logged'] = false;
+	$_SESSION['user_id'] = null;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>

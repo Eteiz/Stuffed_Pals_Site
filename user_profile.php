@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
-    $_SESSION['user_logged'] = false;
-	$_SESSION['user_id'] = null;
+if (!isset($_SESSION['user_logged']) || $_SESSION['user_logged'] !== true) {
+    header('Location: ../index.php');
+    exit;
 }
 ?>
 
@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
 
-    <title> Sign in | Stuffed Pals</title>
+    <title> Your profile | Stuffed Pals</title>
     <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords" content="plushies, stuffed animals, stuffed">
     <meta name="author" content="Marta Ambroziak">
@@ -33,38 +33,20 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
 	<?php include 'site_static_parts\navbar.php'; ?>
     <header>
         <div class="header-content white_background">
-            <h1> Sign in </h1>
+            <h1> Your profile </h1>
             <h3> 
-                Embark on your personalized journey by entering your username and password!
+                Welcome to your personalized dashboard, where your preferences shape your experience.
             </h3>
         </div>
     </header>
     <main>
-        <section class="form-section white_background">
-            <form method="post" action="/php_scripts/userlogin_sender.php" id="user-login-form">
-                <h2> Login </h2>
-                <label for="username" class="form-field"> 
-                    <h3> Username </h3>
-                    <input type="text" name="username" required placeholder="Username" maxlength="40">
-                </label>
-                <label for="password" class="form-field">
-                    <h3> Password </h3>
-                    <input type="password" name="password" required placeholder="Password" maxlength="40">
-                </label>
-                <div class="form-extra-information">
-                    <a class="hyperlink_text" href="user_retrieve_password.php"> Forgot your password? </a>
-                    </br>
-                    <a class="hyperlink_text" href="user_register.php"> Not registered? Create an account</a>
-                </div>
-                <button class="hyperlink_button" type="submit" name="send-message-button">SIGN IN</button>
-                <div class="form-result">
-                    <h4 id="user-login-form-status" class="form-status"></h4>
-                </div>
-            </form>
-        </section>
+        <div class="form-section white_background">
+            <form action="php_scripts\userlogout_sender.php" method="post" id="user-logout-form">
+                <button class="hyperlink_button" type="submit" name="logout-button">LOG OUT</button>
+            </form>  
+        </div>
 	</main>
 	<?php include 'site_static_parts\footer.php'; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js_scripts/userlogin_updater.js"></script>
 </body>
 </html>

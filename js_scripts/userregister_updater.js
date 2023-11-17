@@ -18,7 +18,7 @@ $(document).ready(function() {
                 if(response.status === 1) {
                     $("#user-register-form").trigger("reset");
                     setTimeout(function() {
-                        window.location.href = "../index.php";
+                        window.location.href = "../user_login.php";
                     }, 3000);
                 }
             },
