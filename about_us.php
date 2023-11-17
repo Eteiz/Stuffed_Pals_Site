@@ -75,7 +75,7 @@
             </div>
             
         </section>
-        <section id="our-mission-section" class="blue_pink_background">
+        <section id="our-mission-section" class="default_gradient_background">
              <div class="section-header">
                 <h1> Our Mission & Ethos </h1>
             </div>
@@ -162,6 +162,9 @@
         <?php include 'site_static_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_static_parts\footer.php'; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js_scripts/newsletter_updater.js"></script>
     <script src="js_scripts\ourteam_slider.js"></script>
+
 </body>
 </html>

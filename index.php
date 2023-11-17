@@ -36,21 +36,20 @@
 					</div>
     			</div>
 				<h3> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h3>
-				<a class="hyperlink_button_black" href="#Browse"> Start now </a>
+				<a class="hyperlink_button" href="#Browse"> Start now </a>
 			</div>
 		</section>
-
 		<section class="presentation_section white_background">
 			<div class="presentation_section_description">
 				<h2>Having a fluffy and cuddly friend is fun</h2>
 				<span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. 
 					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
 				</span>
-				<a class="hyperlink_button_purple" href="#Browse"> Browse collection </a>
+				<a class="hyperlink_button" href="#Browse"> Browse collection </a>
 			</div>
 			<div class="presentation_section_list">
 				<div class="presentation_section_list_element"> 
-					<img src="img\eco_icon.png" alt="Eco icon"></img>
+					<img src="img\eco_icon.png" alt="Ecology icon"></img>
 					<div class="presentation_section_list_element_text">
 						<h3> ECO-FRIENDLY AND ETHICAL </h3>
 						<span> The materials used for crafting our Pals are safe for the environment </span>
@@ -73,7 +72,6 @@
 			</div>
 			<img class="presentation_section_image" src="img\plush_1.png" alt="Plush_1 image"></img>
 		</section>
-
 		<section class="tutorial_section white_background">
 			<h2> How can you create your perfect Stuffed Pal? </h2>
 			<h3> We made sure that the process of making your perfect plushie is easy and intuitive. </h3>
@@ -95,29 +93,30 @@
 				</div>
 			</div>
 		</section>
-		
-		<section class="category_section blue_pink_background">
+		<section class="category_section default_gradient_background">
 			<h1> Our products </h1>
 			<h3> From essentials to what makes your pal unique! </h3>
 			<div class="category_section_categories">
 				<div class="category_section_categories_element white_background" style="background-color: #FF638B;">
-					<img src="img\plush_2.png" alt="Plush_2 image">
-					<a class="hyperlink_button_black" href="#Browse"> PAL BASES </a>
+					<img src="img\plush_2.png" alt="Choncc plushie image">
+					<a class="hyperlink_button" href="#Browse"> PAL BASES </a>
 				</div>
 				<div class="category_section_categories_element white_background" style="background-color: #FFE2DD;">
-					<img src="img\plush_1.png" alt="Plush_1 image">
-					<a class="hyperlink_button_black" href="#Browse"> PAL CLOTHES </a>
+					<img src="img\plush_1.png" alt="Gromp image">
+					<a class="hyperlink_button" href="#Browse"> PAL CLOTHES </a>
 				</div>
-				<div class="category_section_categories_element white_background" style="background-color: #D1FF88;">
-					<img src="img\plush_3.png" alt="Plush_3 image">
-					<a class="hyperlink_button_black" href="#Browse"> PAL ACCESORIES </a>
+				<div class="category_section_categories_element white_background" style="background-color: #319799;">
+					<img src="img\plush_3.png" alt="Scuttle image">
+					<a class="hyperlink_button" href="#Browse"> PAL ACCESORIES </a>
 				</div>
 			</div>
-			<a class="hyperlink_button_black" href="#Browse"> ALL PRODUCTS </a>
+			<a class="hyperlink_button" href="#Browse"> ALL PRODUCTS </a>
 		</section>
 
 		<?php include 'site_static_parts\newsletter_form.php'; ?>
 	</main>
 	<?php include 'site_static_parts\footer.php'; ?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js_scripts/newsletter_updater.js"></script>
 </body>
 </html>

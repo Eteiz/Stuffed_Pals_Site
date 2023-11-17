@@ -32,7 +32,7 @@
         </div>
     </header>
     <main>
-        <section id="contact-section" class="pink_blue_background">
+        <section id="contact-section" class="default_gradient_background">
             <div class="section-container">
                 <img src="img/plush_3.png" src="Scuttle Plush"></img>
                 <div class="section-element white_background">
@@ -45,7 +45,7 @@
                     <div class="section-element-content">
                         <div class="section-element-content-row">
                             <div class="section-element-content-row-header">
-                                <img src="img/user_icon.png" alt="User icon"></img>
+                                <img src="img/house_icon.png" alt="House icon"></img>
                                 <h3> Visit us </h3>
                             </div>
                             <div class="section-element-content-row-content">
@@ -146,32 +146,32 @@
 
         <section id="contact-form-section" class="white_background">
             <div class="section-header">
-                <h1> Or do it here... </h1>
+                <h1> Or ask here... </h1>
                 <span> 
                     Got a question? Need assistance? 
                     Or perhaps you have some feedback for us? Fill out the form below, and our team will get back to you as swiftly as a plushie's hug! 
                     We're here to ensure that your experience with us is as cozy and delightful as our stuffed pals. 
                 </span>
             </div>
-            <form method="post" action="/php_scripts/contact_form_script.php" id="contact-form">
+            <form method="post" action="/php_scripts/contactform_sender.php" id="contact-form">
                 <h2> Contact form </h2>
                 <label for="first-name" class="form-field"> 
                     <h3> First name </h3>
-                    <input type="text" name="first-name" required placeholder="First name">
+                    <input type="text" name="first-name" required placeholder="First name" maxlength="100">
                 </label>
                 <label for="last-name" class="form-field">
                     <h3> Last name </h3>
-                    <input type="text" name="last-name" required placeholder="Last name">
+                    <input type="text" name="last-name" required placeholder="Last name" maxlength="100">
                 </label>
                 <label for="email-address" class="form-field">
                     <h3> Email address </h3>
-                    <input type="email" name="email" required placeholder="Email address">
+                    <input type="email" name="email" required placeholder="Email address" maxlength="100">
                 </label>
                 <label for="message" class="form-field">
                     <h3> Message content </h3>
-                    <textarea name="message" required placeholder="Your message"></textarea>
+                    <textarea name="message" required placeholder="Your message" maxlength="1000"></textarea>
                 </label>
-                <button class="hyperlink_button_purple" type="submit" name="send-message-button">SEND MESSAGE</button>
+                <button class="hyperlink_button" type="submit" name="send-message-button">SEND MESSAGE</button>
                 <div class="contact-form-result">
                     <h4 id="contact-form-status"></h4>
                 </div>
@@ -183,7 +183,7 @@
 
     <script src="js_scripts\faq_accordion.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js_scripts/newsletter_updater.js"></script>
     <script src="js_scripts/contactform_updater.js"></script>
-    </script>
 </body>
 </html>

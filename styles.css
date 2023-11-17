@@ -1,14 +1,18 @@
 /* ==================== VARIABLES ==================== */
 :root {
-    --white-background-color: #ffffff;
-    --light-blue-background-color: #e1f0fd;
+    --white-background-color: #F4F4FF;
 
-    --default-color: #09080F;
-    --default-hover-color: #414044;
+    --default-color: #201236;
 
-    --primary-color: #8B5FE9;
-    --secondary-color: #CB8AFF;
-    --tertiary-color: #B2DAFF;
+    --primary-color: #6855E7;
+    --secondary-color: #4F40AE;
+    --tertiary-color: #DFDFFF;
+
+    --gradient-light-color: #999AF9;
+    --gradient-dark-color: #786CED;
+
+    --action-color-default: #ADD11C;
+    --action-color-hover: #85A30C;
 }
 
 /* ATTRIBUTES HIERARCHY
@@ -30,7 +34,7 @@ body {
     padding: 0px;
     margin: 0px;
 
-    background-color: var(--light-blue-background-color);
+    background-color: var(--tertiary-color);
     color: var(--default-color);
 
     font-family: 'Inter', sans-serif;
@@ -89,8 +93,9 @@ img {
 
 /* BACKGROUND COLOR */
 .white_background { background-color: var(--white-background-color); }
-.pink_blue_background { background: linear-gradient(to bottom, var(--secondary-color), var(--tertiary-color)); }
-.blue_pink_background { background: linear-gradient(to bottom, var(--tertiary-color), var(--secondary-color)); }
+/* Default gradient */
+.default_gradient_background { background: linear-gradient(to bottom, var(--gradient-light-color), var(--gradient-dark-color)); }
+
 
 /* PADDING OPTIONS */
 .pb_t20_b20 {padding-top: 20px; padding-bottom: 20px;}
@@ -171,10 +176,8 @@ p {
 .hyperlink_logo:hover { opacity: 0.9; }
 .hyperlink_icon:hover { opacity: 0.5; }
 
-.hyperlink_button_purple, 
-.hyperlink_button_purple:visited,
-.hyperlink_button_black, 
-.hyperlink_button_black:visited {
+.hyperlink_button, 
+.hyperlink_button:visited {
     display: flex;
     justify-content: center;  
     align-items: center; 
@@ -195,13 +198,9 @@ p {
     cursor: pointer;
 }
 
-.hyperlink_button_purple, 
-.hyperlink_button_purple:visited { background-color: var(--secondary-color);  }
-.hyperlink_button_purple:hover { background-color: var(--primary-color);  }
-
-.hyperlink_button_black, 
-.hyperlink_button_black:visited { background-color: var(--default-color); }
-.hyperlink_button_black:hover { background-color: var(--default-hover-color); }
+.hyperlink_button, 
+.hyperlink_button:visited { background-color: var(--action-color-default);  }
+.hyperlink_button:hover { background-color: var(--action-color-hover);  }
 
 /* ==================== NAVBAR ==================== */
 nav, 
@@ -223,7 +222,7 @@ nav {
     height: 80px;
 }
 
-#hyperlink_section,
+#hyperlink-section,
 #logo-section,
 #user-section {
     width: 302px;
@@ -239,7 +238,7 @@ nav {
 }
 #user-section,
 #hyperlink-section { 
-    gap: 15px; 
+    gap: 10px; 
 }
 #user-section img,
 #user-section a {
@@ -349,7 +348,7 @@ nav {
     width: 375px;
     height: 325px;
 }
-.index_page .presentation_section_description .hyperlink_button_purple {
+.index_page .presentation_section_description .hyperlink_button {
     margin-top: 15px;
 }
 
@@ -396,8 +395,8 @@ nav {
     text-align: center;
 }
 .index_page .tutorial_section {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 40px;
 }
 .index_page .tutorial_section_steps {
     gap: 120px;
@@ -604,13 +603,13 @@ nav {
     border-radius: 20px;
     margin: 5px;
 
-    background-color: var(--secondary-color);
+    background-color: var(--action-color-default);
 
     cursor: pointer;
     transition: 0.25s ease-in;
 }
 #our-team-section .slider-button:hover {
-    background-color: var(--primary-color);
+    background-color: var(--action-color-hover);
 }
 #our-team-section .slider-button-active {
     width: 45px;
@@ -715,7 +714,7 @@ nav {
     content: '\02795';
     font-size: 13px;
 }
-#FAQ-section .active-faq:after {
+#faq-section .active-faq:after {
     content: "\2796";
 }
 
@@ -776,13 +775,9 @@ nav {
     color: var(--primary-color);
 }
 
-#contact-form .hyperlink_button_purple {
+#contact-form .hyperlink_button {
     margin-top: 5px;
     margin-bottom: 5px;
-}
-/* ==================== NEWSLETTER_RESULT ==================== */
-#newsletter-result {
-    width: 100%;
 }
 /* ==================== NEWSLETTER ==================== */
 #newsletter, 
@@ -796,6 +791,11 @@ nav {
 #newsletter {
     padding-top: 100px;
     padding-bottom: 100px;
+
+    background-image: url('img/stuffedpals_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #newsletter .section-container {
     gap: 20px;
@@ -808,6 +808,7 @@ nav {
     align-items: flex-start;
     text-align: left;
     width: 300px;
+    padding-bottom: 30px;
 }
 
 /* Form elements */
@@ -834,6 +835,16 @@ nav {
     gap: 10px;
     margin-top: 5px;
     margin-bottom: 10px;
+}
+#newsletter-form .hyperlink_button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#newsletter .newsletter-result {
+    width: 400px;
+    height: 20px;
+    color: var(--primary-color);
 }
 
 /* ==================== FOOTER ==================== */

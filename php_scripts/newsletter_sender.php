@@ -1,13 +1,15 @@
 <?php
 require_once 'db_connect.php';
 
+$response = ['status' => 0, 'msg' => ''];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
+    $email = $_POST['email'] ?? '';
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Please provide a valid email address.";
-    } else if (!isset($_POST['consent'])) {
-        echo "You must agree to the terms.";
+        $response['msg'] = "Please provide a valid email address.";
+    } elseif (!isset($_POST['consent'])) {
+        $response['msg'] = "You must agree to the terms.";
     } else {
         $checkEmailQuery = "SELECT * FROM newsletter WHERE email_address = ?";
         $stmt = $conn->prepare($checkEmailQuery);
@@ -17,23 +19,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
 
         if ($result->num_rows > 0) {
-            header('Location: /newsletter_result.php');
-            exit();
+            $response['msg'] = "This email is already subscribed.";
         } else {
             $sql = "INSERT INTO newsletter (email_address) VALUES (?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $email);
 
             if ($stmt->execute()) {
-                header('Location: /newsletter_result.php');
-                exit();
+                $response['status'] = 1;
+                $response['msg'] = "Subscription successful!";
             } else {
-                echo "Error: " . $stmt->error;
+                $response['msg'] = "Error: " . $stmt->error;
             }
 
             $stmt->close();
         }
-        $conn->close();
     }
+
+    $conn->close();
+} else {
+    $response['msg'] = "Invalid request method.";
 }
+
+header('Content-Type: application/json');
+echo json_encode($response);
+exit();
 ?>
