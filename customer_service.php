@@ -144,7 +144,7 @@
             </div>
         </section>
 
-        <section id="contact-form-section" class="white_background">
+        <section class="form-section white_background">
             <div class="section-header">
                 <h1> Or ask here... </h1>
                 <span> 
@@ -172,8 +172,8 @@
                     <textarea name="message" required placeholder="Your message" maxlength="1000"></textarea>
                 </label>
                 <button class="hyperlink_button" type="submit" name="send-message-button">SEND MESSAGE</button>
-                <div class="contact-form-result">
-                    <h4 id="contact-form-status"></h4>
+                <div class="form-result">
+                    <h4 id="contact-form-status" class="form-status"></h4>
                 </div>
             </form>
         </section>

@@ -8,7 +8,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "/php_scripts/contact_form_script.php",
+            url: "php_scripts/contactform_sender.php",
             data: data,
             dataType: "json",
             success: function(response) {

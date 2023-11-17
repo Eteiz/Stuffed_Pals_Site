@@ -25,6 +25,7 @@ Top->Right->Bottom->Left
 */
 
 /* ==================== PAGE COMPONENTS ==================== */
+/* BODY */
 body {
     display: flex;
     justify-content: center;
@@ -40,10 +41,8 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
 }
-main {
-    width: 90%;
-}
 
+/* HEADER */
 header {
     display: flex;
     justify-content: center;
@@ -70,16 +69,24 @@ header {
     text-align: center;
 }
 
+/* MAIN */
+main {
+    width: 90%;
+}
+
+/* NAV, FOOTER */
 nav, footer {
     width: 100%;
 }
 
+/* IMAGES */
 img {
     display: block; 
     object-fit: cover;
     border-radius: 5px;
 }
 
+/* SECTION HEADER */
 .section-header {
     display: flex;
     justify-content: center;
@@ -91,11 +98,58 @@ img {
     text-align: center;
 }
 
-/* BACKGROUND COLOR */
-.white_background { background-color: var(--white-background-color); }
-/* Default gradient */
-.default_gradient_background { background: linear-gradient(to bottom, var(--gradient-light-color), var(--gradient-dark-color)); }
+/* FORM */
+.form-section,
+.form-section .section-header {
+    display: flex;
+    justify-content: center;
+}
+.form-section {
+    align-items: center;
+    gap: 70px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.form-section .section-header {
+    align-items: flex-start;
+    width: 400px;
 
+    text-align: left;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 400px;
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+}
+.form-field input {
+    height: 25px;
+}
+.form-field textarea {
+    height: 100px;
+
+    resize: none;
+}
+.form-result {
+    width: 400px;
+    height: 20px;
+    color: var(--primary-color);
+}
+.form-extra-information {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+form .hyperlink_button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* BACKGROUND COLORS */
+.white_background { background-color: var(--white-background-color); }
+.default_gradient_background { background: linear-gradient(to bottom, var(--gradient-light-color), var(--gradient-dark-color)); }
 
 /* PADDING OPTIONS */
 .pb_t20_b20 {padding-top: 20px; padding-bottom: 20px;}
@@ -732,53 +786,12 @@ nav {
     padding-top: 20px;
     padding-bottom: 15px;
 }
+/* CONTACT FORM */
 
-/* CONTACT FORM SECTION */
-#contact-form-section,
-#contact-form-section .section-header {
-    display: flex;
-    justify-content: center;
-}
-#contact-form-section {
-    align-items: center;
-    gap: 70px;
-    padding-top: 50px;
-    padding-bottom: 50px;
 
-}
-#contact-form-section .section-header {
-    align-items: flex-start;
-    width: 400px;
+/* ==================== USER_LOGIN.PHP ==================== */
 
-    text-align: left;
-}
-#contact-form .form-field input,
-#contact-form .form-field textarea {
-    width: 400px;
 
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-}
-
-#contact-form .form-field input {
-    height: 25px;
-}
-#contact-form .form-field textarea {
-    height: 100px;
-
-    resize: none;
-}
-#contact-form .contact-form-result {
-    width: 400px;
-    height: 20px;
-    color: var(--primary-color);
-}
-
-#contact-form .hyperlink_button {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 /* ==================== NEWSLETTER ==================== */
 #newsletter, 
 #newsletter .section-container, 
