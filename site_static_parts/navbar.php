@@ -10,7 +10,7 @@
 			</a>
 		</div>
 		<div id="user-section">
-			<a class="hyperlink_icon" href="#Login">
+			<a class="hyperlink_icon" href="user_login.php">
 				<img src="img\user_icon.png" alt = "User icon"></img>
 			</a> 
 			<a class="hyperlink_icon" href="#Cart">

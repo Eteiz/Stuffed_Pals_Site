@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Sign in service | Stuffed Pals</title>
+    <title> Sign in | Stuffed Pals</title>
     <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords" content="plushies, stuffed animals, stuffed">
     <meta name="author" content="Marta Ambroziak">
