@@ -11,7 +11,7 @@
 		</div>
 		<div id="user-section">
 			<a class="hyperlink_icon" href="<?php echo isset($_SESSION['user_logged']) && $_SESSION['user_logged'] ? 'user_profile.php' : 'user_login.php'; ?>">
-    			<img src="img/user_icon.png" alt="User icon">
+			<img src="img/<?php echo isset($_SESSION['user_logged']) && $_SESSION['user_logged'] ? 'user_icon_logged.png' : 'user_icon.png'; ?>" alt="User icon">
 			</a>
 			<a class="hyperlink_icon" href="#Cart">
 				<img src="img\cart_icon.png" alt = "Cart icon"></img>

@@ -1,11 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($_SESSION['user_login'])) {
     $_SESSION['user_logged'] = false;
-	$_SESSION['user_id'] = null;
+
+	$_SESSION['user_id'] = NULL;
+    $_SESSION['user_login'] = NULL;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -35,7 +36,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
         <div class="header-content white_background">
             <h1> Sign in </h1>
             <h3> 
-                Embark on your personalized journey by entering your username and password!
+                Welcome back! Sign in to access your personalized settings and curated content.
             </h3>
         </div>
     </header>
@@ -43,13 +44,13 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
         <section class="form-section white_background">
             <form method="post" action="/php_scripts/userlogin_sender.php" id="user-login-form">
                 <h2> Login </h2>
-                <label for="username" class="form-field"> 
+                <label for="username-field" class="form-field"> 
                     <h3> Username </h3>
-                    <input type="text" name="username" required placeholder="Username" maxlength="40">
+                    <input type="text" id="username-field" name="username" required placeholder="Username" maxlength="40" autocomplete="username">
                 </label>
-                <label for="password" class="form-field">
+                <label for="password-field" class="form-field">
                     <h3> Password </h3>
-                    <input type="password" name="password" required placeholder="Password" maxlength="40">
+                    <input type="password" id="password-field" name="password" required placeholder="Password" maxlength="40" autocomplete="current-password">
                 </label>
                 <div class="form-extra-information">
                     <a class="hyperlink_text" href="user_retrieve_password.php"> Forgot your password? </a>

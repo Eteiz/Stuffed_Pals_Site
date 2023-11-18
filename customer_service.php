@@ -1,11 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($_SESSION['user_login'])) {
     $_SESSION['user_logged'] = false;
-	$_SESSION['user_id'] = null;
+
+	$_SESSION['user_id'] = NULL;
+    $_SESSION['user_login'] = NULL;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -165,19 +166,19 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
                 <h2> Contact form </h2>
                 <label for="first-name" class="form-field"> 
                     <h3> First name </h3>
-                    <input type="text" name="first-name" required placeholder="First name" maxlength="100">
+                    <input type="text" name="first-name" id="first-name" required placeholder="First name" maxlength="100" autocomplete="given-name">
                 </label>
                 <label for="last-name" class="form-field">
                     <h3> Last name </h3>
-                    <input type="text" name="last-name" required placeholder="Last name" maxlength="100">
+                    <input type="text" name="last-name" id="last-name" required placeholder="Last name" maxlength="100" autocomplete="family-name">
                 </label>
                 <label for="email-address" class="form-field">
                     <h3> Email address </h3>
-                    <input type="email" name="email" required placeholder="Email address" maxlength="100">
+                    <input type="email" name="email" id="email-address" required placeholder="Email address" maxlength="100" autocomplete="email">
                 </label>
                 <label for="message" class="form-field">
                     <h3> Message content </h3>
-                    <textarea name="message" required placeholder="Your message" maxlength="1000"></textarea>
+                    <textarea name="message" id="message" required placeholder="Your message" maxlength="1000"></textarea>
                 </label>
                 <button class="hyperlink_button" type="submit" name="send-message-button">SEND MESSAGE</button>
                 <div class="form-result">

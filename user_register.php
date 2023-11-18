@@ -1,11 +1,12 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($_SESSION['user_login'])) {
     $_SESSION['user_logged'] = false;
-	$_SESSION['user_id'] = null;
+
+	$_SESSION['user_id'] = NULL;
+    $_SESSION['user_login'] = NULL;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -35,7 +36,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
         <div class="header-content white_background">
             <h1> Sign up </h1>
             <h3> 
-                Embark on your personalized journey by creating new account!
+                Create account and embark on a journey of exclusive benefits and personalized experiences.
             </h3>
         </div>
     </header>
@@ -43,17 +44,17 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id'])) {
         <section class="form-section white_background">
             <form method="post" action="/php_scripts/userregister_sender.php" id="user-register-form">
                 <h2> Register </h2>
-                <label for="username" class="form-field"> 
+                <label for="username-field" class="form-field"> 
                     <h3> Username </h3>
-                    <input type="text" name="username" required placeholder="Username" maxlength="40">
+                    <input type="text" id="username-field" name="username" required placeholder="Username" maxlength="40" autocomplete="username">
                 </label>
-                <label for="email-address" class="form-field">
+                <label for="email-field" class="form-field">
                     <h3> Email address </h3>
-                    <input type="email" name="email" required placeholder="Email address" maxlength="100">
+                    <input type="email" id="email-field" name="email" required placeholder="Email address" maxlength="100" autocomplete="email">
                 </label>
-                <label for="password" class="form-field">
+                <label for="password-field" class="form-field">
                     <h3> Password </h3>
-                    <input type="password" name="password" required placeholder="Password" maxlength="40">
+                    <input type="password" id="password-field" name="password" required placeholder="Password" maxlength="40" autocomplete="new-password">
                 </label>
                 <div class="form-extra-information">
                     <a class="hyperlink_text" href="index.php"> Cancel </a>

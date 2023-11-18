@@ -1,11 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged']) || $_SESSION['user_logged'] !== true) {
+if (!isset($_SESSION['user_logged']) || $_SESSION['user_logged'] !== true || $_SESSION['user_login'] == NULL)  {
     header('Location: ../index.php');
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -33,7 +32,7 @@ if (!isset($_SESSION['user_logged']) || $_SESSION['user_logged'] !== true) {
 	<?php include 'site_static_parts\navbar.php'; ?>
     <header>
         <div class="header-content white_background">
-            <h1> Your profile </h1>
+            <h1>Hello <?php echo htmlspecialchars($_SESSION['user_login'], ENT_QUOTES, 'UTF-8'); ?></h1>
             <h3> 
                 Welcome to your personalized dashboard, where your preferences shape your experience.
             </h3>

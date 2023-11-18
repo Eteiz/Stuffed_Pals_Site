@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#newsletter-form").on("submit", function(e) {
+    $('form[name="newsletter-form"]').on("submit", function(e) {
         e.preventDefault();
         var data = $(this).serialize();
 
@@ -11,7 +11,7 @@ $(document).ready(function() {
             success: function(response) {
                 $("#newsletter-status").html(response.msg).show().delay(5000).fadeOut();
                 if(response.status == 1) {
-                    $("#newsletter-form").trigger("reset");
+                    $('form[name="newsletter-form"]').trigger("reset");
                 }
             },
             error: function(xhr, status, error) {

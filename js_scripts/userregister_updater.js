@@ -19,7 +19,7 @@ $(document).ready(function() {
                     $("#user-register-form").trigger("reset");
                     setTimeout(function() {
                         window.location.href = "../user_login.php";
-                    }, 3000);
+                    }, 1500);
                 }
             },
             error: function(xhr, status, error) {
