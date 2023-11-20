@@ -786,6 +786,64 @@ nav {
     padding-top: 20px;
     padding-bottom: 15px;
 }
+/* ==================== SHOP_ALL.PHP ==================== */
+#product-section,
+#product-section .product-row,
+#product-section .product {
+    display: flex;
+}
+#product-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+    gap: 50px;
+}
+
+#product-section,
+#product-section .product {
+    flex-direction: column;
+}
+#product-section .product-row {
+    width: 1100px;
+    gap: 40px;
+    align-items: baseline;
+}
+#product-section .product {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#product-section .product img {
+    width: 250px;
+    height: 250px;
+
+    transition: transform 0.3s ease;
+    object-fit: cover; 
+    overflow: hidden;
+}
+#product-section .product img:hover {
+    transform: scale(1.2); 
+}
+
+#product-section .product-description {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    height: 100px;
+}
+#product-section .product-description h3 {
+    font-size: 19px;
+    color: var(--primary-color);
+}
+#product-section .product-description h4 {
+    font-size: 17px;
+}
+#product-section .product-description span {
+    font-size: 15px;
+}
+#product-section .hyperlink_button {
+    width: 250px;
+}
+
 
 /* ==================== NEWSLETTER ==================== */
 #newsletter, 
