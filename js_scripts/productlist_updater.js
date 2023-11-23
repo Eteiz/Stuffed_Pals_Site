@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event) event.preventDefault();
         var formData = new FormData(form);
 
-        fetch('../php_scripts/product_loader.php', {
+        fetch('php_scripts/product_loader.php', {
             method: 'POST',
             body: formData
         })

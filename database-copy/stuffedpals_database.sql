@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 08, 2023 at 07:58 AM
+-- Generation Time: Lis 23, 2023 at 09:57 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -20,22 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `stuffedpals_database`
 --
-CREATE DATABASE IF NOT EXISTS `stuffedpals_database` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `stuffedpals_database`;
 
 DELIMITER $$
 --
 -- Procedury
 --
-DROP PROCEDURE IF EXISTS `AddNewProduct`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddNewProduct` (IN `p_product_name` VARCHAR(100), IN `p_product_price` DECIMAL(5,2))   BEGIN
-    INSERT INTO product (product_name, product_price) 
-    VALUES (p_product_name, p_product_price);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddProductAndInventory` (IN `_productName` VARCHAR(100), IN `_productDescription` TEXT, IN `_productPrice` DECIMAL(5,2), IN `_productQuantity` INT, IN `_categoryId` INT, IN `_supplierId` INT)   BEGIN
+    DECLARE _productId INT;
 
-    SET @last_product_id = LAST_INSERT_ID();
+    -- Dodanie rekordu do tabeli Product
+    INSERT INTO Product (category_id, supplier_id, product_name, product_description, product_price)
+    VALUES (_categoryId, _supplierId, _productName, _productDescription, _productPrice);
 
-    INSERT INTO inventory (product_id) 
-    VALUES (@last_product_id);
+    -- Pobranie ID nowo dodanego produktu
+    SET _productId = LAST_INSERT_ID();
+
+    -- Dodanie rekordu do tabeli Inventory
+    INSERT INTO Inventory (product_id, product_quantity)
+    VALUES (_productId, _productQuantity);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteProductAndInventory` (IN `_productId` INT)   BEGIN
+    -- Usunięcie rekordu z Inventory
+    DELETE FROM Inventory WHERE product_id = _productId;
+
+    -- Usunięcie rekordu z Product
+    DELETE FROM Product WHERE id = _productId;
 END$$
 
 DELIMITER ;
@@ -46,7 +56,6 @@ DELIMITER ;
 -- Struktura tabeli dla tabeli `cart_item`
 --
 
-DROP TABLE IF EXISTS `cart_item`;
 CREATE TABLE IF NOT EXISTS `cart_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `session_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Session',
@@ -63,21 +72,20 @@ CREATE TABLE IF NOT EXISTS `cart_item` (
 -- Struktura tabeli dla tabeli `category`
 --
 
-DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Category information';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Category information';
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `category_name`) VALUES
-(10, 'Bases'),
-(11, 'Clothes'),
-(12, 'Accessories');
+(13, 'Bases'),
+(14, 'Clothes'),
+(15, 'Accessories');
 
 -- --------------------------------------------------------
 
@@ -85,19 +93,11 @@ INSERT INTO `category` (`id`, `category_name`) VALUES
 -- Struktura tabeli dla tabeli `inventory`
 --
 
-DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE IF NOT EXISTS `inventory` (
   `product_id` int(11) NOT NULL COMMENT 'Foreign key from Product',
   `product_quantity` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `inventory`
---
-
-INSERT INTO `inventory` (`product_id`, `product_quantity`) VALUES
-(1, 0);
 
 -- --------------------------------------------------------
 
@@ -105,12 +105,11 @@ INSERT INTO `inventory` (`product_id`, `product_quantity`) VALUES
 -- Struktura tabeli dla tabeli `newsletter`
 --
 
-DROP TABLE IF EXISTS `newsletter`;
 CREATE TABLE IF NOT EXISTS `newsletter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email_address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for emails that agreed to newsletter';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for emails that agreed to newsletter';
 
 -- --------------------------------------------------------
 
@@ -118,7 +117,6 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
 -- Struktura tabeli dla tabeli `order_details`
 --
 
-DROP TABLE IF EXISTS `order_details`;
 CREATE TABLE IF NOT EXISTS `order_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
@@ -133,7 +131,6 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 -- Struktura tabeli dla tabeli `order_item`
 --
 
-DROP TABLE IF EXISTS `order_item`;
 CREATE TABLE IF NOT EXISTS `order_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_details_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Order_details',
@@ -150,7 +147,6 @@ CREATE TABLE IF NOT EXISTS `order_item` (
 -- Struktura tabeli dla tabeli `order_status`
 --
 
-DROP TABLE IF EXISTS `order_status`;
 CREATE TABLE IF NOT EXISTS `order_status` (
   `order_details_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Order_Details',
   `order_status_description` text DEFAULT NULL,
@@ -163,7 +159,6 @@ CREATE TABLE IF NOT EXISTS `order_status` (
 -- Struktura tabeli dla tabeli `payment_method`
 --
 
-DROP TABLE IF EXISTS `payment_method`;
 CREATE TABLE IF NOT EXISTS `payment_method` (
   `order_details_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Order_Details',
   `payment_method_description` text DEFAULT NULL,
@@ -176,7 +171,6 @@ CREATE TABLE IF NOT EXISTS `payment_method` (
 -- Struktura tabeli dla tabeli `product`
 --
 
-DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Category',
@@ -187,14 +181,43 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`),
   KEY `supplier_id` (`supplier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `category_id`, `supplier_id`, `product_name`, `product_description`, `product_price`) VALUES
-(1, NULL, NULL, 'Gromp plush', NULL, 50.00);
+(9, 15, 5, 'Midnight Elegance Booties', 'Step into a world of sophistication with our Midnight Elegance Booties, perfectly tailored for your plushie\'s formal occasions. Crafted with velvety black fabric and detailed stitching, these boots offer both style and comfort.', 45.00),
+(10, 15, 3, 'Clear Vision Plushie Spectacles', 'Enhance your plushie\'s intellect with our Clear Vision Spectacles. Featuring transparent lenses set in a sleek, thin frame, these glasses add a touch of charm to any plush character.', 35.00),
+(11, 13, 2, 'Cocoa Cuddles Bear', 'Meet Cocoa Cuddles, your plushie\'s new best friend! With its soft, chocolate-brown fur and an embrace as warm as hot cocoa, this bear is the perfect snuggle companion for all ages.', 85.00),
+(12, 14, 4, 'Bubblegum Bliss Onesie Set', 'Wrap your plushie in the sweetness of our Bubblegum Bliss Onesie Set. Its vibrant pink color and cozy shorts make it a delightful outfit for your plushie to lounge in style.', 55.00),
+(13, 14, 4, 'Ocean Breeze Onesie Set', 'Dress your plushie in our Ocean Breeze Onesie Set to bring the serenity of the sea to playtime. The calming blue hue and comfortable shorts are ideal for a day of adventure or relaxation.', 55.00);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `product_image`
+--
+
+CREATE TABLE IF NOT EXISTS `product_image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Product',
+  `product_image_path` varchar(200) DEFAULT NULL COMMENT 'Path to image',
+  `image_description` text DEFAULT NULL COMMENT 'Description used to alt attribute',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for product images';
+
+--
+-- Dumping data for table `product_image`
+--
+
+INSERT INTO `product_image` (`id`, `product_id`, `product_image_path`, `image_description`) VALUES
+(1, 9, 'product_images\\plush-accessories\\plush_accessory_11\\boots_1.png', 'Mini black boots on pink background '),
+(2, 10, 'product_images\\plush-accessories\\plush_accessory_1.png', 'Mini pair of glasses with transparent lens on pink background'),
+(3, 11, 'product_images\\plush-bases\\bear_base\\bear_1.png', 'Light-brown bear plushie on table'),
+(4, 12, 'product_images\\plush-clothies\\clothes_set_2\\clothes_1.png', 'Mini clothing set for plushie including pink onesie and jeans shorts'),
+(5, 13, 'product_images\\plush-clothies\\clothes_set_1\\clothes_1.jpg', 'Mini clothing set for plushie including light-blue onesie and jeans shorts');
 
 -- --------------------------------------------------------
 
@@ -202,7 +225,6 @@ INSERT INTO `product` (`id`, `category_id`, `supplier_id`, `product_name`, `prod
 -- Struktura tabeli dla tabeli `session`
 --
 
-DROP TABLE IF EXISTS `session`;
 CREATE TABLE IF NOT EXISTS `session` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
@@ -217,7 +239,6 @@ CREATE TABLE IF NOT EXISTS `session` (
 -- Struktura tabeli dla tabeli `supplier`
 --
 
-DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE IF NOT EXISTS `supplier` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `supplier_name` varchar(100) DEFAULT NULL,
@@ -225,7 +246,19 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `supplier_email` varchar(100) DEFAULT NULL,
   `supplier_phone_number` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`id`, `supplier_name`, `supplier_address`, `supplier_email`, `supplier_phone_number`) VALUES
+(1, 'Fluffy Fabrics Ltd.', '123 Cotton Lane, Fabricville, FAB 4C1', 'contact@fluffyfabrics.com', '+18001234567'),
+(2, 'Plush Pals Materials Co.', '456 Softie St., Plushburg, PLU 8P2', 'sales@plushpalsmaterials.co', '+18002345678'),
+(3, 'Toyland Accessories Inc.', '789 Stitch Row, Toyville, TOY 6T3', 'info@toylandaccessories.com', '+18003456789'),
+(4, 'Cuddly Creations Supplies', '321 Teddy Ave., Cuddleton, CUD 5C4', 'support@cuddlycreationssupplies.com', '+18004567890'),
+(5, 'Plush Apparel and More', '654 Fabrication Drive, Crafttown, CRA 3F5', 'inquiries@plushapparelmore.com', '+18005678901'),
+(6, 'Little Wonders Toy Supplies', '987 Imagination Court, Wondercity, WON 2W6', 'help@littlewonderstoysupplies.com', '+18006789012');
 
 -- --------------------------------------------------------
 
@@ -233,17 +266,25 @@ CREATE TABLE IF NOT EXISTS `supplier` (
 -- Struktura tabeli dla tabeli `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_login` varchar(40) NOT NULL,
-  `user_password` varchar(40) NOT NULL COMMENT 'Hashed by md5',
+  `user_password` varchar(60) NOT NULL COMMENT 'Hashed by md5',
   `user_firstname` varchar(100) DEFAULT NULL,
   `user_lastname` varchar(100) DEFAULT NULL,
   `user_phone_number` varchar(12) DEFAULT NULL,
+  `user_email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UC_user_login_unique` (`user_login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  UNIQUE KEY `UC_user_login_unique` (`user_login`),
+  UNIQUE KEY `user_email` (`user_email`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `user_login`, `user_password`, `user_firstname`, `user_lastname`, `user_phone_number`, `user_email`) VALUES
+(23, 'Eteiz', '$2y$10$5wnjzEo2I53GwPxYkG7xy.vqO68e5xEEBbU6e8amGxCQn3MQsuLYC', NULL, NULL, NULL, 'mrsrosequartz@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -251,7 +292,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Struktura tabeli dla tabeli `user_address`
 --
 
-DROP TABLE IF EXISTS `user_address`;
 CREATE TABLE IF NOT EXISTS `user_address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',

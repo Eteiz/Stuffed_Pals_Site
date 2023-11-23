@@ -8,15 +8,14 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 }
 ?>
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
 
     <title>About us | Stuffed Pals</title>
-    <meta name="description"
-        content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
-    <meta name="keywords" content="plushies, stuffed animals, stuffed">
+    <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
+    <meta name="keywords" content="Custom Plush Toys, Personalized Teddy Bears, Unique Plush Gifts, Design Your Own Stuffed Animal, Plush Animal Accessories, Special Occasion Plushies">
     <meta name="author" content="Marta Ambroziak">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bots can index and follow links on site -->

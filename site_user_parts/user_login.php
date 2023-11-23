@@ -8,13 +8,13 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 }
 ?>
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
 
-    <title> Sign in | Stuffed Pals</title>
+    <title>Sign in | Stuffed Pals</title>
     <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
-    <meta name="keywords" content="plushies, stuffed animals, stuffed">
+    <meta name="keywords" content="Custom Plush Toys, Personalized Teddy Bears, Unique Plush Gifts, Design Your Own Stuffed Animal, Plush Animal Accessories, Special Occasion Plushies">
     <meta name="author" content="Marta Ambroziak">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Bots can index and follow links on site -->
@@ -58,7 +58,10 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                     </br>
                     <a class="hyperlink_text" href="../site_user_parts/user_register.php"> Not registered? Create an account</a>
                 </div>
-                <button class="hyperlink_button" type="submit" name="send-message-button">SIGN IN</button>
+                <button class="hyperlink_button" type="submit" name="send-message-button">
+                    SIGN IN
+                    <div class="dots-5" style="display: none;"></div>
+                </button>
                 <div class="form-result">
                     <h4 id="user-login-form-status" class="form-status"></h4>
                 </div>

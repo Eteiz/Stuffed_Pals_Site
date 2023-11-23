@@ -3,7 +3,11 @@ $(document).ready(function() {
         e.preventDefault();
         var data = $(this).serialize();
 
-        $("[name='login-button']").prop('disabled', true).text('Logging in...');
+        var loginButton = $("[name='login-button']");
+        loginButton.prop('disabled', true);
+        loginButton.find('.dots-5').show(); 
+        loginButton.contents().first().replaceWith(''); 
+
         $("#user-login-form-status").hide();
 
         $.ajax({
@@ -13,8 +17,9 @@ $(document).ready(function() {
             dataType: "json",
             success: function(response) {
                 $("#user-login-form-status").html(response.msg).show().delay(5000).fadeOut();
-                $("[name='login-button']").prop('disabled', false).text('Log In');
-
+                loginButton.prop('disabled', false);
+                loginButton.find('.dots-5').hide(); 
+                loginButton.contents().first().replaceWith('SIGN IN'); 
                 if(response.status === 1) {
                     $("#user-login-form").trigger("reset");
                     setTimeout(function() {
@@ -24,7 +29,9 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 $("#user-login-form-status").html("<p class='status_err'>There was an error processing your login.</p>").show().delay(5000).fadeOut();
-                $("[name='login-button']").prop('disabled', false).text('Log In');
+                loginButton.prop('disabled', false);
+                loginButton.find('.dots-5').hide();
+                loginButton.contents().first().replaceWith('SIGN IN');
             }
         });
     });

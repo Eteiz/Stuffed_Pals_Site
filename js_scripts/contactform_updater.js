@@ -3,7 +3,11 @@ $(document).ready(function() {
         e.preventDefault();
         var data = $(this).serialize();
 
-        $("[name='send-message-button']").prop('disabled', true).text('SENDING...');
+        var sendMessageButton = $("[name='send-message-button']");
+        sendMessageButton.prop('disabled', true);
+        sendMessageButton.find('.dots-5').show();
+        sendMessageButton.contents().first().replaceWith('');
+
         $("#contact-form-status").hide();
 
         $.ajax({
@@ -13,15 +17,18 @@ $(document).ready(function() {
             dataType: "json",
             success: function(response) {
                 $("#contact-form-status").html(response.msg).show().delay(5000).fadeOut();
-                $("[name='send-message-button']").prop('disabled', false).text('SEND MESSAGE');
-                
+                sendMessageButton.prop('disabled', false);
+                sendMessageButton.find('.dots-5').hide();
+                sendMessageButton.contents().first().replaceWith('SEND MESSAGE');
                 if(response.status == 1) {
                     $("#contact-form").trigger("reset");
                 }
             },
             error: function(xhr, status, error) {
                 $("#contact-form-status").html("<p class='status_err'>There was an error processing your form.</p>").show().delay(5000).fadeOut();
-                $("[name='send-message-button']").prop('disabled', false).text('SEND MESSAGE');
+                sendMessageButton.prop('disabled', false);
+                sendMessageButton.find('.dots-5').hide();
+                sendMessageButton.contents().first().replaceWith('SEND MESSAGE'); 
             }
         });
     });

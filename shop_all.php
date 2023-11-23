@@ -8,20 +8,19 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 }
 ?>
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
 
     <title>Shop All | Stuffed Pals</title>
-    <meta name="description"
-        content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
-    <meta name="keywords" content="plushies, stuffed animals, stuffed">
+    <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
+    <meta name="keywords" content="Custom Plush Toys, Personalized Teddy Bears, Unique Plush Gifts, Design Your Own Stuffed Animal, Plush Animal Accessories, Special Occasion Plushies">
     <meta name="author" content="Marta Ambroziak">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bots can index and follow links on site -->
     <meta name="robots" content="index, follow">
-    <link rel="icon" href="assets/icons/logo_icon.png" type="assets/icons/logo_icon.png">
+    <link rel="icon" href="../assets/logo_icon.png" type="../assets/logo_icon.png">
     <meta name="theme-color" content="#A066E9">
     <!-- Support for older IE versions -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +44,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
             </h3>
         </div>
     </header>
-    <main>
+    <main class="white background">
         <aside id="filters-section" class="white_background">
             <h3> Filter by:</h3>
             <!-- FILTERS SECTION -->
@@ -93,6 +92,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
         </aside>
         <!-- PRODUCT LIST -->
         <article id="product-section" class="white_background">
+            <div id="loading-animation" class="dots-5" style="display: none;"></div>
             <?php include 'php_scripts/product_loader.php'; ?>
         </article>
     </main>
