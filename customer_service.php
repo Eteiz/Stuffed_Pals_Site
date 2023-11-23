@@ -12,14 +12,14 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 <head>
     <meta charset="UTF-8">
 
-    <title>Customer service | Stuffed Pals</title>
+    <title> Customer service | Stuffed Pals</title>
     <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords" content="plushies, stuffed animals, stuffed">
     <meta name="author" content="Marta Ambroziak">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Bots can index and follow links on site -->
     <meta name="robots" content="index, follow">
-    <link rel="icon" href="img\logo_icon.png" type="img\logo_icon.png">
+    <link rel="icon" href="assets/logo_icon.png" type="assets/logo_icon.png">
     <meta name="theme-color" content="#A066E9">
     <!-- Support for older IE versions -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <main>
         <section id="contact-section" class="default_gradient_background">
             <div class="section-container">
-                <img src="img/plush_3.png" src="Scuttle Plush"></img>
+                <img src="assets/plush_3.png" src="Scuttle Plush"></img>
                 <div class="section-element white_background">
                     <div class="section-element-header">
                         <h1><u>Contact us</u></h1>
@@ -54,7 +54,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                     <div class="section-element-content">
                         <div class="section-element-content-row">
                             <div class="section-element-content-row-header">
-                                <img src="img/house_icon.png" alt="House icon"></img>
+                                <img src="assets/icons/house_icon.png" alt="House icon"></img>
                                 <h3> Visit us </h3>
                             </div>
                             <div class="section-element-content-row-content">
@@ -63,7 +63,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                         </div>
                         <div class="section-element-content-row">
                             <div class="section-element-content-row-header">
-                                <img src="img/phone_icon.png" alt="Phone icon"></img>
+                                <img src="assets/icons/phone_icon.png" alt="Phone icon"></img>
                                 <h3> Call us </h3>
                             </div>
                             <div class="section-element-content-row-content">
@@ -72,7 +72,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                         </div>
                         <div class="section-element-content-row">
                             <div class="section-element-content-row-header">
-                                <img src="img/mail_icon.png" alt="Mail icon"></img>
+                                <img src="assets/icons/mail_icon.png" alt="Mail icon"></img>
                                 <h3> Mail us </h3>
                             </div>
                             <div class="section-element-content-row-content">
@@ -162,7 +162,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                     We're here to ensure that your experience with us is as cozy and delightful as our stuffed pals. 
                 </span>
             </div>
-            <form method="post" action="/php_scripts/contactform_sender.php" id="contact-form">
+            <form method="post" action="php_scripts/contactform_sender.php" id="contact-form">
                 <h2> Contact form </h2>
                 <label for="first-name" class="form-field"> 
                     <h3> First name </h3>
@@ -186,13 +186,12 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                 </div>
             </form>
         </section>
-		<?php include 'site_static_parts\newsletter_form.php'; ?>
 	</main>
-	<?php include 'site_static_parts\footer.php'; ?>
-
-    <script src="js_scripts\faq_accordion.js"></script>
+    <?php include 'site_static_parts/newsletter_form.php'; ?>
+	<?php include 'site_static_parts/footer.php'; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js_scripts/newsletter_updater.js"></script>
+    <script src="js_scripts/faq_accordion.js"></script>
     <script src="js_scripts/contactform_updater.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 <head>
     <meta charset="UTF-8">
 
-    <title> Shop all | Stuffed Pals</title>
+    <title>Shop All | Stuffed Pals</title>
     <meta name="description"
         content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords" content="plushies, stuffed animals, stuffed">
@@ -21,7 +21,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bots can index and follow links on site -->
     <meta name="robots" content="index, follow">
-    <link rel="icon" href="img\logo_icon.png" type="img\logo_icon.png">
+    <link rel="icon" href="assets/icons/logo_icon.png" type="assets/icons/logo_icon.png">
     <meta name="theme-color" content="#A066E9">
     <!-- Support for older IE versions -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,13 +48,14 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <main>
         <aside id="filters-section" class="white_background">
             <h3> Filter by:</h3>
+            <!-- FILTERS SECTION -->
             <form id="filters-form" class="section-content">
-                <!-- SORT -->
+                <!-- Sorting options -->
                 <div id="product-sort-section" class="section-content-row">
                     <div class="section-content-row-header">
                         <h4>Products Sorting:</h4>
                     </div>
-                    <div class="section-content-row-description">
+                    <div class="section-content-row-description open">
                         <label> <input type="radio" name="product_sort" value="price_asc"> Price: low to high </label>
                         <label> <input type="radio" name="product_sort" value="price_desc"> Price: high to low </label>
                         <label> <input type="radio" name="product_sort" value="date_newest"> Date: new to old </label>
@@ -63,62 +64,44 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                         <label> <input type="radio" name="product_sort" value="alpha_desc"> Alphabetically: z-a </label>
                     </div>
                 </div>
-                <!-- PRICE -->
+                <!-- Price filter -->
                 <div id="product-price-section" class="section-content-row">
                     <div class="section-content-row-header">
                         <h4>Products Price:</h4>
                     </div>
-                    <div class="section-content-row-description">
+                    <div class="section-content-row-description open">
                         <div class="price-range">
-                            <input type="number" id="price-min" name="price-min" placeholder="min PLN" min="0"
-                                oninput="validity.valid||(value='');">
+                            <input type="number" id="price-min" name="price-min" placeholder="min PLN" min="0" oninput="validity.valid||(value='');">
                             —
-                            <input type="number" id="price-max" name="price-max" placeholder="max PLN" min="0"
-                                oninput="validity.valid||(value='');">
+                            <input type="number" id="price-max" name="price-max" placeholder="max PLN" min="0" oninput="validity.valid||(value='');">
                         </div>
                     </div>
                 </div>
-                <!-- CATEGORY -->
+                <!-- Category filter -->
                 <div id="product-category-section" class="section-content-row">
                     <div class="section-content-row-header">
                         <h4>Products Category:</h4>
                     </div>
-                    <div class="section-content-row-description">
-                        <label><input type="checkbox" name="product_category[]" value="Bases"> Bases</label>
-                        <label><input type="checkbox" name="product_category[]" value="Clothes"> Clothes</label>
-                        <label><input type="checkbox" name="product_category[]" value="Accessories"> Accessories</label>
+                    <div class="section-content-row-description open">
+                        <?php include 'php_scripts/categoryfilter_loader.php'; ?>
                     </div>
                 </div>
-                <button class="hyperlink_button" type="submit"> Apply filters </button>
+                <!-- Clear and apply changes button -->
+                <button class="hyperlink_button" name="clear-filters-button" type="submit"> CLEAR FILTERS </button>
+                <button class="hyperlink_button" name="apply-filters-button" type="submit"> APPLY FILTERS </button>
             </form>
         </aside>
-        <section id="product-section" class="white_background">
-            <?php include 'php_scripts/product_loader.php'; ?> 
-        </section>
+        <!-- PRODUCT LIST -->
+        <article id="product-section" class="white_background">
+            <?php include 'php_scripts/product_loader.php'; ?>
+        </article>
     </main>
-    <?php include 'site_static_parts\footer.php'; ?>
-    <script src="js_scripts\product_filter_accordion.js"></script>
+    <?php include 'site_static_parts/newsletter_form.php'; ?>
+    <?php include 'site_static_parts/footer.php'; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('filters-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                var formData = new FormData(this);
-
-                fetch('php_scripts/product_loader.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(data => {
-                    var productSection = document.getElementById('product-section');
-                    productSection.innerHTML = ''; // Usuń poprzednią zawartość
-                    productSection.innerHTML = data; // Dodaj nową zawartość
-                })
-                .catch(error => console.error('Błąd:', error));
-            });
-        });
-    </script>
+    <script src="js_scripts/newsletter_updater.js"></script>
+    <script src="js_scripts/productfilter_accordion.js"></script>
+    <script src="js_scripts/productlist_updater.js"></script>
 </body>
+
 </html>

@@ -5,7 +5,7 @@
             <h4> STAY UP-TO-DATE WITH STUFFED PALS NEWSLETTER AND OFFERS BY ENTERING YOUR EMAIL. </h4>
         </div>
         <!-- Script used: newsletter_script.php -->
-        <form id="newsletter-form" name="newsletter-form" action="php_scripts/newsletter_sender.php" method="post">
+        <form id="newsletter-form" name="newsletter-form" action="../php_scripts/newsletter_sender.php" method="post">
             <h4>EMAIL ADDRESS</h4>
             <input type="email" id="email" name="email" required placeholder="Email Address" maxlength="100" autocomplete="email">
 
@@ -15,7 +15,7 @@
             </label>
 
             <button class="hyperlink_button" type="submit" name="subscribe">SUBSCRIBE</button>
-            <div class="newsletter-result">
+            <div class="form-result">
                 <h4 id="newsletter-status"></h4>
             </div>
         </form>

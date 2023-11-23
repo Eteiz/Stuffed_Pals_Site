@@ -8,7 +8,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "php_scripts/userlogin_sender.php",
+            url: "../php_scripts/userlogin_sender.php",
             data: data,
             dataType: "json",
             success: function(response) {

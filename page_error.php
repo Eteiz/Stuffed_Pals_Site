@@ -1,8 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged']) || $_SESSION['user_logged'] !== true || $_SESSION['user_login'] == NULL)  {
-    header('Location: ../index.php');
-    exit;
+if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($_SESSION['user_login'])) {
+    $_SESSION['user_logged'] = false;
+
+	$_SESSION['user_id'] = NULL;
+    $_SESSION['user_login'] = NULL;
 }
 ?>
 <!DOCTYPE html>
@@ -10,7 +12,7 @@ if (!isset($_SESSION['user_logged']) || $_SESSION['user_logged'] !== true || $_S
 <head>
     <meta charset="UTF-8">
 
-    <title> Your profile | Stuffed Pals</title>
+    <title> Page not found | Stuffed Pals</title>
     <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords" content="plushies, stuffed animals, stuffed">
     <meta name="author" content="Marta Ambroziak">
@@ -32,20 +34,14 @@ if (!isset($_SESSION['user_logged']) || $_SESSION['user_logged'] !== true || $_S
 	<?php include 'site_static_parts\navbar.php'; ?>
     <header>
         <div class="header-content white_background">
-            <h1>Hello <?php echo htmlspecialchars($_SESSION['user_login'], ENT_QUOTES, 'UTF-8'); ?></h1>
+            <h1> Page not found </h1>
             <h3> 
-                Welcome to your personalized dashboard, where your preferences shape your experience.
+                Sorry, we couldn't find you were looking for ):
             </h3>
         </div>
     </header>
-    <main>
-        <div class="form-section white_background">
-            <form action="php_scripts\userlogout_sender.php" method="post" id="user-logout-form">
-                <button class="hyperlink_button" type="submit" name="logout-button">LOG OUT</button>
-            </form>  
-        </div>
-	</main>
 	<?php include 'site_static_parts\footer.php'; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js_scripts/userlogin_updater.js"></script>
 </body>
 </html>
