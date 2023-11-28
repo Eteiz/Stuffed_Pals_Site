@@ -12,9 +12,9 @@
 			</div>
 			<div class="section-content-col">
 				<h3>SHOP</h3>
-				<h4><a class="hyperlink_text" href="../shop_all.php?selected_category=Bases">PAL BASES</a></h4>
-				<h4><a class="hyperlink_text" href="../shop_all.php?selected_category=Clothes">PAL CLOTHES</a></h4>
-				<h4><a class="hyperlink_text" href="../shop_all.php?selected_category=Accessories">PAL ACCESSORIES</a></h4>
+				<h4><a class="hyperlink_text" href="../shop_all.php?category=Bases">PAL BASES</a></h4>
+				<h4><a class="hyperlink_text" href="../shop_all.php?category=Clothes">PAL CLOTHES</a></h4>
+				<h4><a class="hyperlink_text" href="../shop_all.php?category=Accessories">PAL ACCESSORIES</a></h4>
 			</div>
 			<div class="section-content-col">
 				<h3>ABOUT US</h3>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 23, 2023 at 09:57 PM
+-- Generation Time: Lis 27, 2023 at 07:19 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -20,19 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `stuffedpals_database`
 --
+CREATE DATABASE IF NOT EXISTS `stuffedpals_database` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `stuffedpals_database`;
 
 DELIMITER $$
 --
 -- Procedury
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddProductAndInventory` (IN `_productName` VARCHAR(100), IN `_productDescription` TEXT, IN `_productPrice` DECIMAL(5,2), IN `_productQuantity` INT, IN `_categoryId` INT, IN `_supplierId` INT)   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddProduct` (IN `_productName` VARCHAR(100), IN `_productDescriptionLong` TEXT, IN `_productDescriptionShort` VARCHAR(50), IN `_productPrice` DECIMAL(5,2) UNSIGNED, IN `_productQuantity` INT(11) UNSIGNED, IN `_categoryId` INT(11) UNSIGNED, IN `_supplierId` INT(11) UNSIGNED)   BEGIN
     DECLARE _productId INT;
 
-    -- Dodanie rekordu do tabeli Product
-    INSERT INTO Product (category_id, supplier_id, product_name, product_description, product_price)
-    VALUES (_categoryId, _supplierId, _productName, _productDescription, _productPrice);
+    -- Adding record do Product table
+    INSERT INTO Product (category_id, supplier_id, product_name, product_description_long, product_description_short, product_price)
+    VALUES (_categoryId, _supplierId, _productName, _productDescriptionLong, __productDescriptionShort, _productPrice);
 
-    -- Pobranie ID nowo dodanego produktu
+    -- Using new product ID to create record in Inventory table
     SET _productId = LAST_INSERT_ID();
 
     -- Dodanie rekordu do tabeli Inventory
@@ -40,11 +42,17 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AddProductAndInventory` (IN `_produ
     VALUES (_productId, _productQuantity);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteProductAndInventory` (IN `_productId` INT)   BEGIN
-    -- Usunięcie rekordu z Inventory
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteProduct` (IN `_productId` INT(11) UNSIGNED)   BEGIN
+    -- Deleting record from Inventory
     DELETE FROM Inventory WHERE product_id = _productId;
 
-    -- Usunięcie rekordu z Product
+   -- Deleting records from Product_Image
+   DELETE FROM Product_Image WHERE product_id = _productId;
+
+    -- Deleting records from Review
+    DELETE FROM Review WHERE product_id = _productId;
+
+    -- Deleting record from Product
     DELETE FROM Product WHERE id = _productId;
 END$$
 
@@ -175,24 +183,26 @@ CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Category',
   `supplier_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Supplier',
-  `product_name` varchar(100) NOT NULL,
-  `product_description` text DEFAULT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
+  `product_description_long` text DEFAULT NULL,
+  `product_description_short` varchar(50) DEFAULT NULL,
   `product_price` decimal(5,2) NOT NULL DEFAULT 0.00,
+  `date_added` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`),
   KEY `supplier_id` (`supplier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `category_id`, `supplier_id`, `product_name`, `product_description`, `product_price`) VALUES
-(9, 15, 5, 'Midnight Elegance Booties', 'Step into a world of sophistication with our Midnight Elegance Booties, perfectly tailored for your plushie\'s formal occasions. Crafted with velvety black fabric and detailed stitching, these boots offer both style and comfort.', 45.00),
-(10, 15, 3, 'Clear Vision Plushie Spectacles', 'Enhance your plushie\'s intellect with our Clear Vision Spectacles. Featuring transparent lenses set in a sleek, thin frame, these glasses add a touch of charm to any plush character.', 35.00),
-(11, 13, 2, 'Cocoa Cuddles Bear', 'Meet Cocoa Cuddles, your plushie\'s new best friend! With its soft, chocolate-brown fur and an embrace as warm as hot cocoa, this bear is the perfect snuggle companion for all ages.', 85.00),
-(12, 14, 4, 'Bubblegum Bliss Onesie Set', 'Wrap your plushie in the sweetness of our Bubblegum Bliss Onesie Set. Its vibrant pink color and cozy shorts make it a delightful outfit for your plushie to lounge in style.', 55.00),
-(13, 14, 4, 'Ocean Breeze Onesie Set', 'Dress your plushie in our Ocean Breeze Onesie Set to bring the serenity of the sea to playtime. The calming blue hue and comfortable shorts are ideal for a day of adventure or relaxation.', 55.00);
+INSERT INTO `product` (`id`, `category_id`, `supplier_id`, `product_name`, `product_description_long`, `product_description_short`, `product_price`, `date_added`) VALUES
+(14, 15, 5, 'Midnight Elegance Booties', 'Step into a world of sophistication with our Midnight Elegance Booties, perfectly tailored for your plushie\'s formal occasions. Crafted with velvety black fabric and detailed stitching, these boots offer both style and comfort.', 'Perfectly tailored for your plushie\'s formal occas', 45.00, '2023-11-24 08:48:25'),
+(15, 15, 3, 'Clear Vision Plushie Spectacles', 'Enhance your plushie\'s intellect with our Clear Vision Spectacles. Featuring transparent lenses set in a sleek, thin frame, these glasses add a touch of charm to any plush character.', 'Featuring transparent lenses set in a sleek, thin ', 35.00, '2023-11-24 08:48:25'),
+(16, 13, 2, 'Cocoa Cuddles Bear', 'Meet Cocoa Cuddles, your plushie\'s new best friend! With its soft, chocolate-brown fur and an embrace as warm as hot cocoa, this bear is the perfect snuggle companion for all ages.', 'This bear is the perfect snuggle companion for all', 85.00, '2023-11-24 08:48:25'),
+(17, 14, 4, 'Bubblegum Bliss Onesie Set', 'Wrap your plushie in the sweetness of our Bubblegum Bliss Onesie Set. Its vibrant pink color and cozy shorts make it a delightful outfit for your plushie to lounge in style.', 'Wrap your plushie in the sweetness of this comfort', 55.00, '2023-11-24 08:48:25'),
+(18, 14, 4, 'Ocean Breeze Onesie Set', 'Dress your plushie in our Ocean Breeze Onesie Set to bring the serenity of the sea to playtime. The calming blue hue and comfortable shorts are ideal for a day of adventure or relaxation.', 'The calming blue hue and comfortable shorts are id', 55.00, '2023-11-24 08:48:25');
 
 -- --------------------------------------------------------
 
@@ -213,11 +223,27 @@ CREATE TABLE IF NOT EXISTS `product_image` (
 --
 
 INSERT INTO `product_image` (`id`, `product_id`, `product_image_path`, `image_description`) VALUES
-(1, 9, 'product_images\\plush-accessories\\plush_accessory_11\\boots_1.png', 'Mini black boots on pink background '),
+(1, 14, 'assets\\products\\plush-accessories\\plush_accessory_11\\boots_1.png', 'Mini black boots on pink background '),
 (2, 10, 'product_images\\plush-accessories\\plush_accessory_1.png', 'Mini pair of glasses with transparent lens on pink background'),
 (3, 11, 'product_images\\plush-bases\\bear_base\\bear_1.png', 'Light-brown bear plushie on table'),
 (4, 12, 'product_images\\plush-clothies\\clothes_set_2\\clothes_1.png', 'Mini clothing set for plushie including pink onesie and jeans shorts'),
 (5, 13, 'product_images\\plush-clothies\\clothes_set_1\\clothes_1.jpg', 'Mini clothing set for plushie including light-blue onesie and jeans shorts');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `review`
+--
+
+CREATE TABLE IF NOT EXISTS `review` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Product',
+  `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
+  `description` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `product_id` (`product_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for products reviews';
 
 -- --------------------------------------------------------
 
@@ -351,6 +377,13 @@ ALTER TABLE `payment_method`
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `session`

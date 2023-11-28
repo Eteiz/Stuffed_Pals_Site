@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('filters-form');
-    var productSection = document.getElementById('product-section');
+    var productSection = document.getElementById('products-display-section');
 
     // Function to update product list
     function handleFormSubmit(event) {
         if (event) event.preventDefault();
         var formData = new FormData(form);
 
-        fetch('php_scripts/product_loader.php', {
+        fetch('php_scripts/productdisplay_loader.php', {
             method: 'POST',
             body: formData
         })
@@ -19,18 +19,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener for form submission
-    form.addEventListener('submit', handleFormSubmit);
+    if(form) {
+        form.addEventListener('submit', handleFormSubmit);
+    }
 
     // Event listeners for buttons
-    document.querySelector('button[name="clear-filters-button"]').addEventListener('click', function(e) {
-        form.reset();
-        handleFormSubmit(e);
-    });
-    document.querySelector('button[name="apply-filters-button"]').addEventListener('click', handleFormSubmit);
+    var clearButton = document.querySelector('button[name="filters-clear-button"]');
+    var applyButton = document.querySelector('button[name="filters-apply-button"]');
 
-    // Check if page is loaded with a category filter and apply it immediately
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('selected_category')) {
-        handleFormSubmit();
+    if(clearButton) {
+        clearButton.addEventListener('click', function(e) {
+            form.reset();
+            handleFormSubmit(e);
+        });
     }
+
+    if(applyButton) {
+        applyButton.addEventListener('click', handleFormSubmit);
+    }
+
+    // Immediately load products when the page loads
+    handleFormSubmit();
 });

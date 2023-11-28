@@ -50,7 +50,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
             <!-- FILTERS SECTION -->
             <form id="filters-form" class="section-content">
                 <!-- Sorting options -->
-                <div id="product-sort-section" class="section-content-row">
+                <div id="filters-sort-section" class="section-content-row">
                     <div class="section-content-row-header">
                         <h4>Products Sorting:</h4>
                     </div>
@@ -64,7 +64,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                     </div>
                 </div>
                 <!-- Price filter -->
-                <div id="product-price-section" class="section-content-row">
+                <div id="filters-price-section" class="section-content-row">
                     <div class="section-content-row-header">
                         <h4>Products Price:</h4>
                     </div>
@@ -77,7 +77,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                     </div>
                 </div>
                 <!-- Category filter -->
-                <div id="product-category-section" class="section-content-row">
+                <div id="filters-category-section" class="section-content-row">
                     <div class="section-content-row-header">
                         <h4>Products Category:</h4>
                     </div>
@@ -86,14 +86,14 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                     </div>
                 </div>
                 <!-- Clear and apply changes button -->
-                <button class="hyperlink_button" name="clear-filters-button" type="submit"> CLEAR FILTERS </button>
-                <button class="hyperlink_button" name="apply-filters-button" type="submit"> APPLY FILTERS </button>
+                <button class="hyperlink_button" name="filters-clear-button" type="submit"> CLEAR FILTERS </button>
+                <button class="hyperlink_button" name="filters-apply-button" type="submit"> APPLY FILTERS </button>
             </form>
         </aside>
         <!-- PRODUCT LIST -->
-        <article id="product-section" class="white_background">
-            <div id="loading-animation" class="dots-5" style="display: none;"></div>
-            <?php include 'php_scripts/product_loader.php'; ?>
+        <article id="products-display-section" class="white_background">
+            <!-- <div id="loading-animation" class="dots-5" style="display: none;"></div> -->
+            <!-- product_loader.php -->
         </article>
     </main>
     <?php include 'site_static_parts/newsletter_form.php'; ?>

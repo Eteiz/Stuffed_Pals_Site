@@ -1,7 +1,7 @@
 <?php            
     require_once 'db_connect.php';
 
-    $selectedCategory = isset($_GET['selected_category']) ? $_GET['selected_category'] : null;
+    $selectedCategory = isset($_GET['category']) ? $_GET['category'] : null;
 
     $query = "SELECT Category.id, Category.category_name, COUNT(Product.id) AS product_count 
               FROM Category 
