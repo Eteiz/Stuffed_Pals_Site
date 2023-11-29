@@ -38,60 +38,9 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 <body id="product-page">
     <?php include 'site_static_parts\navbar.php'; ?>
     <main>
-        <div class="container">
-            <div class="big-images-displayer">
-                <div class="big-images-slider">
-                    <img src="assets\products\plush-accessories\plush_accessory_1.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_2.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_3.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_4.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_5.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_1.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_2.png">
-                </div>
-            </div>
-            <div class="small-images-displayer">
-                <div class="small-images-picker">
-                    <img src="assets\products\plush-accessories\plush_accessory_1.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_2.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_3.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_4.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_5.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_1.png">
-                    <img src="assets\products\plush-accessories\plush_accessory_2.png">
-                </div>
-            </div>
+        <div id="product-section" class="white_background">
+            <?php include 'php_scripts/product_loader.php'; ?>
         </div>
-        <!-- <div id="product-section" class="white_background">
-            <div class="section-image-display"> 
-                <img src="assets\products\plush-bases\cat_base\cat_1.PNG"></img>
-            </div>
-            <div class="section-content">
-                <div class="section-content-description">
-                    <div class="section-review"><h4>There will be a star grade section</h4></div>
-                    <h1> Product's name </h1>
-                    <h3>In Stock: 6</h3>
-                    <h2> 32.00 PLN </h2>
-                    <div class="product-description">
-                        <h4>Product's description</h4>
-                        <span>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                        </span>
-                    </div>
-                </div>
-                <div class="section-content-action">
-                    <div class="quantity-button">
-                        <button id="decrease-quantity-button" class="hyperlink_button_reverse">-</button>
-                        <input type="number" id="product-quantity" class="transparent_background" value="1" min="1" max="10" readonly>
-                        <button id="increase-quantity-button" class="hyperlink_button_reverse">+</button>
-                    </div>
-                    <button class="hyperlink_button">ADD TO CART</button>
-                </div>
-            </div>
-        </div> -->
     </main>
     <?php include 'site_static_parts/newsletter_form.php'; ?>
     <?php include 'site_static_parts/footer.php'; ?>
@@ -101,5 +50,4 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <script src="js_scripts/product_slider.js"></script>
 
 </body>
-
 </html>

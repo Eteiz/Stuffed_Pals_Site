@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var displayer = document.querySelector('.small-images-displayer');
-    var picker = document.querySelector('.small-images-picker');
-    var bigSlider = document.querySelector('.big-images-slider');
+    var displayer = document.querySelector('.icon-image-displayer');
+    var picker = document.querySelector('.icon-image-slider');
+    var bigSlider = document.querySelector('.main-image-slider');
     var isDown = false;
     var startX;
     var scrollLeft;
@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 bigSlider.style.transform = 'translateX(' + (-index * 550) + 'px)';
                 
                 for (var j = 0; j < smallImages.length; j++) {
-                    smallImages[j].classList.remove('image_focused');
+                    smallImages[j].classList.remove('icon-focused');
                     smallImages[j].style.opacity = 0.5;
                 }
-                this.classList.add('image_focused');
+                this.classList.add('icon-focused');
                 this.style.opacity = 1; 
             });
         })(i);

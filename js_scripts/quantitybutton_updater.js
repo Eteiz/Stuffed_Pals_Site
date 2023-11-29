@@ -2,8 +2,8 @@ const decreaseButton = document.getElementById('decrease-quantity-button');
   const increaseButton = document.getElementById('increase-quantity-button');
   const numberInput = document.getElementById('product-quantity');
 
-  const min = 1;
-  const max = 10; 
+  const min = parseInt(numberInput.min);
+  const max = parseInt(numberInput.max);
 
   decreaseButton.addEventListener('click', function() {
     let currentValue = parseInt(numberInput.value, 10);
