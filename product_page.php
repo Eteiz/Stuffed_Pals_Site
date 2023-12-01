@@ -39,8 +39,55 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <?php include 'site_static_parts\navbar.php'; ?>
     <main>
         <div id="product-section" class="white_background">
-            <?php include 'php_scripts/product_loader.php'; ?>
-        </div>
+            <!-- <div class="section-image-display">
+                <div class="main-image-displayer">
+                    <div class="main-image-slider" style="width: 550px; transform: translateX(0px);">
+                        <img src="assets\products\plush-accessories\plush_accessory_11\boots_1.png"
+                            alt="Mini black boots on pink background ">
+                    </div>
+                </div>
+                <div class="icon-image-displayer">
+                    <div class="icon-image-slider" style="width: 110px;">
+                        <img src="assets\products\plush-accessories\plush_accessory_11\boots_1.png"
+                            alt="Mini black boots on pink background " class="icon-focused" style="opacity: 1;">
+                    </div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="section-content-description">
+                    <h3>Supplier's name</h3>
+                    <h1>Midnight Elegance Booties</h1>
+                    <h4>
+                        Step into a world of sophistication with our Midnight Elegance Booties, perfectly tailored
+                        for your plushie's formal occasions. Crafted with velvety black fabric and detailed
+                        stitching, these boots offer both style and comfort.
+                    </h4>
+                    <ul>
+                        <li>The materials used for crafting are safe for the environment</li>
+                        <li>Tailored to meet individual preferences</li>
+                        <li>Designed with meticulous attention to detail and to ensure durability</li>
+                    </ul>
+                </div>
+                <div class="section-content-action">
+                    <div class="section-content-action-description">
+                        <div class="review-section">
+                            There will be review section
+                        </div>
+                        <h2>80.00 PLN</h2>
+                    </div>
+                    <div class="section-content-action-buttons">
+                        <div class="quantity-button"><button id="decrease-quantity-button"
+                                class="hyperlink_button_reverse" disabled="">-</button>
+                            <input type="number" id="product-quantity" class="transparent_background" value="0" min="0"
+                                max="0" readonly="">
+                            <button id="increase-quantity-button" class="hyperlink_button_reverse"
+                                disabled="">+</button>
+                        </div>
+                        <button class="hyperlink_button" type="sumbit" disabled="">OUT OF STOCK</button>
+                    </div>
+                </div> -->
+                <?php include 'php_scripts/product_loader.php'; ?>
+            </div>
     </main>
     <?php include 'site_static_parts/newsletter_form.php'; ?>
     <?php include 'site_static_parts/footer.php'; ?>
@@ -50,4 +97,5 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <script src="js_scripts/product_slider.js"></script>
 
 </body>
+
 </html>

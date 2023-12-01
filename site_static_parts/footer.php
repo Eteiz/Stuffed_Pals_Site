@@ -12,9 +12,9 @@
 			</div>
 			<div class="section-content-col">
 				<h3>SHOP</h3>
-				<h4><a class="hyperlink_text" href="../shop_all.php?category=Bases">PAL BASES</a></h4>
-				<h4><a class="hyperlink_text" href="../shop_all.php?category=Clothes">PAL CLOTHES</a></h4>
-				<h4><a class="hyperlink_text" href="../shop_all.php?category=Accessories">PAL ACCESSORIES</a></h4>
+				<h4><a class="hyperlink_text" href="../shop.php?category=Bases">PAL BASES</a></h4>
+				<h4><a class="hyperlink_text" href="../shop.php?category=Clothes">PAL CLOTHES</a></h4>
+				<h4><a class="hyperlink_text" href="../shop.php?category=Accessories">PAL ACCESSORIES</a></h4>
 			</div>
 			<div class="section-content-col">
 				<h3>ABOUT US</h3>
@@ -33,4 +33,4 @@
 			<h3>©2023, Marta Ambroziak</h3>
 			<h4><a class="hyperlink_text" href="../#PRIVACY_POLICY">PRIVACY POLICY</a></h4>
 		</div>
-	</footer>
+</footer>

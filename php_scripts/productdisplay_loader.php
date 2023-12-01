@@ -15,6 +15,7 @@
         Product.date_added,
         Product.product_description_short as product_description, 
         Category.category_name,
+        Inventory.product_quantity as quantity,
         (SELECT Product_Image.product_image_path 
         FROM Product_Image 
         WHERE Product_Image.product_id = Product.id LIMIT 1) as image_path,
@@ -22,7 +23,8 @@
         FROM Product_Image 
         WHERE Product_Image.product_id = Product.id LIMIT 1) as image_description
     FROM Product 
-    JOIN Category ON Product.category_id = Category.id";
+    JOIN Category ON Product.category_id = Category.id
+    LEFT JOIN Inventory ON Product.id = Inventory.product_id";
                 
     $whereClauses = [];
     $orderClause = "";
@@ -126,7 +128,12 @@
             echo "</div>";
             echo "<div class='product-action'>";
             echo "<h4>" . htmlspecialchars($row['product_price']) . " PLN </h4>";
-            echo "<button class='hyperlink_button' onclick='location.href=\"product_page.php?product=" . htmlspecialchars($row['product_id']) . "\"'>ADD TO CART</button>";
+            if($row['quantity'] <= 0 || empty($row['quantity'])) {
+                echo "<button class='hyperlink_button_inactive'>OUT OF STOCK</button>";
+            }
+            else {
+                echo "<button class='hyperlink_button' onclick='location.href=\"product_page.php?product=" . htmlspecialchars($row['product_id']) . "\"'>ADD TO CART</button>";
+            }
             echo "</div>";
             echo "</div>";
             $count++;

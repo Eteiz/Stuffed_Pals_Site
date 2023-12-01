@@ -45,7 +45,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 					</div>
     			</div>
 				<h3> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h3>
-				<a class="hyperlink_button" href="shop_all.php"> Start now </a>
+				<a class="hyperlink_button" href="shop.php"> Start now </a>
 			</div>
 		</section>
 		<section class="presentation_section white_background">
@@ -108,15 +108,15 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 			<div class="category_section_categories">
 				<div class="category_section_categories_element white_background" style="background-color: #FF638B;">
 					<img src="assets/plush_2.png" alt="Choncc plushie image">
-					<a class="hyperlink_button" href="shop_all.php?category=Bases"> PAL BASES </a>
+					<a class="hyperlink_button" href="shop.php?category=Bases"> PAL BASES </a>
 				</div>
 				<div class="category_section_categories_element white_background" style="background-color: #FFE2DD;">
 					<img src="assets/plush_1.png" alt="Gromp image">
-					<a class="hyperlink_button" href="shop_all.php?category=Clothes"> PAL CLOTHES </a>
+					<a class="hyperlink_button" href="shop.php?category=Clothes"> PAL CLOTHES </a>
 				</div>
 				<div class="category_section_categories_element white_background" style="background-color: #319799;">
 					<img src="assets/plush_3.png" alt="Scuttle image">
-					<a class="hyperlink_button" href="shop_all.php?category=Accessories"> PAL ACCESORIES </a>
+					<a class="hyperlink_button" href="shop.php?category=Accessories"> PAL ACCESORIES </a>
 				</div>
 			</div>
 			<a class="hyperlink_button" href="shop_all.php"> ALL PRODUCTS </a>

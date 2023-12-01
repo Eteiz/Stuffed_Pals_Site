@@ -1,6 +1,6 @@
 <nav class="white_background">
 		<div id="links-section" class="section-content-col">
-			<a class="hyperlink_text" href="../shop_all.php">Shop</a>
+			<a class="hyperlink_text" href="../shop.php">Shop</a>
 			<a class="hyperlink_text" href="../about_us.php">About</a>
 			<a class="hyperlink_text" href="../customer_service.php">Help</a>
 		</div>

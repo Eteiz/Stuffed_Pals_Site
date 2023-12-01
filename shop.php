@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 <head>
     <meta charset="UTF-8">
 
-    <title>Shop All | Stuffed Pals</title>
+    <title>Shop | Stuffed Pals</title>
     <meta name="description" content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords" content="Custom Plush Toys, Personalized Teddy Bears, Unique Plush Gifts, Design Your Own Stuffed Animal, Plush Animal Accessories, Special Occasion Plushies">
     <meta name="author" content="Marta Ambroziak">
@@ -39,8 +39,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
         <div class="header-content white_background">
             <h1> Our Shop </h1>
             <h3>
-                Everything you need is here! From plush bases to accessories, you'll find the perfect solution for a
-                stuffed companion.
+                Everything you need is here! From plush bases to accessories, you'll find the perfect solution for a stuffed companion.
             </h3>
         </div>
     </header>
@@ -103,5 +102,4 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <script src="js_scripts/productfilter_accordion.js"></script>
     <script src="js_scripts/productlist_updater.js"></script>
 </body>
-
 </html>
