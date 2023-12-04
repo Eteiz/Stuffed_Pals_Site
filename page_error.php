@@ -32,11 +32,11 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 </head>
 <body>
 	<?php include 'site_static_parts\navbar.php'; ?>
-    <header>
-        <div class="header-content white_background">
+    <header class="image-background">
+        <div class="header-content white_background default-box-shadow">
             <h1> Page not found </h1>
             <h3> 
-                Sorry, we couldn't find you were looking for ):
+                Sorry, we couldn't find the page you were looking for ):
             </h3>
         </div>
     </header>

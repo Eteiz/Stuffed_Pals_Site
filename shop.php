@@ -35,8 +35,8 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 
 <body id="shop-all-page">
     <?php include 'site_static_parts\navbar.php'; ?>
-    <header>
-        <div class="header-content white_background">
+    <header class="image-background">
+        <div class="header-content white_background default-box-shadow">
             <h1> Our Shop </h1>
             <h3>
                 Everything you need is here! From plush bases to accessories, you'll find the perfect solution for a stuffed companion.
@@ -92,7 +92,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
         <!-- PRODUCT LIST -->
         <article id="products-display-section" class="white_background">
             <!-- <div id="loading-animation" class="dots-5" style="display: none;"></div> -->
-            <!-- product_loader.php -->
+            <!-- productdisplay_loader.php -->
         </article>
     </main>
     <?php include 'site_static_parts/newsletter_form.php'; ?>

@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 <body class="index_page">
 	<?php include 'site_static_parts/navbar.php'; ?>
     <main>
-		<section class="titular_section">
+		<section class="titular_section image-background">
 			<div class="titular_section_card white_background">
 				<h1> The way you </h1>
 				<div class="text_slider">

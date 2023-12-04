@@ -32,8 +32,8 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 </head>
 <body>
 	<?php include 'site_static_parts\navbar.php'; ?>
-    <header>
-        <div class="header-content white_background">
+    <header class="image-background">
+        <div class="header-content white_background default-box-shadow">
             <h1> Customer Service </h1>
             <h3> Your satisfaction is our priority—reach out to us with any questions or for support, 
                 and we'll ensure you find all the answers and assistance you need. 
@@ -43,8 +43,8 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
     <main>
         <section id="contact-section" class="default_gradient_background">
             <div class="section-container">
-                <img src="assets/plush_3.png" src="Scuttle Plush"></img>
-                <div class="section-element white_background">
+                <img src="../assets/Customer-service.png" src="Collab of photos from our customers"></img>
+                <div class="section-element white_background hover-box-shadow">
                     <div class="section-element-header">
                         <h1><u>Contact us</u></h1>
                         <span> We value your feedback, questions, and comments. 
@@ -83,7 +83,6 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
                 </div>
             </div>
         </section>
-
         <section id="faq-section" class="white_background">
             <div class="section-header">
                 <h1> Frequently Asked Questions </img></h1>
@@ -153,7 +152,7 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
             </div>
         </section>
 
-        <section class="form-section white_background">
+        <section id="contact-form-section" class="form-section white_background">
             <div class="section-header">
                 <h1> Or ask here... </h1>
                 <span> 

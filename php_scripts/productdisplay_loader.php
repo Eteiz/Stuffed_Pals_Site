@@ -110,7 +110,7 @@
                 echo $count > 0 ? "</div>" : ""; 
                 echo "<div class='product-row'>";
             }
-            echo "<div class='product white_background'>";
+            echo "<div class='product white_background hover-box-shadow'>";
             echo "<a href='product_page.php?product=" . htmlspecialchars($row['product_id']) . "'>";
             
             $imagePath = '../' . $row['image_path'];

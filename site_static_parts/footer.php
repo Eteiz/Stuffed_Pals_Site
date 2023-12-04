@@ -1,7 +1,7 @@
 <footer class="white_background">
 		<div class="section-content">
 			<div class="section-content-header">
-				<a class="hyperlink_logo" href="../index.php">
+				<a class="hyperlink_icon" href="../index.php">
 					<img src="../assets/StuffedPals_Logo.png" alt = "Stuffed Pals logo"></img>
 				</a>
 				<h4>
@@ -19,15 +19,14 @@
 			<div class="section-content-col">
 				<h3>ABOUT US</h3>
 				<h4><a class="hyperlink_text" href="../about_us.php#who-we-are-section">WHO WE ARE</a></h4>
-				<h4><a class="hyperlink_text" href="../about_us.php#our-mission-section">OUR MISSION</a></h4>
 				<h4><a class="hyperlink_text" href="../about_us.php#our-team-section">OUR TEAM</a></h4>
 			</div>
 			<div class="section-content-col">
 				<h3>CUSTOMER SERVICE</h3>
-				<h4><a class="hyperlink_text" href="../customer_service.php#contact-section">CONTACT</a></h4>
+				<h4><a class="hyperlink_text" href="../customer_service.php#contact-section">CONTACT INFO</a></h4>
 				<h4><a class="hyperlink_text" href="../customer_service.php#faq-section">FAQ</a></h4>
+				<h4><a class="hyperlink_text" href="../customer_service.php#contact-form-section">CONTACT FORM</a></h4>
 			</div>
-			
 		</div>
 		<div class="section-footer">
 			<h3>©2023, Marta Ambroziak</h3>

@@ -3,6 +3,7 @@
     --white-background-color: #fcfcff;
 
     --default-color: #201236;
+    --shadow-color: #20123673;
 
     --primary-color: #6855E7;
     --secondary-color: #4F40AE;
@@ -82,11 +83,6 @@ header {
     margin: auto;
     padding-top: 280px;
     padding-bottom: 200px;
-
-    background-image: url('../assets/stuffedpals_background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .header-content {
@@ -95,8 +91,6 @@ header {
     padding-bottom: 40px;
     margin-right: 10px;
     margin-left: 10px;
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 
     text-align: center;
 }
@@ -124,6 +118,7 @@ img {
     display: block; 
     object-fit: cover;
     border-radius: 7px;
+
 }
 
 ul {
@@ -212,10 +207,26 @@ label[for='password-field'] img {
 .white_background { background-color: var(--white-background-color); }
 .default_gradient_background { background: linear-gradient(to bottom, var(--gradient-light-color), var(--gradient-dark-color)); }
 .transparent_background { background:rgba(0, 0, 0, 0);}
+.image-background {
+    background-image: url('../assets/stuffedpals_background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.default-box-shadow, .hover-box-shadow {
+    box-shadow: 0px 4px 8px var(--shadow-color);
+}
+.hover-box-shadow {
+    transition: transform 0.5s ease-out, box-shadow 0.3s ease-in-out; 
+}
+.hover-box-shadow:hover {
+    box-shadow: 0px 10px 8px var(--shadow-color);
+    transform: translateY(-5px); 
+}
 
 /* HYPERLINKS */
 .hyperlink_text, .hyperlink_text:visited,
-.hyperlink_logo, .hyperlink_logo:visited,
 .hyperlink_icon, .hyperlink_icon:visited {
     position: relative;
 
@@ -252,7 +263,6 @@ label[for='password-field'] img {
 .hyperlink_text::before { width: 0%; }
 .hyperlink_text:hover::before { width: 100%; }
 
-.hyperlink_logo:hover { opacity: 0.9; }
 .hyperlink_icon:hover { opacity: 0.5; }
 
 /* Default color button */
@@ -368,7 +378,6 @@ label[for='password-field'] img {
     color: var(--action-color-disabled);
     border: 2px solid var(--action-color-disabled);
 }
-
 /* ==================== NAVBAR ==================== */
 nav, 
 nav .section-content-col {
@@ -408,11 +417,6 @@ nav .section-content-col {
 /*  TITULAR SECTION  */
 .index_page .titular_section {
     height: 860px;
-
-    background-image: url('../assets/stuffedpals_background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .index_page .titular_section,
@@ -465,7 +469,6 @@ nav .section-content-col {
     border-bottom: 5px solid var(--default-color); 
 
     line-height: 45px;
-
 }
 
 @keyframes text-animation {
@@ -623,121 +626,118 @@ nav .section-content-col {
 }
 
 /* ==================== ABOUT_US.PHP ==================== */
-/* WHO-WE-ARE-SECTION */
 #who-we-are-section,
-#who-we-are-section .section-content-container {
-    display: flex;
+#our-ethos-section,
+#our-ethos-section .section-card,
+#our-team-section,
+#our-team-section .section-image-display-element,
+#our-team-section .section-social-media  {
+    display:flex;
     justify-content: center;
     align-items: center; 
 }
-
-#who-we-are-section {
-    flex-direction: column;
-    gap: 40px;
-    padding-top: 30px;
+#who-we-are-section,
+#our-ethos-section {
+    padding-top: 50px;
     padding-bottom: 50px;
 }
 
-#who-we-are-section .section-header img {
-    height: 100px;
-}
-
-#who-we-are-section .section-content-container {
-    gap: 30px;
-    width: 1200px;
-}
-#who-we-are-section .section-content-container img {
-    width: 350px;
-    height: 350px;
-}
-
-/* OUR-MISSION-SECTION */
-#our-mission-section,
-#our-mission-section .section-content,
-#our-mission-section .section-content-row {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-}
-#our-mission-section {
-    flex-direction: column;
-    gap: 30px;
-    padding-top: 30px;
-    padding-bottom: 40px;
-}
-
-#our-mission-section .section-content {
-    align-items:baseline;
+/* Who we are section */
+#who-we-are-section {
     gap: 50px;
 }
-#our-mission-section .section-content-row {
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 380px;
-    padding: 15px 10px 5px 10px;
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-
-    text-align: center;
-
-    transition: transform 0.5s ease-out, box-shadow 0.3s ease-in-out;
+#who-we-are-section img {
+    width:550px;
 }
-#our-mission-section .section-content-row span {
-    height: 240px;
-}
-#our-mission-section .section-content-row img {
-    width: 64px;
-    margin: 15px;
+#who-we-are-section .section-description {
+    width: 640px;
 }
 
-#our-mission-section .section-content-row:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-
-    transform: translateY(-10px); 
-}
-
-/* OUR-TEAM-SECTION */
-#our-team-section,
-#our-team-section-slider .section-slider-element,
-#our-team-section #our-team-section-slider {
-    display: flex;
-    align-items: center;
-}
-
-#our-team-section {
-    flex-direction: column;
-    padding-top: 40px;
-    padding-bottom: 40px;
+/* Our ethos section */
+#our-ethos-section {
+    flex-direction: row;
     gap: 30px;
 }
+#our-ethos-section .section-card {
+    flex-direction: column;
+    gap: 10px;
+    width: 360px;
+    height: 400px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 15px;
 
-#our-team-section .section-containter {
-    overflow: hidden;
-    width: 1000px;
+    text-align: center;
 }
 
-#our-team-section #our-team-section-slider {
-    position: relative;
+#our-ethos-section .section-card h2 {
+    height: 40px;
+}
+#our-ethos-section .section-card span {
+    height: 160px;
+}
+#our-ethos-section .section-card img {
+    width: 85px;
+    height: 85px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
-    width: 3000px;
+/* Our team section */
+#our-team-section {
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#our-team-section .section-image-display {
+    width: 865px;
+    height: 350px;
+    overflow: hidden;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+#our-team-slider {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 2595px;
+    height: 350px;
 
     transition: 0.5s ease-in;
 }
-
-#our-team-section-slider .section-slider-element {
-    gap: 25px;
-    width: 1000px;
+#our-team-section .section-image-display-element {
+    gap: 15px;
 }
-
-#our-team-section-slider .section-slider-element img {
+#our-team-section .section-image-display-element {
+    width: 865px;
+}
+#our-team-section .section-image-display-element img {
     width: 350px;
     height: 350px;
-    border-radius: 50%;
+    border-radius: 360px;
 }
-
-#our-team-section .slider-button {
-    width: 20px;
-    height: 20px;
+#our-team-section .section-image-display-element-description {
+    width: 500px;
+}
+#our-team-section .section-social-media {
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+#our-team-section .section-social-media a,
+#our-team-section .section-social-media img {
+    width: 42px;
+    height: 42px;
+}
+#our-team-section .section-image-display-buttons {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#our-team-section .section-image-display-buttons .image-display-button {
+    width: 25px;
+    height: 25px;
     border-radius: 20px;
     margin: 5px;
     border: none;
@@ -747,10 +747,10 @@ nav .section-content-col {
     cursor: pointer;
     transition: 0.25s ease-in;
 }
-#our-team-section .slider-button:hover {
+#our-team-section .section-image-display-buttons .image-display-button:hover {
     background-color: var(--action-color-hover);
 }
-#our-team-section .slider-button-active {
+#our-team-section .section-image-display-buttons .image-display-button-active {
     width: 45px;
 }
 
@@ -765,12 +765,9 @@ nav .section-content-col {
     align-items: center;
 }
 #contact-section .section-container {
-    gap: 100px;
+    gap: 50px;
     padding-top: 40px;
     padding-bottom: 40px;
-}
-#contact-section .section-container img {
-    height: 350px;
 }
 
 #contact-section .section-element {
@@ -780,8 +777,7 @@ nav .section-content-col {
     width: 900px;
     padding-top: 30px;
     padding-bottom: 30px;
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 15px;
 }
 
 #contact-section .section-element-header {
@@ -983,23 +979,12 @@ nav .section-content-col {
     align-items: flex-end;
     gap: 30px;
 }
-#products-display-section .product {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-
-    transition: transform 0.5s ease-out, box-shadow 0.3s ease-in-out; 
-}
 #products-display-section .product,
 #products-display-section .product img {
     width: 300px;
 }
 #products-display-section .product img {
     height: 300px;
-}
-
-#products-display-section .product:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-
-    transform: translateY(-10px); 
 }
 #products-display-section .product img {
     overflow: hidden;
@@ -1037,7 +1022,6 @@ nav .section-content-col {
 #products-display-section .hyperlink_button_inactive {
     font-size: 18px;
 }
-
 
 .dots-5 {
     width: 15px;
@@ -1220,11 +1204,6 @@ nav .section-content-col {
     padding-top: 100px;
     padding-bottom: 100px;
     margin: auto;
-
-    background-image: url('../assets/stuffedpals_background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 #newsletter .section-container {
@@ -1232,8 +1211,6 @@ nav .section-content-col {
     width: 800px;
     padding-top: 30px;
     padding-bottom: 30px;
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 #newsletter .section-header {
     align-items: flex-start;

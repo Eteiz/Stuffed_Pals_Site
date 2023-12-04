@@ -5,8 +5,8 @@
 			<a class="hyperlink_text" href="../customer_service.php">Help</a>
 		</div>
 		<div id="logo-section" class="section-content-col">
-			<a class="hyperlink_logo" href="../index.php">
-				<img src="../assets/StuffedPals_Logo.png" alt = "Stuffed Pals logo"></img>
+			<a href="../index.php">
+				<img class="hyperlink_icon" src="../assets/StuffedPals_Logo.png" alt = "Stuffed Pals logo"></img>
 			</a>
 		</div>
 		<div id="user-section" class="section-content-col">

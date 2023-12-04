@@ -32,8 +32,8 @@ if (!isset($_SESSION['user_logged']) && !isset($_SESSION['user_id']) && !isset($
 </head>
 <body>
 	<?php include '../site_static_parts\navbar.php'; ?>
-    <header>
-        <div class="header-content white_background">
+    <header class="image-background">
+        <div class="header-content white_background default-box-shadow">
             <h1> Sign in </h1>
             <h3> 
                 Welcome back! Sign in to access your personalized settings and curated content.
