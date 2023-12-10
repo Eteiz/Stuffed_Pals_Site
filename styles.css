@@ -871,88 +871,53 @@ nav .section-content-col {
 /* ==================== SHOP.PHP ==================== */
 #shop-all-page main {
     display: flex;
-}
-#shop-all-page aside {
-    width: 20%;
-}
-#shop-all-page article {
-    width: 80%;
+    justify-content: center;
+    gap: 60px;
 }
 #shop-all-page main h3 {
     font-size: 25px;
     color: var(--primary-color);
 }
 
-#filters-section, 
+#filters-form, 
 #products-display-section {
     padding-top: 30px;
     padding-bottom: 30px;
 }
-
-/* FILETRS-SECTION */
-#filters-section,
-#filters-section .section-content-row-header,
-#filters-section .section-content-row-description,
-#filters-price-section .price-range  {
-    display: flex;
-}
-#filters-section,
-#filters-section .section-content-row-description {
-    flex-direction: column;
-}
-
-#filters-section {
-    padding-right: 15px;
-    padding-left: 15px;
-    border-right: 1.5px solid var(--tertiary-color);
-}
-
-#filters-section .section-content-row-header {
-    align-items: center;
-    justify-content: space-between;
-
-    cursor: pointer;
-}
-#filters-section .section-content-row-header:after {
-    content: '\02795';
-    font-size: 10px;
-}
-#filters-section .active-filter:after {
-    content: "\2796";
-}
-#filters-section .section-content-row-description {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in, opacity 0.5s ease-in, padding-top 0.5s ease-in, padding-bottom 0.5s ease-in;
-    padding-bottom: 0px;
-}
-#filters-section .section-content-row-description.open {
-    max-height: 1000px;
-    opacity: 1;
-    padding-bottom: 10px;
-}
-#filters-section h3,
 #filters-form {
     width: 300px;
-    margin-right: auto;
-    margin-left: auto;
 }
-#filters-form .hyperlink_button {
-    width: 100%;
-    height: 30px;
-    font-size: 14px;
+#products-display-section {
+    min-width: 1300px;
 }
-#filters-price-section .price-range {
-    justify-content: center;
-    align-items: center;
+
+#filters-form,
+#filters-section,
+#filters-section .section-content-row-element,
+#filters-section .section-content-row-description {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+#filters-section,
+#filters-section .section-content-row-description {
     gap: 5px;
 }
-#filters-price-section .price-range input {
+#price-filter .price-range input {
     width: 100px;
     height: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+#filters-form .hyperlink_button {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0px 0px 0px;
+
+    font-size: 16px;
 }
 
 /* PRODUCT-SECTION */
@@ -964,6 +929,10 @@ nav .section-content-col {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+#products-display-section {
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 #products-display-section,
@@ -1188,7 +1157,7 @@ nav .section-content-col {
     width: 70%;
     margin-bottom: 0px;
 }
-
+/* ==================== USER_PROFILE.PHP ==================== */
 
 /* ==================== NEWSLETTER ==================== */
 #newsletter, 
