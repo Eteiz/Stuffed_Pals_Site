@@ -82,7 +82,7 @@ if (isset($_GET["product"])) {
                         </div>
                         <h2>80.00 PLN</h2>
                     </div>
-                    <div class="section-content-action-buttons">
+                    <form class="section-content-action-buttons">
                         <div class="quantity-button"><button id="decrease-quantity-button"
                                 class="hyperlink_button_reverse" disabled="">-</button>
                             <input type="number" id="product-quantity" class="transparent_background" value="0" min="0"
@@ -91,7 +91,7 @@ if (isset($_GET["product"])) {
                                 disabled="">+</button>
                         </div>
                         <button class="hyperlink_button" type="sumbit" disabled="">OUT OF STOCK</button>
-                    </div>
+                    </form>
                 </div> -->
                 <?php include "product_loader.php"; ?>
             </div>
@@ -102,5 +102,6 @@ if (isset($_GET["product"])) {
     <script src="quantitybutton_updater.js"></script>
     <script src="../newsletter/newsletter_updater.js"></script>
     <script src="product_slider.js"></script>
+    <script src="add_to_cart_updater.js"></script>
 </body>
 </html>

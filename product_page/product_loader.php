@@ -62,21 +62,25 @@
             echo "</div>";
             echo "<h2>" . htmlspecialchars($info["product_price"]) . " PLN </h2>";
         echo "</div>";
-        echo "<div class='section-content-action-buttons'>";
+        echo "<form id='add-to-cart-form' action='../product_page/add_to_cart.php' method='post' class='section-content-action-buttons'>";
             echo "<div class='quantity-button'>";
                 if($notEmptyInventory) {
-                    echo "<button id='decrease-quantity-button' class='hyperlink_button_reverse' type='submit'>-</button>";
-                    echo "<input type='number' id='product-quantity' class='transparent_background' value='1' min='1' max='" . htmlspecialchars($info["quantity"]) . "' readonly>";
-                    echo "<button id='increase-quantity-button' class='hyperlink_button_reverse' type='submit'>+</button>";
+                    echo "<button type='button' id='decrease-quantity-button' class='hyperlink_button_reverse'>-</button>";
+                    echo "<input type='number' name='quantity' id='product-quantity' class='transparent_background' value='1' min='1' max='" . htmlspecialchars($info["quantity"]) . "' readonly>";
+                    echo "<button type='button' id='increase-quantity-button' class='hyperlink_button_reverse'>+</button>";
                     echo "</div>";
-                    echo "<button class='hyperlink_button' type='sumbit'>ADD TO CART</button>";
+                    echo "<input type='hidden' name='product_id' value='" . $productId . "'>";
+                    echo "<button name='add-to-cart-button' class='hyperlink_button' type='submit'>ADD TO CART</button>";
                 } else {
-                    echo "<button id='decrease-quantity-button' class='hyperlink_button_reverse_inactive' disabled>-</button>";
+                    echo "<button type='button' id='decrease-quantity-button' class='hyperlink_button_reverse_inactive' disabled>-</button>";
                     echo "<input type='number' id='product-quantity' class='transparent_background' value='0' min='0' max='0' readonly style='border-color: var(--action-color-disabled);'>";
-                    echo "<button id='increase-quantity-button' class='hyperlink_button_reverse_inactive' disabled>+</button>";
+                    echo "<button type='button' id='increase-quantity-button' class='hyperlink_button_reverse_inactive' disabled>+</button>";
                     echo "</div>";
-                    echo "<button class='hyperlink_button_inactive' type='sumbit' disabled>OUT OF STOCK</button>";
+                    echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' disabled>OUT OF STOCK</button>";
                 }
+            echo "</form>";
+            echo "<div class='form-result'>";
+                    echo "<h4 id='add-product-form-status' class='form-status'></h4>";
             echo "</div>";
         echo "</div>";
     echo "</div>";

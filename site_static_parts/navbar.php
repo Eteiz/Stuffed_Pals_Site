@@ -11,12 +11,25 @@
     </div>
     <div id="user-section" class="section-content-col">
         <a class="hyperlink_icon"
-            href="<?php echo isset($_SESSION['user_logged']) && $_SESSION['user_logged'] ? '../../user_pages/user_profile/user_profile.php' : '../../user_pages/user_login/user_login.php'; ?>">
-            <img src="../../assets/icons/<?php echo isset($_SESSION['user_logged']) && $_SESSION['user_logged'] ? 'user_icon_logged.png' : 'user_icon.png'; ?>"
+            href="<?php echo is_user_logged_in() ? '../../user_pages/user_profile/user_profile.php' : '../../user_pages/user_login/user_login.php'; ?>">
+            <img src="../../assets/icons/<?php echo is_user_logged_in() ? 'user_icon_logged.png' : 'user_icon.png'; ?>"
                 alt="User icon">
         </a>
-        <a class="hyperlink_icon" href="#Cart">
-            <img src="../../assets/icons/cart_icon.png" alt="Cart icon"></img>
+        <a class="hyperlink_icon" 
+            href="<?php 
+                if (!is_user_logged_in()) {
+                    echo '../../user_pages/user_login/user_login.php';
+                } else {
+                    echo isCartExist($_SESSION['user_id']) ? '../../cart_test.php' : '../../shop_page/shop.php';
+                }
+            ?>">
+            <img src="../../assets/icons/<?php 
+                if (!is_user_logged_in()) {
+                    echo 'cart_icon.png';
+                } else {
+                    echo isCartExist($_SESSION['user_id']) ? 'cart_icon_logged.png' : 'cart_icon.png';
+                }
+            ?>" alt="Cart icon">
         </a>
     </div>
 </nav>
