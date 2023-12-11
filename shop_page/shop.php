@@ -29,7 +29,7 @@
 
 <body id="shop-all-page" class="white_background">
     <?php include "../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
+    <header class="image-background image-parallax">
         <div class="header-content white_background default-box-shadow">
             <h1> Our Shop </h1>
             <h3>
@@ -108,6 +108,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../newsletter/newsletter_updater.js"></script>
     <script src="productlist_updater.js"></script>
+    <script src="add_to_cart_updater.js"></script>
 </body>
 
 </html>

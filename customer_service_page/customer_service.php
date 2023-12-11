@@ -28,7 +28,7 @@
 
 <body>
     <?php include "../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
+    <header class="image-background image-parallax">
         <div class="header-content white_background default-box-shadow">
             <h1> Customer Service </h1>
             <h3> Your satisfaction is our priority—reach out to us with any questions or for support,

@@ -31,7 +31,7 @@
 <body class="index_page">
     <?php include "./site_static_parts/navbar.php"; ?>
     <main>
-        <section class="titular_section image-background">
+        <section class="titular_section image-background image-parallax">
             <div class="titular_section_card white_background">
                 <h1> The way you </h1>
                 <div class="text_slider">

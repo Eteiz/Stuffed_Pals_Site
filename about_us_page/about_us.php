@@ -30,7 +30,7 @@
 
 <body id="about-us-page">
     <?php include "../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
+    <header class="image-background image-parallax">
         <div class="header-content white_background default-box-shadow">
             <h1> About Us </h1>
             <h3> Discover the thought process behind creating our company! </h3>

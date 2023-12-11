@@ -30,7 +30,7 @@ if (!is_user_logged_in()) {
 </head>
 <body>
 	<?php include "../../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
+    <header class="image-background image-parallax">
         <div class="header-content white_background default-box-shadow">
             <h1>Hello <?php echo htmlspecialchars($_SESSION["user_login"], ENT_QUOTES, "UTF-8"); ?></h1>
             <h3> 

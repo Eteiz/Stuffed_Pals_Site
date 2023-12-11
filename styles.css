@@ -213,6 +213,9 @@ label[for='password-field'] img {
     background-position: center;
     background-repeat: no-repeat;
 }
+.image-parallax {
+    background-attachment: fixed;
+}
 
 .default-box-shadow, .hover-box-shadow {
     box-shadow: 0px 4px 8px var(--shadow-color);
@@ -960,7 +963,7 @@ nav .section-content-col {
     border-radius: 0px;
 }
 #products-display-section .product-description {
-    height: 125px;
+    height: 100px;
     margin: 10px 7px 5px;
 }
 #products-display-section .product-description h4 {
@@ -992,6 +995,12 @@ nav .section-content-col {
     font-size: 18px;
 }
 
+#products-display-section .form-result {
+    width: 286px;
+    height: 40px;
+    margin: 0px 7px 0px 7px;
+}
+
 .dots-5 {
     width: 15px;
     aspect-ratio: 1;
@@ -1004,6 +1013,7 @@ nav .section-content-col {
       66% {box-shadow: 20px 0 #0002,-20px 0 var(--white-background-color); background: #0002}
       100%{box-shadow: 20px 0 #0002,-20px 0 var(--white-background-color); background: var(--white-background-color) }
   }
+
 
 /* ==================== PRODUCT_PAGE.PHP ==================== */
 #product-page main {

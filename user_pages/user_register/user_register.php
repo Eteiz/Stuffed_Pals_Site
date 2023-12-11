@@ -35,7 +35,7 @@ if (is_user_logged_in()) {
 
 <body>
     <?php include "../../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
+    <header class="image-background image-parallax">
         <div class="header-content white_background default-box-shadow">
             <h1> Sign up </h1>
             <h3>
