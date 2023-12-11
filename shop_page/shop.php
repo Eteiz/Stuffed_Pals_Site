@@ -27,10 +27,10 @@
         rel="stylesheet">
 </head>
 
-<body id="shop-all-page" class="white_background">
+<body id="shop-all-page" class="white-background">
     <?php include "../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
-        <div class="header-content white_background default-box-shadow">
+        <div class="header-content white-background default-box-shadow">
             <h1> Our Shop </h1>
             <h3>
                 Everything you need is here! From plush bases to accessories, you"ll find the perfect solution for a
@@ -38,7 +38,7 @@
             </h3>
         </div>
     </header>
-    <main class="white background">
+    <main class="white-background">
         <!-- FILTERS SECTION -->
         <form id="filters-form" class="section-content">
             <h2> Filter by:</h2>
@@ -108,7 +108,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../newsletter/newsletter_updater.js"></script>
     <script src="productlist_updater.js"></script>
-    <script src="add_to_cart_updater.js"></script>
+    <script src="../cart_page/add_to_cart_updater.js"></script>
 </body>
 
 </html>

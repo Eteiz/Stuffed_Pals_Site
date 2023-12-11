@@ -36,7 +36,7 @@ if (is_user_logged_in()) {
 <body>
     <?php include "../../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
-        <div class="header-content white_background default-box-shadow">
+        <div class="header-content white-background default-box-shadow">
             <h1> Sign up </h1>
             <h3>
                 Create account and embark on a journey of exclusive benefits and personalized experiences.
@@ -44,7 +44,7 @@ if (is_user_logged_in()) {
         </div>
     </header>
     <main>
-        <section class="form-section white_background">
+        <section class="form-section white-background">
             <form method="post" action="../../user_pages/user_register/userregister_sender.php" id="user-register-form">
                 <h2> Register </h2>
                 <label for="username-field" class="form-field">

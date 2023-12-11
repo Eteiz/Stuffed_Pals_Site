@@ -128,6 +128,11 @@ li {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+hr {
+    height: 1px;
+    border: none;
+    background-color: var(--tertiary-color);
+}
 
 /* SECTION HEADER */
 .section-header {
@@ -203,10 +208,53 @@ label[for='password-field'] img {
     margin-bottom: 10px;
 }
 
+/* QUANTITY BUTTON */
+.quantity-button {
+    width: 140px;
+}
+.decrease-quantity-button, 
+.product-quantity,
+.increase-quantity-button {
+    height: 50px;
+    font-size: 20px;
+    margin: 0px;
+
+    border-radius: 0px;
+}
+.decrease-quantity-button, 
+.increase-quantity-button {
+    font-size: 25px;
+}
+
+.decrease-quantity-button {
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+}
+.increase-quantity-button {
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.product-quantity {
+    box-sizing: border-box;
+    border: none;
+    border-top: 2px solid var(--action-color-default);
+    border-bottom: 2px solid var(--action-color-default);
+    text-align: center;
+}
+
+.product-quantity::-webkit-inner-spin-button,
+.product-quantity::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* BACKGROUND COLORS */
-.white_background { background-color: var(--white-background-color); }
-.default_gradient_background { background: linear-gradient(to bottom, var(--gradient-light-color), var(--gradient-dark-color)); }
-.transparent_background { background:rgba(0, 0, 0, 0);}
+.white-background { background-color: var(--white-background-color); }
+.default-gradient-background { background: linear-gradient(to bottom, var(--gradient-light-color), var(--gradient-dark-color)); }
+.transparent-background { background:rgba(0, 0, 0, 0);}
 .image-background {
     background-image: url('../assets/stuffedpals_background.png');
     background-size: cover;
@@ -827,12 +875,6 @@ nav .section-content-col {
     padding-top: 50px;
     padding-bottom: 30px;
 }
-#faq-section hr {
-    height: 1px;
-    border: none;
-
-    background-color: var(--tertiary-color);
-}
 #faq-section .section-content {
     width: 900px;
 
@@ -1111,55 +1153,14 @@ nav .section-content-col {
 #product-section .section-content-action-buttons {
     width: 100%;
     justify-content:space-between;
-    align-items: flex-end;
 }
 #product-section .quantity-button,
 #product-section .hyperlink_button {
     margin-bottom: 0px;
 }
-#product-section .quantity-button {
+.add-to-cart-form .quantity-button {
     width: 25%;
     margin-top: 10px;
-}
-
-#decrease-quantity-button, 
-#product-quantity,
-#increase-quantity-button {
-    width: 33%;
-    height: 50px;
-    font-size: 20px;
-    margin: 0px;
-
-    border-radius: 0px;
-}
-#decrease-quantity-button, 
-#increase-quantity-button {
-    font-size: 25px;
-}
-
-#decrease-quantity-button {
-    border-right: none;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-
-}
-#increase-quantity-button {
-    border-left: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-#product-quantity {
-    box-sizing: border-box;
-    border: none;
-    border-top: 2px solid var(--action-color-default);
-    border-bottom: 2px solid var(--action-color-default);
-    text-align: center;
-}
-
-#product-quantity::-webkit-inner-spin-button,
-#product-quantity::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
 }
 
 #product-section .hyperlink_button, 
@@ -1167,7 +1168,52 @@ nav .section-content-col {
     width: 70%;
     margin-bottom: 0px;
 }
-/* ==================== USER_PROFILE.PHP ==================== */
+/* ==================== CART.PHP ==================== */
+#cart-page main,
+#cart-items-display-section .section-row,
+#cart-items-display-section .section-row-image,
+#cart-items-display-section .quantity-button {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#cart-page main {
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 100px;
+} 
+#checkout-form {
+    width: 400px;
+    height: 400px;
+}
+
+#cart-items-display-section {
+    width: 1100px;
+}
+
+#cart-items-display-section .section-row {
+    width: 1100px;
+    justify-content: space-between;
+}
+
+#cart-items-display-section .section-row-image {
+    width: 435px;
+    justify-content: flex-start;
+    gap: 10px;
+}
+#cart-items-display-section .section-row-image img {
+    width: 100px;
+    height: 100px;
+}
+
+#cart-items-display-section .delete-button {
+    width: 50px;
+    margin: 0px;
+    border-radius: 5px;
+}
 
 /* ==================== NEWSLETTER ==================== */
 #newsletter, 

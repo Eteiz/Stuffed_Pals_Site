@@ -31,7 +31,7 @@ if (!is_user_logged_in()) {
 <body>
 	<?php include "../../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
-        <div class="header-content white_background default-box-shadow">
+        <div class="header-content white-background default-box-shadow">
             <h1>Hello <?php echo htmlspecialchars($_SESSION["user_login"], ENT_QUOTES, "UTF-8"); ?></h1>
             <h3> 
                 Welcome to your personalized dashboard, where your preferences shape your experience.
@@ -39,7 +39,7 @@ if (!is_user_logged_in()) {
         </div>
     </header>
     <main>
-        <div class="form-section white_background">
+        <div class="form-section white-background">
             <form action="../../user_pages/user_profile/userlogout_sender.php" method="post" id="user-logout-form">
                 <button class="hyperlink_button" type="submit" name="logout-button">LOG OUT</button>
             </form>  

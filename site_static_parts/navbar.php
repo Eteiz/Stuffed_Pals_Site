@@ -1,4 +1,4 @@
-<nav class="white_background">
+<nav class="white-background">
     <div id="links-section" class="section-content-col">
         <a class="hyperlink_text" href="../../shop_page/shop.php">Shop</a>
         <a class="hyperlink_text" href="../../about_us_page/about_us.php">About</a>
@@ -20,7 +20,7 @@
                 if (!is_user_logged_in()) {
                     echo '../../user_pages/user_login/user_login.php';
                 } else {
-                    echo isCartExist($_SESSION['user_id']) ? '../../cart_test.php' : '../../shop_page/shop.php';
+                    echo isCartExist($_SESSION['user_id']) ? '../../cart_page/cart.php' : '../../shop_page/shop.php';
                 }
             ?>">
             <img src="../../assets/icons/<?php 

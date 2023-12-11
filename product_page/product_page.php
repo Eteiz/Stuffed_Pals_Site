@@ -45,7 +45,7 @@ if (isset($_GET["product"])) {
 <body id="product-page">
     <?php include "../site_static_parts/navbar.php"; ?>
     <main>
-        <div id="product-section" class="white_background">
+        <div id="product-section" class="white-background">
             <!-- <div class="section-image-display">
                 <div class="main-image-displayer">
                     <div class="main-image-slider" style="width: 550px; transform: translateX(0px);">
@@ -102,6 +102,6 @@ if (isset($_GET["product"])) {
     <script src="quantitybutton_updater.js"></script>
     <script src="../newsletter/newsletter_updater.js"></script>
     <script src="product_slider.js"></script>
-    <script src="add_to_cart_updater.js"></script>
+    <script src="../cart_page/add_to_cart_updater.js"></script>
 </body>
 </html>

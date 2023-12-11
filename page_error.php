@@ -31,7 +31,7 @@
 <body>
     <?php include "./site_static_parts/navbar.php"; ?>
     <header class="image-background">
-        <div class="header-content white_background default-box-shadow">
+        <div class="header-content white-background default-box-shadow">
             <h1> Page not found </h1>
             <h3>
                 Sorry, we couldn't find the page you were looking for ):

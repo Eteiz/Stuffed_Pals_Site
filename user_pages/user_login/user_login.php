@@ -44,7 +44,7 @@ if (is_user_logged_in()) {
         </div>
     </header>
     <main>
-        <section class="form-section white_background">
+        <section class="form-section white-background">
             <form method="post" action="../../user_pages/user_login/userlogin_sender.php" id="user-login-form">
                 <h2> Login </h2>
                 <label for="username-field" class="form-field">

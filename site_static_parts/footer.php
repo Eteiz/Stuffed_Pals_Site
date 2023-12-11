@@ -1,4 +1,4 @@
-<footer class="white_background">
+<footer class="white-background">
     <div class="section-content">
         <div class="section-content-header">
             <a class="hyperlink_icon" href="../../index.php">

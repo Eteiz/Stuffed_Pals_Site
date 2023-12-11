@@ -1,5 +1,5 @@
 <section id="newsletter" class="image-background">
-    <div class="section-container white_background default-box-shadow">
+    <div class="section-container white-background default-box-shadow">
         <div class="section-header">
             <h1> SIGN UP! </h1>
             <h4> STAY UP-TO-DATE WITH STUFFED PALS NEWSLETTER AND OFFERS BY ENTERING YOUR EMAIL. </h4>

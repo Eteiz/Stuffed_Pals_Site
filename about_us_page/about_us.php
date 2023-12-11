@@ -31,13 +31,13 @@
 <body id="about-us-page">
     <?php include "../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
-        <div class="header-content white_background default-box-shadow">
+        <div class="header-content white-background default-box-shadow">
             <h1> About Us </h1>
             <h3> Discover the thought process behind creating our company! </h3>
         </div>
     </header>
     <main>
-        <section id="who-we-are-section" class="white_background">
+        <section id="who-we-are-section" class="white-background">
             <section class="section-description">
                 <img src="../assets/StuffedPals_Name.png" alt="Stuffed Pals Name"></img>
                 <h2>
@@ -65,8 +65,8 @@
             </section>
             <img src="../assets/About-us.png" alt="Collab of photos from our customers"></img>
         </section>
-        <section id="our-ethos-section" class="default_gradient_background">
-            <div class="section-card white_background hover-box-shadow">
+        <section id="our-ethos-section" class="default-gradient-background">
+            <div class="section-card white-background hover-box-shadow">
                 <h2>Comfort at all cost</h2>
                 <span>
                     We believe that comfort is personal.
@@ -76,7 +76,7 @@
                 </span>
                 <img src="../assets/icons/teddy-bear_icon.png" alt="Teddy Bear Icon"></img>
             </div>
-            <div class="section-card white_background hover-box-shadow">
+            <div class="section-card white-background hover-box-shadow">
                 <h2>Eco & Ethical</h2>
                 <span>
                     Our planet and its inhabitants matter to us deeply.
@@ -87,7 +87,7 @@
                 </span>
                 <img src="../assets/icons/eco_icon.png" alt="Eco Icon"></img>
             </div>
-            <div class="section-card white_background hover-box-shadow">
+            <div class="section-card white-background hover-box-shadow">
                 <h2>Quality & Art</h2>
                 <span>
                     Every product at Stuffed Pals is a testament to our dedication to quality.
@@ -97,7 +97,7 @@
                 <img src="../assets/icons/quality_icon.png" alt="Quality Icon"></img>
             </div>
         </section>
-        <section id="our-team-section" class="white_background">
+        <section id="our-team-section" class="white-background">
             <h1> Meet our Team! </h1>
             <h2> Meet the minds behind Stuffed Pals </h2>
             <div class="section-image-display">

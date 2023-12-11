@@ -29,7 +29,7 @@
 <body>
     <?php include "../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
-        <div class="header-content white_background default-box-shadow">
+        <div class="header-content white-background default-box-shadow">
             <h1> Customer Service </h1>
             <h3> Your satisfaction is our priority—reach out to us with any questions or for support,
                 and we"ll ensure you find all the answers and assistance you need.
@@ -37,10 +37,10 @@
         </div>
     </header>
     <main>
-        <section id="contact-section" class="default_gradient_background">
+        <section id="contact-section" class="default-gradient-background">
             <div class="section-container">
                 <img src="../assets/Customer-service.png" src="Collab of photos from our customers"></img>
-                <div class="section-element white_background hover-box-shadow">
+                <div class="section-element white-background hover-box-shadow">
                     <div class="section-element-header">
                         <h1><u>Contact us</u></h1>
                         <span> We value your feedback, questions, and comments.
@@ -80,11 +80,11 @@
                 </div>
             </div>
         </section>
-        <section id="faq-section" class="white_background">
+        <section id="faq-section" class="white-background">
             <div class="section-header">
                 <h1> Frequently Asked Questions </img></h1>
             </div>
-            <div class="section-content white_background">
+            <div class="section-content white-background">
                 <div class="section-content-row">
                     <div class="section-content-row-header">
                         <h3> What products does Stuffed Pals offer? </h3>
@@ -170,7 +170,7 @@
             </div>
         </section>
 
-        <section id="contact-form-section" class="form-section white_background">
+        <section id="contact-form-section" class="form-section white-background">
             <div class="section-header">
                 <h1> Or ask here... </h1>
                 <span>

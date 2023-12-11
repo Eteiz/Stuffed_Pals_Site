@@ -1,5 +1,5 @@
 <?php
-require_once "./init.php";
+require_once "../init.php";
 if(!isCartExist($_SESSION["user_id"])) {
     header("Location: ../../user_pages/user_login/user_login.php");
     exit;
@@ -20,34 +20,54 @@ if(!isCartExist($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bots can index and follow links on site -->
     <meta name="robots" content="index, follow">
-    <link rel="icon" href="./assets/logo_icon.png" type="./assets/logo_icon.png">
+    <link rel="icon" href="../assets/logo_icon.png" type="../assets/logo_icon.png">
     <meta name="theme-color" content="#A066E9">
     <!-- Support for older IE versions -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Cache-control" content="no-cache">
 
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
 </head>
-
-<body>
-    <?php include "./site_static_parts/navbar.php"; ?>
-    <header class="image-background">
-        <div class="header-content white_background default-box-shadow">
+<body id="cart-page">
+    <?php include "../site_static_parts/navbar.php"; ?>
+    <header class="image-background image-parallax">
+        <div class="header-content white-background default-box-shadow">
             <h1> Your Cart </h1>
             <h3> Everything you need is here! From plush bases to accessories, you"ll find the perfect solution for a
                 stuffed companion. 
             </h3>
         </div>
     </header>
-    <main>
-        <?php include "./cart_test_displayer.php"; ?> 
+    <main class="white-background">
+        <form id="checkout-form" class="white-background default-box-shadow">
+        </form>
+        <article id="cart-items-display-section">
+            <hr>
+            <!-- <form class="section-row">
+                <div class="section-row-image">
+                    <img src="../assets/products/plush-accessories/plush_accessory_6/boots_1.png"></img>
+                    <div class="section-row-image-description">
+                        <h3> Product 1 </h3>
+                        <h4> Product id: 1 </h4>
+                    </div>
+                </div>
+                <div class='quantity-button'>
+                    <button type='button' class='decrease-quantity-button hyperlink_button_reverse' data-product-id='16'>-</button>
+                    <input type='number' class='product-quantity transparent_background' data-product-id='16' value='1' min='1' max='5'>
+                    <button type='button' class='increase-quantity-button hyperlink_button_reverse' data-product-id='16'>+</button>
+                </div>
+                <h3> $100 </h3> 
+                <button class="delete-button hyperlink_button_reverse" data-product-id='16'>X</button>
+            </form> -->
+            <?php include "cart_loader.php" ?>
+        </arcticle>
     </main>
-    <?php include "./site_static_parts/footer.php"; ?>
+    <?php include "../site_static_parts/footer.php"; ?>
 </body>
 
 </html>

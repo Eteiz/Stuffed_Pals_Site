@@ -88,6 +88,26 @@ function addProductToCart($userId, $productId, $quantity) {
     }
 }
 
+function removeProductFromCart($userId, $productId) {
+    global $conn;
+
+    $cartId = getCartId($userId);
+    if ($cartId === null) {
+        return ["status" => 0, "msg" => "Cart not found"];
+    }
+
+    $sql = "DELETE FROM cart_item WHERE cart_id = ? AND product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $cartId, $productId);
+
+    if ($stmt->execute()) {
+        return ["status" => 1, "msg" => "Product removed from cart successfully"];
+    } else {
+        return ["status" => 0, "msg" => "Error removing product from cart"];
+    }
+}
+
+
 // Function that checks if the cart was already created for the user
 function getCartId($userId) {
     global $conn;

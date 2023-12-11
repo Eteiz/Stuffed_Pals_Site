@@ -12,13 +12,14 @@ if (!is_user_logged_in()) {
     exit;
 }
 $productId = isset($_POST["product_id"]) ? intval($_POST["product_id"]) : null;
+$quantity = isset($_POST["quantity"]) ? intval($_POST["quantity"]) : null;
 // Checking if product parameters are correct
-if ($productId == null) {
+if ($productId == null || $quantity == null || $quantity <= 0) {
     $response["status"] = 0;
     $response["msg"] = "Invalid product data.";
     echo json_encode($response);
     exit;
 }
-$response = addProductToCart($_SESSION['user_id'], $productId, 1);
+$response = addProductToCart($_SESSION["user_id"], $productId, $quantity);
 echo json_encode($response);
 ?>
