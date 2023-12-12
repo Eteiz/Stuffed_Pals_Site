@@ -20,23 +20,30 @@
 
     $images = $imageResult ? $imageResult->fetch_all(MYSQLI_ASSOC) : [];
     $numImages = count($images);
-    $mainSliderWidth = 550 * $numImages;
-    $iconSliderWidth = 110 * $numImages;
+    $mainSliderWidth = 550;
+    $iconSliderWidth = 110;
 
     // Product images
     echo "<div class='section-image-display'>";
     if ($numImages > 0) {
+        echo "<div class='main-image-displayer'><div class='main-image-slider' style='width:" . ($mainSliderWidth * $numImages) . "px;'>";
+        foreach ($images as $imageRow) {
+            echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "'>";
+        }
+        echo "</div></div>";
+        echo "<div class='icon-image-displayer'><div class='icon-image-slider' style='width:" . ($iconSliderWidth * $numImages) . "px;'>";
+        foreach ($images as $imageRow) {
+            echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "'>";
+        }
+        echo "</div></div>";
+    }
+    else {
         echo "<div class='main-image-displayer'><div class='main-image-slider' style='width: {$mainSliderWidth}px;'>";
-        foreach ($images as $imageRow) {
-            echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "'>";
-        }
+            echo "<img src='../assets/placeholder.png' alt='Placeholder image'>";
         echo "</div></div>";
-
         echo "<div class='icon-image-displayer'><div class='icon-image-slider' style='width: {$iconSliderWidth}px;'>";
-        foreach ($images as $imageRow) {
-            echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "'>";
-        }
-        echo "</div></div>";
+            echo "<img src='../assets/placeholder.png' alt='Placeholder image'>";
+        echo "</div></div>"; 
     }
     echo "</div>";
 

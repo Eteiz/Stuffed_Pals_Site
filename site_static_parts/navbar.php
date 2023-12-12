@@ -16,20 +16,9 @@
                 alt="User icon">
         </a>
         <a class="hyperlink_icon" 
-            href="<?php 
-                if (!is_user_logged_in()) {
-                    echo '../../user_pages/user_login/user_login.php';
-                } else {
-                    echo isCartExist($_SESSION['user_id']) ? '../../cart_page/cart.php' : '../../shop_page/shop.php';
-                }
-            ?>">
-            <img src="../../assets/icons/<?php 
-                if (!is_user_logged_in()) {
-                    echo 'cart_icon.png';
-                } else {
-                    echo isCartExist($_SESSION['user_id']) ? 'cart_icon_logged.png' : 'cart_icon.png';
-                }
-            ?>" alt="Cart icon">
+            href="<?php echo is_user_logged_in() ?  '../../cart_page/cart.php' : '../../user_pages/user_login/user_login.php'; ?>">
+            <img src="../../assets/icons/<?php echo is_user_logged_in() ? 'cart_icon_logged.png' : 'cart_icon.png'; ?>" 
+                alt="Cart icon">
         </a>
     </div>
 </nav>

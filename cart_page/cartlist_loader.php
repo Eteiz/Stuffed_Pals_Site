@@ -1,17 +1,20 @@
 <?php
 require_once "../init.php";
-if (!is_user_logged_in()) {
-    header('Location: ../user_pages/user_login/login_page.php');
-    exit;
-}
-
 $userId = $_SESSION['user_id'];
 
 $cartIdQuery = $conn->prepare("SELECT id FROM cart WHERE user_id = ?");
 $cartIdQuery->bind_param("i", $userId);
 $cartIdQuery->execute();
 $cartIdResult = $cartIdQuery->get_result();
-if ($cartIdRow = $cartIdResult->fetch_assoc()) {
+
+if(isCartEmpty($userId)) {
+    // TBA: CHANGE THIS STATUS TO SHOP BUTTON
+    echo "<h4>Looks like your cart is currently empty. 
+        It's the perfect opportunity to fill it with plushie wonders and bring home some cuddly joy! 
+        Explore our collection and find your next adorable companion 
+        </h4>";
+}
+else if ($cartIdRow = $cartIdResult->fetch_assoc()) {
     $cartId = $cartIdRow['id'];
 
     $query = "SELECT cart_item.product_id, product.product_name, cart_item.quantity, product.product_price, 
@@ -40,7 +43,9 @@ if ($cartIdRow = $cartIdResult->fetch_assoc()) {
 
         echo "<div class='section-row-image-description'>";
         echo "<h3>" . htmlspecialchars($row['product_name']) . "</h3>";
-        echo "<h4> Product id: " . htmlspecialchars($row['product_id']) . "</h4>";
+        echo "<div class='form-result' data-product-id='" . $row['product_id'] . "'>";
+            echo "<h4 class='form-result-status'></h4>";
+        echo "</div>";
         echo "</div></div>";
 
         echo "<div class='quantity-button'>";
@@ -51,12 +56,16 @@ if ($cartIdRow = $cartIdResult->fetch_assoc()) {
         echo "</div>";
 
         $totalPrice = $row['quantity'] * $row['product_price'];
-        echo "<h3> $" . $totalPrice . " </h3>";
-        echo "<button class='delete-button hyperlink_button_reverse' data-product-id='" . $row['product_id'] . "'>X</button>";
+        echo "<h3 class='price-tag'> $" . $totalPrice . " </h3>";
+        echo "<button type='button' class='delete-button hyperlink_button_reverse' data-product-id='" . $row['product_id'] . "'>X</button>";
         echo "</form><hr>";
     }
 } else {
-    echo "Cart not found.";
+    // TBA: CHANGE THIS STATUS TO SHOP BUTTON
+    echo "<h4>Looks like your cart is currently empty. 
+        It's the perfect opportunity to fill it with plushie wonders and bring home some cuddly joy! 
+        Explore our collection and find your next adorable companion 
+        </h4>";
 }
 $conn->close();
 ?>

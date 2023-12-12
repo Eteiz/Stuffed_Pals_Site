@@ -10,12 +10,12 @@ $(document).ready(function() {
             dataType: "json",
             success: function(response) {
                 $("#newsletter-status").html(response.msg).show().delay(5000).fadeOut();
-                if(response.status == 1) {
+                if(response.status == 0) {
                     $("form[name='newsletter-form']").trigger("reset");
                 }
             },
             error: function(xhr, status, error) {
-                $("#newsletter-status").html("There was an error processing your subscription.").show().delay(5000).fadeOut();
+                $("#newsletter-status").html("There was an error processing your request.").show().delay(5000).fadeOut();
             }
         });
     });

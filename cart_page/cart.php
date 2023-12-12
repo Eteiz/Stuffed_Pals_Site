@@ -1,6 +1,6 @@
 <?php
 require_once "../init.php";
-if(!isCartExist($_SESSION["user_id"])) {
+if(!is_user_logged_in()) {
     header("Location: ../../user_pages/user_login/user_login.php");
     exit;
 }
@@ -47,13 +47,14 @@ if(!isCartExist($_SESSION["user_id"])) {
         <form id="checkout-form" class="white-background default-box-shadow">
         </form>
         <article id="cart-items-display-section">
-            <hr>
             <!-- <form class="section-row">
                 <div class="section-row-image">
                     <img src="../assets/products/plush-accessories/plush_accessory_6/boots_1.png"></img>
                     <div class="section-row-image-description">
                         <h3> Product 1 </h3>
-                        <h4> Product id: 1 </h4>
+                        <div class='form-result' data-product-id='16'>
+                            <h4 class='form-result-status'></h4>
+                        </div>
                     </div>
                 </div>
                 <div class='quantity-button'>
@@ -64,10 +65,12 @@ if(!isCartExist($_SESSION["user_id"])) {
                 <h3> $100 </h3> 
                 <button class="delete-button hyperlink_button_reverse" data-product-id='16'>X</button>
             </form> -->
-            <?php include "cart_loader.php" ?>
-        </arcticle>
+        </article>
     </main>
+    <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="cartlist_updater.js"></script>
 </body>
 
 </html>

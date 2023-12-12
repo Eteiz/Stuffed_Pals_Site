@@ -20,7 +20,7 @@ $(document).ready(function() {
                 loginButton.prop("disabled", false);
                 loginButton.find(".dots-5").hide(); 
                 loginButton.text("SIGN IN");
-                if(response.status == 1) {
+                if(response.status == 0) {
                     $("#user-login-form").trigger("reset");
                     setTimeout(function() {
                         window.location.href = "../../../index.php";
@@ -28,7 +28,7 @@ $(document).ready(function() {
                 }
             },
             error: function(xhr, status, error) {
-                $("#user-login-form-status").html("There was an error processing your login.").show().delay(5000).fadeOut();
+                $("#user-login-form-status").html("There was an error processing your request.").show().delay(5000).fadeOut();
                 loginButton.prop("disabled", false);
                 loginButton.find(".dots-5").hide();
                 loginButton.text("SIGN IN");

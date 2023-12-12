@@ -18,14 +18,13 @@ $(document).ready(function() {
             data: data,
             dataType: "json",
             success: function(response) {
+                if (response.status === 2) {
+                    window.location.href = "../../user_pages/user_login/user_login.php";
+                }
                 formStatus.html(response.msg).show().delay(5000).fadeOut();
                 addToCartButton.prop("disabled", false);
                 addToCartButton.find(".dots-5").hide(); 
                 addToCartButton.text("ADD TO CART");
-                
-                if (response.status === 2) {
-                    window.location.href = "../../user_pages/user_login/user_login.php";
-                }
             },
             error: function(xhr, status, error) {
                 formStatus.html("There was an error processing your request.").show().delay(5000).fadeOut();

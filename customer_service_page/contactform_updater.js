@@ -20,7 +20,7 @@ $(document).ready(function() {
                 sendMessageButton.prop("disabled", false);
                 sendMessageButton.find(".dots-5").hide();
                 sendMessageButton.text("SEND MESSAGE");
-                if(response.status == 1) {
+                if(response.status == 0) {
                     $("#contact-form").trigger("reset");
                 }
             },

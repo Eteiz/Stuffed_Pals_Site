@@ -20,7 +20,7 @@ $(document).ready(function() {
                 registerButton.prop("disabled", false);
                 registerButton.find(".dots-5").hide();
                 registerButton.text("SIGN UP");
-                if(response.status == "1") {
+                if(response.status == "0") {
                     $("#user-register-form").trigger("reset"); 
                     setTimeout(function() {
                         window.location.href = "../../user_pages/user_login/user_login.php";

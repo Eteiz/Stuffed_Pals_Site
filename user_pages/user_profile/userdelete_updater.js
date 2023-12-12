@@ -20,7 +20,7 @@ $(document).ready(function() {
                 deleteButton.prop("disabled", false);
                 deleteButton.find(".dots-5").hide(); 
                 deleteButton.text("DELETE ACCOUNT"); 
-                if(response.status == 1) {
+                if(response.status == 0) {
                     $("#user-delete-form").trigger("reset"); 
                     setTimeout(function() {
                         window.location.href = "../../../index.php";
