@@ -67,7 +67,7 @@
             echo "<div class='review-section'>";
                 echo "There will be review section";
             echo "</div>";
-            echo "<h2>" . htmlspecialchars($info["product_price"]) . " PLN </h2>";
+            echo "<h2> $" . htmlspecialchars($info["product_price"]) ."</h2>";
         echo "</div>";
         echo "<form class='add-to-cart-form section-content-action-buttons' action='../cart_page/add_to_cart.php' method='post'>";
             echo "<div class='quantity-button'>";

@@ -43,29 +43,65 @@ if(!is_user_logged_in()) {
             </h3>
         </div>
     </header>
-    <main class="white-background">
+    <main id="checkout" class="white-background">
+        <!---
         <form id="checkout-form" class="white-background default-box-shadow">
         </form>
-        <article id="cart-items-display-section">
-            <!-- <form class="section-row">
-                <div class="section-row-image">
-                    <img src="../assets/products/plush-accessories/plush_accessory_6/boots_1.png"></img>
-                    <div class="section-row-image-description">
-                        <h3> Product 1 </h3>
-                        <div class='form-result' data-product-id='16'>
-                            <h4 class='form-result-status'></h4>
+        <article id="checkout-list">
+                <div class="section-title">
+                <h1> Shopping cart </h1>
+                <div class="section-title-description">
+                    <h3 style="width: 300px;">Product</h3>
+                    <h3 style="width: 75px;">Price</h3>
+                    <h3 style="width: 125px;">Quantity</h3>
+                    <h3 style="width: 125px;">Subtotal</h3>
+                    <h3 style="width: 50px;"></h3>
+                </div>
+            </div>
+            <hr style="height: 2px;">
+            <div class="section-content">
+                <form class="section-row">
+                    <div class="section-row-image">
+                        <img src="../assets/products/plush-accessories/plush_accessory_6/boots_1.png"></img>
+                        <div class="section-row-image-description">
+                            <h3> Product 1 </h3>
+                            <div class='form-result' data-product-id='16'>
+                                <h4 class='form-result-status'></h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class='quantity-button'>
-                    <button type='button' class='decrease-quantity-button hyperlink_button_reverse' data-product-id='16'>-</button>
-                    <input type='number' class='product-quantity transparent_background' data-product-id='16' value='1' min='1' max='5'>
-                    <button type='button' class='increase-quantity-button hyperlink_button_reverse' data-product-id='16'>+</button>
-                </div>
-                <h3> $100 </h3> 
-                <button class="delete-button hyperlink_button_reverse" data-product-id='16'>X</button>
-            </form> -->
+                    <h3 class="product-price"> 100$ </h3>
+                    <div class='quantity-button'>
+                        <button type='button' class='decrease-quantity-button hyperlink_button_reverse' data-product-id='16'>-</button>
+                        <input type='number' class='product-quantity transparent_background' data-product-id='16' value='1' min='1' max='5'>
+                        <button type='button' class='increase-quantity-button hyperlink_button_reverse' data-product-id='16'>+</button>
+                    </div>
+                    <h3 class="product-subtotal"> $100 </h3> 
+                    <button class="delete-button hyperlink_button_reverse" data-product-id='16'>X</button>
+                </form>
+                <hr>
+                <form class="section-row">
+                    <div class="section-row-image">
+                        <img src="../assets/products/plush-accessories/plush_accessory_6/boots_1.png"></img>
+                        <div class="section-row-image-description">
+                            <h3> Product 1 </h3>
+                            <div class='form-result' data-product-id='16'>
+                                <h4 class='form-result-status'></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="product-price"> 100$ </h3>
+                    <div class='quantity-button'>
+                        <button type='button' class='decrease-quantity-button hyperlink_button_reverse' data-product-id='16'>-</button>
+                        <input type='number' class='product-quantity transparent_background' data-product-id='16' value='1' min='1' max='5'>
+                        <button type='button' class='increase-quantity-button hyperlink_button_reverse' data-product-id='16'>+</button>
+                    </div>
+                    <h3 class="product-subtotal"> $100 </h3> 
+                    <button class="delete-button hyperlink_button_reverse" data-product-id='16'>X</button>
+                </form>
+            </div> 
         </article>
+        -->
     </main>
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>

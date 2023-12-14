@@ -8,13 +8,18 @@ $cartIdQuery->execute();
 $cartIdResult = $cartIdQuery->get_result();
 
 if(isCartEmpty($userId)) {
-    // TBA: CHANGE THIS STATUS TO SHOP BUTTON
-    echo "<h4>Looks like your cart is currently empty. 
-        It's the perfect opportunity to fill it with plushie wonders and bring home some cuddly joy! 
-        Explore our collection and find your next adorable companion 
-        </h4>";
+    echo "<article id='checkout-empty'>";
+        echo "<img src='../assets/icons/cart_big_icon.png' alt='Colorful cart image'></img>";
+        echo "<h1> Your cart is empty! </h1>";
+        echo "<h4>";
+                echo "Looks like your cart is currently empty. 
+                It's the perfect opportunity to fill it with plushie wonders and bring home some cuddly joy! 
+                Explore our collection and find your next adorable companion";
+        echo "</h4>";
+        echo "<a class='hyperlink_button' href='../shop_page/shop.php'>Browse</a>";
+    echo "</article>";
 }
-else if ($cartIdRow = $cartIdResult->fetch_assoc()) {
+else if($cartIdRow = $cartIdResult->fetch_assoc()) {
     $cartId = $cartIdRow['id'];
 
     $query = "SELECT cart_item.product_id, product.product_name, cart_item.quantity, product.product_price, 
@@ -30,24 +35,45 @@ else if ($cartIdRow = $cartIdResult->fetch_assoc()) {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // Checkout Form - TBA
+    echo "<form id='checkout-form' class='white-background default-box-shadow'> </form>";
+
+    // Checkout List
+    echo "<article id='checkout-list'>";
+    // Cart title section
+    echo "<div class='section-title'>";
+        echo "<h1 style='margin-bottom: 30px;'> Shopping cart </h1>";
+        echo "<div class='section-title-description'>";
+            // Width adjusted to width of cart-item elements //
+                echo "<h3 style='width: 450px;'>Product</h3>";
+                echo "<h3 style='width: 75px;''>Price</h3>";
+                echo "<h3 style='width: 125px;'>Quantity</h3>";
+                echo "<h3 style='width: 125px;'>Subtotal</h3>";
+                echo "<h3 style='width: 50px;'></h3>";
+        echo "</div>";
+    echo "</div>";
+    echo "<hr style='height: 2px;'>";
+    // Cart items list
+    echo "<div class='section-content'>";
+
     while ($row = $result->fetch_assoc()) {
         echo "<form class='section-row'>";
-        echo "<div class='section-row-image'>";
-
-        $imagePath = "../" . $row["product_image_path"];
-        if (!empty($row["product_image_path"]) && file_exists($imagePath)) {
-            echo "<img src='" . htmlspecialchars($imagePath) . "' alt='" . htmlspecialchars($row["image_description"]) . "'>";
-        } else {
-            echo "<img src='../assets/placeholder.png' alt='No image available'>";
-        }
-
+            echo "<div class='section-row-image'>";
+            echo "<a href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "'>";
+            $imagePath = "../" . $row["product_image_path"];
+            if (!empty($row["product_image_path"]) && file_exists($imagePath)) {
+                echo "<img src='" . htmlspecialchars($imagePath) . "' alt='" . htmlspecialchars($row["image_description"]) . "'>";
+            } else {
+                echo "<img src='../assets/placeholder.png' alt='No image available'>";
+            }
+            echo "</a>";
         echo "<div class='section-row-image-description'>";
-        echo "<h3>" . htmlspecialchars($row['product_name']) . "</h3>";
-        echo "<div class='form-result' data-product-id='" . $row['product_id'] . "'>";
-            echo "<h4 class='form-result-status'></h4>";
+        echo "<h3><a class='hyperlink_text' href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row['product_name']) . "</a></h3>";
+        echo "<div class='form-result' data-product-id='" . $row["product_id"] . "'>";
+            echo "<h4 class='form-result-status' style='font-size:15px;' ></h4>";
         echo "</div>";
         echo "</div></div>";
-
+        echo "<h3 class='product-price'>$". htmlspecialchars($row['product_price']) ."</h3>";
         echo "<div class='quantity-button'>";
         echo "<button type='button' class='decrease-quantity-button hyperlink_button_reverse' data-product-id='" . $row['product_id'] . "'>-</button>";
         $maxQuantity = isset($row['product_quantity']) ? $row['product_quantity'] : 5;
@@ -55,17 +81,25 @@ else if ($cartIdRow = $cartIdResult->fetch_assoc()) {
         echo "<button type='button' class='increase-quantity-button hyperlink_button_reverse' data-product-id='" . $row['product_id'] . "'>+</button>";
         echo "</div>";
 
-        $totalPrice = $row['quantity'] * $row['product_price'];
-        echo "<h3 class='price-tag'> $" . $totalPrice . " </h3>";
+        $totalPrice = $row['quantity'] * (float)$row['product_price'];
+        $totalPrice = number_format($totalPrice, 2);
+        echo "<h3 class='product-subtotal'> $" . $totalPrice . " </h3>";
         echo "<button type='button' class='delete-button hyperlink_button_reverse' data-product-id='" . $row['product_id'] . "'>X</button>";
         echo "</form><hr>";
     }
-} else {
-    // TBA: CHANGE THIS STATUS TO SHOP BUTTON
-    echo "<h4>Looks like your cart is currently empty. 
-        It's the perfect opportunity to fill it with plushie wonders and bring home some cuddly joy! 
-        Explore our collection and find your next adorable companion 
-        </h4>";
+    echo "</article>";
+} 
+else {
+    echo "<article id='checkout-empty'>";
+        echo "<img src='../assets/icons/cart_big_icon.png' alt='Colorful cart image'></img>";
+        echo "<h1> Your cart is empty! </h1>";
+        echo "<h4>";
+                echo "Looks like your cart is currently empty. 
+                It's the perfect opportunity to fill it with plushie wonders and bring home some cuddly joy! 
+                Explore our collection and find your next adorable companion";
+        echo "</h4>";
+        echo "<a class='hyperlink_button' href='../shop_page/shop.php'>Browse</a>";
+    echo "</article>";
 }
 $conn->close();
 ?>

@@ -8,7 +8,7 @@ $(document).ready(function() {
         $.ajax({
             url: "../cart_page/cartlist_loader.php",
             success: function(response) {
-                $("#cart-items-display-section").html(response);
+                $("#checkout").html(response);
             }
         });
     }

@@ -138,7 +138,7 @@
             echo "</div>";
             // Form to add product to cart
             echo "<form class='add-to-cart-form product-action' action='../cart_page/add_to_cart.php' method='post'>";
-                echo "<h4 style='color: var(--primary-color);'>" . htmlspecialchars($row["product_price"]) . " PLN </h4>";
+                echo "<h3 style='color: var(--primary-color);'>$". htmlspecialchars($row["product_price"]) ."</h3>";
                 if ($row["quantity"] <= 0 || empty($row["quantity"])) {
                     echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' disabled>OUT OF STOCK</button>";
                 } else {
