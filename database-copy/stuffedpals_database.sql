@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2023 at 07:28 AM
+-- Generation Time: Dec 23, 2023 at 12:06 AM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -63,6 +63,79 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `AddToNewsletter` (IN `p_email` VARC
     END IF;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddUserAddress` (IN `p_userId` INT, IN `p_userFirstName` VARCHAR(100), IN `p_userLastName` VARCHAR(100), IN `p_userEmail` VARCHAR(255), IN `p_userPhoneNumber` VARCHAR(15), IN `p_userHomeAddress` VARCHAR(100), IN `p_userCity` VARCHAR(100), IN `p_userPostalCode` VARCHAR(6), IN `p_userState` VARCHAR(100), IN `p_userCountry` VARCHAR(100), OUT `p_status` INT, OUT `p_message` VARCHAR(255))   BEGIN
+    IF p_userId IS NULL OR p_userId < 0 OR
+       p_userFirstName IS NULL OR
+       p_userLastName IS NULL OR
+       p_userPhoneNumber IS NULL OR
+       p_userHomeAddress IS NULL OR
+       p_userCity IS NULL OR
+       p_userPostalCode IS NULL OR
+       p_userState IS NULL OR
+       p_userCountry IS NULL THEN
+        SET p_status = 1;
+        SET p_message = 'Incorrect address parameters.';
+    ELSEIF NOT (p_userFirstName RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź -]+$') OR
+           NOT (p_userLastName RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź -]+$') THEN
+        SET p_status = 1;
+        SET p_message = 'First and Last name must only contain letters, - sign, and spaces.';
+    ELSEIF NOT (p_userPhoneNumber RLIKE '^[0-9+-]{9,12}$') THEN
+        SET p_status = 1;
+        SET p_message = 'Phone number must only contain digits and -+ signs and be between 9 and 12 characters.';
+    ELSEIF NOT (p_userHomeAddress RLIKE '^[A-Za-z0-9ĄąĆćĘęŁłŃńÓóŚśŻżŹź./ -]+$') THEN
+        SET p_status = 1;
+        SET p_message = 'Home address must only contain letters, digits, ./-, and spaces.';
+    ELSEIF NOT (p_userCity RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź./ -]+$') OR
+           NOT (p_userState RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź./ -]+$') OR
+           NOT (p_userCountry RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź./ -]+$') THEN
+        SET p_status = 1;
+        SET p_message = 'City, State and Country must only contain letters, digits, ./-, and spaces.';
+    ELSEIF p_userCountry = 'Select country' THEN
+        SET p_status = 1;
+        SET p_message = 'Please select country.';
+    ELSE
+        BEGIN
+            DECLARE EXIT HANDLER FOR SQLEXCEPTION
+            BEGIN
+                SET p_status = 1;
+                SET p_message = 'Error while adding address.';
+            END;
+
+            INSERT INTO user_address (
+                user_id,
+                user_firstname,
+                user_lastname,
+                user_email,
+                user_phone,
+                user_homeaddress,
+                user_city,
+                user_postalcode,
+                user_state,
+                user_country
+            )
+            VALUES (
+                p_userId,
+                p_userFirstName,
+                p_userLastName,
+                p_userEmail,
+                p_userPhoneNumber,
+                p_userHomeAddress,
+                p_userCity,
+                p_userPostalCode,
+                p_userState,
+                p_userCountry
+            );
+            IF ROW_COUNT() > 0 THEN
+                SET p_status = 0;
+                SET p_message = 'Address successfully added.';
+            ELSE
+                SET p_status = 1;
+                SET p_message = 'Error while adding address.';
+            END IF;
+        END;
+    END IF;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteProduct` (IN `_productId` INT(11) UNSIGNED)   BEGIN
     -- Deleting record from Inventory
     DELETE FROM Inventory WHERE product_id = _productId;
@@ -80,6 +153,40 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteUser` (IN `p_userId` INT)   BEGIN
     DELETE FROM User_Address WHERE user_id = p_userId;
     DELETE FROM User WHERE id = p_userId;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteUserAddress` (IN `p_userId` INT, IN `p_userAddressId` INT, OUT `p_status` INT, OUT `p_message` VARCHAR(255))   BEGIN
+    IF p_userId IS NULL OR p_userId < 0 OR p_userAddressId IS NULL OR p_userAddressId < 0 THEN
+        SET p_status = 1;
+        SET p_message = 'Incorrect address parameters.';
+    ELSE
+        IF NOT EXISTS(SELECT 1 FROM user_address WHERE id = p_userAddressId) THEN
+            SET p_status = 1;
+            SET p_message = 'Address does not exist.';
+        ELSE
+            IF NOT EXISTS(SELECT 1 FROM user_address WHERE id = p_userAddressId AND user_id = p_userId) THEN
+                SET p_status = 1;
+                SET p_message = 'Address does not exist.';
+            ELSE
+                BEGIN
+                    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+                    BEGIN
+                        SET p_status = 1;
+                        SET p_message = 'Error while deleting address.';
+                    END;
+                    
+                    DELETE FROM user_address WHERE id = p_userAddressId AND user_id = p_userId;
+                    IF ROW_COUNT() > 0 THEN
+                        SET p_status = 0;
+                        SET p_message = 'Address successfully deleted.';
+                    ELSE
+                        SET p_status = 1;
+                        SET p_message = 'Error while deleting address.';
+                    END IF;
+                END;
+            END IF;
+        END IF;
+    END IF;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetProductAvailability` ()   BEGIN
@@ -153,6 +260,61 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `RegisterUser` (IN `p_username` VARC
     END IF;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateUserAddress` (IN `p_userId` INT, IN `p_userAddressId` INT, IN `p_userFirstName` VARCHAR(100), IN `p_userLastName` VARCHAR(100), IN `p_userEmail` VARCHAR(255), IN `p_userPhoneNumber` VARCHAR(15), IN `p_userHomeAddress` VARCHAR(100), IN `p_userCity` VARCHAR(100), IN `p_userPostalCode` VARCHAR(6), IN `p_userState` VARCHAR(100), IN `p_userCountry` VARCHAR(100), OUT `p_status` INT, OUT `p_message` VARCHAR(255))   BEGIN
+    IF p_userId IS NULL OR p_userId < 0 OR p_userAddressId IS NULL OR p_userAddressId < 0 THEN
+        SET p_status = 1;
+        SET p_message = 'Incorrect address parameters.';
+    ELSEIF NOT EXISTS(SELECT 1 FROM user_address WHERE id = p_userAddressId AND user_id = p_userId) THEN
+        SET p_status = 1;
+        SET p_message = 'Address does not exist.';
+    ELSEIF NOT (p_userFirstName RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź -]+$') OR
+           NOT (p_userLastName RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź -]+$') THEN
+        SET p_status = 1;
+        SET p_message = 'First and Last name must only contain letters, - sign, and spaces.';
+    ELSEIF NOT (p_userPhoneNumber RLIKE '^[0-9+-]{9,12}$') THEN
+        SET p_status = 1;
+        SET p_message = 'Phone number must only contain digits and -+ signs.';
+    ELSEIF NOT (p_userHomeAddress RLIKE '^[A-Za-z0-9ĄąĆćĘęŁłŃńÓóŚśŻżŹź./ -]+(/[A-Za-z0-9ĄąĆćĘęŁłŃńÓóŚśŻżŹź]+)?$') THEN
+        SET p_status = 1;
+        SET p_message = 'Home address must only contain letters, digits, ./-, and spaces.';
+    ELSEIF NOT (p_userCity RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź./ -]+$') OR
+           NOT (p_userState RLIKE '^[A-Za-zĄąĆćĘęŁłŃńÓóŚśŻżŹź./ -]+$') THEN
+        SET p_status = 1;
+        SET p_message = 'City and State must only contain letters, ./-, and spaces.';
+    ELSEIF p_userCountry = 'Select country' THEN
+        SET p_status = 1;
+        SET p_message = 'Please select country.';
+    ELSE
+        BEGIN
+            DECLARE EXIT HANDLER FOR SQLEXCEPTION
+            BEGIN
+                SET p_status = 1;
+                SET p_message = 'Error while updating address.';
+            END;
+
+            UPDATE user_address SET
+                user_firstname = p_userFirstName,
+                user_lastname = p_userLastName,
+                user_email = p_userEmail,
+                user_phone = p_userPhoneNumber,
+                user_homeaddress = p_userHomeAddress,
+                user_city = p_userCity,
+                user_postalcode = p_userPostalCode,
+                user_state = p_userState,
+                user_country = p_userCountry
+            WHERE id = p_userAddressId AND user_id = p_userId;
+            
+            IF ROW_COUNT() > 0 THEN
+                SET p_status = 0;
+                SET p_message = 'Address successfully updated.';
+            ELSE
+                SET p_status = 1;
+                SET p_message = 'No changes made to address.';
+            END IF;
+        END;
+    END IF;
+END$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -166,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
   `total_price` decimal(5,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
@@ -174,7 +336,8 @@ CREATE TABLE IF NOT EXISTS `cart` (
 
 INSERT INTO `cart` (`id`, `user_id`, `total_price`) VALUES
 (7, 49, 0.00),
-(8, 48, 0.00);
+(8, 48, 0.00),
+(9, 55, 0.00);
 
 -- --------------------------------------------------------
 
@@ -190,14 +353,19 @@ CREATE TABLE IF NOT EXISTS `cart_item` (
   PRIMARY KEY (`id`),
   KEY `cart_item_ibfk_1` (`cart_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart_item`
 --
 
 INSERT INTO `cart_item` (`id`, `cart_id`, `product_id`, `quantity`) VALUES
-(98, 8, 16, 4);
+(131, 8, 16, 5),
+(132, 8, 15, 6),
+(133, 8, 14, 1),
+(134, 7, 16, 1),
+(142, 9, 15, 6),
+(143, 9, 16, 5);
 
 -- --------------------------------------------------------
 
@@ -263,6 +431,19 @@ INSERT INTO `newsletter` (`id`, `email_address`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `order_item`
+--
+
+CREATE TABLE IF NOT EXISTS `order_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Product',
+  `product_quantity` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `product`
 --
 
@@ -320,22 +501,6 @@ INSERT INTO `product_image` (`id`, `product_id`, `product_image_path`, `image_de
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `review`
---
-
-CREATE TABLE IF NOT EXISTS `review` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Product',
-  `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
-  `description` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `product_id` (`product_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for products reviews';
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `supplier`
 --
 
@@ -370,23 +535,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_login` varchar(40) NOT NULL,
   `user_password` varchar(60) NOT NULL COMMENT 'Hashed by md5',
-  `user_firstname` varchar(100) DEFAULT NULL,
-  `user_lastname` varchar(100) DEFAULT NULL,
-  `user_phone_number` varchar(12) DEFAULT NULL,
   `user_email` varchar(100) DEFAULT NULL,
   `date_created` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `UC_user_login_unique` (`user_login`),
   UNIQUE KEY `user_email` (`user_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `user_login`, `user_password`, `user_firstname`, `user_lastname`, `user_phone_number`, `user_email`, `date_created`) VALUES
-(48, 'Eteiz', '$2y$10$e9JjeCsmt6TqqgsMC9OxC.fo/ROh.K3in2OQtrckbfH6uLbuXwmZS', NULL, NULL, NULL, 'ambroziak.m@onet.pl', '2023-12-10'),
-(49, 'Volteh', '$2y$10$GhyzGCB0DtOpqXikGxfgIuSUJFtgh29HC24JvsjYBHlG.a0KwYFGm', NULL, NULL, NULL, 'Volteh@wp.pl', '2023-12-11');
+INSERT INTO `user` (`id`, `user_login`, `user_password`, `user_email`, `date_created`) VALUES
+(49, 'Volteh', '$2y$10$GhyzGCB0DtOpqXikGxfgIuSUJFtgh29HC24JvsjYBHlG.a0KwYFGm', 'Volteh@wp.pl', '2023-12-11'),
+(55, 'Eteiz', '$2y$10$QjuMe4wD46BjMQLqB.tGYuYTYLQJXf6Y3CxaW7TI9G3v1nwuyJ16K', 'mrsrosequartz@gmail.com', '2023-12-19');
 
 -- --------------------------------------------------------
 
@@ -397,12 +559,40 @@ INSERT INTO `user` (`id`, `user_login`, `user_password`, `user_firstname`, `user
 CREATE TABLE IF NOT EXISTS `user_address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
+  `user_firstname` varchar(100) DEFAULT 'Not specified',
+  `user_lastname` varchar(100) DEFAULT 'Not specified',
+  `user_email` varchar(255) DEFAULT 'Not specified',
+  `user_phone` varchar(15) DEFAULT NULL,
   `user_homeaddress` varchar(100) DEFAULT NULL,
   `user_city` varchar(100) DEFAULT NULL,
   `user_postalcode` varchar(6) DEFAULT NULL,
+  `user_state` varchar(100) DEFAULT NULL,
   `user_country` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_address`
+--
+
+INSERT INTO `user_address` (`id`, `user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_phone`, `user_homeaddress`, `user_city`, `user_postalcode`, `user_state`, `user_country`) VALUES
+(5, 49, 'Jan', 'Mieleszko', 'volteh@gmail.com', '+4851633874', 'Piotrkowska 292/3A', 'Łódź', '93-004', 'Łódzkie', 'Polska'),
+(24, 55, 'Martyna', 'Ambroziak', 'ambroziak.m@onet.pl', '+48516633874', 'Starosty Kosa 10/21', 'Ostrołęka', '07-410', 'Mazowieckie', 'Poland'),
+(25, 55, 'Marta', 'Ambroziak', 'ambroziak.m@onet.pl', '+48516633874', 'Starosty Kosa 10/21', 'Ostrołęka', '07-410', 'Mazowieckie', 'Poland');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `user_order`
+--
+
+CREATE TABLE IF NOT EXISTS `user_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cart_id` int(11) DEFAULT NULL COMMENT 'Foreign key from Cart',
+  `user_id` int(11) DEFAULT NULL COMMENT 'Foreign key from User',
+  `total_price` decimal(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -428,13 +618,6 @@ ALTER TABLE `inventory`
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id`) ON DELETE SET NULL;
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_address`
