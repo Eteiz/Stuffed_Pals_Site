@@ -86,9 +86,7 @@
                     echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' disabled>OUT OF STOCK <div class='dots-5' style='display: none;'></div> </button>";
                 }
             echo "</form>";
-            echo "<div class='form-result'>";
-                    echo "<h4 class='form-result-status'></h4>";
-            echo "</div>";
+            echo "<div class='form-result'></div>";
         echo "</div>";
     echo "</div>";
     echo "</div>";

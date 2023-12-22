@@ -202,22 +202,25 @@
                     <textarea name="message" id="message" required placeholder="Your message"
                         maxlength="1000"></textarea>
                 </label>
-                <button class="hyperlink_button" type="submit" name="send-message-button">
-                    SEND MESSAGE
+                <button class="hyperlink_button" type="submit" name="contactform-button">
+                    <div class="button-text">SEND MESSAGE</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result">
-                    <h4 id="contact-form-status" class="form-status"></h4>
-                </div>
+                <div class="form-result" style="height: 20px"></div>
             </form>
         </section>
     </main>
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../newsletter/newsletter_updater.js"></script>
     <script src="faq_accordion.js"></script>
-    <script src="contactform_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("contact-form", "contactform-button", "../customer_service_page/contactform_sender.php", "contactForm");
+        handleFormSubmit("newsletter-form", "subscribe-button", "../newsletter/newsletter_sender.php", "newsletter");
+        });
+    </script>    
 </body>
 
 </html>

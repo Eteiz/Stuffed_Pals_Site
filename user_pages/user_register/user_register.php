@@ -71,19 +71,23 @@ if (is_user_logged_in()) {
                         Log in</a>
                 </div>
                 <button class="hyperlink_button" type="submit" name="register-button">
-                    SIGN UP
+                    <div class="button-text">SIGN UP</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result">
-                    <h4 id="user-register-form-status" class="form-status"></h4>
-                </div>
+                <div class="form-result" style="height: 20px"></div>
             </form>
         </section>
     </main>
     <?php include "../../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../../js_scripts/passwordvisibility_changer.js"></script>
-    <script src="userregister_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("user-register-form", "register-button", "../../user_pages/user_register/userregister_sender.php", "register");
+        });
+    </script>  
+
 </body>
 
 </html>

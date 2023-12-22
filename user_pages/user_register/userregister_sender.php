@@ -45,5 +45,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = ["status" => 1, "msg" => "Unknown action."];
 }
 echo json_encode($response);
-exit;
 ?>

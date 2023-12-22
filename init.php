@@ -10,7 +10,12 @@ if (!isset($_SESSION["user_logged"]) && !isset($_SESSION["user_id"]) && !isset($
 }
 
 function is_user_logged_in() {
-    return isset($_SESSION["user_logged"]) && $_SESSION["user_logged"] === true && isset($_SESSION["user_id"]) && $_SESSION["user_id"];
+    return isset($_SESSION["user_logged"]) && 
+       is_bool($_SESSION["user_logged"]) &&
+       $_SESSION["user_logged"] === true && 
+       isset($_SESSION["user_id"]) && 
+       $_SESSION["user_id"] >= 0 &&
+       is_numeric($_SESSION["user_id"]);
 }
 
 function log_user_out() {
@@ -18,8 +23,6 @@ function log_user_out() {
         unset($_SESSION["user_id"]);
         unset($_SESSION["user_login"]);
         session_destroy();
-        header("Location: ../../index.php");
-        exit;
 }
 
 //============================ CART FUNCTION ============================//
@@ -274,4 +277,83 @@ function isCartExist($userId) {
     $row = $result->fetch_array();
     return $row[0] > 0;
 }
+
+//============================ ADDRESS FUNCTION ============================//
+// 0 - Status: Ok
+// 1 - Status: Error while taking action, incorrect parameters / invalid action
+// 2 - Status: User not logged in
+
+function addUserAddress($userId, 
+$userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $userCity, $userPostalCode, $userState, $userCountry) {
+    // Checking if user is logged and user_id is valid
+    if(!is_user_logged_in()) return ["status" => 2, "msg" => "User not logged in."];
+    // Checking if the parameters are correct
+    if(!$userFirstName || !$userLastName || !$userPhoneNumber || !$userHomeAddress || !$userCity || !$userPostalCode || !$userState || !$userCountry) {
+        return ["status" => 1, "msg" => "Incorrect address parameters"];
+    }
+
+    global $conn;
+    $sql = "CALL AddUserAddress(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @p_status, @p_message)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("isssssssss", $userId, $userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $userCity, $userPostalCode, $userState, $userCountry);
+    $stmt->execute();
+
+    $select = $conn->query("SELECT @p_status AS status, @p_message AS message");
+    $result = $select->fetch_assoc();
+    
+    if($result) {
+        return ["status" => $result['status'], "msg" => $result['message']];
+    } else {
+        return ["status" => 1, "msg" => "Error while adding address."];
+    }
+}
+
+function updateUserAddress($userId, $userAddressId, 
+$userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $userCity, $userPostalCode, $userState, $userCountry) {
+    // Checking if user is logged and user_id is valid
+    if(!is_user_logged_in()) return ["status" => 2, "msg" => "User not logged in."];
+    // Checking if the parameters are correct
+    if(!$userAddressId || !is_numeric($userAddressId) || $userAddressId < 0 || !$userFirstName || !$userLastName || !$userPhoneNumber || !$userHomeAddress || !$userCity || !$userPostalCode || !$userState || !$userCountry) {
+        return ["status" => 1, "msg" => "Incorrect address parameters."];
+    }
+
+    global $conn;
+    $sql = "CALL UpdateUserAddress(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @p_status, @p_message)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iisssssssss", $userId, $userAddressId, $userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $userCity, $userPostalCode, $userState, $userCountry);
+    $stmt->execute();
+
+    $select = $conn->query("SELECT @p_status AS status, @p_message AS message");
+    $result = $select->fetch_assoc();
+    
+    if($result) {
+        return ["status" => $result['status'], "msg" => $result['message']];
+    } else {
+        return ["status" => 1, "msg" => "Error while updating address."];
+    }
+}
+
+function deleteUserAddress($userId, $userAddressId) {
+    // Checking if user is logged and user_id is valid
+    if(!is_user_logged_in()) return ["status" => 2, "msg" => "User not logged in."];
+    // Checking if the parameters are correct
+    if(!$userAddressId || !is_numeric($userAddressId) || $userAddressId < 0) return ["status" => 1, "msg" => "Incorrect address parameters."];
+
+    global $conn;
+    $sql = "CALL DeleteUserAddress(?, ?, @p_status, @p_message)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $userId, $userAddressId);
+    $stmt->execute();
+
+    $select = $conn->query("SELECT @p_status AS status, @p_message AS message");
+    $result = $select->fetch_assoc();
+    
+    // Check if the address was deleted
+    if($result) {
+        return ["status" => $result['status'], "msg" => $result['message']];
+    } else {
+        return ["status" => 1, "msg" => "Error while deleting address."];
+    } 
+}
 ?>
+

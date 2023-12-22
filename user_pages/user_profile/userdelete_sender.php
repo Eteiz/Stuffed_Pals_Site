@@ -3,7 +3,6 @@ require_once "../../init.php";
 header("Content-Type: application/json");
 
 $response = ["status" => 1, "msg" => "Unknown action."];
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!isset($_POST["confirm-delete"])) {
         $response = ["status" => 1, "msg" => "You must confirm to delete your account."];

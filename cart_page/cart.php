@@ -106,7 +106,13 @@ if(!is_user_logged_in()) {
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="cartlist_updater.js"></script>
+    <script src="cart_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("newsletter-form", "subscribe-button", "../newsletter/newsletter_sender.php", "newsletter");
+        });
+    </script>   
 </body>
 
 </html>

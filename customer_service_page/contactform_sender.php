@@ -29,5 +29,4 @@ if (empty($firstname)) {
     }
 }
 echo json_encode($response);
-exit;
 ?>

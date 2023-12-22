@@ -133,9 +133,7 @@
             echo "</div>";
             
             // Form result status
-            echo "<div class='form-result'>";
-                echo "<h4 style='font-size: 13px;' class='form-result-status'></h4>"; 
-            echo "</div>";
+            echo "<div class='form-result' style='height: 50px; font-size: 14px'></div>";
             // Form to add product to cart
             echo "<form class='add-to-cart-form product-action' action='../cart_page/add_to_cart.php' method='post'>";
                 echo "<h3 style='color: var(--primary-color);'>$". htmlspecialchars($row["product_price"]) ."</h3>";

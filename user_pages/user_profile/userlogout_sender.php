@@ -1,8 +1,13 @@
 <?php
 require_once "../../init.php";
-if (isset($_POST["logout-button"])) {
+header("Content-Type: application/json");
+
+$response = ["status" => 1, "msg" => "Unknown action."];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     log_user_out();
+    $response = ["status" => 0, "msg" => "You successfully logged out."];
+} else {
+    $response = ["status" => 1, "msg" => "Unknown action."];
 }
-header("Location: ../../index.php");
-exit;
+echo json_encode($response);
 ?>

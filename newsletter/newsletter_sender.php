@@ -17,11 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $select = $conn->query("SELECT @p_status AS status, @p_message AS message");
         $result = $select->fetch_assoc();
-        $response = ["status" => $result["status"];, "msg" => $result["message"];];
+        $response = ["status" => $result["status"], "msg" => $result["message"]];
         $stmt->close();
     }
     $conn->close();
 } 
 echo json_encode($response);
-exit();
 ?>
