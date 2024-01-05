@@ -52,7 +52,7 @@ else if($cartIdRow = $cartIdResult->fetch_assoc()) {
                 echo "<h3 style='width: 50px;'></h3>";
         echo "</div>";
     echo "</div>";
-    echo "<hr style='height: 2px;'>";
+    echo "<hr class='outer'>";
     // Cart items list
     echo "<div class='section-content'>";
 
@@ -104,7 +104,7 @@ else if($cartIdRow = $cartIdResult->fetch_assoc()) {
             echo "You are eligible for free shipping! Free shipping applies to orders over <strong>$250.00</strong>.";
             echo "</div>";
         }
-        echo "<hr style='height: 2px;'>";
+        echo "<hr class='outer'>";
         echo "<div class='checkout-form-row'>";
             echo "<h4>Subtotal</h4>";
             echo "<h3>$". htmlspecialchars($subtotal) ."</h3>";

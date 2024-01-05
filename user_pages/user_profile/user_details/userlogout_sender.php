@@ -1,5 +1,5 @@
 <?php
-require_once "../../init.php";
+require_once "../../../init.php";
 header("Content-Type: application/json");
 
 $response = ["status" => 1, "msg" => "Unknown action."];

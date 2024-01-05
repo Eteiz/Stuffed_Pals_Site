@@ -1,5 +1,5 @@
 <?php
-require_once "../../../init.php";
+require_once __DIR__ . '/../../../init.php';
 
 $userId = $_SESSION['user_id'];
 
@@ -12,7 +12,7 @@ if ($addressResult->num_rows > 0) {
     echo "<div id='user-profile-address'>";
     echo "<h1 style='margin-bottom: 20px;'>Shipping Address</h1>";
     echo "<button type='button' class='hyperlink_button' onClick='location.href=\"../../../user_pages/user_profile/user_address/user_address_add_address.php\"'>Add New Address</button>";
-    echo "<hr style='height: 2px;'>";
+    echo "<hr class='outer'>";
 
     while ($addressRow = $addressResult->fetch_assoc()) {
         echo "<form class='section-row hover-box-shadow'>";
@@ -30,17 +30,17 @@ if ($addressResult->num_rows > 0) {
             echo "</div>";
             echo "<div>";
                 echo "<div class='button-section'>";
-                    echo "<button type='button' class='hyperlink_button_reverse' onClick='location.href=\"../../../user_pages/user_profile/user_address/user_address_edit_address.php?addressId=" . htmlspecialchars($addressRow["id"]) . "\"'>Edit</button>";
+                    echo "<button type='button' class='hyperlink_button' onClick='location.href=\"../../../user_pages/user_profile/user_address/user_address_edit_address.php?addressId=" . htmlspecialchars($addressRow["id"]) . "\"'>Edit</button>";
                     echo "<button type='button' class='delete-address-button hyperlink_button_reverse' user-address-id='" . htmlspecialchars($addressRow["id"]) . "'>Delete</button>";
                 echo "</div>";  
             echo "</div>";
-            echo "<div class='form-result' user-address-id='" . htmlspecialchars($addressRow["id"]) . "' style='height: 20px'></div>";
+            echo "<div class='form-result' user-address-id='" . htmlspecialchars($addressRow["id"]) . "'></div>";
         echo "</form>";
     }  
     echo "</div>";      
 } else {
     echo "<div id='user-profile-address-empty'>";
-        echo "<img src='../../assets/icons/map_big_icon.png' alt='Map marker icon'></img>";
+        echo "<img src='../../../assets/icons/map_big_icon.png' alt='Map marker icon'></img>";
         echo "<h1>No addresses found!</h1>";
         echo "<h4>";
                 echo "It seems like you haven't added any shipping addresses yet. 

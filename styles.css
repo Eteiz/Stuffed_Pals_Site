@@ -101,6 +101,10 @@ nav, footer {
     width: 100%;
 }
 
+hr.outer {
+    height: 2px;
+}
+
 /* ========== NAVBAR ========== */
 nav {
     border-bottom: 1px solid var(--tertiary-color);
@@ -1218,7 +1222,7 @@ label[for='password-field'] img {
 #checkout-list .section-row .product-subtotal {
     width: 125px;
 }
-#checkout-list .section-row .delete-button {
+#checkout-list .section-row .remove-button {
     width: 50px;
 }
 
@@ -1278,7 +1282,7 @@ label[for='password-field'] img {
 #user-profile-option .form-section {
     justify-content: flex-start;
     align-items: flex-start;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 10px;
 }
 #user-delete-form {

@@ -1,7 +1,8 @@
 
 function handleFormSubmit(formId, buttonName, phpFunctionAddress, formType) {
-    $("#" + formId).on("submit", function(e) {
+    $(document).on("submit", "#" + formId, function(e) {
         e.preventDefault();
+        console.log("Form submitted for ", formType);
         var form = $(this);
         var data = form.serialize();
         var formStatus = form.find(".form-result"); 

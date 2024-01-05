@@ -1,9 +1,30 @@
 <?php
+// Checking if user is logged in
 require_once "../../init.php";
 if (!is_user_logged_in()) {
     header("Location: ../../user_pages/user_login/user_login.php");
     exit;
 }
+
+// Choosing the subsite to load
+$content = $_GET['content'] ?? 'details';
+if (!in_array($content, ['details', 'orders', 'address'])) {
+    header("Location: ../../page_error.php");
+    exit;
+}
+$contentFile = "";
+switch ($content) {
+    case 'details':
+        $contentFile = 'user_details/user_details_loader.php';
+        break;
+    case 'orders':
+        $contentFile = 'user_orders/user_orders_loader.php';
+        break;
+    case 'address':
+        $contentFile = 'user_address/user_address_loader.php';
+        break;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +47,7 @@ if (!is_user_logged_in()) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Cache-control" content="no-cache">
 
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../../styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -44,43 +65,13 @@ if (!is_user_logged_in()) {
         </div>
     </header>
     <main class="white-background">
-        <div class="section-header">
-            <button class="hyperlink_button" data-option="user_details">Account Details</button>
-            <button class="hyperlink_button" data-option="user_orders">Order History</button>
-            <button class="hyperlink_button" data-option="user_address">Shipping Address</button>
+            <div class="section-header">
+            <a href="user_profile.php?content=details" class="hyperlink_button">Account Details</a>
+            <a href="user_profile.php?content=orders" class="hyperlink_button">Order History</a>
+            <a href="user_profile.php?content=address" class="hyperlink_button">Shipping Address</a>
         </div>
         <div id="user-profile-option" class="section-content">
-            <!-- Script responsible for loading the clicked option -->
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    var buttons = document.querySelectorAll('.section-header .hyperlink_button');
-
-                    buttons.forEach(function(button) {
-                        button.addEventListener("click", function() {
-                            var option = this.getAttribute('data-option');
-                            loadContent(option);
-                        });
-                    });
-
-                    function loadContent(option) {
-                        // Unfocusing all buttons and focusing the active one
-                        buttons.forEach(btn => btn.classList.remove('focused'));
-                        var activeButton = document.querySelector('.section-header .hyperlink_button[data-option="' + option + '"]');
-                        if (activeButton) {
-                            activeButton.classList.add('focused');
-                        }
-
-                        var contentDiv = document.getElementById('user-profile-option');
-                        fetch("../../user_pages/user_profile/" + option + "/" + option + "_loader.php")
-                            .then(response => response.text())
-                            .then(data => {
-                                contentDiv.innerHTML = data;
-                            })
-                            .catch(error => console.error("Error:", error));
-                    }
-                    loadContent('user_address');
-                });
-            </script>
+            <?php include "../../user_pages/user_profile/" . $contentFile; ?>
         </div>
     </main>
     <?php include "../../site_static_parts/footer.php"; ?>
@@ -88,11 +79,11 @@ if (!is_user_logged_in()) {
     <script src="../../js_scripts/form_updater.js"></script>
     <script>
         $(document).ready(function() {
-        handleFormSubmit("user-delete-form", "delete-button", "../../user_pages/user_profile/userdelete_sender.php", "delete");
-        handleFormSubmit("user-logout-form", "logout-button", "../../user_pages/user_profile/userlogout_sender.php", "logout");
+            handleFormSubmit('user-delete-form', 'delete-button', '../../../user_pages/user_profile/user_details/userdelete_sender.php', 'delete');
+            handleFormSubmit('user-logout-form', 'logout-button', '../../../user_pages/user_profile/user_details/userlogout_sender.php', 'logout');
         });
-    </script>  
-    <script src="../../../user_pages/user_profile/user_address/user_address_delete_updater.js"></script>
+    </script> 
+    <?php if($contentFile == 'user_address/user_address_loader.php') echo "<script src='../../../user_pages/user_profile/user_address/user_address_delete_updater.js'></script>"; ?>
 </body>
 
 </html>
