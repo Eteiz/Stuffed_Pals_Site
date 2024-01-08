@@ -5,7 +5,6 @@ if (!is_user_logged_in()) {
     header("Location: ../../user_pages/user_login/user_login.php");
     exit;
 }
-
 // Choosing the subsite to load
 $content = $_GET['content'] ?? 'details';
 if (!in_array($content, ['details', 'orders', 'address'])) {
@@ -64,6 +63,7 @@ switch ($content) {
             </h3>
         </div>
     </header>
+    
     <main class="white-background">
             <div class="section-header">
             <a href="user_profile.php?content=details" class="hyperlink_button">Account Details</a>

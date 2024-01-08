@@ -11,7 +11,7 @@ if (!is_user_logged_in()) {
 <head>
     <meta charset="UTF-8">
 
-    <title>Add New User Address | Stuffed Pals</title>
+    <title>Add new user address | Stuffed Pals</title>
     <meta name="description"
         content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords"
@@ -33,77 +33,68 @@ if (!is_user_logged_in()) {
         rel="stylesheet">
 </head>
 
-<body id="user-address-add-page">
+<body id="user-address-page">
     <?php include "../../../site_static_parts/navbar.php"; ?>
-    <header class="image-background image-parallax">
-        <div class="header-content white-background default-box-shadow">
-            <h1>Add New User Address</h1>
-        </div>
-    </header>
     <main class="white-background">
-    <section class="form-section white-background">
-            <form method="post" action="../../../user_pages/user_profile/user_address/user_address_add_sender.php" id="user-address-form">
-                <h2> Address </h2>
+        <section class="form-section white-background">
+            <form id="user-address-form" action="../../../user_pages/user_profile/user_address/user_address_add_sender.php" method="post">
+                <h2>Add new address</h2>
                 <label for="firstname-field" class="form-field">
-                    <h3> First name </h3>
-                    <input type="text" id="firstname-field" name="user_firstname" required placeholder="First Name"
+                    <h3>First name<span class="alert">*</span></h3>
+                    <input type="text" id="firstname-field" name="user_firstname" required placeholder="First name"
                         maxlength="100" autocomplete="given-name">
                 </label>
                 <label for="lastname-field" class="form-field">
-                    <h3> Last name </h3>
-                    <input type="text" id="lastname-field" name="user_lastname" required placeholder="Last Name"
+                    <h3>Last name<span class="alert">*</span></h3>
+                    <input type="text" id="lastname-field" name="user_lastname" required placeholder="Last name"
                         maxlength="100" autocomplete="family-name">
                 </label>
                 <label for="email-field" class="form-field">
-                    <h3> Email </h3>
-                    <input type="email" id="email-field" name="user_email" placeholder="Email"
+                    <h3>Email address<span class="alert">*</span></h3>
+                    <input type="email" id="email-field" name="user_email" required placeholder="Email address"
                         maxlength="255" autocomplete="email">
                 </label>
                 <label for="phone-field" class="form-field">
-                    <h3> Phone number </h3>
-                    <input type="tel" id="phone-field" name="user_phone" required placeholder="Phone"
-                        maxlength="15" autocomplete="tel" pattern="[+\-0-9]+"
-                        title="Phone number can only contain digits, plus, and minus signs.">
+                    <h3>Phone number<span class="alert">*</span></h3>
+                    <input type="tel" id="phone-field" name="user_phone" required placeholder="Phone number"
+                        maxlength="12" autocomplete="tel">
                 </label>
                 <label for="address-field" class="form-field">
-                    <h3> Street and Home address </h3>
-                    <input type="text" id="address-field" name="user_homeaddress" required placeholder="Home Address"
+                    <h3>Street and Home address<span class="alert">*</span></h3>
+                    <input type="text" id="address-field" name="user_homeaddress" required placeholder="Home address"
                         maxlength="100" autocomplete="address-line1">
                 </label>
                 <label for="city-field" class="form-field">
-                    <h3> City </h3>
+                    <h3>City<span class="alert">*</span></h3>
                     <input type="text" id="city-field" name="user_city" required placeholder="City"
                         maxlength="100" autocomplete="address-level2">
                 </label>
                 <label for="postalcode-field" class="form-field">
-                    <h3> Postal code </h3>
-                    <input type="text" id="postalcode-field" name="user_postalcode" required placeholder="Postal Code"
+                    <h3>Postal code<span class="alert">*</span></h3>
+                    <input type="text" id="postalcode-field" name="user_postalcode" required placeholder="Postal code"
                         maxlength="6" autocomplete="postal-code">
                 </label>
                 <label for="state-field" class="form-field">
-                    <h3> State </h3>
-                    <input type="text" id="state-field" name="user_state" required placeholder="State"
+                    <h3>State/voivodeship<span class="alert">*</span></h3>
+                    <input type="text" id="state-field" name="user_state" required placeholder="State/voivodeship"
                         maxlength="100" autocomplete="address-level1">
                 </label>
                 <label for="country-field" class="form-field">
-                    <h3> Country </h3>
+                    <h3>Country<span class="alert">*</span></h3>
                     <select id="country-field" name="user_country" required autocomplete="country-name">
                         <option value="">Select country</option>
                         <option value="Poland">Poland</option>
-                        <option value="Canada">Canada</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="Australia">Australia</option>
-                        <option value="United States">United States</option>
+                        <option value="Germany">Germany</option>
                     </select>
                 </label>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php">Cancel</a>
+                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php?content=address">&#11164 Cancel</a>
                 </div>
                 <button class="hyperlink_button" type="submit" name="add-address-buton">
-                    <div class="button-text">ADD ADDRESS</div>
+                    <div class="button-text">Add address</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result" style="height: 20px"></div>
+                <div class="form-result"></div>
             </form>
         </section>
     </main>

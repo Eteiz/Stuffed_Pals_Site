@@ -29,7 +29,7 @@ $addressData = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8">
 
-    <title>Edit User Address | Stuffed Pals</title>
+    <title>Edit user address | Stuffed Pals</title>
     <meta name="description"
         content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords"
@@ -51,86 +51,77 @@ $addressData = $result->fetch_assoc();
         rel="stylesheet">
 </head>
 
-<body id="user-address-edit-page">
+<body id="user-address-page">
     <?php include "../../../site_static_parts/navbar.php"; ?>
-    <header class="image-background image-parallax">
-        <div class="header-content white-background default-box-shadow">
-            <h1>Edit User Address</h1>
-        </div>
-    </header>
     <main class="white-background">
     <section class="form-section white-background">
             <form method="post" action="../../../user_pages/user_profile/user_address/user_address_edit_sender.php" id="user-address-form">
-                <h2> Address </h2>
+                <h2>Edit existing address</h2>
                 <label for="firstname-field" class="form-field">
-                    <h3> First name </h3>
-                    <input type="text" id="firstname-field" name="user_firstname" required placeholder="First Name"
+                    <h3>First name<span class="alert">*</span></h3>
+                    <input type="text" id="firstname-field" name="user_firstname" required placeholder="First name (original: <?php echo htmlspecialchars($addressData['user_firstname']); ?>)"
                         maxlength="100" autocomplete="given-name" 
                         value="<?php echo htmlspecialchars($addressData['user_firstname']); ?>">
                 </label>
                 <label for="lastname-field" class="form-field">
-                    <h3> Last name </h3>
-                    <input type="text" id="lastname-field" name="user_lastname" required placeholder="Last Name"
+                    <h3>Last name<span class="alert">*</span></h3>
+                    <input type="text" id="lastname-field" name="user_lastname" required placeholder="Last name (original: <?php echo htmlspecialchars($addressData['user_lastname']); ?>)"
                         maxlength="100" autocomplete="family-name"
                         value="<?php echo htmlspecialchars($addressData['user_lastname']); ?>">
                 </label>
                 <label for="email-field" class="form-field">
-                    <h3> Email </h3>
-                    <input type="email" id="email-field" name="user_email" placeholder="Email"
+                    <h3>Email address<span class="alert">*</span></h3>
+                    <input type="email" id="email-field" name="user_email" required placeholder="Email address (original: <?php echo htmlspecialchars($addressData['user_email']); ?>)"
                         maxlength="255" autocomplete="email"
                         value="<?php echo htmlspecialchars($addressData['user_email']); ?>">
                 </label>
                 <label for="phone-field" class="form-field">
-                    <h3> Phone number </h3>
-                    <input type="tel" id="phone-field" name="user_phone" required placeholder="Phone"
-                        maxlength="15" autocomplete="tel" pattern="[+\-0-9]+"
-                        title="Phone number can only contain digits, plus, and minus signs."
+                    <h3>Phone number<span class="alert">*</span></h3>
+                    <input type="tel" id="phone-field" name="user_phone" required placeholder="Phone number (original: <?php echo htmlspecialchars($addressData['user_phone']); ?>)"
+                        maxlength="12" autocomplete="tel"
                         value="<?php echo htmlspecialchars($addressData['user_phone']); ?>">
                 </label>
                 <label for="address-field" class="form-field">
-                    <h3> Street and Home address </h3>
-                    <input type="text" id="address-field" name="user_homeaddress" required placeholder="Home Address"
+                    <h3>Street and Home address<span class="alert">*</span></h3>
+                    <input type="text" id="address-field" name="user_homeaddress" required placeholder="Home address (original: <?php echo htmlspecialchars($addressData['user_homeaddress']); ?>)"
                         maxlength="100" autocomplete="address-line1"
                         value="<?php echo htmlspecialchars($addressData['user_homeaddress']); ?>">
                 </label>
                 <label for="city-field" class="form-field">
-                    <h3> City </h3>
-                    <input type="text" id="city-field" name="user_city" required placeholder="City"
+                    <h3>City<span class="alert">*</span></h3>
+                    <input type="text" id="city-field" name="user_city" required placeholder="City (original: <?php echo htmlspecialchars($addressData['user_city']); ?>)"
                         maxlength="100" autocomplete="address-level2"
                         value="<?php echo htmlspecialchars($addressData['user_city']); ?>">
                 </label>
                 <label for="postalcode-field" class="form-field">
-                    <h3> Postal code </h3>
-                    <input type="text" id="postalcode-field" name="user_postalcode" required placeholder="Postal Code"
+                    <h3>Postal code<span class="alert">*</span></h3>
+                    <input type="text" id="postalcode-field" name="user_postalcode" required placeholder="Postal code (original: <?php echo htmlspecialchars($addressData['user_postalcode']); ?>)"
                         maxlength="6" autocomplete="postal-code"
                         value="<?php echo htmlspecialchars($addressData['user_postalcode']); ?>">
                 </label>
                 <label for="state-field" class="form-field">
-                    <h3> State </h3>
-                    <input type="text" id="state-field" name="user_state" required placeholder="State"
+                    <h3>State/voivodeship<span class="alert">*</span></h3>
+                    <input type="text" id="state-field" name="user_state" required placeholder="State/voivodeship (original: <?php echo htmlspecialchars($addressData['user_state']); ?>)"
                         maxlength="100" autocomplete="address-level1"
                         value="<?php echo htmlspecialchars($addressData['user_state']); ?>">
                 </label>
                 <label for="country-field" class="form-field">
-                    <h3> Country </h3>
+                    <h3>Country<span class="alert">*</span></h3>
                     <select id="country-field" name="user_country" required autocomplete="country-name">
                         <option value="">Select country</option>
                         <option value="Poland" <?php echo ($addressData['user_country'] == 'Poland') ? 'selected' : ''; ?>>Poland</option>
-                        <option value="Canada" <?php echo ($addressData['user_country'] == 'Canada') ? 'selected' : ''; ?>>Canada</option>
-                        <option value="United Kingdom" <?php echo ($addressData['user_country'] == 'United Kingdom') ? 'selected' : ''; ?>>United Kingdom</option>
-                        <option value="Australia" <?php echo ($addressData['user_country'] == 'Australia') ? "selected" : ''; ?>>Australia</option>
-                        <option value="United States" <?php echo ($addressData['user_country'] == 'United States') ? 'selected' : ''; ?>>United States</option>
+                        <option value="Germany" <?php echo ($addressData['user_country'] == 'Germany') ? 'selected' : ''; ?>>Germany</option>
                     </select>
                 </label>
                 <?php echo "<input type='hidden' name='address_id' value='". htmlspecialchars($addressId) ."'>"; ?>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php">Cancel</a>
+                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php?content=address">&#11164 Cancel</a>
                 </div>
                 <button class="hyperlink_button" type="submit" name="edit-address-button">
-                    <div class="button-text">EDIT ADDRESS</div>
+                    <div class="button-text">Edit address</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result" style="height: 20px"></div>
+                <div class="form-result"></div>
             </form>
         </section>
     </main>

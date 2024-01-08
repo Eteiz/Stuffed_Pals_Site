@@ -1,33 +1,23 @@
 <?php
-require_once "../../db_connect.php";
+require_once "../../config.php";
 header("Content-Type: application/json");
 
 $response = ["status" => 1, "msg" => "Unknown action."];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $conn->real_escape_string($_POST["username"]);
-    $email = $conn->real_escape_string($_POST["email"]);
-    $password = $conn->real_escape_string($_POST["password"]);
+    $username = substr(filter_var($conn->real_escape_string($_POST["username"]), FILTER_SANITIZE_STRING), 0, 40);
+    $email = substr(filter_var($conn->real_escape_string($_POST["email"]), FILTER_SANITIZE_EMAIL), 0, 100);
+    $password = substr(filter_var($conn->real_escape_string($_POST["password"]), FILTER_SANITIZE_STRING), 0, 60);
 
-    // Username validation
-    // Length
-    if (strlen($username) < 5 || strlen($username) > 40) {
-        $response = ["status" => 1, "msg" => "Username must be 5-40 characters long."];
-    }
-    // Special characters
-    else if (!preg_match("/^[A-Za-z0-9]+$/", $username)) {
+    if (strlen($username) < 5) {
+        $response = ["status" => 1, "msg" => "Username must contain 5-40 characters."];
+    } else if (!preg_match("/^[A-Za-z0-9]+$/", $username)) {
         $response = ["status" => 1, "msg" => "Username must contain only letters and numbers."];
     }
-    // Password validation
-    // Length
-    else if (strlen($password) < 8 || strlen($password) > 40) {
-        $response = ["status" => 1, "msg" => "Password must be 8-40 characters long."];
-    }
-    // Special characters
-    else if (!preg_match("/^[ -~]+$/", $password)) {
+    else if (strlen($password) < 8) {
+        $response = ["status" => 1, "msg" => "Password must contain 7-60 characters."];
+    } else if (!preg_match("/^[ -~]+$/", $password)) {
         $response = ["status" => 1, "msg" => "Password must contain only keyboard characters."];
-    }
-    else {
-        // Password hasning
+    } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $stmt = $conn->prepare("CALL RegisterUser(?, ?, ?, @p_status, @p_message)");

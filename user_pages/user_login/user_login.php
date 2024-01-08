@@ -1,7 +1,7 @@
 <?php
 require_once "../../init.php";
 if (is_user_logged_in()) {
-    header("Location: ../../user_pages/user_profile/user_profile.php");
+    header("Location: ../../user_pages/user_profile/user_profile.php?content=details");
     exit;
 }
 ?>
@@ -60,10 +60,7 @@ if (is_user_logged_in()) {
                         onclick="togglePasswordVisibility()"></img>
                 </label>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../user_pages/user_retrieve_password.php"> Forgot your
-                        password? </a>
-                    </br>
-                    <a class="hyperlink_text" href="../../user_pages/user_register/user_register.php"> Not registered? Create an
+                    <a class="hyperlink_text" href="../../user_pages/user_register/user_register.php">&#11164 Not registered? Create an
                         account</a>
                 </div>
                 <button class="hyperlink_button" type="submit" name="login-button">

@@ -11,9 +11,9 @@ $userResult = $userQuery->get_result();
 if ($userRow = $userResult->fetch_assoc()) {
     echo "<div id='user-profile-account-details' class='section-title'>";
         echo "<h1 style='margin-bottom: 20px;'>Account Details</h1>";
-        echo "<form method='post' action='../../../user_pages/user_profile/user_details/userlogout_sender.php' id='user-logout-form'>";
+        echo "<form id='user-logout-form' action='../../../user_pages/user_profile/user_details/userlogout_sender.php' method='post'>";
             echo "<button class='hyperlink_button' type='submit' name='logout-button'>
-                <div class='button-text'>LOG OUT</div>
+                <div class='button-text'>Log out</div>
                 <div class='dots-5' style='display: none;'></div>
             </button>";
             echo "<div class='form-result'></div>";
@@ -37,7 +37,7 @@ if ($userRow = $userResult->fetch_assoc()) {
         echo "<div class='form-section white-background'>";
             echo"<form action='../../../user_pages/user_profile/user_details/userdelete_sender.php' method='post' id='user-delete-form'>";
                 echo "<button class='hyperlink_button_reverse' type='submit' name='delete-button'>
-                    <div class='button-text'>DELETE ACCOUNT</div>
+                    <div class='button-text'>Delete account</div>
                     <div class='dots-5' style='display: none;'></div>
                 </button>";
                 echo "<label>";

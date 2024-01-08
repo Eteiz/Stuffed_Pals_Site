@@ -16,6 +16,8 @@
     --action-color-hover: #85A30C;
     --action-color-disabled: #999999;
 
+    --alert-color: #ff0a47;
+
     --page-width: 100%;
 }
 
@@ -42,6 +44,10 @@
 .hover-box-shadow:hover {
     box-shadow: 0px 10px 8px var(--shadow-color);
     transform: translateY(-5px); 
+}
+.alert {
+    color: var(--alert-color) !important;
+    font-weight: bold !important;
 }
 
 /* ATTRIBUTES HIERARCHY
@@ -78,6 +84,7 @@ header {
     padding-top: 280px;
     padding-bottom: 200px;
 }
+
 .header-content {
     width: 600px;
     padding-top: 40px;
@@ -105,83 +112,6 @@ hr.outer {
     height: 2px;
 }
 
-/* ========== NAVBAR ========== */
-nav {
-    border-bottom: 1px solid var(--tertiary-color);
-}
-nav, 
-nav .section-content-col {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-}
-
-nav {
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-
-    gap: 215px;
-    height: 80px;
-}
-nav .section-content-col {
-    width: 300px;
-}
-#user-section { 
-    gap: 10px; 
-}
-#links-section a { font-size: 25px; }
-
-#logo-section img,
-#logo-section a {
-    width: 302px; 
-}
-#user-section img,
-#user-section a {
-    width: 32px; 
-    height: 32px;
-}
-
-/* ========== FOOTER ========== */
-footer {
-    border-top: 1px solid var(--tertiary-color);
-}
-footer {
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
-footer h3 {
-    color: var(--primary-color);
-}
-footer .section-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-}
-footer .section-content-header,
-footer .section-content-header img,
-footer .section-content-header a {
-    width: 300px;
-}
-.section-content-header h4 {
-    margin: 10px 0px 2px 5px;
-}
-footer .section-content-col {
-    height: 120px;
-}
-footer .section-content-col h3,
-footer .section-content-col h4 {
-    height: 20px;
-}
-footer .section-content-col h4 {
-    margin-top: 10px;
-}
-footer .section-footer {
-    text-align: center;
-}
-
 img {
     display: block; 
     object-fit: cover;
@@ -202,6 +132,124 @@ hr {
 
     background-color: var(--tertiary-color);
 }
+
+/* ========== NAVBAR ========== */
+/* nav,  */
+nav .section-content-col {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+nav {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 90%;
+    padding: 10px 5% 10px 5%;
+    border-bottom: 1px solid var(--tertiary-color);
+}
+nav .section-content-col {
+    width: 25%;
+    min-width: 200px;
+}
+#links-section a { font-size: calc(23px + 0.2vw); }
+
+#logo-section img,
+#logo-section a {
+    width: 90%;
+    min-width: 200px;
+}
+#user-section a {
+    width: calc(25px + 0.5vw);
+    height: calc(25px + 0.5vw);
+}
+#user-section img {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    /* TBA */
+}
+
+/* ========== FOOTER ========== */
+footer {
+    width: 100%;
+    border-top: 1px solid var(--tertiary-color);
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+footer h3 {
+    color: var(--primary-color);
+}
+
+footer .section-content {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: first baseline;
+    margin: auto;
+}
+
+footer .section-content-header img,
+footer .section-content-header a  {
+    width: 80%;
+    height: auto;
+}
+footer .section-content-header {
+    width: 25%;
+}
+footer .section-content-col {
+    width: 15%;
+}
+
+footer .section-content-col h4 {
+    margin: 5px 0px 5px 0px;
+}
+footer .hyperlink_text, 
+footer .hyperlink_text:visited {
+    display:inline;
+}
+
+footer .section-footer {
+    text-align: center;
+}
+
+#responsive-text {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    footer .section-content {
+        width: 90%;
+        flex-direction: column;
+        gap: 8px;
+    }
+    footer .section-content-header img,
+    footer .section-content-header a {
+        margin: auto;
+    }
+
+    footer .section-content-header,
+    footer .section-content-col,
+    footer .section-footer  {
+        width: 90%;
+        text-align: center;
+    }
+    #full-text {
+        display: none;
+    }
+    #responsive-text {
+        display: block;
+    }
+}
+
+
 
 /* ==================== FONTS ==================== */
 /* WEIGHT HIERARCHY:
@@ -482,7 +530,6 @@ label[for='password-field'] img {
       66% {box-shadow: 20px 0 #0002,-20px 0 var(--white-background-color); background: #0002}
       100%{box-shadow: 20px 0 #0002,-20px 0 var(--white-background-color); background: var(--white-background-color) }
   }
-
 /* ==================== INDEX.PHP ==================== */
 /*  TITULAR SECTION  */
 .index_page .titular_section {
@@ -974,7 +1021,8 @@ label[for='password-field'] img {
     margin-bottom: 5px;
 }
 
-#filters-form .hyperlink_button {
+#filters-form .hyperlink_button,
+#filters-form .hyperlink_button_reverse {
     width: 100%;
     height: 30px;
     margin: 10px 0px 0px 0px;
@@ -1329,6 +1377,136 @@ label[for='password-field'] img {
 #user-profile-address-empty img {
     width: 300px;
     height: 300px;
+}
+
+/* ==================== ADD ADDRESS PAGE / EDIT ADDRESS PAGE ==================== */
+#user-address-page .form-section {
+    width: 35%;
+    margin: auto;
+    padding-top: 80px;
+}
+#user-address-page #user-address-form,
+#user-address-page #user-address-form input,
+#user-address-page #user-address-form select,
+#user-address-page .hyperlink_button {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    #user-address-page .form-section {
+        width: 80%;
+    }
+}
+
+
+/* ==================== CHECKOUT PAGE ==================== */
+#checkout-page main {
+    display: flex;
+    align-items: stretch;
+}
+#checkout-page :is(.form-section, .details-section) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* ========== FORM SECTION ========== */
+#checkout-page .form-section {
+    width: 65%;
+}
+#checkout-page #user-address-form {
+    width: 60%;
+}
+#checkout-page .form-section h2 {
+    margin-top: 10px;
+}
+#checkout-page .form-section select,
+#checkout-page .form-section input {
+    height: 30px;
+    width: 100%;
+}
+#checkout-page input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 10px 0px 10px 0px;
+}
+#checkout-page .form-section .hyperlink_button {
+    width: 100%;
+}
+
+/* ========== DETAILS SECTION ========== */
+#checkout-page .details-section {
+    width: 45%;
+}
+#checkout-page .details-section h1,
+#checkout-page .details-section h3,
+#checkout-page .details-section h4,
+#checkout-page .details-section span {
+    color: var(--tertiary-color);
+}
+
+#checkout-page .details-section .section-content,
+#checkout-page .details-section .section-footer,
+#checkout-page .details-section hr {
+    width: calc(100% - 20px);
+}
+
+#checkout-page .details-section .section-content,
+#checkout-page .details-section .section-footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+}
+
+#checkout-page .details-section .section-row {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#checkout-page .details-section .section-content .section-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#checkout-page .details-section .section-content .section-row img {
+    width: 13%;
+    height: 13%;
+    border: 1px solid var(--tertiary-color);
+}
+#checkout-page .details-section .section-content .section-row span {
+    width: 65%;
+}
+#checkout-page .details-section .section-content .section-row h4 {
+    width: 20%;
+    text-align: right;
+}
+
+#checkout-page .details-section .section-footer .section-row {
+    justify-content: space-between;
+}
+
+
+@media (max-width: 1000px) {
+    #checkout-page main {
+        flex-direction: column;
+    }
+    #checkout-page :is(.form-section, .details-section) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /* ========== FORM SECTION ========== */
+    #checkout-page .form-section {
+        width: 100%;
+    }
+    #checkout-page #user-address-form {
+        width: 80%;
+    }
+    /* ========== DETAILS SECTION ========== */
+    #checkout-page .details-section {
+        width: 100%;
+    }
 }
 
 /* ==================== NEWSLETTER ==================== */

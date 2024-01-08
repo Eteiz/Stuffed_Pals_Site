@@ -288,10 +288,11 @@ $userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $
     // Checking if user is logged and user_id is valid
     if(!is_user_logged_in()) return ["status" => 2, "msg" => "User not logged in."];
     // Checking if the parameters are correct
-    if(!$userFirstName || !$userLastName || !$userPhoneNumber || !$userHomeAddress || !$userCity || !$userPostalCode || !$userState || !$userCountry) {
+    if(!$userFirstName || !$userLastName || !$userEmail || !$userPhoneNumber || !$userHomeAddress || !$userCity || !$userPostalCode || !$userState || !$userCountry) {
         return ["status" => 1, "msg" => "Incorrect address parameters"];
     }
-
+    //return ["status" => 1, "msg" => htmlspecialchars($userFirstName). " " .htmlspecialchars($userLastName). " " .htmlspecialchars($userEmail). " " .htmlspecialchars($userPhoneNumber). " " .htmlspecialchars($userHomeAddress). " " .htmlspecialchars($userCity). " " .htmlspecialchars($userPostalCode). " " .htmlspecialchars($userState). " " .htmlspecialchars($userCountry). " "];
+    
     global $conn;
     $sql = "CALL AddUserAddress(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @p_status, @p_message)";
     $stmt = $conn->prepare($sql);
@@ -313,7 +314,7 @@ $userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $
     // Checking if user is logged and user_id is valid
     if(!is_user_logged_in()) return ["status" => 2, "msg" => "User not logged in."];
     // Checking if the parameters are correct
-    if(!$userAddressId || !is_numeric($userAddressId) || $userAddressId < 0 || !$userFirstName || !$userLastName || !$userPhoneNumber || !$userHomeAddress || !$userCity || !$userPostalCode || !$userState || !$userCountry) {
+    if(!$userAddressId || !is_numeric($userAddressId) || $userAddressId < 0 || !$userFirstName || !$userLastName || !$userEmail || !$userPhoneNumber || !$userHomeAddress || !$userCity || !$userPostalCode || !$userState || !$userCountry) {
         return ["status" => 1, "msg" => "Incorrect address parameters."];
     }
 
@@ -326,6 +327,7 @@ $userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $
     $select = $conn->query("SELECT @p_status AS status, @p_message AS message");
     $result = $select->fetch_assoc();
     
+    // Check if address was updated
     if($result) {
         return ["status" => $result['status'], "msg" => $result['message']];
     } else {
@@ -337,7 +339,9 @@ function deleteUserAddress($userId, $userAddressId) {
     // Checking if user is logged and user_id is valid
     if(!is_user_logged_in()) return ["status" => 2, "msg" => "User not logged in."];
     // Checking if the parameters are correct
-    if(!$userAddressId || !is_numeric($userAddressId) || $userAddressId < 0) return ["status" => 1, "msg" => "Incorrect address parameters."];
+    if(!$userAddressId || !is_numeric($userAddressId) || $userAddressId < 0) {
+        return ["status" => 1, "msg" => "Incorrect address parameters."];
+    }
 
     global $conn;
     $sql = "CALL DeleteUserAddress(?, ?, @p_status, @p_message)";
@@ -355,5 +359,20 @@ function deleteUserAddress($userId, $userAddressId) {
         return ["status" => 1, "msg" => "Error while deleting address."];
     } 
 }
+
+//============================ ORDER FUNCTION ============================//
+// 0 - Status: Ok
+// 1 - Status: Error while taking action, incorrect parameters / invalid action
+// 2 - Status: User not logged in
+
+function startCartReservation($userId) {
+    // Checking if user is logged and user_id is valid
+    if(!is_user_logged_in() || !isCartExist($userId)) return null;
+
+
+}
+
+
+
 ?>
 

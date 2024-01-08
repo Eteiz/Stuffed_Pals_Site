@@ -183,30 +183,30 @@
             <form method="post" action="../customer_service_page/contactform_sender.php" id="contact-form">
                 <h2> Contact form </h2>
                 <label for="first-name" class="form-field">
-                    <h3> First name </h3>
+                    <h3> First name<span class="alert">*</span></h3>
                     <input type="text" name="first-name" id="first-name" required placeholder="First name"
-                        maxlength="100" autocomplete="given-name">
+                        maxlength="40" autocomplete="given-name">
                 </label>
                 <label for="last-name" class="form-field">
-                    <h3> Last name </h3>
-                    <input type="text" name="last-name" id="last-name" required placeholder="Last name" maxlength="100"
+                    <h3> Last name<span class="alert">*</span></h3>
+                    <input type="text" name="last-name" id="last-name" required placeholder="Last name" maxlength="40"
                         autocomplete="family-name">
                 </label>
                 <label for="email-address" class="form-field">
-                    <h3> Email address </h3>
+                    <h3> Email address<span class="alert">*</span></h3>
                     <input type="email" name="email" id="email-address" required placeholder="Email address"
-                        maxlength="100" autocomplete="email">
+                        maxlength="255" autocomplete="email">
                 </label>
                 <label for="message" class="form-field">
-                    <h3> Message content </h3>
+                    <h3> Message content<span class="alert">*</span></h3>
                     <textarea name="message" id="message" required placeholder="Your message"
                         maxlength="1000"></textarea>
                 </label>
                 <button class="hyperlink_button" type="submit" name="contactform-button">
-                    <div class="button-text">SEND MESSAGE</div>
+                    <div class="button-text">Send message</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result" style="height: 20px"></div>
+                <div class="form-result"></div>
             </form>
         </section>
     </main>

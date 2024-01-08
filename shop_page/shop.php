@@ -94,7 +94,7 @@
                 </div>
             </div>
             <!-- Clear and apply changes button -->
-            <button class="hyperlink_button" name="filters-clear-button" type="submit">Clear Filters</button>
+            <button class="hyperlink_button_reverse" name="filters-clear-button" type="submit">Clear Filters</button>
             <button class="hyperlink_button" name="filters-apply-button" type="submit">Apply Filters</button>
         </form>
         <!-- PRODUCT LIST -->

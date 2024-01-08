@@ -89,7 +89,7 @@ else if($cartIdRow = $cartIdResult->fetch_assoc()) {
     echo "</article>";
 
     // Checkout Form 
-    $shippingCost = ($subtotal >= 250.00) ? 0.00 : 15.00;
+    $shippingCost = 10.00;
     $shippingCost = number_format($shippingCost, 2);
 
     $subtotal = number_format($subtotal, 2);
@@ -99,11 +99,6 @@ else if($cartIdRow = $cartIdResult->fetch_assoc()) {
 
     echo "<form id='checkout-form' class='white-background default-box-shadow'>";
         echo "<h1 style='width: 90%; margin: 5px auto 5px auto;'>Summary</h1>";
-        if($total < 250.00) {
-            echo "<div style='width: 90%; font-size: 15px; color: var(--primary-color); margin: 5px auto 5px auto;'>";
-            echo "You are eligible for free shipping! Free shipping applies to orders over <strong>$250.00</strong>.";
-            echo "</div>";
-        }
         echo "<hr class='outer'>";
         echo "<div class='checkout-form-row'>";
             echo "<h4>Subtotal</h4>";
@@ -119,7 +114,7 @@ else if($cartIdRow = $cartIdResult->fetch_assoc()) {
             echo "<h3>$". htmlspecialchars($total) ."</h3>";
         echo "</div>";
         // Button to procees to checkout
-        echo "<button type='button' class='hyperlink_button' onClick='window.location.href=\"../../cart_page/checkout_page.php\"'>Proceed to checkout</button>";
+        echo "<button type='button' class='hyperlink_button' onClick='window.location.href=\"../../checkout_page/checkout_page.php\"'>Proceed to checkout</button>";
         echo "<h4 style='width: 90%; margin: 5px auto 5px auto;'>We accept:</h4>";
         echo "<div class='checkout-form-row' style='justify-content: flex-start;'>";
             echo "<img src='../assets/icons/visa_icon.png' alt='Visa icon'></img>";

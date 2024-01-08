@@ -4,8 +4,8 @@ header("Content-Type: application/json");
 
 $response = ["status" => 1, "msg" => "Unknown action."];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);
+    $username = substr(filter_var($conn->real_escape_string($_POST["username"]), FILTER_SANITIZE_STRING), 0, 40);
+    $password = $_POST["password"];
 
     $stmt = $conn->prepare("SELECT id, user_password FROM user WHERE user_login = ?");
     $stmt->bind_param("s", $username);

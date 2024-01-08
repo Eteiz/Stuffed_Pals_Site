@@ -31,7 +31,12 @@
         </div>
     </div>
     <div class="section-footer">
-        <h3>©2023, Marta Ambroziak</h3>
+        <span id="full-text"><h3>Marta Ambroziak ©2023-2024</h3></span>
+        <!-- Tekst dla mniejszych ekranów -->
+        <span id="responsive-text">
+            <p><h3>Marta Ambroziak</h3><p>
+            <p><h3>©2023-2024</h3></p>
+        </span>
         <!-- TBA: Privacy Policy Page -->
         <h4><a class="hyperlink_text" href="../../../#PRIVACY_POLICY">Privacy Policy</a></h4>
     </div>
