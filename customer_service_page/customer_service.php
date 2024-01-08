@@ -28,8 +28,8 @@
 
 <body>
     <?php include "../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
-        <div class="header-content white_background default-box-shadow">
+    <header class="image-background image-parallax">
+        <div class="header-content white-background default-box-shadow">
             <h1> Customer Service </h1>
             <h3> Your satisfaction is our priority—reach out to us with any questions or for support,
                 and we"ll ensure you find all the answers and assistance you need.
@@ -37,10 +37,10 @@
         </div>
     </header>
     <main>
-        <section id="contact-section" class="default_gradient_background">
+        <section id="contact-section" class="default-gradient-background">
             <div class="section-container">
                 <img src="../assets/Customer-service.png" src="Collab of photos from our customers"></img>
-                <div class="section-element white_background hover-box-shadow">
+                <div class="section-element white-background hover-box-shadow">
                     <div class="section-element-header">
                         <h1><u>Contact us</u></h1>
                         <span> We value your feedback, questions, and comments.
@@ -80,11 +80,11 @@
                 </div>
             </div>
         </section>
-        <section id="faq-section" class="white_background">
+        <section id="faq-section" class="white-background">
             <div class="section-header">
                 <h1> Frequently Asked Questions </img></h1>
             </div>
-            <div class="section-content white_background">
+            <div class="section-content white-background">
                 <div class="section-content-row">
                     <div class="section-content-row-header">
                         <h3> What products does Stuffed Pals offer? </h3>
@@ -170,7 +170,7 @@
             </div>
         </section>
 
-        <section id="contact-form-section" class="form-section white_background">
+        <section id="contact-form-section" class="form-section white-background">
             <div class="section-header">
                 <h1> Or ask here... </h1>
                 <span>
@@ -183,41 +183,44 @@
             <form method="post" action="../customer_service_page/contactform_sender.php" id="contact-form">
                 <h2> Contact form </h2>
                 <label for="first-name" class="form-field">
-                    <h3> First name </h3>
+                    <h3> First name<span class="alert">*</span></h3>
                     <input type="text" name="first-name" id="first-name" required placeholder="First name"
-                        maxlength="100" autocomplete="given-name">
+                        maxlength="40" autocomplete="given-name">
                 </label>
                 <label for="last-name" class="form-field">
-                    <h3> Last name </h3>
-                    <input type="text" name="last-name" id="last-name" required placeholder="Last name" maxlength="100"
+                    <h3> Last name<span class="alert">*</span></h3>
+                    <input type="text" name="last-name" id="last-name" required placeholder="Last name" maxlength="40"
                         autocomplete="family-name">
                 </label>
                 <label for="email-address" class="form-field">
-                    <h3> Email address </h3>
+                    <h3> Email address<span class="alert">*</span></h3>
                     <input type="email" name="email" id="email-address" required placeholder="Email address"
-                        maxlength="100" autocomplete="email">
+                        maxlength="255" autocomplete="email">
                 </label>
                 <label for="message" class="form-field">
-                    <h3> Message content </h3>
+                    <h3> Message content<span class="alert">*</span></h3>
                     <textarea name="message" id="message" required placeholder="Your message"
                         maxlength="1000"></textarea>
                 </label>
-                <button class="hyperlink_button" type="submit" name="send-message-button">
-                    SEND MESSAGE
+                <button class="hyperlink_button" type="submit" name="contactform-button">
+                    <div class="button-text">Send message</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result">
-                    <h4 id="contact-form-status" class="form-status"></h4>
-                </div>
+                <div class="form-result"></div>
             </form>
         </section>
     </main>
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../newsletter/newsletter_updater.js"></script>
     <script src="faq_accordion.js"></script>
-    <script src="contactform_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("contact-form", "contactform-button", "../customer_service_page/contactform_sender.php", "contactForm");
+        handleFormSubmit("newsletter-form", "subscribe-button", "../newsletter/newsletter_sender.php", "newsletter");
+        });
+    </script>    
 </body>
 
 </html>

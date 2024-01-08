@@ -31,8 +31,8 @@
 <body class="index_page">
     <?php include "./site_static_parts/navbar.php"; ?>
     <main>
-        <section class="titular_section image-background">
-            <div class="titular_section_card white_background">
+        <section class="titular_section image-background image-parallax">
+            <div class="titular_section_card white-background">
                 <h1> The way you </h1>
                 <div class="text_slider">
                     <div class="text_slider_element">
@@ -46,7 +46,7 @@
                 <a class="hyperlink_button" href="./shop_page/shop.php"> Start now </a>
             </div>
         </section>
-        <section class="presentation_section white_background">
+        <section class="presentation_section white-background">
             <div class="presentation_section_description">
                 <h2>Having a fluffy and cuddly friend is fun</h2>
                 <span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -82,7 +82,7 @@
             </div>
             <img class="presentation_section_image" src="./assets/plush_1.png" alt="Plush_1 image"></img>
         </section>
-        <section class="tutorial_section white_background">
+        <section class="tutorial_section white-background">
             <h2> How can you create your perfect Stuffed Pal? </h2>
             <h3> We made sure that the process of making your perfect plushie is easy and intuitive. </h3>
             <div class="tutorial_section_steps">
@@ -103,7 +103,7 @@
                 </div>
             </div>
         </section>
-        <section class="category_section default_gradient_background">
+        <section class="category_section default-gradient-background">
             <h1> Our products </h1>
             <h3> From essentials to what makes your pal unique! </h3>
             <div class="category_section_categories">
@@ -126,7 +126,12 @@
     <?php include "./newsletter/newsletter_form.php"; ?>
     <?php include "./site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="./newsletter/newsletter_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("newsletter-form", "subscribe-button", "../newsletter/newsletter_sender.php", "newsletter");
+        });
+    </script>   
 </body>
 
 </html>

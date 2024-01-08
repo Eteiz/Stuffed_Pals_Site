@@ -45,7 +45,7 @@ if (isset($_GET["product"])) {
 <body id="product-page">
     <?php include "../site_static_parts/navbar.php"; ?>
     <main>
-        <div id="product-section" class="white_background">
+        <div id="product-section" class="white-background">
             <!-- <div class="section-image-display">
                 <div class="main-image-displayer">
                     <div class="main-image-slider" style="width: 550px; transform: translateX(0px);">
@@ -82,7 +82,7 @@ if (isset($_GET["product"])) {
                         </div>
                         <h2>80.00 PLN</h2>
                     </div>
-                    <div class="section-content-action-buttons">
+                    <form class="section-content-action-buttons">
                         <div class="quantity-button"><button id="decrease-quantity-button"
                                 class="hyperlink_button_reverse" disabled="">-</button>
                             <input type="number" id="product-quantity" class="transparent_background" value="0" min="0"
@@ -91,7 +91,7 @@ if (isset($_GET["product"])) {
                                 disabled="">+</button>
                         </div>
                         <button class="hyperlink_button" type="sumbit" disabled="">OUT OF STOCK</button>
-                    </div>
+                    </form>
                 </div> -->
                 <?php include "product_loader.php"; ?>
             </div>
@@ -100,7 +100,13 @@ if (isset($_GET["product"])) {
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="quantitybutton_updater.js"></script>
-    <script src="../newsletter/newsletter_updater.js"></script>
     <script src="product_slider.js"></script>
+    <script src="../cart_page/add_to_cart_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("newsletter-form", "subscribe-button", "../newsletter/newsletter_sender.php", "newsletter");
+        });
+    </script>    
 </body>
 </html>

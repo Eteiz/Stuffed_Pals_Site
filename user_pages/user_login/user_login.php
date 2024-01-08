@@ -1,7 +1,7 @@
 <?php
 require_once "../../init.php";
 if (is_user_logged_in()) {
-    header("Location: ../../user_pages/user_profile/user_profile.php");
+    header("Location: ../../user_pages/user_profile/user_profile.php?content=details");
     exit;
 }
 ?>
@@ -35,8 +35,8 @@ if (is_user_logged_in()) {
 
 <body>
     <?php include "../../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
-        <div class="header-content white_background default-box-shadow">
+    <header class="image-background image-parallax">
+        <div class="header-content white-background default-box-shadow">
             <h1> Sign in </h1>
             <h3>
                 Welcome back! Sign in to access your personalized settings and curated content.
@@ -44,7 +44,7 @@ if (is_user_logged_in()) {
         </div>
     </header>
     <main>
-        <section class="form-section white_background">
+        <section class="form-section white-background">
             <form method="post" action="../../user_pages/user_login/userlogin_sender.php" id="user-login-form">
                 <h2> Login </h2>
                 <label for="username-field" class="form-field">
@@ -60,26 +60,26 @@ if (is_user_logged_in()) {
                         onclick="togglePasswordVisibility()"></img>
                 </label>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../user_pages/user_retrieve_password.php"> Forgot your
-                        password? </a>
-                    </br>
-                    <a class="hyperlink_text" href="../../user_pages/user_register/user_register.php"> Not registered? Create an
+                    <a class="hyperlink_text" href="../../user_pages/user_register/user_register.php">&#11164 Not registered? Create an
                         account</a>
                 </div>
-                <button class="hyperlink_button" type="submit" name="send-message-button">
-                    SIGN IN
+                <button class="hyperlink_button" type="submit" name="login-button">
+                    <div class="button-text">SIGN IN</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result">
-                    <h4 id="user-login-form-status" class="form-status"></h4>
-                </div>
+                <div class="form-result" style="height: 20px"></div>
             </form>
         </section>
     </main>
     <?php include "../../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../../js_scripts/passwordvisibility_changer.js"></script>
-    <script src="userlogin_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("user-login-form", "login-button", "../../user_pages/user_login/userlogin_sender.php", "login");
+        });
+    </script>   
 </body>
 
 </html>

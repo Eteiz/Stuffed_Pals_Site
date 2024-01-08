@@ -35,8 +35,8 @@ if (is_user_logged_in()) {
 
 <body>
     <?php include "../../site_static_parts/navbar.php"; ?>
-    <header class="image-background">
-        <div class="header-content white_background default-box-shadow">
+    <header class="image-background image-parallax">
+        <div class="header-content white-background default-box-shadow">
             <h1> Sign up </h1>
             <h3>
                 Create account and embark on a journey of exclusive benefits and personalized experiences.
@@ -44,46 +44,50 @@ if (is_user_logged_in()) {
         </div>
     </header>
     <main>
-        <section class="form-section white_background">
-            <form method="post" action="../../user_pages/user_register/userregister_sender.php" id="user-register-form">
-                <h2> Register </h2>
+        <section class="form-section white-background">
+            <form id="user-register-form" action="../../user_pages/user_register/userregister_sender.php" method="post">
+                <h2>Register user</h2>
                 <label for="username-field" class="form-field">
-                    <h3> Username </h3>
+                    <h3>Username<span class="alert">*</span></h3>
                     <input type="text" id="username-field" name="username" required placeholder="Username"
                         maxlength="40" autocomplete="username">
                 </label>
                 <label for="email-field" class="form-field">
-                    <h3> Email address </h3>
+                    <h3> Email address<span class="alert">*</span> </h3>
                     <input type="email" id="email-field" name="email" required placeholder="Email address"
                         maxlength="100" autocomplete="email">
                 </label>
                 <label for="password-field" class="form-field">
-                    <h3> Password </h3>
+                    <h3> Password<span class="alert">*</span> </h3>
                     <input type="password" id="password-field" name="password" required placeholder="Password"
-                        maxlength="40" autocomplete="new-password">
+                        maxlength="60" autocomplete="new-password">
                     <img id="toggle-password" src="../../assets/icons/hide_icon.png" alt="Eye view icon"
                         onclick="togglePasswordVisibility()"></img>
                 </label>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../index.php"> Cancel </a>
+                    <a class="hyperlink_text" href="../../index.php">&#11164 Cancel </a>
                     </br>
-                    <a class="hyperlink_text" href="../../user_pages/user_login/user_login.php"> Already have an account?
+                    <a class="hyperlink_text" href="../../user_pages/user_login/user_login.php"> &#11164 Already have an account?
                         Log in</a>
                 </div>
                 <button class="hyperlink_button" type="submit" name="register-button">
-                    SIGN UP
+                    <div class="button-text">SIGN UP</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result">
-                    <h4 id="user-register-form-status" class="form-status"></h4>
-                </div>
+                <div class="form-result" style="height: 20px"></div>
             </form>
         </section>
     </main>
     <?php include "../../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../../js_scripts/passwordvisibility_changer.js"></script>
-    <script src="userregister_updater.js"></script>
+    <script src="../../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("user-register-form", "register-button", "../../user_pages/user_register/userregister_sender.php", "register");
+        });
+    </script>  
+
 </body>
 
 </html>

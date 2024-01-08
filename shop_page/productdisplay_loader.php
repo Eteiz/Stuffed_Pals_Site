@@ -116,7 +116,7 @@
                 echo $count > 0 ? "</div>" : ""; 
                 echo "<div class='product-row'>";
             }
-            echo "<div class='product white_background hover-box-shadow'>";
+            echo "<div class='product white-background hover-box-shadow'>";
             echo "<a href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "'>";
             
             $imagePath = "../" . $row["image_path"];
@@ -126,21 +126,25 @@
                 // Placeholder image
                 echo "<img src='../assets/placeholder.png' alt='No image available'>";
             }
-
             echo "</a>";
             echo "<div class='product-description'>";
                 echo "<h3><a href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row['product_name']) . "</a></h3>";
                 echo "<h4>". htmlspecialchars($row["product_description"]) ."</h4>";
             echo "</div>";
-            echo "<div class='product-action'>";
-            echo "<h4>" . htmlspecialchars($row["product_price"]) . " PLN </h4>";
-            if($row["quantity"] <= 0 || empty($row["quantity"])) {
-                echo "<button class='hyperlink_button_inactive'>OUT OF STOCK</button>";
-            }
-            else {
-                echo "<button class='hyperlink_button' onclick='location.href=\"../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "\"'>ADD TO CART</button>";
-            }
-            echo "</div>";
+            
+            // Form result status
+            echo "<div class='form-result' style='height: 50px; font-size: 14px'></div>";
+            // Form to add product to cart
+            echo "<form class='add-to-cart-form product-action' action='../cart_page/add_to_cart.php' method='post'>";
+                echo "<h3 style='color: var(--primary-color);'>$". htmlspecialchars($row["product_price"]) ."</h3>";
+                if ($row["quantity"] <= 0 || empty($row["quantity"])) {
+                    echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' disabled>OUT OF STOCK</button>";
+                } else {
+                    echo "<input type='hidden' name='quantity' value='1'>";
+                    echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($row["product_id"]) . "'>";
+                    echo "<button name='add-to-cart-button' class='hyperlink_button' type='submit'>ADD TO CART</button>";
+                }
+            echo "</form>";
             echo "</div>";
             $count++;
         }

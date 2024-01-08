@@ -2,11 +2,10 @@
 require_once "../../init.php";
 header("Content-Type: application/json");
 
-$response = ["status" => 0, "msg" => ""];
-
+$response = ["status" => 1, "msg" => "Unknown action."];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST["username"]);
-    $password = trim($_POST["password"]);
+    $username = substr(filter_var($conn->real_escape_string($_POST["username"]), FILTER_SANITIZE_STRING), 0, 40);
+    $password = $_POST["password"];
 
     $stmt = $conn->prepare("SELECT id, user_password FROM user WHERE user_login = ?");
     $stmt->bind_param("s", $username);
@@ -19,19 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_id"] = $user["id"];
             $_SESSION["user_login"] = $username;
 
-            $response["status"] = 1;
-            $response["msg"] = "Login successful.";
+            $response = ["status" => 0, "msg" => "Login successful."];
         } else {
-            $response["msg"] = "Incorrect username or password";
+            $response = ["status" => 1, "msg" => "Incorrect username or password."];
         }
     } else {
-        $response["msg"] = "Incorrect username or password";
+        $response = ["status" => 1, "msg" => "Incorrect username or password."];
     }
     $stmt->close();
     $conn->close();
 } else {
-    $response["msg"] = "Invalid request method.";
+    $response = ["status" => 1, "msg" => "Unknown action."];
 }
-
 echo json_encode($response);
 ?>
