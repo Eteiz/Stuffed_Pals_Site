@@ -88,9 +88,9 @@ if (!is_user_logged_in()) {
                     </select>
                 </label>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php?content=address">&#11164 Cancel</a>
+                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php?content=address" title="/user_pages/user_profile/user_profile.php?content=address">&#11164 Cancel</a>
                 </div>
-                <button class="hyperlink_button" type="submit" name="add-address-buton">
+                <button class="hyperlink_button" type="submit" name="add-address-buton" title='Add address'>
                     <div class="button-text">Add address</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>

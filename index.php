@@ -27,101 +27,49 @@
         rel="stylesheet">
 
 </head>
-
-<body class="index_page">
+<body id="index-page">
     <?php include "./site_static_parts/navbar.php"; ?>
-    <main>
-        <section class="titular_section image-background image-parallax">
-            <div class="titular_section_card white-background">
-                <h1> The way you </h1>
-                <div class="text_slider">
-                    <div class="text_slider_element">
-                        <span>WANT IT</span>
-                        <span>NEED IT</span>
-                        <span>LOVE IT</span>
-                    </div>
-                </div>
-                <h3> Creating a new best friend has never been easier and faster than now. What are you waiting for?
-                </h3>
-                <a class="hyperlink_button" href="./shop_page/shop.php"> Start now </a>
-            </div>
-        </section>
-        <section class="presentation_section white-background">
-            <div class="presentation_section_description">
-                <h2>Having a fluffy and cuddly friend is fun</h2>
-                <span> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam.
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam.
-                </span>
-                <a class="hyperlink_button" href="./shop_page/shop.php"> Browse collection </a>
-            </div>
-            <div class="presentation_section_list">
-                <div class="presentation_section_list_element">
-                    <img src="./assets/icons/eco_icon.png" alt="Ecology icon"></img>
-                    <div class="presentation_section_list_element_text">
-                        <h3> ECO-FRIENDLY AND ETHICAL </h3>
-                        <span> The materials used for crafting our Pals are safe for the environment </span>
-                    </div>
-                </div>
-                <div class="presentation_section_list_element">
-                    <img src="./assets/icons/heart_icon.png" alt="Heart icon"></img>
-                    <div class="presentation_section_list_element_text">
-                        <h3> PERSONALIZED COMFORT </h3>
-                        <span> Our Pals are fully customizable, tailored to meet individual preferences </span>
-                    </div>
-                </div>
-                <div class="presentation_section_list_element">
-                    <img src="./assets/icons/quality_icon.png" alt="Quality icon"></img>
-                    <div class="presentation_section_list_element_text">
-                        <h3> HIGH-QUALITY </h3>
-                        <span> Stuffed Pals are designed with meticulous attention to detail and to ensure durability
-                        </span>
-                    </div>
+    <header class="image-background image-parallax">
+        <div class="header-content white-background default-box-shadow">
+            <h1> Find a new best friend </h1>
+            <div class="text_slider">
+                <div class="text_slider_element">
+                    <h1>you want</h1>
+                    <h1>you need</h1>
+                    <h1>you love</h1>
                 </div>
             </div>
-            <img class="presentation_section_image" src="./assets/plush_1.png" alt="Plush_1 image"></img>
-        </section>
-        <section class="tutorial_section white-background">
-            <h2> How can you create your perfect Stuffed Pal? </h2>
-            <h3> We made sure that the process of making your perfect plushie is easy and intuitive. </h3>
-            <div class="tutorial_section_steps">
-                <div class="tutorial_section_steps_element">
-                    <img src="./assets/icons/teddy-bear_icon.png" alt="Teddy-bear icon">
-                    <h3> Choose a plushie base </h3>
-                    <h4> Select one of many availables plush bases. </h4>
-                </div>
-                <div class="tutorial_section_steps_element">
-                    <img src="./assets/icons/clothes_icon.png" alt="Clothes icon">
-                    <h3> Give them some clothes </h3>
-                    <h4> Select one of many availables plush bases. </h4>
-                </div>
-                <div class="tutorial_section_steps_element">
-                    <img src="./assets/icons/hair-clip_icon.png" alt="Hair-clip icon">
-                    <h3> Maybe an accessory? </h3>
-                    <h4> Select one of many availables plush bases. </h4>
-                </div>
+            <h3> Creating a new best friend has never been easier and faster than now. What are you waiting for? </h3>
+            <button class="hyperlink_button" onclick="window.location.href='./shop_page/shop.php'" title="/shop_page/shop_page.php">Start now</button> 
+        </div>
+    </header>
+    <main class="white-background">
+        <div id="introduction-section" class="section-rows">
+            <div>
+                <h2> Having a fluffy and cuddly friend is fun </h2>
+                <h4> There's something truly special about having a plush companion by your side. 
+                    Each cuddly friend we create at Stuffed Pals is more than just a toy; it's a source of comfort, a spark for imagination, and a constant companion in all of life's adventures. 
+                    Our plushies are designed to bring a touch of warmth and joy to your everyday life, becoming cherished friends that stay by your side through thick and thin. 
+                </h4>
+                <button class="hyperlink_button" onclick="window.location.href='./shop_page/shop.php'" title="/shop_page/shop_page.php">Browse collection</button>
             </div>
-        </section>
-        <section class="category_section default-gradient-background">
-            <h1> Our products </h1>
+            <img src="./assets/StuffedPals_AboutUs_3.png" alt="Stuffed Pals Logo" title="Stuffed Pals Logo"></img>
+        </div>
+        <div id="collection-section" class="default-gradient-background">
+            <h1> Browse our collection </h1>
             <h3> From essentials to what makes your pal unique! </h3>
-            <div class="category_section_categories">
-                <div class="category_section_categories_element white_background" style="background-color: #FF638B;">
-                    <img src="./assets/plush_2.png" alt="Choncc plushie image">
-                    <a class="hyperlink_button" href="./shop_page/shop.php?category=Bases"> PAL BASES </a>
-                </div>
-                <div class="category_section_categories_element white_background" style="background-color: #FFE2DD;">
-                    <img src="./assets/plush_1.png" alt="Gromp image">
-                    <a class="hyperlink_button" href="./shop_page/shop.php?category=Clothes"> PAL CLOTHES </a>
-                </div>
-                <div class="category_section_categories_element white_background" style="background-color: #319799;">
-                    <img src="./assets/plush_3.png" alt="Scuttle image">
-                    <a class="hyperlink_button" href="./shop_page/shop.php?category=Accessories"> PAL ACCESORIES </a>
-                </div>
+            <div class="section-rows">
+                <a id="bases-category" class="hyperlink_icon" href="./shop_page/shop.php?category=Bases" title="/shop_page/shop_page.php?category=Bases">
+                    <h2> Plush bases </h2>
+                </a>
+                <a id="clothes-category" class="hyperlink_icon" href="./shop_page/shop.php?category=Clothes" title="/shop_page/shop_page.php?category=Clothes">
+                    <h2> Plush clothes </h2>
+                </a>
+                <a id="accessories-category" class="hyperlink_icon" href="./shop_page/shop.php?category=Accessories" title="/shop_page/shop_page.php?category=Accessories">
+                    <h2> Plush accessories </h2>
+                </a>
             </div>
-            <a class="hyperlink_button" href="./shop_page/shop.php"> ALL PRODUCTS </a>
-        </section>
+        </div>
     </main>
     <?php include "./newsletter/newsletter_form.php"; ?>
     <?php include "./site_static_parts/footer.php"; ?>
@@ -131,7 +79,6 @@
         $(document).ready(function() {
         handleFormSubmit("newsletter-form", "subscribe-button", "../newsletter/newsletter_sender.php", "newsletter");
         });
-    </script>   
+    </script>  
 </body>
-
 </html>

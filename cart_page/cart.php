@@ -34,79 +34,34 @@ if(!is_user_logged_in()) {
 
 </head>
 <body id="cart-page">
+    <div id="overlay">
+        <div id="overlay-content" class="white-background default-box-shadow">
+            <h1>Your cart is still on reservation!</h1>
+            <h3>If you modify the content of your cart <span class="highlighted">the reservation will automatically cancel</span>.<br>Are you sure you want to continue shopping?</h3>
+            <button id="overlay-close" class="hyperlink_button" title="Continue browsing"> Continue browsing </button>
+            <div id="overlay-buttons">
+                <button id="overlay-cancel" class="hyperlink_button_reverse" title="Cancel reservation">Cancel reservation</button>
+                <a href="../checkout_page/checkout_page.php" class="hyperlink_button_reverse" title="/checkout_page/checkout_page.php"> Go to checkout </a>
+            </div>
+        </div>
+    </div> 
     <?php include "../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
         <div class="header-content white-background default-box-shadow">
             <h1> Your Cart </h1>
-            <h3> Everything you need is here! From plush bases to accessories, you"ll find the perfect solution for a
-                stuffed companion. 
+            <h3> 
+                Ready to bring your new friend to life? Your cart is filled with everything you've picked out for your perfect stuffed companion. 
             </h3>
         </div>
     </header>
-    <main id="checkout" class="white-background">
-        <!---
-        <form id="checkout-form" class="white-background default-box-shadow">
-        </form>
-        <article id="checkout-list">
-                <div class="section-title">
-                <h1> Shopping cart </h1>
-                <div class="section-title-description">
-                    <h3 style="width: 300px;">Product</h3>
-                    <h3 style="width: 75px;">Price</h3>
-                    <h3 style="width: 125px;">Quantity</h3>
-                    <h3 style="width: 125px;">Subtotal</h3>
-                    <h3 style="width: 50px;"></h3>
-                </div>
-            </div>
-            <hr style="height: 2px;">
-            <div class="section-content">
-                <form class="section-row">
-                    <div class="section-row-image">
-                        <img src="../assets/products/plush-accessories/plush_accessory_6/boots_1.png"></img>
-                        <div class="section-row-image-description">
-                            <h3> Product 1 </h3>
-                            <div class='form-result' data-product-id='16'>
-                                <h4 class='form-result-status'></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <h3 class="product-price"> 100$ </h3>
-                    <div class='quantity-button'>
-                        <button type='button' class='decrease-quantity-button hyperlink_button_reverse' data-product-id='16'>-</button>
-                        <input type='number' class='product-quantity transparent_background' data-product-id='16' value='1' min='1' max='5'>
-                        <button type='button' class='increase-quantity-button hyperlink_button_reverse' data-product-id='16'>+</button>
-                    </div>
-                    <h3 class="product-subtotal"> $100 </h3> 
-                    <button class="delete-button hyperlink_button_reverse" data-product-id='16'>X</button>
-                </form>
-                <hr>
-                <form class="section-row">
-                    <div class="section-row-image">
-                        <img src="../assets/products/plush-accessories/plush_accessory_6/boots_1.png"></img>
-                        <div class="section-row-image-description">
-                            <h3> Product 1 </h3>
-                            <div class='form-result' data-product-id='16'>
-                                <h4 class='form-result-status'></h4>
-                            </div>
-                        </div>
-                    </div>
-                    <h3 class="product-price"> 100$ </h3>
-                    <div class='quantity-button'>
-                        <button type='button' class='decrease-quantity-button hyperlink_button_reverse' data-product-id='16'>-</button>
-                        <input type='number' class='product-quantity transparent_background' data-product-id='16' value='1' min='1' max='5'>
-                        <button type='button' class='increase-quantity-button hyperlink_button_reverse' data-product-id='16'>+</button>
-                    </div>
-                    <h3 class="product-subtotal"> $100 </h3> 
-                    <button class="delete-button hyperlink_button_reverse" data-product-id='16'>X</button>
-                </form>
-            </div> 
-        </article>
-        -->
+    <main id="checkout" class="white-background section-rows">
+        <!-- Content of cart -->
     </main>
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="cart_updater.js"></script>
+    <script src="../js_scripts/overlay_alert_updater.js"></script>
     <script src="../../js_scripts/form_updater.js"></script>
     <script>
         $(document).ready(function() {
@@ -114,5 +69,4 @@ if(!is_user_logged_in()) {
         });
     </script>   
 </body>
-
 </html>

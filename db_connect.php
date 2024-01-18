@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost";
-$username = "root";
+$username = "user";
 $password = "";
 $dbname = "stuffedpals_database";
 

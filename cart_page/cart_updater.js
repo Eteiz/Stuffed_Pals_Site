@@ -30,7 +30,10 @@ $(document).ready(function() {
                 if(response.status == 2) {
                     window.location.href = "../../user_pages/user_login/user_login.php";
                 }
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                else if (response.status === 3) {
+                    $("#overlay").css("display", "flex");
+                }
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html(response.msg).show();
                 setTimeout(function() { formStatus.html("") }, 500);
                 setTimeout(function() {
@@ -38,7 +41,7 @@ $(document).ready(function() {
                 }, 600);
             },
             error: function(xhr, status, error) {
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html("There was an error processing your request.").show();
                 setTimeout(function() { formStatus.html("") }, 500);
             }
@@ -62,7 +65,10 @@ $(document).ready(function() {
                 if(response.status == 2) {
                     window.location.href = "../../user_pages/user_login/user_login.php";
                 }
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                else if (response.status === 3) {
+                    $("#overlay").css("display", "flex");
+                }
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html(response.msg).show();
                 setTimeout(function() { formStatus.html("") }, 500);
                 setTimeout(function() {
@@ -70,7 +76,7 @@ $(document).ready(function() {
                 }, 600);
             },
             error: function(xhr, status, error) {
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html("There was an error processing your request.").show();
                 setTimeout(function() { formStatus.html("") }, 500);
             }
@@ -78,7 +84,7 @@ $(document).ready(function() {
     });
 
     // Change quantity
-    $(document).on("change", ".product-quantity", function() {
+    $(document).on("change", ".product-quantity-button", function() {
         var productId = $(this).data("product-id");
         var newQuantity = parseInt($(this).val());
         var buttonClicked = $(this);
@@ -95,7 +101,10 @@ $(document).ready(function() {
                 if(response.status == 2) {
                     window.location.href = "../../user_pages/user_login/user_login.php";
                 }
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                else if (response.status === 3) {
+                    $("#overlay").css("display", "flex");
+                }
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html(response.msg).show();
                 setTimeout(function() { formStatus.html("") }, 500);
                 setTimeout(function() {
@@ -103,7 +112,7 @@ $(document).ready(function() {
                 }, 600);
             },
             error: function(xhr, status, error) {
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html("There was an error processing your request.").show();
                 setTimeout(function() { formStatus.html("") }, 500);
             }
@@ -126,7 +135,10 @@ $(document).ready(function() {
                 if(response.status == 2) {
                     window.location.href = "../../user_pages/user_login/user_login.php";
                 }
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                else if (response.status === 3) {
+                    $("#overlay").css("display", "flex");
+                }
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html(response.msg).show();
                 setTimeout(function() { formStatus.html("") }, 500);
                 setTimeout(function() {
@@ -134,13 +146,12 @@ $(document).ready(function() {
                 }, 600);
             },
             error: function(xhr, status, error) {
-                var formStatus = buttonClicked.closest(".section-row").find(".form-result[data-product-id='" + productId + "']");
+                var formStatus = buttonClicked.closest("form").find(".form-result[data-product-id='" + productId + "']");
                 formStatus.html("There was an error processing your request.").show();
                 setTimeout(function() { formStatus.html("") }, 500);
             }
         });
     });
 
-    // Loading cart information function
     loadCart();
 });

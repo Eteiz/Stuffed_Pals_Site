@@ -26,7 +26,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body id="customer-service-page">
     <?php include "../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
         <div class="header-content white-background default-box-shadow">
@@ -36,152 +36,130 @@
             </h3>
         </div>
     </header>
-    <main>
-        <section id="contact-section" class="default-gradient-background">
-            <div class="section-container">
-                <img src="../assets/Customer-service.png" src="Collab of photos from our customers"></img>
-                <div class="section-element white-background hover-box-shadow">
-                    <div class="section-element-header">
-                        <h1><u>Contact us</u></h1>
-                        <span> We value your feedback, questions, and comments.
-                            Reach out to us through any of the following methods, and our dedicated team will respond as
-                            soon as possible.
-                        </span>
+    <main class="white-background">
+        <div id="contact-section" class="default-gradient-background section-rows">
+            <img src="../assets/Logo_icon.png" alt="Stuffed Pals Logo" title="Stuffed Pals Logo"></img>
+            <div class="contact-information section-columns white-background default-box-shadow round-corners">
+                <h1>Contact Us!</h1>
+                Our team is eager to respond to all your questions and concerns. 
+                You can reach us using the following methods:
+                <div class="section-rows">
+                    <div class="section-element section-columns">
+                        <div class="section-element-title section-rows">
+                            <img src="../assets/icons/house_icon.png" alt="House icon" title="House icon"></img>
+                            <h2>Visit us</h2>
+                        </div>
+                        <h4><strong>Lorem 12/34<br>00-000 Ipsum</strong></h4>
                     </div>
-                    <div class="section-element-content">
-                        <div class="section-element-content-row">
-                            <div class="section-element-content-row-header">
-                                <img src="../assets/icons/house_icon.png" alt="House icon"></img>
-                                <h3> Visit us </h3>
-                            </div>
-                            <div class="section-element-content-row-content">
-                                <h4> Lorem 12/34 00-000 Ipsum </h4>
-                            </div>
+                    <div class="section-element section-columns">
+                        <div class="section-element-title section-rows">
+                            <img src="../assets/icons/phone_icon.png" alt="Phone icon" title="Phone icon"></img>
+                            <h2>Call us</h2>
                         </div>
-                        <div class="section-element-content-row">
-                            <div class="section-element-content-row-header">
-                                <img src="../assets/icons/phone_icon.png" alt="Phone icon"></img>
-                                <h3> Call us </h3>
-                            </div>
-                            <div class="section-element-content-row-content">
-                                <h4> +48 123 456 789 </h4>
-                            </div>
+                        <h4><strong>+48123456789</strong></h4>
+                    </div>
+                    <div class="section-element section-columns">
+                        <div class="section-element-title section-rows">
+                            <img src="../assets/icons/mail_icon.png" alt="Mail icon" title="Mail icon"></img>
+                            <h2>Mail us</h2>
                         </div>
-                        <div class="section-element-content-row">
-                            <div class="section-element-content-row-header">
-                                <img src="../assets/icons/mail_icon.png" alt="Mail icon"></img>
-                                <h3> Mail us </h3>
-                            </div>
-                            <div class="section-element-content-row-content">
-                                <h4> StuffedPals@gmail.com </h4>
-                            </div>
-                        </div>
+                        <h4><a class="hyperlink_text" href="mailto:StuffedPals@gmail.com">StuffedPals@gmail.com</a></h4>
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="faq-section" class="white-background">
-            <div class="section-header">
-                <h1> Frequently Asked Questions </img></h1>
+        </div>
+        <div id="faq-section" class="white-background">
+            <h1>Frequently Asked Questions</h1>
+            <hr class="outer">
+            <div class="section-element">
+                <div class="section-element-title section-rows">
+                    <h3>What types of plushie bases and accessories do you offer?</h3>
+                </div>
+                <div class="section-element-content">
+                    We offer a wide range of high-quality plushie bases in various sizes and styles, 
+                    along with an extensive collection of clothes and accessories. 
+                    From traditional teddy bears to unique fantasy creatures, you're sure to find the perfect base for your plushie. 
+                    Plus, our accessories include everything from cute outfits to whimsical props!
+                </div>
+            </div> 
+            <hr>
+            <div class="section-element">
+                <div class="section-element-title section-rows">
+                    <h3>How do I customize my own plushie on your website?</h3>
+                </div>
+                <div class="section-element-content">
+                    Customizing your plushie is easy and fun! First, choose a plushie base. 
+                    Then, select from our range of clothes and accessories to style it. 
+                    You can mix and match items to create a plushie that reflects your personality or makes a perfect gift.
+                </div>
+            </div> 
+            <hr>
+            <div class="section-element">
+                <div class="section-element-title section-rows">
+                    <h3>Are your plushies suitable for all ages?</h3>
+                </div>
+                <div class="section-element-content">
+                    Absolutely! Our plushies are designed to be loved by people of all ages. 
+                    We adhere to strict quality and safety standards to ensure they are suitable for everyone, from children to adults.
+                </div>
+            </div> 
+            <hr>
+            <div class="section-element">
+                <div class="section-element-title section-rows">
+                    <h3>Can I wash the plushies and their accessories?</h3>
+                </div>
+                <div class="section-element-content">
+                    Yes, most of our plushies and their clothing are machine washable. 
+                    We recommend washing them in a gentle cycle and letting them air dry. 
+                    Please check the specific care instructions for each item for the best results.
+                </div>
             </div>
-            <div class="section-content white-background">
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> What products does Stuffed Pals offer? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        Stuffed Pals offers a unique selection of customizable plushies. Our range includes plush bases,
-                        a variety of plushie clothes, and numerous accessories to personalize your plush pal.
-                    </div>
+            <hr>
+            <div class="section-element">
+                <div class="section-element-title section-rows">
+                    <h3>Do you ship internationally?</h3>
                 </div>
-                <hr>
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> How do I customize a plushie? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        Customizing a plushie is simple and fun! First, select a plush base from our collection.
-                        Next, choose from our range of clothes and accessories to create a look that"s uniquely yours.
-                        You can mix and match items to your heart"s content.
-                    </div>
+                <div class="section-element-content">
+                    Yes, we do! We offer international shipping to many countries. 
+                    Shipping costs and delivery times vary depending on your location. 
+                    Please check our shipping information page for more details.
                 </div>
-                <hr>
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> Are the materials used for the plushies safe? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        Absolutely! Safety is our top priority.
-                        All materials used in our plushies, clothes, and accessories are non-toxic and comply with
-                        international safety standards.
-                    </div>
+            </div> 
+            <hr>
+            <div class="section-element">
+                <div class="section-element-title section-rows">
+                    <h3>What is your return policy?</h3>
                 </div>
-                <hr>
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> Can I wash the plushies? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        Yes, our plushies are washable. We recommend hand washing with mild detergent and air drying to
-                        maintain their shape and color.
-                    </div>
+                <div class="section-element-content">
+                    We accept returns within 30 days of purchase for most items, provided they are in their original condition. 
+                    Some exclusions apply, such as personalized or custom-made items. 
+                    For more information, please visit our returns and exchanges policy page.
                 </div>
-                <hr>
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> What age group are these plushies suitable for? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        Our plushies are designed for all ages! They are particularly popular among children and
-                        collectors.
-                    </div>
+            </div> 
+            <hr>
+            <div class="section-element">
+                <div class="section-element-title section-rows">
+                    <h3>How can I track my order?</h3>
                 </div>
-                <hr>
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> How long does shipping take? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        Shipping times vary depending on your location.
-                        Typically, orders are processed within 1-2 business days, and delivery takes 3-5 business days.
-                    </div>
+                <div class="section-element-content">
+                    Once your order is shipped, we'll send you a confirmation email with a tracking number. 
+                    You can use this number to track your order's progress on our website or the carrier's website.
                 </div>
-                <hr>
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> Do you offer international shipping? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        Yes, we ship worldwide! Shipping fees and times will vary based on the destination.
-                    </div>
-                </div>
-                <hr>
-                <div class="section-content-row">
-                    <div class="section-content-row-header">
-                        <h3> What is your return policy? </h3>
-                    </div>
-                    <div class="section-content-row-description">
-                        We accept returns within 30 days of purchase, provided the items are in their original
-                        condition.
-                        Customized items are subject to a separate return policy, detailed on our website.
-                    </div>
-                </div>
-                <hr>
-            </div>
-        </section>
-
-        <section id="contact-form-section" class="form-section white-background">
-            <div class="section-header">
-                <h1> Or ask here... </h1>
+            </div> 
+            <hr class="outer">
+        </div>
+        <div id="contact-form-section" class="section-rows">
+            <div class="section-title">
+                <h1>Connect with Stuffed Pals - We're Here for You! 👋</h1>
                 <span>
-                    Got a question? Need assistance?
-                    Or perhaps you have some feedback for us? Fill out the form below, and our team will get back to you
-                    as swiftly as a plushie"s hug!
-                    We"re here to ensure that your experience with us is as cozy and delightful as our stuffed pals.
+                    Have questions, feedback, or just want to share your plushie stories? 
+                    Our team at Stuffed Pals is always ready to listen and assist. 
+                    Whether it's inquiries about our products, help with customization, or just a general curiosity about the wonderful world of plush pals, 
+                    we're here to provide you with all the information and support you need. 
                 </span>
             </div>
             <form method="post" action="../customer_service_page/contactform_sender.php" id="contact-form">
-                <h2> Contact form </h2>
+                <h2>Contact form</h2>
                 <label for="first-name" class="form-field">
                     <h3> First name<span class="alert">*</span></h3>
                     <input type="text" name="first-name" id="first-name" required placeholder="First name"
@@ -202,13 +180,13 @@
                     <textarea name="message" id="message" required placeholder="Your message"
                         maxlength="1000"></textarea>
                 </label>
-                <button class="hyperlink_button" type="submit" name="contactform-button">
+                <button class="hyperlink_button" type="submit" name="contactform-button" title="Send contact form">
                     <div class="button-text">Send message</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
                 <div class="form-result"></div>
             </form>
-        </section>
+        </div>
     </main>
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>

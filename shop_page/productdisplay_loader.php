@@ -7,7 +7,6 @@
         Product.product_name, 
         Product.product_price,
         Product.date_added,
-        Product.product_description_short as product_description, 
         Category.category_name,
         Supplier.supplier_name,
         Inventory.product_quantity as quantity,
@@ -112,45 +111,35 @@
     if ($result = $conn->query($query)) {
         $count = 0;
         while ($row = $result->fetch_assoc()) {
-            if ($count % 4 == 0) {
-                echo $count > 0 ? "</div>" : ""; 
-                echo "<div class='product-row'>";
-            }
-            echo "<div class='product white-background hover-box-shadow'>";
-            echo "<a href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "'>";
-            
-            $imagePath = "../" . $row["image_path"];
-            if (!empty($row["image_path"]) && file_exists($imagePath)) {
-                echo "<img src='" . htmlspecialchars($imagePath) . "' alt='" . htmlspecialchars($row["image_description"]) . "'>";
-            } else {
-                // Placeholder image
-                echo "<img src='../assets/placeholder.png' alt='No image available'>";
-            }
-            echo "</a>";
-            echo "<div class='product-description'>";
-                echo "<h3><a href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row['product_name']) . "</a></h3>";
-                echo "<h4>". htmlspecialchars($row["product_description"]) ."</h4>";
+            echo "<div class='default-box-shadow section-element'>";
+                echo "<a href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "'>";
+                    $imagePath = "../" . $row["image_path"];
+                    if (!empty($row["image_path"]) && file_exists($imagePath)) {
+                        echo "<img src='". htmlspecialchars($imagePath) ."' alt='". htmlspecialchars($row["image_description"]) ."' title='/product_page/product_page.php?product=". $row["product_id"] ."'>";
+                    } else {
+                        // Placeholder image
+                        echo "<img src='../assets/placeholder.png' alt='No image available' title='No image available'>";
+                    }
+                echo "</a>";
+                echo "<div class='section-columns'>";
+                    echo "<h3 class='product-name'><a class='hyperlink_text' href='../product_page/product_page.php?product=" . htmlspecialchars($row["product_id"]) . "' title='/product_page/product_page.php?product=" . htmlspecialchars($row['product_id']) . "'>" . htmlspecialchars($row['product_name']) . "</a></h3>";
+                    echo "<form class='add-to-cart-form section-rows' action='../cart_page/add_to_cart.php' method='post'>";
+                        echo "<h3 class='product-price highlighted'>$". htmlspecialchars($row["product_price"]) ."</h3>";
+                        if ($row["quantity"] <= 0 || empty($row["quantity"])) {
+                            echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' disabled title='Out of stock'>OUT OF STOCK</button>";
+                        } else {
+                            echo "<input type='hidden' name='quantity' value='1'>";
+                            echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($row["product_id"]) . "'>";
+                            echo "<button name='add-to-cart-button' class='hyperlink_button' type='submit' title='Add to cart'>Add to cart</button>";
+                        }
+                    echo "</form>";
+                    echo "<div class='form-result'></div>";
+                echo "</div>";
             echo "</div>";
-            
-            // Form result status
-            echo "<div class='form-result' style='height: 50px; font-size: 14px'></div>";
-            // Form to add product to cart
-            echo "<form class='add-to-cart-form product-action' action='../cart_page/add_to_cart.php' method='post'>";
-                echo "<h3 style='color: var(--primary-color);'>$". htmlspecialchars($row["product_price"]) ."</h3>";
-                if ($row["quantity"] <= 0 || empty($row["quantity"])) {
-                    echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' disabled>OUT OF STOCK</button>";
-                } else {
-                    echo "<input type='hidden' name='quantity' value='1'>";
-                    echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($row["product_id"]) . "'>";
-                    echo "<button name='add-to-cart-button' class='hyperlink_button' type='submit'>ADD TO CART</button>";
-                }
-            echo "</form>";
-            echo "</div>";
-            $count++;
         }
-        if ($count > 0) { echo "</div>"; }
     }
     else {
         echo "Error while displaying products: " . $conn->error;
     }
+$conn->close();
 ?>

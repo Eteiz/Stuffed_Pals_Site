@@ -1,20 +1,36 @@
 <?php
 require_once "../init.php";
+
+$userId = $_SESSION['user_id'];
+startCartReservation($userId);
+
 if(isCartEmpty($_SESSION["user_id"])) {
     header("Location: ../cart_page/cart.php");
     exit;
 }
 
-// Loading user's addresses
-$userId = $_SESSION['user_id'];
+// Loading user's addresses from database
 $addressQuery = $conn->prepare("SELECT * FROM user_address WHERE user_id = ?");
 $addressQuery->bind_param("i", $userId);
 $addressQuery->execute();
 $addressResult = $addressQuery->get_result();
-
 $addresses = [];
 while ($row = $addressResult->fetch_assoc()) {
     $addresses[] = $row;
+}
+
+
+// Loading cart's reservation time from database
+$stmt = $conn->prepare("SELECT cart_reservation_time FROM cart WHERE user_id = ?");
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $reservationTime = strtotime($row['cart_reservation_time']);
+    $currentTime = time();
+    $elapsedTime = $currentTime - $reservationTime; 
+    $totalReservationTime = 15 * 60;
+    $remainingSeconds = $totalReservationTime - $elapsedTime; 
 }
 ?>
 
@@ -48,9 +64,37 @@ while ($row = $addressResult->fetch_assoc()) {
 <body id="checkout-page">
     <main class="white-background">
         <section class="form-section white-background">
-            <form method="post" action="path_to/user_address_add_sender.php" id="user-address-form">
+            <form method="post" action="../checkout_page/checkout_form_sender.php" id="user-order-form">
                 <h1> Checkout details </h1>
-                <!-- Available user addresses -->
+                <!-- Reservation timer display -->
+                <h3>The products in this order are currently reserved for you for the next: <span class="highlighted" id="timer"></span> minutes.</h3>
+                <script>
+                    function startTimer(duration, display) {
+                        var timer = duration, minutes, seconds;
+                        var end = setInterval(function () {
+                            if (timer >= 0) {
+                                minutes = parseInt(timer / 60, 10);
+                                seconds = parseInt(timer % 60, 10);
+
+                                minutes = minutes < 10 ? "0" + minutes : minutes;
+                                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                                display.textContent = minutes + ":" + seconds;
+                                timer--;
+                            } else {
+                                clearInterval(end);
+                                display.textContent = "00:00";
+                            }
+                        }, 1000);
+                    }
+                    window.onload = function() {
+                        var remainingSeconds = <?php echo max(0, $remainingSeconds); ?>;
+                        var display = document.querySelector('#timer');
+                        startTimer(remainingSeconds, display);
+                    };
+                </script>
+                <!-- Shipping address details -->
+                <h2> Shipping address </h2>
                 <label for="user-address-select" class="form-field">
                     <select id="user-address-select" name="selected_address">
                         <option value="">Select existing user address</option>
@@ -64,8 +108,6 @@ while ($row = $addressResult->fetch_assoc()) {
                         <?php endif; ?>
                     </select>
                 </label>
-                <!-- Shipping address -->
-                <h2> Shipping address </h2>
                 <label for="firstname-field" class="form-field">
                     <h3>First name<span class="alert">*</span></h3>
                     <input type="text" id="firstname-field" name="user_firstname" required placeholder="First name"
@@ -123,7 +165,7 @@ while ($row = $addressResult->fetch_assoc()) {
                 <label for="delivery-field" class="form-field">
                     <h2>Delivery</h2>
                     <h3>Delivery method<span class="alert">*</span></h3>
-                    <select id="delivery-field" name="delivery-method" rquired>
+                    <select id="delivery-field" name="delivery_method" rquired>
                         <option value="">Select delivery method</option>
                         <option value="Standard">Standard delivery ($10.00)</option>
                     </select>
@@ -132,7 +174,7 @@ while ($row = $addressResult->fetch_assoc()) {
                 <label for="payment-field" class="form-field">
                     <h2>Payment</h2>
                     <h3>Payment method<span class="alert">*</span></h3>
-                    <select id="payment-field" name="payment-method" required>
+                    <select id="payment-field" name="payment_method" required>
                         <option value="">Select payment method</option>
                         <option value="Card">Credit card</option>
                         <option value="On-delivery">Cash on delivery</option>
@@ -141,9 +183,9 @@ while ($row = $addressResult->fetch_assoc()) {
 
                 <!-- Order summary --> 
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../cart_page/cart.php"><h3>&#11164 Back to cart</h3></a>
+                    <a class="hyperlink_text" href="../cart_page/cart.php" title="/cart_page/cart.php"><h3>&#11164 Back to cart</h3></a>
                 </div>
-                <button class="hyperlink_button" type="submit" name="add-address-buton">
+                <button class="hyperlink_button" type="submit" name="finalize-order-buton" title="Finish transaction">
                     <div class="button-text">Finish transactcion</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
@@ -156,6 +198,13 @@ while ($row = $addressResult->fetch_assoc()) {
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../checkout_page/checkout_form_updater.js"></script>
+    <script src="../checkout_page/checkout_timer_updater.js"></script>
+    <script src="../js_scripts/form_updater.js"></script>
+    <script>
+        $(document).ready(function() {
+        handleFormSubmit("user-order-form", "finalize-order-buton", "../checkout_page/checkout_form_sender.php", "create-order");
+        });
+    </script>  
 </body>
 
 </html>
