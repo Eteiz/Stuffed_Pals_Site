@@ -348,8 +348,16 @@ span.highlighted {
 }
 
 /* ==================== FORM ==================== */
-.form-section {
+.form-section,
+.form-field textarea,
+.form-field select,
+.form-field input,
+.form-result,
+.form-extra-information {
     width: 100%;
+}
+
+.form-section {
     padding-top: 50px;
     padding-bottom: 50px;
     margin: auto;
@@ -364,13 +372,11 @@ span.highlighted {
     font-size: 15px;
 }
 .form-field textarea {
-    width: 100%;
     height: 100px;
     resize: none;
 }
 .form-field select,
 .form-field input {
-    width: 100%;
     height: calc(30px + 0.2vw);
 }
 .form-field input[type="checkbox"] {
@@ -392,13 +398,11 @@ label[for='password-field'] img {
     cursor: pointer;
 }
 .form-result {
-    width: 100%;
     color: var(--primary-color);
     margin-top: 5px;
     margin-bottom: 5px;
 }
 .form-extra-information {
-    width: 100%;
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -1690,8 +1694,12 @@ a, button {
 #admin-order-section .empty {
     text-align: center;
 }
+#admin-order-section .section-header .section-information,
+#admin-order-section .section-element {
+    width: 98%; 
+}
+
 #admin-order-section .section-header .section-information {
-    width: 98%;
     padding: 0px 1% 0px 1%;
 }
 #admin-order-section .section-content .section-information {
@@ -1700,7 +1708,6 @@ a, button {
 }
 
 #admin-order-section .section-element {
-    width: 98%;
     padding: 1%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -1796,8 +1803,14 @@ a, button {
 }
 
 /* ========== USERS SECTION ========== */
-#admin-user-section {
+#admin-user-section,
+#admin-user-section .section-element .section-rows,
+#admin-user-section .section-content,
+#admin-user-section .form-result {
     width: 100%;
+}
+
+#admin-user-section {
     padding-top: 2%;
     padding-bottom: 2%;
     margin: auto;
@@ -1805,23 +1818,20 @@ a, button {
 #admin-user-section .empty {
     text-align: center;
 }
-#admin-user-section .section-element { 
+
+#admin-user-section .section-element,
+#admin-user-section .section-information {
     width: 98% !important;
     padding: 0px 1% 0px 1%;
+}
+
+#admin-user-section .section-element { 
     margin-top: 10px;
     margin-bottom: 10px;
 }
-#admin-user-section .section-element .section-rows {
-    width: 100%;
-}
 
-#admin-user-section .section-content {
-    width: 100%;
-}
 #admin-user-section .section-information {
     justify-content: space-between;
-    width: 98% !important;
-    padding: 0px 1% 0px 1%;
     margin: 0px;
     text-align: center;
 }
@@ -1847,9 +1857,6 @@ a, button {
 }
 #admin-user-section .user-delete {
     width: 5%;
-}
-#admin-user-section .form-result {
-    width: 100%;
 }
 
 @media (max-width: 1050px) {
@@ -1919,7 +1926,11 @@ a, button {
     width: 10%;
 }
 
-#admin-product-section .section-description {
+#admin-product-section .section-description,
+#admin-product-section .section-element .product-description,
+#admin-product-section .section-element .product-image-path,
+#admin-product-section .section-element .product-image-path textarea,
+#admin-product-section .section-element .product-description textarea {
     width: 100%;
 }
 
@@ -1937,12 +1948,6 @@ a, button {
     aspect-ratio: 1/1;
 } 
 
-#admin-product-section .section-element .product-description,
-#admin-product-section .section-element .product-image-path,
-#admin-product-section .section-element .product-image-path textarea,
-#admin-product-section .section-element .product-description textarea {
-    width: 100%;
-}
 #admin-product-section .section-element .product-image-path textarea,
 #admin-product-section .section-element .product-description textarea {
     height: 100px;
