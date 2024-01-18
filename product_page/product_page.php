@@ -21,7 +21,7 @@ if (isset($_GET["product"])) {
 <head>
     <meta charset="UTF-8">
 
-    <title>Shop All | Stuffed Pals</title>
+    <title> Product page | Stuffed Pals</title>
     <meta name="description"
         content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
     <meta name="keywords"
@@ -43,26 +43,38 @@ if (isset($_GET["product"])) {
         rel="stylesheet">
 </head>
 <body id="product-page">
+    <div id="overlay">
+        <div id="overlay-content" class="white-background default-box-shadow">
+            <h1>Your cart is still on reservation!</h1>
+            <h3>If you modify the content of your cart <span class="highlighted">the reservation will automatically cancel</span>.<br>Are you sure you want to continue shopping?</h3>
+            <button id="overlay-close" class="hyperlink_button" title="Continue browsing"> Continue browsing </button>
+            <div id="overlay-buttons">
+                <button id="overlay-cancel" class="hyperlink_button_reverse" title="Cancel reservation">Cancel reservation</button>
+                <button class="hyperlink_button_reverse" onclick="window.location.href='../checkout_page/checkout_page.php'" title="/checkout_page/checkout_page.php"> Go to checkout </button>
+            </div>
+        </div>
+    </div> 
     <?php include "../site_static_parts/navbar.php"; ?>
     <main>
-        <div id="product-section" class="white-background">
-            <!-- <div class="section-image-display">
-                <div class="main-image-displayer">
-                    <div class="main-image-slider" style="width: 550px; transform: translateX(0px);">
-                        <img src="assets\products\plush-accessories\plush_accessory_11\boots_1.png"
+        <div class="section-rows white-background">
+            <!-- <div class="section-images section-columns">
+                <div class="image-displayer">
+                    <div class="image-displayer-slider section-rows">
+                        <img src="../assets/products/plush-accessories/plush_accessory_11/boots_1.png"
                             alt="Mini black boots on pink background ">
+                        <img src="../assets/products/plush-accessories/plush_accessory_11/boots_2.png"
+                        alt="Mini black boots on pink background ">
                     </div>
                 </div>
-                <div class="icon-image-displayer">
-                    <div class="icon-image-slider" style="width: 110px;">
-                        <img src="assets\products\plush-accessories\plush_accessory_11\boots_1.png"
-                            alt="Mini black boots on pink background " class="icon-focused" style="opacity: 1;">
-                    </div>
+                <div class="image-carousel section-rows">
+                    <img src="../assets/products/plush-accessories/plush_accessory_11/boots_1.png"
+                         alt="Mini black boots on pink background " class="icon-focused" style="opacity: 1;">
+                    <img src="../assets/products/plush-accessories/plush_accessory_11/boots_1.png"> </img>
                 </div>
             </div>
             <div class="section-content">
-                <div class="section-content-description">
-                    <h3>Supplier"s name</h3>
+                <div>
+                    <h3>Supplier's name</h3>
                     <h1>Midnight Elegance Booties</h1>
                     <h4>
                         Step into a world of sophistication with our Midnight Elegance Booties, perfectly tailored
@@ -75,23 +87,19 @@ if (isset($_GET["product"])) {
                         <li>Designed with meticulous attention to detail and to ensure durability</li>
                     </ul>
                 </div>
-                <div class="section-content-action">
-                    <div class="section-content-action-description">
-                        <div class="review-section">
-                            There will be review section
-                        </div>
-                        <h2>80.00 PLN</h2>
-                    </div>
-                    <form class="section-content-action-buttons">
-                        <div class="quantity-button"><button id="decrease-quantity-button"
-                                class="hyperlink_button_reverse" disabled="">-</button>
+                <div class="section-action">
+                    <h3> ★★★★☆ (3.98) </h3>
+                    <h2>80.00 PLN</h2>
+                    <form class="section-rows">
+                        <div class="quantity-button section-rows">
+                            <button id="decrease-quantity-button" class="hyperlink_button_reverse" >-</button>
                             <input type="number" id="product-quantity" class="transparent_background" value="0" min="0"
-                                max="0" readonly="">
-                            <button id="increase-quantity-button" class="hyperlink_button_reverse"
-                                disabled="">+</button>
+                                max="10" >
+                            <button id="increase-quantity-button" class="hyperlink_button_reverse">+</button>
                         </div>
-                        <button class="hyperlink_button" type="sumbit" disabled="">OUT OF STOCK</button>
+                        <button id="add-button" class="hyperlink_button" type="sumbit" disabled="">OUT OF STOCK</button>
                     </form>
+                    <div class='form-result'></div>
                 </div> -->
                 <?php include "product_loader.php"; ?>
             </div>
@@ -102,6 +110,7 @@ if (isset($_GET["product"])) {
     <script src="quantitybutton_updater.js"></script>
     <script src="product_slider.js"></script>
     <script src="../cart_page/add_to_cart_updater.js"></script>
+    <script src="../js_scripts/overlay_alert_updater.js"></script>
     <script src="../../js_scripts/form_updater.js"></script>
     <script>
         $(document).ready(function() {

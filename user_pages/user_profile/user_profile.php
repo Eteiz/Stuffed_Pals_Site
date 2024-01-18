@@ -7,7 +7,7 @@ if (!is_user_logged_in()) {
 }
 // Choosing the subsite to load
 $content = $_GET['content'] ?? 'details';
-if (!in_array($content, ['details', 'orders', 'address'])) {
+if (!in_array($content, ['details','address'])) {
     header("Location: ../../page_error.php");
     exit;
 }
@@ -15,9 +15,6 @@ $contentFile = "";
 switch ($content) {
     case 'details':
         $contentFile = 'user_details/user_details_loader.php';
-        break;
-    case 'orders':
-        $contentFile = 'user_orders/user_orders_loader.php';
         break;
     case 'address':
         $contentFile = 'user_address/user_address_loader.php';
@@ -27,7 +24,6 @@ switch ($content) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
 
@@ -52,23 +48,20 @@ switch ($content) {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 </head>
-
-<body id="user-page">
+<body id="user-profile-page">
     <?php include "../../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
         <div class="header-content white-background default-box-shadow">
-            <h1>Hello <?php echo htmlspecialchars($_SESSION["user_login"], ENT_QUOTES, "UTF-8"); ?></h1>
+            <h1>Hello <?php echo htmlspecialchars($_SESSION["user_login"]); ?> 🖐</h1>
             <h3>
                 Welcome to your personalized dashboard, where your preferences shape your experience.
             </h3>
         </div>
     </header>
-    
     <main class="white-background">
-            <div class="section-header">
-            <a href="user_profile.php?content=details" class="hyperlink_button">Account Details</a>
-            <a href="user_profile.php?content=orders" class="hyperlink_button">Order History</a>
-            <a href="user_profile.php?content=address" class="hyperlink_button">Shipping Address</a>
+        <div class="section-rows">
+            <button onclick="location.href='user_profile.php?content=details'" class="hyperlink_button" title="/user_profile.php?content=details">Account Details</button>
+            <button onclick="location.href='user_profile.php?content=address'" class="hyperlink_button" title="/user_profile.php?content=address">Shipping Address</button>
         </div>
         <div id="user-profile-option" class="section-content">
             <?php include "../../user_pages/user_profile/" . $contentFile; ?>
@@ -85,5 +78,4 @@ switch ($content) {
     </script> 
     <?php if($contentFile == 'user_address/user_address_loader.php') echo "<script src='../../../user_pages/user_profile/user_address/user_address_delete_updater.js'></script>"; ?>
 </body>
-
 </html>

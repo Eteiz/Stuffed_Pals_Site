@@ -27,87 +27,96 @@
         rel="stylesheet">
 </head>
 
-<body id="shop-all-page" class="white-background">
+<body id="shop-page">
+    <div id="overlay">
+        <div id="overlay-content" class="white-background default-box-shadow">
+            <h1>Your cart is still on reservation!</h1>
+            <h3>If you modify the content of your cart <span class="highlighted">the reservation will automatically cancel</span>.<br>Are you sure you want to continue shopping?</h3>
+            <button id="overlay-close" class="hyperlink_button" title="Continue browsing"> Continue browsing </button>
+            <div id="overlay-buttons">
+                <button id="overlay-cancel" class="hyperlink_button_reverse" title="Cancel reservation">Cancel reservation</button>
+                <button onclick="window.location.href='../checkout_page/checkout_page.php'" class="hyperlink_button_reverse" title="/checkout_page/checkout_page.php"> Go to checkout </button>
+            </div>
+        </div>
+    </div> 
     <?php include "../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
         <div class="header-content white-background default-box-shadow">
-            <h1> Our Shop </h1>
+        <h1> Our Shop </h1>
             <h3>
-                Everything you need is here! From plush bases to accessories, you"ll find the perfect solution for a
-                stuffed companion.
+                Everything you need is right here! From plush bases to an array of accessories, you'll discover the perfect elements to create your ideal stuffed companion. 
             </h3>
         </div>
     </header>
-    <main class="white-background">
-        <!-- FILTERS SECTION -->
-        <form id="filters-form" class="section-content">
+    <main class="white-background section-rows">
+        <form id="filters-section" class="default-box-shadow">
             <h2> Filter by:</h2>
-            <div id="filters-section" class="section-content-row">
-                <!-- Sorting options -->
-                <div id="sort-filters" class="section-content-row-element">
+            <hr class="outer">
+            <div id="responsive-filters">
+                <div id="sort-filters" class="section-columns">
                     <h4>Products Sorting:</h4>
-                    <div class="section-content-row-description">
-                        <label> <input type="radio" name="product_sort" value="price_asc"> Price: low to high </label>
-                        <label> <input type="radio" name="product_sort" value="price_desc"> Price: high to low </label>
-                        <label> <input type="radio" name="product_sort" value="date_newest"> Date: new to old </label>
-                        <label> <input type="radio" name="product_sort" value="date_oldest"> Date: old to new </label>
-                        <label> <input type="radio" name="product_sort" value="alpha_asc"> Alphabetically: A-Z </label>
-                        <label> <input type="radio" name="product_sort" value="alpha_desc"> Alphabetically: Z-A </label>
-                    </div>
+                    <label> <input type="radio" name="product_sort" value="price_asc"> Price: low to high </label>
+                    <label> <input type="radio" name="product_sort" value="price_desc"> Price: high to low </label>
+                    <label> <input type="radio" name="product_sort" value="date_newest"> Date: new to old </label>
+                    <label> <input type="radio" name="product_sort" value="date_oldest"> Date: old to new </label>
+                    <label> <input type="radio" name="product_sort" value="alpha_asc"> Alphabetically: A-Z </label>
+                    <label> <input type="radio" name="product_sort" value="alpha_desc"> Alphabetically: Z-A </label>
                 </div>
-                <!-- Category filter -->
-                <div id="category-filters" class="section-content-row-element">
-                    <h4> Products Category: </h4>
-                    <div class="section-content-row-description">
-                        <!-- Script loading categories -->
+                <div id="category-filters" class="section-columns">
+                    <h4>Products Category:</h4>
+                    <div class="section-columns">
                         <?php include "categoryfilter_loader.php"; ?>
                     </div>
                 </div>
-                <!-- Supplier filter -->
-                <div id="supplier-filters" class="section-content-row-element">
+                <div id="supplier-filters" class="section-columns">
                     <h4> Product Supplier: </h4>
-                    <div class="section-content-row-description">
-                        <!-- Script loading suppliers -->
+                    <div class="section-columns">
                         <?php include "supplierfilter_loader.php"; ?>
                     </div>
                 </div>
-                <!-- Availability filter -->
-                <div id="availability-filters" class="section-content-row-element">
+                <div id="availability-filters" class="section-columns">
                     <h4> Products Availability: </h4>
-                    <div class="section-content-row-description">
-                        <!-- Script loading availability -->
+                    <div class="section-columns">
                         <?php include "availabilityfilter_loader.php"; ?>
                     </div>
                 </div>
-                <!-- Price filter -->
-                <div id="price-filter" class="section-content-row-element">
-                    <h4>Products Price:</h4>
-                    <div class="section-content-row-description">
-                        <div class="price-range">
-                            <input type="number" id="price-min" name="price-min" placeholder="Min PLN" min="0"
-                                oninput="validity.valid||(value='');">
-                            —
-                            <input type="number" id="price-max" name="price-max" placeholder="Max PLN" min="0"
-                                oninput="validity.valid||(value='');">
-                        </div>
+            </div>
+            <div id="price-filters" class="section-columns">
+                <h4>Products Price:</h4>
+                <div class="section-columns">
+                    <div class="price-range">
+                        <input type="number" id="price-min" name="price-min" placeholder="Min PLN" min="0"
+                            oninput="validity.valid||(value='');">
+                        —
+                        <input type="number" id="price-max" name="price-max" placeholder="Max PLN" min="0"
+                            oninput="validity.valid||(value='');">
                     </div>
                 </div>
             </div>
-            <!-- Clear and apply changes button -->
-            <button class="hyperlink_button_reverse" name="filters-clear-button" type="submit">Clear Filters</button>
-            <button class="hyperlink_button" name="filters-apply-button" type="submit">Apply Filters</button>
+            <button class="hyperlink_button_reverse" name="filters-clear-button" type="submit" title="Clear filters">Clear Filters</button>
+            <button class="hyperlink_button" name="filters-apply-button" type="submit" title="Apply filters">Apply Filters</button>
         </form>
-        <!-- PRODUCT LIST -->
-        <article id="products-display-section" class="white_background">
-            <!-- <div id="loading-animation" class="dots-5" style="display: none;"></div> -->
-            <!-- productdisplay_loader.php -->
-        </article>
+        <div id="product-display-section" class="white-background">
+            <!-- <div class="default-box-shadow section-element">
+                <a href='../product_page/product_page.php?product='> <img src="../assets/placeholder.png" alt="Product Image"> </a>
+                <div class="section-columns">
+                    <h3 class="product-name">Product Name</h3>
+                    <h4>★★★★☆ (3.98)</h4>
+                    <form>
+                        <h2 class="product-price">Product Price</h2>
+                        <button class="hyperlink_button">Add to Cart</button>
+                        <div class='form-result'>Test</div>
+                    </form>
+                </div>
+            </div> -->
+        </div>
     </main>
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="productlist_updater.js"></script>
     <script src="../cart_page/add_to_cart_updater.js"></script>
+    <script src="../js_scripts/overlay_alert_updater.js"></script>
     <script src="../../js_scripts/form_updater.js"></script>
     <script>
         $(document).ready(function() {

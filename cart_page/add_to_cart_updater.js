@@ -20,18 +20,21 @@ $(document).ready(function() {
                 if (response.status === 2) {
                     window.location.href = "../../user_pages/user_login/user_login.php";
                 }
+                else if (response.status === 3) {
+                    $("#overlay").css("display", "flex");
+                }
                 formStatus.html(response.msg).show();
                 setTimeout(function() { formStatus.html("") }, 3500);
                 addToCartButton.prop("disabled", false);
                 addToCartButton.find(".dots-5").hide(); 
-                addToCartButton.text("ADD TO CART");
+                addToCartButton.text("Add to cart");
             },
             error: function(xhr, status, error) {
                 formStatus.html("There was an error processing your request.").show();
                 setTimeout(function() { formStatus.html("") }, 3500);
                 addToCartButton.prop("disabled", false);
                 addToCartButton.find(".dots-5").hide();
-                addToCartButton.text("ADD TO CART");
+                addToCartButton.text("Add to cart");
             }
         });
     });

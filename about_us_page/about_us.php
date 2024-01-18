@@ -4,7 +4,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <title>About us | Stuffed Pals</title>
     <meta name="description"
         content="Stuffed Pals is a one-of-a-kind company that specializes in providing a unique and creative experience for plushie enthusiasts of all ages. We pride ourselves on offering a wide range of parts and accessories that enable our customers to create their own customizable plush toys.">
@@ -25,7 +24,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-
 </head>
 
 <body id="about-us-page">
@@ -33,161 +31,58 @@
     <header class="image-background image-parallax">
         <div class="header-content white-background default-box-shadow">
             <h1> About Us </h1>
-            <h3> Discover the thought process behind creating our company! </h3>
+            <h3> 
+                See the Thought Process Behind Creating Our Company <br>
+                Discover our story, meet our team, and explore the love and dedication that goes into every plush pal we create.
+            </h3>
         </div>
     </header>
-    <main>
-        <section id="who-we-are-section" class="white-background">
-            <section class="section-description">
-                <img src="../assets/StuffedPals_Name.png" alt="Stuffed Pals Name"></img>
-                <h2>
-                    The Stuffed Pals was founded on this simple premise—everybody needs a friend.
-                </h2>
+    <main class="white-background">
+        <div id="about-section" class="default-gradient-background section-rows">
+            <div>
+                <h1>Stuffed Pals is here to help you discover a new, cuddly friend 🧸</h1>
+                <h2>Start your creative journey today and embrace the joy of a custom-made plush friend!</h2>
+                <button class="hyperlink_button" onclick="window.location.href='../shop_page/shop.php'" title="/shop_page/shop.php"> Get started </button>
+            </div>
+            <img src="../assets/StuffedPals_AboutUs_3.png" alt="Three bears in different color" title="Three bears in different color"></img>
+        </div>
+        <div id="our-mission-section">
+            <h3>Our Mission at Stuffed Pals</h3>
+            <h1>Addressing Loneliness in Today's World</h1>
+            <h4> 
+                At Stuffed Pals, we recognize the increasing sense of loneliness in modern society, and we are here to make a difference. While our primary focus is on creating custom plush companions to bring joy and comfort, we also empower people to achieve independence.
+            </h4>
+        </div>
+        <div id="values-section" class="section-columns">
+            <div id="reverse-order" class="section-element section-rows white-background default-box-shadow round-corners">
                 <span>
-                    <p>
-                        We do what we do at Stuffed Pals for the sparkle of joy in a child's eyes,
-                        for the comfort we can provide to a heart in need of solace, and for the shared moments of
-                        happiness that our plushies can bring.
-                        In a world that's increasingly digital, we stand as champions for the tangible, the real, and
-                        the heartfelt.
-                        We believe that in holding something real, there's an irreplaceable connection that is formed.
-                    </p>
-                    <p>
-                        Our mission transcends the mere act of creating toys.
-                        We are nurturing a space where imagination is kindled, where individuality is celebrated,
-                        and where the simplicity of a cuddle can mean everything.
-                        We are committed to ethical practices, sustainability, and giving back to the community that has
-                        embraced us.
-                        For us, it's about creating a legacy - of love, laughter, and the kind of joy that is passed
-                        down through generations.
-                    </p>
+                    <h3>Our Team and Our Social Impact</h3>
+                    <h2>Creating a Community for Impact</h2>
+                    <span>
+                        We at Stuffed Pals hold a firm belief that business can be a powerful force for good. 
+                        That's why we've pledged to donate 1% of our equity, 1% of our profits, and 1% of our employees' time to projects that make a positive impact worldwide. 
+                        Additionally, we take pride in being a socially responsible company, committed to using our business as a tool to address social and environmental issues, much like a certified B Corporation.
+                    </span>
                 </span>
-            </section>
-            <img src="../assets/About-us.png" alt="Collab of photos from our customers"></img>
-        </section>
-        <section id="our-ethos-section" class="default-gradient-background">
-            <div class="section-card white-background hover-box-shadow">
-                <h2>Comfort at all cost</h2>
+                <img src="../assets/StuffedPals_AboutUs_1.png" alt="Photo of our team working in magazine" title="Photo of our team working in magazine"></img>
+            </div>
+            <div class="section-element section-rows white-background default-box-shadow round-corners">
                 <span>
-                    We believe that comfort is personal.
-                    Everyone deserves a companion tailored to their preferences, one that provides solace in moments of
-                    solitude.
-                    We're not just creating toys; we're crafting memories, connections, and a source of genuine comfort.
+                    <h3>Our Commitment to Sustainability</h3>
+                    <h2>Building a Business for the Future</h2>
+                    <span>
+                        In our quest to build a lasting legacy with Stuffed Pals, we are deeply invested in the sustainability of our planet. 
+                        Our Sustainability Fund is focused on promoting environmentally responsible practices, not just within our company but also empowering our network of suppliers and partners to do the same. 
+                        We are dedicated to ensuring that Stuffed Pals not only stands the test of time but also contributes positively to our planet and its future.
+                    </span>  
                 </span>
-                <img src="../assets/icons/teddy-bear_icon.png" alt="Teddy Bear Icon"></img>
+                <img src="../assets/StuffedPals_AboutUs_2.png" alt="Photo of our team in front of our shop" title="Photo of our team in front of our shop"></img>
             </div>
-            <div class="section-card white-background hover-box-shadow">
-                <h2>Eco & Ethical</h2>
-                <span>
-                    Our planet and its inhabitants matter to us deeply.
-                    We stand firmly against exploitative labor practices and collaborate exclusively with producers
-                    who value fair and living wages.
-                    With each Stuffed Pal, you're not only gaining a companion but also supporting a cause that
-                    emphasizes global responsibility.
-                </span>
-                <img src="../assets/icons/eco_icon.png" alt="Eco Icon"></img>
-            </div>
-            <div class="section-card white-background hover-box-shadow">
-                <h2>Quality & Art</h2>
-                <span>
-                    Every product at Stuffed Pals is a testament to our dedication to quality.
-                    We meticulously craft each plushie and accessory with the utmost care and attention to detail,
-                    ensuring they are not only durable but also have a unique charm.
-                </span>
-                <img src="../assets/icons/quality_icon.png" alt="Quality Icon"></img>
-            </div>
-        </section>
-        <section id="our-team-section" class="white-background">
-            <h1> Meet our Team! </h1>
-            <h2> Meet the minds behind Stuffed Pals </h2>
-            <div class="section-image-display">
-                <div id="our-team-slider">
-                    <div class="section-image-display-element">
-                        <img src="../assets/team-photos/ourteam_1.jpg" alt="Marta Ambroziak's photo"></img>
-                        <div class="section-image-display-element-description">
-                            <h3> CEO & Manager </h3>
-                            <h2> Marta Ambroziak </h2>
-                            <span>
-                                Marta is the visionary and chief designer at Stuffed Pals.
-                                Her passion for delivering joy to children worldwide drives the company's creative
-                                spirit.
-                                With a keen eye for design and a heart full of dreams, she has led Stuffed Pals from a
-                                small workshop to an international brand.
-                            </span>
-                            <div class="section-social-media">
-                                <a target="_blank" href="https://www.linkedin.com" src="www.linkedin.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/linkedin_icon.png"
-                                        alt="LinkedIn Icon"></img></a>
-                                <a target="_blank" href="https://www.instagram.com" src="www.instagram.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/instagram_icon.png"
-                                        alt="Instagram Icon"></img></a>
-                                <a target="_blank" href="https://www.facebook.com" src="www.facebook.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/facebook_icon.png"
-                                        alt="Facebook Icon"></img></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section-image-display-element">
-                        <img src="../assets/team-photos/ourteam_2.jpg" alt="Marta Ambroziak's photo"></img>
-                        <div class="section-image-display-element-description">
-                            <h3> CTO & Lead Programmer </h3>
-                            <h2> Marta Ambroziak </h2>
-                            <span>
-                                As the technological architect of Stuffed Pals, Marta ensures all digital aspects of
-                                our operations run smoothly.
-                                Her expertise in IT infrastructure and passion for innovation have been crucial in
-                                building the robust online presence of Stuffed Pals.
-                            </span>
-                            <div class="section-social-media">
-                                <a target="_blank" href="https://www.linkedin.com" src="www.linkedin.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/linkedin_icon.png"
-                                        alt="LinkedIn Icon"></img></a>
-                                <a target="_blank" href="https://www.instagram.com" src="www.instagram.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/instagram_icon.png"
-                                        alt="Instagram Icon"></img></a>
-                                <a target="_blank" href="https://www.facebook.com" src="www.facebook.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/facebook_icon.png"
-                                        alt="Facebook Icon"></img></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section-image-display-element">
-                        <img src="../assets/team-photos/ourteam_3.jpg" alt="Marta Ambroziak's photo"></img>
-                        <div class="section-image-display-element-description">
-                            <h3> Lead Designer </h3>
-                            <h2> Marta Ambroziak </h2>
-                            <span>
-                                Marta, the creative soul of our team, brings each plushie to life with her
-                                extraordinary design skills.
-                                She's the mastermind behind our signature customizable plushies, ensuring that every
-                                piece is both adorable and unique.
-                            </span>
-                            <div class="section-social-media">
-                                <a target="_blank" href="https://www.linkedin.com" src="www.linkedin.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/linkedin_icon.png"
-                                        alt="LinkedIn Icon"></img></a>
-                                <a target="_blank" href="https://www.instagram.com" src="www.instagram.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/instagram_icon.png"
-                                        alt="Instagram Icon"></img></a>
-                                <a target="_blank" href="https://www.facebook.com" src="www.facebook.com"><img
-                                        class="hyperlink_icon" src="../assets/icons/facebook_icon.png"
-                                        alt="Facebook Icon"></img></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section-image-display-buttons">
-                <button class="image-display-button image-display-button-active"></button>
-                <button class="image-display-button"></button>
-                <button class="image-display-button"></button>
-            </div>
-        </section>
+        </div>
     </main>
     <?php include "../newsletter/newsletter_form.php"; ?>
     <?php include "../site_static_parts/footer.php"; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="ourteam_slider.js"></script>
     <script src="../../js_scripts/form_updater.js"></script>
     <script>
         $(document).ready(function() {

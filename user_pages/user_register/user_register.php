@@ -33,7 +33,7 @@ if (is_user_logged_in()) {
         rel="stylesheet">
 </head>
 
-<body>
+<body id="user-account-page">
     <?php include "../../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
         <div class="header-content white-background default-box-shadow">
@@ -43,38 +43,37 @@ if (is_user_logged_in()) {
             </h3>
         </div>
     </header>
-    <main>
+    <main class="white-background">
         <section class="form-section white-background">
             <form id="user-register-form" action="../../user_pages/user_register/userregister_sender.php" method="post">
                 <h2>Register user</h2>
                 <label for="username-field" class="form-field">
                     <h3>Username<span class="alert">*</span></h3>
-                    <input type="text" id="username-field" name="username" required placeholder="Username"
+                    <input type="text" id="username-field" name="user_name" required placeholder="Username"
                         maxlength="40" autocomplete="username">
                 </label>
                 <label for="email-field" class="form-field">
                     <h3> Email address<span class="alert">*</span> </h3>
-                    <input type="email" id="email-field" name="email" required placeholder="Email address"
-                        maxlength="100" autocomplete="email">
+                    <input type="email" id="email-field" name="user_email" required placeholder="Email address"
+                        maxlength="255" autocomplete="email">
                 </label>
                 <label for="password-field" class="form-field">
                     <h3> Password<span class="alert">*</span> </h3>
-                    <input type="password" id="password-field" name="password" required placeholder="Password"
+                    <input type="password" id="password-field" name="user_password" required placeholder="Password"
                         maxlength="60" autocomplete="new-password">
-                    <img id="toggle-password" src="../../assets/icons/hide_icon.png" alt="Eye view icon"
+                    <img id="toggle-password" src="../../assets/icons/hide_icon.png" alt="Eye view icon" title="Toggle password visibility"
                         onclick="togglePasswordVisibility()"></img>
                 </label>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../index.php">&#11164 Cancel </a>
-                    </br>
-                    <a class="hyperlink_text" href="../../user_pages/user_login/user_login.php"> &#11164 Already have an account?
-                        Log in</a>
+                    <a class="hyperlink_text" href="../../index.php" title="/index.php">&#11164 Cancel </a>
+                    <br>
+                    <a class="hyperlink_text" href="../../user_pages/user_login/user_login.php" title="/user_pages/user_login/user_login.php"> &#11164 Already have an account? Log in</a>
                 </div>
-                <button class="hyperlink_button" type="submit" name="register-button">
-                    <div class="button-text">SIGN UP</div>
+                <button class="hyperlink_button" type="submit" name="register-button" title="Sign up">
+                    <div class="button-text">Sign up</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result" style="height: 20px"></div>
+                <div class="form-result"></div>
             </form>
         </section>
     </main>

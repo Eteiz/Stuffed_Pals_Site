@@ -20,75 +20,69 @@
 
     $images = $imageResult ? $imageResult->fetch_all(MYSQLI_ASSOC) : [];
     $numImages = count($images);
-    $mainSliderWidth = 550;
-    $iconSliderWidth = 110;
 
     // Product images
-    echo "<div class='section-image-display'>";
+    echo "<div class='section-images section-columns'>";
     if ($numImages > 0) {
-        echo "<div class='main-image-displayer'><div class='main-image-slider' style='width:" . ($mainSliderWidth * $numImages) . "px;'>";
-        foreach ($images as $imageRow) {
-            echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "'>";
-        }
-        echo "</div></div>";
-        echo "<div class='icon-image-displayer'><div class='icon-image-slider' style='width:" . ($iconSliderWidth * $numImages) . "px;'>";
-        foreach ($images as $imageRow) {
-            echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "'>";
-        }
-        echo "</div></div>";
+        echo "<div class='image-displayer'>";
+            echo "<div class='image-displayer-slider section-rows' style='width: calc(100% * " . $numImages . ");'>";
+                foreach ($images as $imageRow) {
+                    echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "' title='" . htmlspecialchars($imageRow["image_description"]) . "' style='width: calc(100% / " . $numImages . ");'>";
+                }
+            echo "</div>";
+        echo "</div>";
+        echo "<div class='image-carousel section-rows'>";
+            foreach ($images as $imageRow) {
+                echo "<img src='../" . htmlspecialchars($imageRow["product_image_path"]) . "' alt='" . htmlspecialchars($imageRow["image_description"]) . "' title='" . htmlspecialchars($imageRow["image_description"]) . "'>";
+            }
+        echo "</div>";
     }
     else {
-        echo "<div class='main-image-displayer'><div class='main-image-slider' style='width: {$mainSliderWidth}px;'>";
-            echo "<img src='../assets/placeholder.png' alt='Placeholder image'>";
-        echo "</div></div>";
-        echo "<div class='icon-image-displayer'><div class='icon-image-slider' style='width: {$iconSliderWidth}px;'>";
-            echo "<img src='../assets/placeholder.png' alt='Placeholder image'>";
-        echo "</div></div>"; 
+        echo "<div class='image-displayer'>";
+            echo "<div class='image-displayer-slider section-rows' style='width: 100%;'>";
+                echo "<img src='../assets/placeholder.png' alt='Placeholder image' title='Placeholder image' style='width: 100%;'>";
+            echo "</div>";
+        echo "</div>";
+        echo "<div class='image-carousel section-rows'>";
+            echo "<img src='../assets/placeholder.png' alt='Placeholder image' title='Placeholder image'>"; 
+        echo "</div>";
     }
     echo "</div>";
 
-    // Product information
     echo "<div class='section-content'>";
-    echo "<div class='section-content-description'>";
-        echo "<h3>". htmlspecialchars($info["supplier_name"]) ."</h3>";
-        echo "<h1>" . htmlspecialchars($info["product_name"]) . "</h1>";
-        // Availability
-        $notEmptyInventory = $info["quantity"] > 0;
-        echo "<h4>" . htmlspecialchars($info["product_description"]) . "</h4>";
-        echo "<ul>";
-            echo "<li>The materials used for crafting are safe for the environment</li>";
-            echo "<li>Tailored to meet individual preferences</li>";
-            echo "<li>Designed with meticulous attention to detail and to ensure durability</li>";
-        echo "</ul>";
-    echo "</div>";
-    echo "<div class='section-content-action'>";
-        echo "<div class='section-content-action-description'>";
-            // Review section
-            echo "<div class='review-section'>";
-                echo "There will be review section";
-            echo "</div>";
+        echo "<div>";
+            echo "<h3>". htmlspecialchars($info["supplier_name"]) ."</h3>";
+            echo "<h1>" . htmlspecialchars($info["product_name"]) . "</h1>";
+            echo "<h4>" . htmlspecialchars($info["product_description"]) . "</h4>";
+            echo "<ul>";
+                echo "<li>The materials used for crafting are safe for the environment</li>";
+                echo "<li>Tailored to meet individual preferences</li>";
+                echo "<li>Designed with meticulous attention to detail and to ensure durability</li>";
+            echo "</ul>";
+        echo "</div>";
+        echo "<div class='section-action'>";
+            echo "<h3> ★★★★☆ (3.98) </h3>";
             echo "<h2> $" . htmlspecialchars($info["product_price"]) ."</h2>";
-        echo "</div>";
-        echo "<form class='add-to-cart-form section-content-action-buttons' action='../cart_page/add_to_cart.php' method='post'>";
-            echo "<div class='quantity-button'>";
-                if($notEmptyInventory) {
-                    echo "<button type='button' class='decrease-quantity-button hyperlink_button_reverse'>-</button>";
-                    echo "<input type='number' name='quantity' class='product-quantity transparent_background' value='1' min='1' max='" . htmlspecialchars($info["quantity"]) . "'>";
-                    echo "<button type='button' class='increase-quantity-button hyperlink_button_reverse'>+</button>";
-                    echo "</div>";
-                    echo "<input type='hidden' name='product_id' value='" . $productId . "'>";
-                    echo "<button name='add-to-cart-button' class='hyperlink_button' type='submit'>ADD TO CART <div class='dots-5' style='display: none;'></div></button>";
-                } else {
-                    echo "<button type='button' class='decrease-quantity-button hyperlink_button_reverse_inactive' disabled>-</button>";
-                    echo "<input type='number' class='product-quantity transparent_background' value='0' min='0' max='0' readonly style='border-color: var(--action-color-disabled);'>";
-                    echo "<button type='button' class='increase-quantity-button hyperlink_button_reverse_inactive' disabled>+</button>";
-                    echo "</div>";
-                    echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' disabled>OUT OF STOCK <div class='dots-5' style='display: none;'></div> </button>";
-                }
+            echo "<form class='add-to-cart-form section-rows' action='../cart_page/add_to_cart.php' method='post'>";
+                echo "<div class='quantity-button section-rows'>";
+                    $notEmptyInventory = $info["quantity"] > 0;
+                    if($notEmptyInventory) {
+                            echo "<button type='button' id='decrease-quantity-button' class='decrease-quantity-button hyperlink_button_reverse' title='Decrease quantity'>-</button>";
+                            echo "<input type='number' id='product-quantity-button' name='quantity' class='product-quantity-button white-background' title='Product quantity' value='1' min='0' max='" . htmlspecialchars($info["quantity"]) . "'>";
+                            echo "<button type='button' id='increase-quantity-button' class='increase-quantity-button hyperlink_button_reverse' title='Increase quantity'>+</button>";
+                        echo "</div>";
+                        echo "<input type='hidden' name='product_id' value='" . $productId . "'>";
+                        echo "<button name='add-to-cart-button' class='hyperlink_button' type='submit' title='Add to cart'>Add to cart<div class='dots-5' style='display: none;'></div></button>";
+                    } else {
+                            echo "<button class='decrease-quantity-button hyperlink_button_reverse_inactive' title='Out of stock' disabled>-</button>";
+                            echo "<input type='number' name='quantity' class='product-quantity-button white-background' title='Out of stock' value='0' min='0' max='0' readonly style='border-color: var(--action-color-disabled);'>";
+                            echo "<button class='increase-quantity-button hyperlink_button_reverse_inactive' title='Out of stock' disabled>+</button>";
+                        echo "</div>";
+                        echo "<button name='add-to-cart-button' class='hyperlink_button_inactive' type='submit' title='Out of stock' disabled>Out of stock<div class='dots-5' style='display: none;'></div></button>";
+                    }
             echo "</form>";
-            echo "<div class='form-result'></div>";
+            echo "<div class='form-result'>";
         echo "</div>";
-    echo "</div>";
     echo "</div>";
     $conn->close();
 ?>

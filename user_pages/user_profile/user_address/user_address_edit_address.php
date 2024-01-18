@@ -115,9 +115,9 @@ $addressData = $result->fetch_assoc();
                 </label>
                 <?php echo "<input type='hidden' name='address_id' value='". htmlspecialchars($addressId) ."'>"; ?>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php?content=address">&#11164 Cancel</a>
+                    <a class="hyperlink_text" href="../../../user_pages/user_profile/user_profile.php?content=address" title="/user_pages/user_profile/user_profile.php?content=address">&#11164 Cancel</a>
                 </div>
-                <button class="hyperlink_button" type="submit" name="edit-address-button">
+                <button class="hyperlink_button" type="submit" name="edit-address-button" title="Edit address">
                     <div class="button-text">Edit address</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>

@@ -1,24 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const decreaseButtons = document.getElementsByClassName("decrease-quantity-button");
-  const increaseButtons = document.getElementsByClassName("increase-quantity-button");
+    const decreaseButton = document.getElementById("decrease-quantity-button");
+    const increaseButton = document.getElementById("increase-quantity-button");
+    const numberInput = document.getElementById("product-quantity-button");
 
-  if (decreaseButtons.length > 0 && increaseButtons.length > 0) {
-      const decreaseButton = decreaseButtons[0];
-      const increaseButton = increaseButtons[0];
-      const numberInput = document.querySelector(".product-quantity");
+    if (decreaseButton && increaseButton && numberInput) {
+        decreaseButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            let currentValue = parseInt(numberInput.value, 10);
+            if (currentValue > parseInt(numberInput.min, 10)) {
+                numberInput.value = currentValue - 1;
+            }
+        });
 
-      decreaseButton.addEventListener("click", function() {
-          let currentValue = parseInt(numberInput.value, 10);
-          if (currentValue > parseInt(numberInput.min)) {
-              numberInput.value = currentValue - 1;
-          }
-      });
-
-      increaseButton.addEventListener("click", function() {
-          let currentValue = parseInt(numberInput.value, 10);
-          if (currentValue < parseInt(numberInput.max)) {
-              numberInput.value = currentValue + 1;
-          }
-      });
-  }
+        increaseButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            let currentValue = parseInt(numberInput.value, 10);
+            if (currentValue < parseInt(numberInput.max, 10)) {
+                numberInput.value = currentValue + 1;
+            }
+        });
+    }
 });

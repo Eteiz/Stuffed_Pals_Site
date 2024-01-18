@@ -23,7 +23,7 @@ if (!$cartRow) {
 
     echo "<section class='details-section default-gradient-background'>";
     echo "<div class='section-content'>";
-    echo "<h4 style='padding-left: 10px;'>The contents of the finalized order may vary due to unavailability or shortages in stock of certain products:</h4>";
+    echo "<h3 style='padding-left: 10px;'>List of ordered products:</h3>";
     echo "<hr class='outer'>";
 
     $items = $itemsResult->fetch_all(MYSQLI_ASSOC);
@@ -48,7 +48,7 @@ if (!$cartRow) {
         echo '<div class="section-row">';
         $imagePath = isset($image["product_image_path"]) && !empty($image["product_image_path"]) ? "../" . $image["product_image_path"] : '../assets/placeholder.png';
         $altText = isset($image["image_description"]) ? htmlspecialchars($image["image_description"]) : 'No image available';
-        echo "<img src='" . htmlspecialchars($imagePath) . "' alt='" . $altText . "'>";
+        echo "<img src='" . htmlspecialchars($imagePath) . "' alt='" . $altText . "' title='" . $altText . "'>";
         echo '<span>' . htmlspecialchars($product['product_name']) . ' <strong>x' . $item['quantity'] . '</strong></span>';
         echo '<h4> $' . number_format($product['product_price'] * $item['quantity'], 2) . ' </h4>';
         echo '</div>';
@@ -56,10 +56,8 @@ if (!$cartRow) {
         if ($currentItem < $itemsCount) {
             echo "<hr>";
         }
-
         $subtotal += $product['product_price'] * $item['quantity'];
     }
-
     echo '</div>';
     echo '<hr class="outer">';
     echo '<div class="section-footer">';
@@ -78,6 +76,5 @@ if (!$cartRow) {
     echo '</div>';
     echo '</section>';
 }
-
 $conn->close();
 ?>

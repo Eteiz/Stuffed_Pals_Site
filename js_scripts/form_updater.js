@@ -1,6 +1,7 @@
 
 function handleFormSubmit(formId, buttonName, phpFunctionAddress, formType) {
     $(document).on("submit", "#" + formId, function(e) {
+        
         e.preventDefault();
         console.log("Form submitted for ", formType);
         var form = $(this);
@@ -60,7 +61,34 @@ function handleFormSubmit(formId, buttonName, phpFunctionAddress, formType) {
                             setTimeout(function() {
                                  window.location.href = "../../../user_pages/user_profile/user_profile.php";
                             }, 1500);
-                            break;   
+                            break;  
+                        case "create-order":
+                            setTimeout(function() {
+                                window.location.href = "../../../user_pages/user_profile/user_profile.php?content=orders";
+                           }, 1500);
+                           break; 
+                        case "admin-login":
+                            setTimeout(function() {
+                                window.location.href = "../../../admin_pages/admin_dashboard.php";
+                            }, 1500);
+                            break;
+                        case "admin-logout":
+                            setTimeout(function() {
+                                window.location.href = "../../../admin_pages/admin_login_page.php";
+                            }, 1500);
+                            break;
+                        case "add-product":
+                            setTimeout(function() {
+                                window.location.href = "../../../admin_pages/admin_dashboard.php?content=products";
+                            }, 1500);
+                        case "edit-product":
+                            setTimeout(function() {
+                                window.location.href = "../../../admin_pages/admin_dashboard.php?content=products";
+                            }, 1500);
+                        case "edit-order":
+                            setTimeout(function() {
+                                window.location.href = "../../../admin_pages/admin_dashboard.php?content=orders";
+                            }, 1500);
                         default:
                             break;
                     }

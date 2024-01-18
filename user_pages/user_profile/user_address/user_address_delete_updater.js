@@ -24,7 +24,7 @@ $(document).ready(function() {
                     if(response.status == 2) {
                         window.location.href = "../../../user_pages/user_login/user_login.php";
                     }
-                    var formStatus = buttonClicked.closest('.section-row').find(".form-result[user-address-id='" + addressId + "']");
+                    var formStatus = buttonClicked.closest('.buttons-section').find(".form-result[user-address-id='" + addressId + "']");
                     formStatus.html(response.msg).show();
                     setTimeout(function() { formStatus.html("") }, 500);
                     setTimeout(function() {
@@ -32,7 +32,7 @@ $(document).ready(function() {
                     }, 600);
                 },
                 error: function(xhr, status, error) {
-                    var formStatus = buttonClicked.closest('.section-row').find(".form-result[user-address-id='" + addressId + "']");
+                    var formStatus = buttonClicked.closest('.buttons-section').find(".form-result[user-address-id='" + addressId + "']");
                     formStatus.html("There was an error processing your request.").show();
                     setTimeout(function() { formStatus.html("") }, 500);
                 }

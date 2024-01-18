@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("filters-form");
-    var productSection = document.getElementById("products-display-section");
+    var form = document.getElementById("filters-section");
+    var productSection = document.getElementById("product-display-section");
 
     // Function to update product list
     function handleFormSubmit(event) {

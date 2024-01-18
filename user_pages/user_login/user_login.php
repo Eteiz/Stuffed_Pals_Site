@@ -33,7 +33,7 @@ if (is_user_logged_in()) {
         rel="stylesheet">
 </head>
 
-<body>
+<body id="user-account-page">
     <?php include "../../site_static_parts/navbar.php"; ?>
     <header class="image-background image-parallax">
         <div class="header-content white-background default-box-shadow">
@@ -43,31 +43,33 @@ if (is_user_logged_in()) {
             </h3>
         </div>
     </header>
-    <main>
+    <main class="white-background">
         <section class="form-section white-background">
-            <form method="post" action="../../user_pages/user_login/userlogin_sender.php" id="user-login-form">
+            <form id="user-login-form" action="../../user_pages/user_login/userlogin_sender.php" method="post">
                 <h2> Login </h2>
                 <label for="username-field" class="form-field">
                     <h3> Username </h3>
-                    <input type="text" id="username-field" name="username" required placeholder="Username"
+                    <input type="text" id="username-field" name="user_name" required placeholder="Username"
                         maxlength="40" autocomplete="username">
                 </label>
                 <label for="password-field" class="form-field">
                     <h3> Password </h3>
-                    <input type="password" id="password-field" name="password" required placeholder="Password"
+                    <input type="password" id="password-field" name="user_password" required placeholder="Password"
                         maxlength="40" autocomplete="current-password">
-                    <img id="toggle-password" src="../../assets/icons/hide_icon.png" alt="Eye view icon"
+                    <img id="toggle-password" src="../../assets/icons/hide_icon.png" alt="Eye view icon" title="Toggle password visibility"
                         onclick="togglePasswordVisibility()"></img>
                 </label>
                 <div class="form-extra-information">
-                    <a class="hyperlink_text" href="../../user_pages/user_register/user_register.php">&#11164 Not registered? Create an
+                    <a class="hyperlink_text" href="../../index.php" title="/index.php">&#11164 Cancel </a>
+                    <br>
+                    <a class="hyperlink_text" href="../../user_pages/user_register/user_register.php" title="/user_pages/user_register/user_register.php">&#11164 Not registered? Create an
                         account</a>
                 </div>
-                <button class="hyperlink_button" type="submit" name="login-button">
-                    <div class="button-text">SIGN IN</div>
+                <button class="hyperlink_button" type="submit" name="login-button" title="Sign in">
+                    <div class="button-text">Sign in</div>
                     <div class="dots-5" style="display: none;"></div>
                 </button>
-                <div class="form-result" style="height: 20px"></div>
+                <div class="form-result"></div>
             </form>
         </section>
     </main>

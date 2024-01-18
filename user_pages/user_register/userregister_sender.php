@@ -4,16 +4,16 @@ header("Content-Type: application/json");
 
 $response = ["status" => 1, "msg" => "Unknown action."];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = substr(filter_var($conn->real_escape_string($_POST["username"]), FILTER_SANITIZE_STRING), 0, 40);
-    $email = substr(filter_var($conn->real_escape_string($_POST["email"]), FILTER_SANITIZE_EMAIL), 0, 100);
-    $password = substr(filter_var($conn->real_escape_string($_POST["password"]), FILTER_SANITIZE_STRING), 0, 60);
+    $username = substr(filter_var($conn->real_escape_string($_POST["user_name"]), FILTER_SANITIZE_STRING), 0, 40);
+    $email = substr(filter_var($conn->real_escape_string($_POST["user_email"]), FILTER_SANITIZE_EMAIL), 0, 100);
+    $password = substr(filter_var($conn->real_escape_string($_POST["user_password"]), FILTER_SANITIZE_STRING), 0, 60);
 
     if (strlen($username) < 5) {
         $response = ["status" => 1, "msg" => "Username must contain 5-40 characters."];
     } else if (!preg_match("/^[A-Za-z0-9]+$/", $username)) {
         $response = ["status" => 1, "msg" => "Username must contain only letters and numbers."];
     }
-    else if (strlen($password) < 8) {
+    else if (strlen($password) < 7) {
         $response = ["status" => 1, "msg" => "Password must contain 7-60 characters."];
     } else if (!preg_match("/^[ -~]+$/", $password)) {
         $response = ["status" => 1, "msg" => "Password must contain only keyboard characters."];
