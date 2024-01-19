@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sty 18, 2024 at 09:35 PM
+-- Generation Time: Sty 19, 2024 at 08:07 AM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -760,14 +760,6 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `total_price`, `cart_reserved`, `cart_reservation_time`) VALUES
-(14, 56, 0.00, 0, NULL),
-(15, 57, 0.00, 1, '2024-01-18 19:26:04');
-
 -- --------------------------------------------------------
 
 --
@@ -783,13 +775,6 @@ CREATE TABLE IF NOT EXISTS `cart_item` (
   KEY `cart_item_ibfk_1` (`cart_id`),
   KEY `product_id` (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart_item`
---
-
-INSERT INTO `cart_item` (`id`, `cart_id`, `product_id`, `quantity`) VALUES
-(230, 15, 23, 5);
 
 -- --------------------------------------------------------
 
@@ -829,7 +814,14 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 --
 
 INSERT INTO `inventory` (`product_id`, `product_quantity`) VALUES
-(23, 2);
+(23, 7),
+(29, 50),
+(30, 30),
+(31, 75),
+(32, 100),
+(33, 40),
+(34, 25),
+(35, 40);
 
 -- --------------------------------------------------------
 
@@ -842,13 +834,6 @@ CREATE TABLE IF NOT EXISTS `newsletter` (
   `email_address` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for emails that agreed to newsletter';
-
---
--- Dumping data for table `newsletter`
---
-
-INSERT INTO `newsletter` (`id`, `email_address`) VALUES
-(19, 'ambroziak.m@onet.pl');
 
 -- --------------------------------------------------------
 
@@ -903,7 +888,7 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 --
 
 INSERT INTO `order_details` (`id`, `user_id`, `order_price`, `order_payment_form`, `order_delivery`, `order_status`, `order_created_date`, `order_finished_date`) VALUES
-(16, 57, 56.50, 'Card', 'Standard', 'Pending', '2024-01-13', NULL);
+(16, NULL, 56.50, 'Card', 'Standard', 'Pending', '2024-01-13', NULL);
 
 -- --------------------------------------------------------
 
@@ -946,14 +931,21 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`),
   KEY `supplier_id` (`supplier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `category_id`, `supplier_id`, `product_name`, `product_description_long`, `product_price`, `date_added`) VALUES
-(23, 13, 1, 'Coconut Brown Bear', 'The Brown Coconut Bear is a delightful and unique plush toy that captures the hearts of all ages. Designed to resemble a friendly bear with a distinct coconut-themed pattern, this toy combines the comforting features of a classic teddy bear with a playful tropical twist. Its soft, brown fur is reminiscent of a coconuts rugged exterior, while its snuggly texture offers an inviting, warm embrace.', 15.50, '2024-01-12 18:09:31');
+(23, 13, 2, 'Coconut Brown Bear', 'The Brown Coconut Bear is a delightful and unique plush toy that captures the hearts of all ages. Designed to resemble a friendly bear with a distinct coconut-themed pattern, this toy combines the comforting features of a classic teddy bear with a playful tropical twist. Its soft, brown fur is reminiscent of a coconuts rugged exterior, while its snuggly texture offers an inviting, warm embrace.', 15.50, '2024-01-12 18:09:31'),
+(29, 15, 3, 'Classic Sneaker Charm Miniatures', 'Step into style with our Classic Sneaker Charm Miniatures! Perfect for adding a touch of cool to your plush pal, these mini sneakers are meticulously crafted to resemble the iconic high-top design. Made with durable materials and detailed stitching, they\\\\&#39;re not only stylish but also built to last. Each pair features real lace-up fronts, adding authenticity and a dash of fun to dressing up your stuffed companion. Suitable for a wide range of plush sizes, these mini sneakers will ensure your cuddly friend is the trendiest pal around. Whether strolling in the park or displayed on your shelf, these charming kicks are sure to be a conversation starter. Lace up and let your plushie\\\\&#39;s personality shine!', 14.99, '2024-01-19 01:56:52'),
+(30, 15, 6, 'Plushie Paparazzi Camera', 'Capture the imagination with our Plushie Paparazzi Camera, the perfect accessory for your plush pal\\&#39;s adventurous side. This mini replica camera, complete with a realistic design and a mock strap for easy attachment, will turn your stuffed friend into a photographer in no time! With intricate detailing, including lens grooves and dials, it is an excellent choice for interactive play or to add to the thematic display of your plush collection. Whether your plushie is \\&#39;shooting\\&#39; in the great outdoors or posing in a playful scene, this camera adds an element of storytelling and creativity to your plush pal\\&#39;s world. Snap up this accessory and watch as your plushies capture moments in their charming, imaginary world.', 18.99, '2024-01-19 06:46:30'),
+(31, 13, 1, 'Smarty Paws Plushie Spectacles', 'Add a touch of intelligence and charm to your stuffed pal with our Smarty Paws Plushie Spectacles. These miniature glasses, crafted with meticulous attention to detail, feature a classic round frame with a sleek golden finish and tinted lenses. Perfect for bookworm plushies or to give a wise look to your old-time teddy, these spectacles fit snugly on a variety of plush sizes. They are not only a fun addition to your plushies wardrobe but also a great way to encourage a love for reading and knowledge in a cute, tangible form. Let your plush pal look the part of a distinguished intellectual or a seasoned professor with these quaint and adorable spectacles!', 9.99, '2024-01-19 06:48:01'),
+(32, 15, 6, 'Geek Chic Miniature Glasses', 'Introducing the \\&#34;Geek Chic Miniature Glasses\\&#34; – the ultimate accessory for your intellectual plush pal! These delicately framed, round glasses with clear lenses exude a smart and sophisticated vibe, perfect for any plushie ready to hit the books or take on the day with a studious look. The thin gold frames add a touch of elegance, while the adjustable arms ensure a comfortable fit for a variety of plush sizes. Whether for a photo shoot, a plushie meet-up, or to simply', 8.99, '2024-01-19 06:50:46'),
+(33, 15, 3, 'Cotton Candy Kicks for Plushies', 'Brighten up your plushie\\\\&#39;s wardrobe with our \\\\&#34;Cotton Candy Kicks for Plushies,\\\\&#34; the sweetest addition to any stuffed companion\\\\&#39;s attire. These miniature sneakers come in a delightful pastel pink, reminiscent of the joyful hues of cotton candy. The white laces and classic design give these tiny shoes an authentic look, while the soft fabric ensures they\\\\&#39;re easy to slip onto your plush pal\\\\&#39;s feet. Ideal for a plushie\\\\&#39;s day out or as a charming accessory for your stuffed friend\\\\&#39;s ensemble, these kicks will add a pop of color and playfulness to any plush collection. Get ready to strut in style with these irresistibly cute plushie sneakers', 12.99, '2024-01-19 06:52:14'),
+(34, 13, 1, 'Whisker Whispers Plushie Cat', 'Meet Whisker Whispers, the plushie cat that\\&#39;s purring its way into hearts with its soft, grey fur and those big, sparkling blue eyes. Each detail, from the delicate pink inner ears to the embroidered paws, has been lovingly crafted for an adorable finish. This cuddly feline friend is perfect for cat lovers of all ages, offering a comforting hug and a dash of playful charm. The Whisker Whispers cat isn\\&#39;t just a stuffed animal; it\\&#39;s a companion for cozy nights, a confidant for secret whispers, and a charming friend for life\\&#39;s adventures. Adopt this gentle plushie soul today, and let the soothing purrs of contentment fill your home.', 24.99, '2024-01-19 06:53:38'),
+(35, 13, 2, 'Emperor\'s Embrace Cuddly Penguin Pal', 'Embrace the chill with the Emperor\'s Embrace; Cuddly Penguin Pal, a royal addition to any plush collection. Dressed in a charming icy blue hue, this plush penguin stands proud with its adorable crown, signaling it\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#39;s ready for any playful coronation. Its soft, fluffy texture and kind, sparkling eyes invite warm cuddles and endless adventures in imaginary ice kingdoms. Perfect for both young dreamers and the young at heart, this penguin plushie is not only a snuggly companion for cold nights but also a delightful buddy for day-to-day discoveries. Make a place in your home for this lovable Emperor, and watch as it waddles its way into your warmest affections.', 24.99, '2024-01-19 06:54:51');
 
 -- --------------------------------------------------------
 
@@ -968,14 +960,21 @@ CREATE TABLE IF NOT EXISTS `product_image` (
   `image_description` text DEFAULT NULL COMMENT 'Description used to alt attribute',
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for product images';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for product images';
 
 --
 -- Dumping data for table `product_image`
 --
 
 INSERT INTO `product_image` (`id`, `product_id`, `product_image_path`, `image_description`) VALUES
-(12, 23, 'assets/products/base_bear.png', 'Brown plushie bear on table.');
+(12, 23, 'assets/products/base_bear.png', 'Brown plushie bear on table.'),
+(18, 29, 'assets/products/accessories_1.png', 'Black miniature sneakers'),
+(19, 30, 'assets/products/accessories_2.png', 'Miniature black camera'),
+(20, 31, 'assets/products/accessories_3.png', 'Lavander spectacles'),
+(21, 32, 'assets/products/accessories_4.png', 'Transparent spectacles'),
+(22, 33, 'assets/products/accessories_5.png', 'Mini pink kicks'),
+(23, 34, 'assets/products/base_cat.png', 'Grey plushie cat'),
+(24, 35, 'assets/products/base_penguin.png', 'Blue penguin plushie');
 
 -- --------------------------------------------------------
 
@@ -1019,15 +1018,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UC_user_login_unique` (`user_login`),
   UNIQUE KEY `user_email` (`user_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `user_login`, `user_password`, `user_email`, `date_created`) VALUES
-(56, 'Volteh', '$2y$10$2l4n/iv0PF5rmpxWffItNefugQjyxBkxTYfwNTFzjqnxYvIknJxZi', 'Volteh@wp.pl', '2024-01-07'),
-(57, 'Eteiz', '$2y$10$7rANt9wVGJPmNHJPZANZl.HCYPmum/p4nJzQJ6JmGBdGikZBhxj/2', 'ambroziak.m@onet.pl', '2024-01-07');
+(60, 'Eteiz', '$2y$10$EL4Bt.qlZ6RqmHlVCrsbq.VoSRAolQggy/6oyswD03Z340jq4DE8O', 'm.ambroziak.contact@gmail.com', '2024-01-19');
 
 -- --------------------------------------------------------
 
@@ -1049,15 +1047,14 @@ CREATE TABLE IF NOT EXISTS `user_address` (
   `user_country` varchar(100) DEFAULT 'Not specified',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_address`
 --
 
 INSERT INTO `user_address` (`id`, `user_id`, `user_firstname`, `user_lastname`, `user_email`, `user_phone`, `user_homeaddress`, `user_city`, `user_postalcode`, `user_state`, `user_country`) VALUES
-(35, 56, 'Your', 'Mom', 'Volteh@wp.pl', '420691337', 'Your mom', 'Yourmom', '69-420', 'Yourmomistan', 'Germany'),
-(43, 57, 'Marta', 'Ambroziak', 'ambroziak.m@onet.pl', '+48516633874', 'Starosty Kosa 10/21', 'Ostrołęka', '07-410', 'Mazowieckie', 'Poland');
+(44, 60, 'Marta', 'Ambroziak', 'm.ambroziak.contact@gmail.com', '+48123123123', 'Lorem Ipsum 21/24', 'Lorem', '01-234', 'Mazowieckie', 'Poland');
 
 --
 -- Constraints for dumped tables

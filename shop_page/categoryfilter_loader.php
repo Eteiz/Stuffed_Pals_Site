@@ -1,5 +1,5 @@
 <?php            
-    require_once "../db_connect.php";
+    require_once "../config.php";
 
     $selectedCategory = isset($_GET["category"]) ? $_GET["category"] : null;
 

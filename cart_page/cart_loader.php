@@ -44,7 +44,7 @@ else if($cartIdRow = $cartIdResult->fetch_assoc()) {
 
     echo "<div class='product-cart-displayer'>";
         echo "<div class='section-header'>";
-            echo "<h1> Shopping cart 🛒 </h1>";
+            echo "<h1> Shopping cart</h1>";
             echo "<br>";
             echo "<div class='section-rows'>";
                 echo "<h3 class='product-image'>Product</h3>";

@@ -40,10 +40,13 @@ echo "<div id='admin-product-section'>";
 
         while($product = $productResult->fetch_assoc()) {
 
+            mysqli_data_seek($categoryResult, 0);
+            mysqli_data_seek($supplierResult, 0);
+
             // Category name
-            $category = ($conn->query("SELECT category_name FROM category WHERE id = " . $product['category_id']))->fetch_assoc();
+            $categoryName = $conn->query("SELECT category_name FROM category WHERE id = " . $product['category_id'])->fetch_assoc();
             // Supplier name
-            $supplier = ($conn->query("SELECT supplier_name FROM supplier WHERE id = " . $product['supplier_id']))->fetch_assoc();
+            $supplierName = $conn->query("SELECT supplier_name FROM supplier WHERE id = " . $product['supplier_id'])->fetch_assoc();
             // Product's image and image description
             $stmt = $conn->prepare("SELECT product_image_path, image_description FROM Product_Image WHERE product_id = ?");
             $stmt->bind_param("i", $product['id']);
@@ -58,17 +61,21 @@ echo "<div id='admin-product-section'>";
                     // Product image
                     echo "<img class='product-image' src='../../" . htmlspecialchars($image['product_image_path']) . "' alt='" . htmlspecialchars($image['image_description']) . "' title='" . htmlspecialchars($image['image_description']) . "'></img>";
                     // Product name
-                    echo "<input type='text' class='product-name' name='product_name' maxlength='100' required placeholder='" . htmlspecialchars($product['product_name']) . "' value='" . htmlspecialchars($product['product_name']) . "'>";
+                    echo "<input type='text' class='product-name' name='product_name' maxlength='100' required placeholder='" . $product['product_name'] . "' value='" . htmlspecialchars($product['product_name']) . "'>";
                     // Category name
                     echo "<select class='product-category' name='product_category' required>";
+                        mysqli_data_seek($categoryResult, 0);
                         while($category = $categoryResult->fetch_assoc()) {
-                            echo "<option value='" . htmlspecialchars($category['id']) . "'>" . htmlspecialchars($category['category_name']) . "</option>";
+                            $selected = ($category['category_name'] == $categoryName['category_name']) ? 'selected' : '';
+                            echo "<option value='" . htmlspecialchars($category['id']) . "' $selected>" . htmlspecialchars($category['category_name']) . "</option>";
                         }
                     echo "</select>";
                     // Supplier name
                     echo "<select class='product-supplier' name='product_supplier' required>";
+                        mysqli_data_seek($supplierResult, 0);
                         while($supplier = $supplierResult->fetch_assoc()) {
-                            echo "<option value='" . htmlspecialchars($supplier['id']) . "'>" . htmlspecialchars($supplier['supplier_name']) . "</option>";
+                            $selected = ($supplier['supplier_name'] == $supplierName['supplier_name']) ? 'selected' : '';
+                            echo "<option value='" . htmlspecialchars($supplier['id']) . "' $selected>" . htmlspecialchars($supplier['supplier_name']) . "</option>";
                         }
                     echo "</select>";
                     // Product price
@@ -86,7 +93,7 @@ echo "<div id='admin-product-section'>";
                     // Product's description
                 echo "<label for='product-description' class='product-description'>";
                     echo "<h3>Product description</h3>";
-                    echo "<textarea name='product_description' required placeholder='" . htmlspecialchars($product['product_description_long']) . "'>" . htmlspecialchars($product['product_description_long']) . "</textarea>";
+                    echo "<textarea name='product_description' required placeholder='" . $product['product_description_long'] . "'>" . htmlspecialchars($product['product_description_long']) . "</textarea>";
                 echo "</label>";
                 echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($product['id']) . "'>";
                 echo "<div class='section-buttons section-rows'>";

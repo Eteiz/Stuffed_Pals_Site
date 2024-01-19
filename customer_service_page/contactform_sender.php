@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message_body .= "Email address: " . $userEmail . "\n\n";
         $message_body .= $message;
 
-        if (mail("AartaMambroziak@outlook.com", "Stuffed Pals Contact Form", $message_body, $headers)) {
+        if (mail("", "Stuffed Pals Contact Form", $message_body, $headers)) {
             $response = ["status" => 0, "msg" => "Mail successfully sent"];
         } else {
             $response = ["status" => 1, "msg" => "There was a problem sending the email."];

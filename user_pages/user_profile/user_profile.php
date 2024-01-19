@@ -20,7 +20,6 @@ switch ($content) {
         $contentFile = 'user_address/user_address_loader.php';
         break;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

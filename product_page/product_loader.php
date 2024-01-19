@@ -1,5 +1,5 @@
 <?php          
-    require_once "../db_connect.php";
+    require_once "../config.php";
 
     $productId = intval($_GET["product"]);
     $stmt = $conn->prepare("CALL GetProductInformation(?)");

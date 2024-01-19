@@ -13,7 +13,8 @@ header("Content-Type: application/json");
 $response = ["status" => 1, "msg" => "Unknown action."];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $productName = substr(filter_var($conn->real_escape_string($_POST['product_name']), FILTER_SANITIZE_STRING), 0, 100);
+    $productName = $_POST['product_name'];
+    $productName = substr($productName, 0, 100);
 
     $productCategory = filter_var($_POST['product_category'], FILTER_SANITIZE_NUMBER_INT);
     $productCategory = (int)$productCategory;
@@ -33,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $productImagePath = substr(filter_var($conn->real_escape_string($_POST['product_image_path']), FILTER_SANITIZE_STRING), 0, 200);
     $productImageDescription = substr(filter_var($conn->real_escape_string($_POST['product_image_description']), FILTER_SANITIZE_STRING), 0, 1000);
-    $productDescription = substr(filter_var($conn->real_escape_string($_POST['product_description']), FILTER_SANITIZE_STRING), 0, 1000);
+    $productDescription = $_POST['product_description'];
+    $productDescription = substr($productDescription, 0, 1000);
    
     $stmt = $conn->prepare("CALL AddProduct(?, ?, ?, ?, ?, ?, ?, ?, @p_status, @p_message)");
     $stmt->bind_param("siidisss", $productName, $productCategory, $productSupplier, $productPrice, $productQuantity, $productImagePath, $productImageDescription, $productDescription);

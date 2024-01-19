@@ -1,5 +1,5 @@
 <?php            
-    require_once "../db_connect.php";
+    require_once "../config.php";
 
     if ($conn->multi_query("CALL GetProductAvailability()")) {
         $isFirstQuery = true;
