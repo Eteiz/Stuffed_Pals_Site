@@ -33,10 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response = finalizeOrder($userId, $userFirstName, $userLastName, $userEmail, $userPhoneNumber, $userHomeAddress, $userCity, $userPostalCode, $userState, $userCountry, $userDeliveryMethod, $userPaymentMethod); 
         }
     }
-    else {
-        header("Location: ../checkout_page/order_received.php");
-        exit; 
-    }
 }
 if($response["status"] == 0) {
     cancelCartReservation($userId);

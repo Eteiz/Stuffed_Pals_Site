@@ -450,10 +450,10 @@ function finalizeOrder($userId, $userFirstName, $userLastName, $userEmail, $user
 
     // Check if the order was created
     if($result) {
+        cancelCartReservation($userId);
         return ["status" => $result['status'], "msg" => $result['message']];
     } else {
         return ["status" => 1, "msg" => "Error while creating order."];
     }
 }
 ?>
-

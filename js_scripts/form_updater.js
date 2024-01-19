@@ -64,7 +64,7 @@ function handleFormSubmit(formId, buttonName, phpFunctionAddress, formType) {
                             break;  
                         case "create-order":
                             setTimeout(function() {
-                                window.location.href = "../../../user_pages/user_profile/user_profile.php?content=orders";
+                                window.location.href = "../../../index.php";
                            }, 1500);
                            break; 
                         case "admin-login":
