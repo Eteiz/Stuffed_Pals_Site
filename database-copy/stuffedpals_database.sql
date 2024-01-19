@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sty 19, 2024 at 08:07 AM
--- Wersja serwera: 10.4.28-MariaDB
--- Wersja PHP: 8.2.4
+-- Generation Time: Sty 19, 2024 at 03:12 PM
+-- Wersja serwera: 10.4.32-MariaDB
+-- Wersja PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -758,7 +758,14 @@ CREATE TABLE IF NOT EXISTS `cart` (
   `cart_reservation_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `total_price`, `cart_reserved`, `cart_reservation_time`) VALUES
+(16, 60, 0.00, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -774,7 +781,15 @@ CREATE TABLE IF NOT EXISTS `cart_item` (
   PRIMARY KEY (`id`),
   KEY `cart_item_ibfk_1` (`cart_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_item`
+--
+
+INSERT INTO `cart_item` (`id`, `cart_id`, `product_id`, `quantity`) VALUES
+(233, 16, 29, 1),
+(234, 16, 37, 2);
 
 -- --------------------------------------------------------
 
@@ -814,14 +829,20 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 --
 
 INSERT INTO `inventory` (`product_id`, `product_quantity`) VALUES
-(23, 7),
-(29, 50),
+(23, 6),
+(29, 49),
 (30, 30),
 (31, 75),
 (32, 100),
 (33, 40),
 (34, 25),
-(35, 40);
+(35, 40),
+(36, 35),
+(37, 35),
+(38, 50),
+(39, 40),
+(40, 45),
+(41, 23);
 
 -- --------------------------------------------------------
 
@@ -855,14 +876,16 @@ CREATE TABLE IF NOT EXISTS `order_address` (
   `order_country` varchar(100) DEFAULT 'Not specified',
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_address`
 --
 
 INSERT INTO `order_address` (`id`, `order_id`, `order_firstname`, `order_lastname`, `order_email`, `order_phone`, `order_homeaddress`, `order_city`, `order_postalcode`, `order_state`, `order_country`) VALUES
-(16, 16, 'Marta', 'Ambroziak', 'ambroziak.m@onet.pl', '+48516633874', 'Starosty Kosa 10/21', 'Ostrołęka', '07-410', 'Mazowieckie', 'Poland');
+(16, 16, 'Marta', 'Ambroziak', 'ambroziak.m@onet.pl', '+48516633874', 'Starosty Kosa 10/21', 'Ostrołęka', '07-410', 'Mazowieckie', 'Poland'),
+(17, 17, 'Marta', 'Ambroziak', 'm.ambroziak.contact@gmail.com', '+48123123123', 'Lorem Ipsum 21/24', 'Lorem', '01-234', 'Mazowieckie', 'Poland'),
+(18, 18, 'Marta', 'Ambroziak', 'm.ambroziak.contact@gmail.com', '+48123123123', 'Lorem Ipsum 21/24', 'Lorem', '01-234', 'Mazowieckie', 'Poland');
 
 -- --------------------------------------------------------
 
@@ -881,14 +904,16 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `order_finished_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_details`
 --
 
 INSERT INTO `order_details` (`id`, `user_id`, `order_price`, `order_payment_form`, `order_delivery`, `order_status`, `order_created_date`, `order_finished_date`) VALUES
-(16, NULL, 56.50, 'Card', 'Standard', 'Pending', '2024-01-13', NULL);
+(16, NULL, 56.50, 'Card', 'Standard', 'Pending', '2024-01-13', NULL),
+(17, 60, 24.99, 'Card', 'Standard', 'Payment accepted', '2024-01-19', NULL),
+(18, 60, 25.50, 'Card', 'Standard', 'Pending', '2024-01-19', NULL);
 
 -- --------------------------------------------------------
 
@@ -905,14 +930,16 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_item`
 --
 
 INSERT INTO `order_item` (`id`, `order_id`, `product_id`, `product_quantity`, `product_subtotal_price`) VALUES
-(19, 16, 23, 3, 46.50);
+(19, 16, 23, 3, 46.50),
+(20, 17, 29, 1, 14.99),
+(21, 18, 23, 1, 15.50);
 
 -- --------------------------------------------------------
 
@@ -931,7 +958,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`),
   KEY `supplier_id` (`supplier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product`
@@ -939,13 +966,19 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 INSERT INTO `product` (`id`, `category_id`, `supplier_id`, `product_name`, `product_description_long`, `product_price`, `date_added`) VALUES
 (23, 13, 2, 'Coconut Brown Bear', 'The Brown Coconut Bear is a delightful and unique plush toy that captures the hearts of all ages. Designed to resemble a friendly bear with a distinct coconut-themed pattern, this toy combines the comforting features of a classic teddy bear with a playful tropical twist. Its soft, brown fur is reminiscent of a coconuts rugged exterior, while its snuggly texture offers an inviting, warm embrace.', 15.50, '2024-01-12 18:09:31'),
-(29, 15, 3, 'Classic Sneaker Charm Miniatures', 'Step into style with our Classic Sneaker Charm Miniatures! Perfect for adding a touch of cool to your plush pal, these mini sneakers are meticulously crafted to resemble the iconic high-top design. Made with durable materials and detailed stitching, they\\\\&#39;re not only stylish but also built to last. Each pair features real lace-up fronts, adding authenticity and a dash of fun to dressing up your stuffed companion. Suitable for a wide range of plush sizes, these mini sneakers will ensure your cuddly friend is the trendiest pal around. Whether strolling in the park or displayed on your shelf, these charming kicks are sure to be a conversation starter. Lace up and let your plushie\\\\&#39;s personality shine!', 14.99, '2024-01-19 01:56:52'),
-(30, 15, 6, 'Plushie Paparazzi Camera', 'Capture the imagination with our Plushie Paparazzi Camera, the perfect accessory for your plush pal\\&#39;s adventurous side. This mini replica camera, complete with a realistic design and a mock strap for easy attachment, will turn your stuffed friend into a photographer in no time! With intricate detailing, including lens grooves and dials, it is an excellent choice for interactive play or to add to the thematic display of your plush collection. Whether your plushie is \\&#39;shooting\\&#39; in the great outdoors or posing in a playful scene, this camera adds an element of storytelling and creativity to your plush pal\\&#39;s world. Snap up this accessory and watch as your plushies capture moments in their charming, imaginary world.', 18.99, '2024-01-19 06:46:30'),
-(31, 13, 1, 'Smarty Paws Plushie Spectacles', 'Add a touch of intelligence and charm to your stuffed pal with our Smarty Paws Plushie Spectacles. These miniature glasses, crafted with meticulous attention to detail, feature a classic round frame with a sleek golden finish and tinted lenses. Perfect for bookworm plushies or to give a wise look to your old-time teddy, these spectacles fit snugly on a variety of plush sizes. They are not only a fun addition to your plushies wardrobe but also a great way to encourage a love for reading and knowledge in a cute, tangible form. Let your plush pal look the part of a distinguished intellectual or a seasoned professor with these quaint and adorable spectacles!', 9.99, '2024-01-19 06:48:01'),
-(32, 15, 6, 'Geek Chic Miniature Glasses', 'Introducing the \\&#34;Geek Chic Miniature Glasses\\&#34; – the ultimate accessory for your intellectual plush pal! These delicately framed, round glasses with clear lenses exude a smart and sophisticated vibe, perfect for any plushie ready to hit the books or take on the day with a studious look. The thin gold frames add a touch of elegance, while the adjustable arms ensure a comfortable fit for a variety of plush sizes. Whether for a photo shoot, a plushie meet-up, or to simply', 8.99, '2024-01-19 06:50:46'),
-(33, 15, 3, 'Cotton Candy Kicks for Plushies', 'Brighten up your plushie\\\\&#39;s wardrobe with our \\\\&#34;Cotton Candy Kicks for Plushies,\\\\&#34; the sweetest addition to any stuffed companion\\\\&#39;s attire. These miniature sneakers come in a delightful pastel pink, reminiscent of the joyful hues of cotton candy. The white laces and classic design give these tiny shoes an authentic look, while the soft fabric ensures they\\\\&#39;re easy to slip onto your plush pal\\\\&#39;s feet. Ideal for a plushie\\\\&#39;s day out or as a charming accessory for your stuffed friend\\\\&#39;s ensemble, these kicks will add a pop of color and playfulness to any plush collection. Get ready to strut in style with these irresistibly cute plushie sneakers', 12.99, '2024-01-19 06:52:14'),
-(34, 13, 1, 'Whisker Whispers Plushie Cat', 'Meet Whisker Whispers, the plushie cat that\\&#39;s purring its way into hearts with its soft, grey fur and those big, sparkling blue eyes. Each detail, from the delicate pink inner ears to the embroidered paws, has been lovingly crafted for an adorable finish. This cuddly feline friend is perfect for cat lovers of all ages, offering a comforting hug and a dash of playful charm. The Whisker Whispers cat isn\\&#39;t just a stuffed animal; it\\&#39;s a companion for cozy nights, a confidant for secret whispers, and a charming friend for life\\&#39;s adventures. Adopt this gentle plushie soul today, and let the soothing purrs of contentment fill your home.', 24.99, '2024-01-19 06:53:38'),
-(35, 13, 2, 'Emperor\'s Embrace Cuddly Penguin Pal', 'Embrace the chill with the Emperor\'s Embrace; Cuddly Penguin Pal, a royal addition to any plush collection. Dressed in a charming icy blue hue, this plush penguin stands proud with its adorable crown, signaling it\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\&#39;s ready for any playful coronation. Its soft, fluffy texture and kind, sparkling eyes invite warm cuddles and endless adventures in imaginary ice kingdoms. Perfect for both young dreamers and the young at heart, this penguin plushie is not only a snuggly companion for cold nights but also a delightful buddy for day-to-day discoveries. Make a place in your home for this lovable Emperor, and watch as it waddles its way into your warmest affections.', 24.99, '2024-01-19 06:54:51');
+(29, 15, 3, 'Classic Sneaker Charm Miniatures', 'Step into style with our Classic Sneaker Charm Miniatures! Perfect for adding a touch of cool to your plush pal, these mini sneakers are meticulously crafted to resemble the iconic high-top design. Made with durable materials and detailed stitching, they\'re not only stylish but also built to last. Each pair features real lace-up fronts, adding authenticity and a dash of fun to dressing up your stuffed companion. Suitable for a wide range of plush sizes, these mini sneakers will ensure your cuddly friend is the trendiest pal around. Whether strolling in the park or displayed on your shelf, these charming kicks are sure to be a conversation starter. Lace up and let your plushie\'s personality shine!', 14.99, '2024-01-19 01:56:52'),
+(30, 15, 6, 'Plushie Paparazzi Camera', 'Capture the imagination with our Plushie Paparazzi Camera, the perfect accessory for your plush pal\'s adventurous side. This mini replica camera, complete with a realistic design and a mock strap for easy attachment, will turn your stuffed friend into a photographer in no time! With intricate detailing, including lens grooves and dials, it is an excellent choice for interactive play or to add to the thematic display of your plush collection. Whether your plushie is shootin\' in the great outdoors or posing in a playful scene, this camera adds an element of storytelling and creativity to your plush pal\'s world. Snap up this accessory and watch as your plushies capture moments in their charming, imaginary world.', 18.99, '2024-01-19 06:46:30'),
+(31, 15, 2, 'Smarty Paws Plushie Spectacles', 'Add a touch of intelligence and charm to your stuffed pal with our Smarty Paws Plushie Spectacles. These miniature glasses, crafted with meticulous attention to detail, feature a classic round frame with a sleek golden finish and tinted lenses. Perfect for bookworm plushies or to give a wise look to your old-time teddy, these spectacles fit snugly on a variety of plush sizes. They are not only a fun addition to your plushies wardrobe but also a great way to encourage a love for reading and knowledge in a cute, tangible form. Let your plush pal look the part of a distinguished intellectual or a seasoned professor with these quaint and adorable spectacles!', 9.99, '2024-01-19 06:48:01'),
+(32, 15, 6, 'Geek Chic Miniature Glasses', 'Introducing the Geek Chic Miniature Glasses - the ultimate accessory for your intellectual plush pal! These delicately framed, round glasses with clear lenses exude a smart and sophisticated vibe, perfect for any plushie ready to hit the books or take on the day with a studious look. The thin gold frames add a touch of elegance, while the adjustable arms ensure a comfortable fit for a variety of plush sizes. Whether for a photo shoot, a plushie meet-up, or to simply', 8.99, '2024-01-19 06:50:46'),
+(33, 15, 3, 'Cotton Candy Kicks for Plushies', 'Brighten up your plushie\'s wardrobe with our Cotton Candy Kicks for Plushies, the sweetest addition to any stuffed companion\'s attire. These miniature sneakers come in a delightful pastel pink, reminiscent of the joyful hues of cotton candy. The white laces and classic design give these tiny shoes an authentic look, while the soft fabric ensures they\'re easy to slip onto your plush pal\'s feet. Ideal for a plushie\'s day out or as a charming accessory for your stuffed friend\'s ensemble, these kicks will add a pop of color and playfulness to any plush collection. Get ready to strut in style with these irresistibly cute plushie sneakers', 12.99, '2024-01-19 06:52:14'),
+(34, 13, 1, 'Whisker Whispers Plushie Cat', 'Meet Whisker Whispers, the plushie cat that\'s purring its way into hearts with its soft, grey fur and those big, sparkling blue eyes. Each detail, from the delicate pink inner ears to the embroidered paws, has been lovingly crafted for an adorable finish. This cuddly feline friend is perfect for cat lovers of all ages, offering a comforting hug and a dash of playful charm. The Whisker Whispers cat isn\'t just a stuffed animal; it\'s a companion for cozy nights, a confidant for secret whispers, and a charming friend for life\'s adventures. Adopt this gentle plushie soul today, and let the soothing purrs of contentment fill your home.', 24.99, '2024-01-19 06:53:38'),
+(35, 13, 2, 'Emperor Blue Plushie Penguin', 'Embrace the chill with the Emperor\'s Embrace; Cuddly Penguin Pal, a royal addition to any plush collection. Dressed in a charming icy blue hue, this plush penguin stands proud with its adorable crown, signaling it\'s ready for any playful coronation. Its soft, fluffy texture and kind, sparkling eyes invite warm cuddles and endless adventures in imaginary ice kingdoms. Perfect for both young dreamers and the young at heart, this penguin plushie is not only a snuggly companion for cold nights but also a delightful buddy for day-to-day discoveries. Make a place in your home for this lovable Emperor, and watch as it waddles its way into your warmest affections.', 24.99, '2024-01-19 06:54:51'),
+(36, 13, 1, 'Blossom Bunnies Soft Plush Rabbit', 'Hop into a world of softness with our \"Blossom Bunnies\" Soft Plush Rabbit. This cuddly companion, with its fluffy white fur and delicate pink inner ears, embodies the essence of a gentle embrace. With sparkling eyes adorned with heart-shaped twinkles and cheeks blushed with affection, it\'s a gift that speaks the universal language of love. Perfect for gifting or as a treasured keepsake, this plush rabbit is sure to charm anyone with its innocent gaze and huggable form. Whether for playtime or bedtime, \"Blossom Bunnies\" are here to share in every precious moment.', 20.00, '2024-01-19 13:51:08'),
+(37, 13, 3, 'Rosy Cheeks Snuggly Plush Sheep', 'Meet the \"Rosy Cheeks\" Snuggly Plush Sheep, the fluffiest friend in our Stuffed Pals collection. This cuddle buddy comes in a gentle pastel pink with whimsical curly horns, bringing a touch of whimsy to your plushie family. Its rosy cheeks and sweet embroidered smile will warm your heart, while its ultra-soft texture makes it perfect for comforting snuggles. Whether it\'s time for a tea party or a bedtime story, this snuggly sheep is eager to share in every tender moment. Ideal for gift-giving or adding a splash of softness to your decor, \"Rosy Cheeks\" is a bundle of joy that promises to deliver love and smiles to all ages.', 20.00, '2024-01-19 13:54:38'),
+(38, 14, 2, 'Aquatic Adventure Plushie Outfit Set', 'Dive into cuteness with our \"Aquatic Adventure\" Plushie Outfit Set! This adorable ensemble features a soft, sky-blue hoodie with charming aquatic designs, complete with a whimsical tail fin and playful tentacle accents on the hood. The set is paired with cozy, denim-style plush shorts, perfect for completing the nautical look. Whether your plush pal is heading to a pretend seaside escapade or just lounging around, this outfit will ensure they\'re dressed for the occasion. The hoodie and shorts are made with plush-friendly fabric, ensuring easy dressing and a comfortable fit for a variety of plush sizes. Set sail for fun and give your stuffed friend a wave of style with this enchanting outfit set!', 15.99, '2024-01-19 13:56:41'),
+(39, 14, 5, 'Hoppy Comfort Plushie Hoodie and Shorts Set', 'Jump into joy with our \"Hoppy Comfort\" Plushie Hoodie and Shorts Set. This irresistibly cute outfit is designed to bring a smile to anyone\'s face with a soft, pink hoodie that sports adorable bunny ears and a cheerful face on the hood. Paired with versatile denim-look shorts, this outfit is perfect for a plushie\'s day out or a cozy cuddle session. The hoodie\'s vibrant pink shade is sure to stand out, while the shorts add a touch of casual cool. Made from plush-friendly materials, the outfit is easy to put on and remove, offering a snug and comfortable fit for most plush sizes. Give your plush pal a wardrobe update that\'s as playful and sweet as they are!', 16.99, '2024-01-19 14:00:05'),
+(40, 14, 5, 'Lil Sportster Plushie Varsity Outfit', 'Get your plush pal game-day ready with our \"Lil\' Sportster\" Plushie Varsity Outfit. This set includes a charming lavender-hued hoodie with classic varsity stripes on the sleeves and a cozy hood, perfect for a touch of preppy flair. Accompanied by chic, dark denim-like shorts, it\'s the ideal ensemble for any plush friend with an active lifestyle or a love for sports. The outfit is crafted from soft, plush-friendly fabric that\'s easy for little hands to handle, making dressing and undressing a breeze. Whether cheering from the sidelines or heading out for a day of play, this outfit will ensure your stuffed buddy is both comfortable and stylish. Touchdown to style with this sporty set!', 14.99, '2024-01-19 14:03:07'),
+(41, 15, 5, 'Meadow Munchkin Plushie Playset', 'Bring the freshness of spring to your plushie\'s wardrobe with the \"Meadow Munchkin\" Plushie Playset. This sprightly set features a vibrant lime green hoodie with an adorable bunny face and ears on the hood, ready to spring into the season of blooms. The cozy shorts, in a soft denim texture, are perfect for a playful romp in the meadow or a relaxing day in. Crafted from soft, durable materials, this outfit is designed to fit plushies of various sizes comfortably, making for easy dress-up and undress. Give your plush pal a dash of whimsy with this cute and comfortable outfit that\'s just right for any hoppy adventure!', 15.00, '2024-01-19 14:07:08');
 
 -- --------------------------------------------------------
 
@@ -960,7 +993,7 @@ CREATE TABLE IF NOT EXISTS `product_image` (
   `image_description` text DEFAULT NULL COMMENT 'Description used to alt attribute',
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for product images';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Table for product images';
 
 --
 -- Dumping data for table `product_image`
@@ -974,7 +1007,13 @@ INSERT INTO `product_image` (`id`, `product_id`, `product_image_path`, `image_de
 (21, 32, 'assets/products/accessories_4.png', 'Transparent spectacles'),
 (22, 33, 'assets/products/accessories_5.png', 'Mini pink kicks'),
 (23, 34, 'assets/products/base_cat.png', 'Grey plushie cat'),
-(24, 35, 'assets/products/base_penguin.png', 'Blue penguin plushie');
+(24, 35, 'assets/products/base_penguin.png', 'Blue penguin plushie'),
+(25, 36, '/assets/products/base_rabbit.png', 'White bunny plushie'),
+(26, 37, '/assets/products/base_sheep.png', 'Pink sheep plushie.'),
+(27, 38, '/assets/products/clothes_1.jpg', 'Truqoise plushie onesie.'),
+(28, 39, '/assets/products/clothes_2.png', 'Pink plushie onesie.'),
+(29, 40, '/assets/products/clothes_3.png', 'Purple bloosie and shorts set.'),
+(30, 41, '/assets/products/clothes_4.png', 'Lime plushie onesie set.');
 
 -- --------------------------------------------------------
 
